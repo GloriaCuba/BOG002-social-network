@@ -45,3 +45,4 @@ myFunction();
     auth.signOut();
     alert ("Has cerrado sesión")  
   }
+  
