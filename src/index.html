@@ -5,25 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+<!-- Archivo autenticación -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+
 </head>
 <body>
-  <label for="email-example">Correo electrónico</label>
+  <form>
+  <label for="email">Correo electrónico</label>
   <input
     type="email"
-    id="email-example"
+    id="email"
     placeholder="Email"
     required
   />
-</form>
-<label for="password-example">Password</label>
+<label for="password">Password</label>
   <input
     type="password"
-    id="password-example"
+    id="password"
     placeholder="Password"
-    name="password-example"
+    name="password"
     required
   />
-</form>
 <select  placeholder="Seleciona">
   <option value="value1">Canino</option>
   <option value="value2">Felino</option>
@@ -45,7 +53,8 @@
   Acepto los términos y condiciones
   </div>
 </label>
-<button type="submit">Enviar</button>
+<button type="button" id="botonSubir">Enviar</button>
+</form>
   <script type="module" src="main.js"></script>
 </body>
 </html>
