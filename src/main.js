@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
-import { myFunction } from './lib/index.js';
+/*import { myFunction } from './lib/index.js';
 myFunction();
-
+*/
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
@@ -18,10 +18,30 @@ myFunction();
   firebase.analytics();
 
   const auth =firebase.auth();
-  
-  let botonSubir= document.getElementById("botonSubir").addEventListener("click", function autenticar() {  
+
+  let botonSubir= document.getElementById("botonSubir").addEventListener("click", autenticar);  
+  let botonIngresar= document.getElementById("botonIngresar").addEventListener("click", ingresar);  
+  let botonCerrarSesión= document.getElementById("botonCerrarSesión").addEventListener("click", cerrarSesión);  
+
+  function autenticar(){
+    console.log("Botón Enviar")
     let email = document.getElementById("email"); 
     let password = document.getElementById("password"); 
-    const promise = auth.createUSerEmailPassword(email.value,password.value);
-    alert ("Registrado");
-  });
+    const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
+    promise.catch(e =>alert(e.message));
+    alert("Registrado");    
+  };
+
+  function ingresar(){
+    let email = document.getElementById("email"); 
+    let password = document.getElementById("password"); 
+    const promise = auth.signInWithEmailAndPassword(email.value,password.value);
+    promise.catch(e =>alert(e.message));
+    alert("Has Ingresado " + email.value);    
+    console.log(email.value)
+  }
+
+  function cerrarSesión(){
+    auth.signOut();
+    alert ("Has cerrado sesión")  
+  }
