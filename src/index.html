@@ -7,6 +7,45 @@
   <title>Document</title>
 </head>
 <body>
+  <label for="email-example">Correo electrónico</label>
+  <input
+    type="email"
+    id="email-example"
+    placeholder="Email"
+    required
+  />
+</form>
+<label for="password-example">Password</label>
+  <input
+    type="password"
+    id="password-example"
+    placeholder="Password"
+    name="password-example"
+    required
+  />
+</form>
+<select  placeholder="Seleciona">
+  <option value="value1">Canino</option>
+  <option value="value2">Felino</option>
+  <option value="value3">Aves</option>
+  <option value="value4">Otros</option>
+</select>
+<label>
+  <input type="radio" name="gender" value="female"> Mujer
+</label>
+<label>
+  <input type="radio" name="gender" value="male"> Hombre
+</label>
+<label>
+  <input type="radio" name="gender" value="no-gender"> No deseo brindar información
+</label>
+<div>
+<label>
+  <input type="checkbox" name="conditions" value="accept-conditions" checked />
+  Acepto los términos y condiciones
+  </div>
+</label>
+<button type="submit">Enviar</button>
   <script type="module" src="main.js"></script>
 </body>
 </html>
