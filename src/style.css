@@ -1,0 +1,41 @@
+
+body{
+    margin: 0;
+    display: flexbox;
+    background-color: white;
+}
+
+.formulario{
+    background-color:ivory;
+    height: 8em;
+    width: 10em;
+    padding:2em;
+    margin:2em;
+    border-radius:20px;
+    font-weight:bolder;
+    font-size:larger;
+    box-shadow: 2px 4px 15px 5px #000;
+}
+
+.logo{
+    width: 13em;
+    height: 10em;
+    margin:4.5em;
+}
+
+form #password{
+    margin:1em 0em 0em 0em;
+}
+#botonIngresar{
+    color:white;
+    background-color:black;
+    margin: 0.5em 3em 0em;
+}
+
+#botonSubir{
+    margin: 0em 1em;
+}
+h6{
+    margin: 1em 0em 0em;
+    margin-left: 1em;
+}

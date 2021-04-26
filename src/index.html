@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Reponsive.css">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
 
@@ -13,18 +15,19 @@
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
 <!-- Archivo autenticación -->
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
-
 </head>
 <body>
-  <form>
-  <label for="email">Correo electrónico</label>
+  <main id="root"></main>
+  <img src="Img/logoVane.png" alt="Logo" class="logo">
+  <form class="formulario">Bienvenido
+  <label for="email"></label>
   <input
     type="email"
     id="email"
     placeholder="Email"
     required
   />
-<label for="password">Password</label>
+<label for="password"></label>
   <input
     type="password"
     id="password"
@@ -32,7 +35,7 @@
     name="password"
     required
   />
-<select  placeholder="Seleciona">
+<!-- <select  placeholder="Seleciona">
   <option value="value1">Canino</option>
   <option value="value2">Felino</option>
   <option value="value3">Aves</option>
@@ -52,12 +55,14 @@
   <input type="checkbox" name="conditions" value="accept-conditions" checked />
   Acepto los términos y condiciones
   </div>
-</label>
-<button type="button" id="botonSubir">Enviar</button>
-<button type="button" id="botonIngresar">Ingresar</button>
-<button type="button" id="botonCerrarSesión">Cerrar Sesión</button>
+</label> -->
+<button type="button" id="botonIngresar">Iniciar Sesion</button>
+<h6>¿Olvidaste tu contraseña?</h6>
+<br><button type="button" id="botonSubir">Crea una nueva cuenta</button>
+<!-- <br><button type="button" id="botonCerrarSesión">Cerrar Sesión</button> -->
 
 </form>
+
   <script type="module" src="main.js"></script>
 </body>
 </html>
