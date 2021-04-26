@@ -2,10 +2,14 @@
 /*import { myFunction } from './lib/index.js';
 myFunction();
 */
-import{App}from'./lib/App.js';
-const saludo=document;
+import{iniciarSesion,paginaPrincipal}from'./lib/App.js';
+// const saludo=document;
+// const principal=document;
+document.addEventListener("DOMContentLoaded",iniciarSesion);
 
-saludo.addEventListener("DOMContentLoaded",App);
+
+let boton=document.getElementById("boton")
+boton.addEventListener("click",paginaPrincipal);
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   // var firebaseConfig = {
