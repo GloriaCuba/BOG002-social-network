@@ -2,7 +2,7 @@ const routes = {
     '/' : iniciarSesion,
     '/contact' : contact,
     '/inicio' : inicio
-  };
+};
   
   const rootDiv = document.getElementById('root');
   rootDiv.innerHTML = routes[window.location.pathname];
@@ -18,4 +18,4 @@ const routes = {
   
   window.onpopstate = () => {
     rootDiv.innerHTML = routes[window.location.pathname]
-  }
+}
