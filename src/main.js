@@ -1,5 +1,5 @@
 // import{paginaPrincipal}from'./lib/App.js';
-import{routes} from'./router/router.js';
+
 
 
 // // Your web app's Firebase configuration

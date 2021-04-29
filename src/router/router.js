@@ -1,7 +1,7 @@
 const routes = {
-    '/' : home,
+    '/' : iniciarSesion,
     '/contact' : contact,
-    '/about' : about
+    '/inicio' : inicio
   };
   
   const rootDiv = document.getElementById('root');
