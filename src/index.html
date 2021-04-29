@@ -16,23 +16,19 @@
 <!-- Archivo autenticación -->
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
 
-<script src="lib/inicio.js"></script>
+<!-- <script src="lib/inicio.js"></script>
 <script src="lib/contact.js"></script>
-<script src="lib/home.js"></script>
+<script src="lib/home.js"></script> -->
 
 </head>
 <body>
-  <ul class="navbar-list">
-   <button onclick="onNavigate('/inicio'); return false">About</button>
-    <li class="navbar-item"><a href="#" onclick="onNavigate('/'); return false;">Home</a></li>
-    <li class="navbar-item"><a href="#" onclick="onNavigate('/contact'); return false;">Contact</a></li>
-  </ul>
-<div id="root"></div>
-<script src="router/router.js"></script>
+  
+   <!-- <button onclick="onNavigate('/inicio'); return false">About</button> -->
+   <button id="buttonSiguiente">Home</button> 
+   <!-- <button onclick="onNavigate('/contact'); return false;">Contact</button> -->
+ 
+   <div id="root"></div>
+
+<script type= "module" src="router/router.js"></script>
 </body>
 </html>
-
-
-
-
-    
