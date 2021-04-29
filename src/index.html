@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -7,49 +7,46 @@
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="Reponsive.css">
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script> -->
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script> -->
 <!-- Archivo autenticación -->
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
-</head>
+<!-- <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script> -->
+<!-- </head>
 <body>
-  <img src="Img/logoVane.png" alt="Logo" class="logo">  
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="#" onclick="onNavigate('/entrar'); return false;">paginaPrincipal</a></li>
+    <li class="navbar-item"><a href="#" onclick="onNavigate('/'); return false;">Home</a></li>
+    <li class="navbar-item"><a href="#" onclick="onNavigate('/suscribirse'); return false;">paginaRegistro</a></li>
+  </ul>
   <main id="root"></main>
 
-
- 
-<!-- <select  placeholder="Seleciona">
-  <option value="value1">Canino</option>
-  <option value="value2">Felino</option>
-  <option value="value3">Aves</option>
-  <option value="value4">Otros</option>
-</select>
-<label>
-  <input type="radio" name="gender" value="female"> Mujer
-</label>
-<label>
-  <input type="radio" name="gender" value="male"> Hombre
-</label>
-<label>
-  <input type="radio" name="gender" value="no-gender"> No deseo brindar información
-</label>
-<div>
-<label>
-  <input type="checkbox" name="conditions" value="accept-conditions" checked />
-  Acepto los términos y condiciones
-  </div>
-</label> -->
-<!-- <button type="button" id="botonIngresar">Iniciar Sesion</button>
-<h6>¿Olvidaste tu contraseña?</h6>
-<br><button type="button" id="botonSubir">Crea una nueva cuenta</button> -->
-<!-- <br><button type="button" id="botonCerrarSesión">Cerrar Sesión</button> -->
-
-</form>
-
   <script type="module" src="main.js"></script>
+
+</body>
+</html> --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Simple Vanilla Router</title>
+  <script src="lib/about.js"></script>
+  <script src="lib/contact.js"></script>
+  <script src="lib/home.js"></script>
+</head>
+<body>
+    <ul class="navbar-list">
+      <li class="navbar-item"><a href="#" onclick="onNavigate('/about'); return false;">About</a></li>
+      <li class="navbar-item"><a href="#" onclick="onNavigate('/'); return false;">Home</a></li>
+      <li class="navbar-item"><a href="#" onclick="onNavigate('/contact'); return false;">Contact</a></li>
+    </ul>
+  <div id="root"></div>
+  <script src="router/router.js"></script>
 </body>
 </html>
