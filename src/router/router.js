@@ -1,35 +1,41 @@
-import {inicio}from '../lib/inicio.js'
-import {iniciarSesion}from '../lib/home.js'
-import {contact}from '../lib/contact.js'
+// import { registro } from '../components/registro.js';
+import { iniciarSesion } from '../components/iniciarSesion.js';
+import { inicio } from '../components/paginaInicio.js'
+import { registrarse } from '../components/registro.js'
 
-const routes = {
-    '#/' : iniciarSesion,
-    '#/contact' : contact,
-    '#/inicio' : inicio
-};
-  
-  const rootDiv = document.getElementById('root');
-  rootDiv.innerHTML = routes["#/" + location.hash];
-  console.log(location.hash)
-  
-  const onNavigate = (pathname) => {
-    // window.history.pushState(
-    //   {},
-    //   pathname,
-    //   window.location.origin + pathname
-    // )
-    rootDiv.innerHTML = routes[pathname]
-  }
-  
-  window.onpopstate = () => {
-    // rootDiv.innerHTML = routes[window.location.pathname]
+
+const rootDiv = document.getElementById('root');
+export const router = (routes) => {
+  rootDiv.innerHTML="";
+  switch(routes){
+      case '#/iniciarSesion':
+        rootDiv.appendChild(iniciarSesion());
+        
+        break;
+      case '#/inicio':
+        rootDiv.appendChild(inicio());
+        break;
+      case '#/registro':
+        rootDiv.appendChild(registrarse());
+        break;
+    }
 }
 
-window.addEventListener("hashchange", procesarHas)
-function procesarHas() {
-  onNavigate(location.hash); return false;
-}
 
-document.getElementById("buttonSiguiente").addEventListener("click", () => {
-  onNavigate('#/contact'); return false;
-})
+
+
+
+// rootDiv.innerHTML = routes["#/" + location.hash];
+// console.log(location.hash);
+
+// export const onNavigate = (pathname) => {
+// window.history.pushState(
+//   {},
+//   pathname,
+//   window.location.origin + pathname
+// )
+// rootDiv.innerHTML = routes[pathname]
+// }
+
+// window.onpopstate = () => {
+// rootDiv.innerHTML = routes[window.location.pathname] }
