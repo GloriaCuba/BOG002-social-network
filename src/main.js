@@ -1,7 +1,7 @@
 import { router } from '../router/router.js'
 
 window.addEventListener("load", () => {
-router(window.location = '#/iniciarSesion')
+router(window.location.hash)
 });
 
 window.addEventListener("hashchange", () => {
@@ -9,7 +9,7 @@ window.addEventListener("hashchange", () => {
 })
 
 
-
+//window.location = '#/iniciarSesion'
 
 
 

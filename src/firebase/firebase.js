@@ -1,4 +1,4 @@
-import { inicio } from '../components/paginaInicio.js'
+import { router } from '../router/router.js'
 
 const firebaseConfig = {
   apiKey: "AIzaSyChnpSpbN4XUjpjy-cVAXdAhlE8aMNIjX0",
@@ -19,7 +19,8 @@ export function ingresar() {
   let password = document.getElementById("password"); 
   const promise = auth.signInWithEmailAndPassword(email.value, password.value);
   promise.then(function(){
-   inicio();
+    window.location = '#/iniciarSesion'
+    console.log("hola")
   });
   promise.catch(function(error) {
   console.log(alert(error))});

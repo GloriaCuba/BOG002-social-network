@@ -1,5 +1,8 @@
+import { ingresar } from '../firebase/firebase.js'
+
 export function iniciarSesion() {
-let formulario =
+
+   let formulario =
 `<form class="formulario">
     <h1>PETBOOK</h1>
      <div class="emailandpasword">
@@ -22,3 +25,9 @@ divFormulario.innerHTML = formulario;
 return divFormulario
 }
 
+export function funcionIngresar() {
+let botonIngresar = document.getElementById("botonIngresar");
+botonIngresar.addEventListener("click", () => {
+ingresar()
+})
+}
