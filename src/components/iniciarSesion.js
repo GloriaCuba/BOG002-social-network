@@ -1,5 +1,4 @@
 import { ingresar } from '../firebase/firebase.js'
-import { registrarse } from '../components/registro.js'
 
 export function iniciarSesion() {
 
@@ -19,7 +18,6 @@ export function iniciarSesion() {
         <button type="button" id="botonRegistro">registrarse</button>
      </div>
      </form>
-
  ` 
 
 const divFormulario = document.createElement("div");

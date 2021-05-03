@@ -16,45 +16,13 @@ export function ingresar(email, password) {
   return promise
 };
 
+export function autenticar(email, password){
+  const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
+  return promise   
+};
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// let botonRegistrarse=document.getElementById("botonSubir");
-// botonRegistrarse.addEventListener("click", function(){
-//   console.log("funcina")
-// })
-
-// let botonRegistr=document.getElementById("botonSubir");
-// botonRegistra.addEventListener("click", autenticar);
-//   function autenticar(){
-//   console.log("Botón Enviar")
-//   let email = document.getElementById("emailRegistrarse"); 
-//   let password = document.getElementById("passwordRegistrarse"); 
-//   const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
-//   promise.catch(e =>alert(e.message));
-//   alert("Registrado");    
-// };
-
-
-
-
-// let botonSubir= document.getElementById("botonSubir").addEventListener("click", autenticar);   
-// let botonCerrarSesión= document.getElementById("botonCerrarSesión").addEventListener("click", cerrarSesión);  
-
-
-
-
+ 
 
 // function cerrarSesión(){
 //   auth.signOut();

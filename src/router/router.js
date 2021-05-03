@@ -1,6 +1,6 @@
 import { iniciarSesion,funcionIngresar, funcionRegistrarse} from '../components/iniciarSesion.js';
 import { inicio } from '../components/paginaInicio.js'
-import { registrarse } from '../components/registro.js'
+import { registrarse, funcionAutenticar} from '../components/registro.js'
 
 
 const rootDiv = document.getElementById('root');
@@ -12,6 +12,7 @@ export const router = (routes) => {
         break;
       case '#/registro':
         rootDiv.appendChild(registrarse());
+        funcionAutenticar();
         break;
       default:
         rootDiv.appendChild(iniciarSesion());
