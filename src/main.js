@@ -1,10 +1,10 @@
-import { router } from '../router/router.js'
+import { router } from './router/router.js'
 
 window.addEventListener("load", () => {
-router(window.location.hash)
+router(window.location = '#/petbook')
 });
 
-window.addEventListener("hashchange", () => {
+window.addEventListener("haschange", () => {
   router(window.location.hash)
 })
 

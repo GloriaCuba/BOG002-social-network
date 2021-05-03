@@ -1,5 +1,4 @@
-// import { registro } from '../components/registro.js';
-import { iniciarSesion, funcionIngresar } from '../components/iniciarSesion.js';
+import { iniciarSesion,funcionIngresar, funcionRegistrarse} from '../components/iniciarSesion.js';
 import { inicio } from '../components/paginaInicio.js'
 import { registrarse } from '../components/registro.js'
 
@@ -14,15 +13,19 @@ export const router = (routes) => {
       case '#/registro':
         rootDiv.appendChild(registrarse());
         break;
-      default:
+      case '#/petbook':
         rootDiv.appendChild(iniciarSesion());
         funcionIngresar();
+        funcionRegistrarse();
         break;
     }
-}
+};
 
-
-
+// default :
+//         rootDiv.appendChild(iniciarSesion());
+//         funcionIngresar();
+//         funcionRegistrarse();
+//         break;
 
 
 // rootDiv.innerHTML = routes["#/" + location.hash];
