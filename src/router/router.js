@@ -13,7 +13,7 @@ export const router = (routes) => {
       case '#/registro':
         rootDiv.appendChild(registrarse());
         break;
-      case '#/petbook':
+      default:
         rootDiv.appendChild(iniciarSesion());
         funcionIngresar();
         funcionRegistrarse();

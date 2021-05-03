@@ -8,9 +8,9 @@ export function iniciarSesion() {
    `<form class="formulario">
     <h1>PETBOOK</h1>
      <div class="emailandpasword">
-        <label for="email"></label><input type="email" id="email" placeholder="Email" required>
+        <label for="email"></label><input type="email" id="email" placeholder="Email"required>
         <label for="password"></label><br>
-        <input type="password" id="password" placeholder="Password" name="password"67890' required><br>
+        <input type="password" id="password" placeholder="Password" name="password"67890'required><br>
         <button id="botonIngresar">ingresar</button> <br>
         <a href=""> ¿Olvidaste tu contraseña?</a>
       </div>

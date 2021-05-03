@@ -1,7 +1,7 @@
 import { router } from './router/router.js'
 
 window.addEventListener("load", () => {
-router(window.location = '#/petbook')
+router(window.location.hash)
 });
 
 window.addEventListener("haschange", () => {
