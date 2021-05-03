@@ -17,14 +17,21 @@ export function ingresar() {
   let password = document.getElementById("password"); 
   const promise = auth.signInWithEmailAndPassword(email.value, password.value);
   promise.then(function() {
-    console.log(console.log("funciona :)"));
+   return true; 
   });
   promise.catch(function(error) {
-      console.log(console.log(error))});
+        console.log(alert(error))}
+        
+        );
+    
   return promise
 }
 
   // console.log("no funciona :(")})
+
+//   promise.catch(function(error) {
+//     console.log(console.log(error))});
+// return promise
 
 
 
