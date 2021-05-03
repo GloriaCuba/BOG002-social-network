@@ -8,10 +8,10 @@ export function iniciarSesion() {
    `<form class="formulario" method ="post">
     <h1>PETBOOK</h1>
      <div class="emailandpasword">
-        <label for="email"></label><input type="email" id="email" placeholder="Email">
+        <label for="email"></label><input type="email" id="email" placeholder="Email" required>
         <label for="password"></label><br>
-        <input type="password" id="password" placeholder="Password" name="password"67890' ><br>
-        <button id="botonIngresar">ingresar</button> <br>
+        <input type="password" id="password" placeholder="Password" name="password" required ><br>
+        <button type="button" id="botonIngresar">ingresar</button> <br>
       <a href=""> ¿Olvidaste tu contraseña?</a>
       </div>
      <div class="registrarse">
@@ -30,16 +30,17 @@ return divFormulario
 export function funcionIngresar() {
 let botonIngresar = document.querySelector("#botonIngresar");
 botonIngresar.addEventListener("click", () => {
-   window.location = '#/inicio'
+   ingresar()
+   // window.location = '#/inicio'
  });
 };
 
-export function funcionRegistrarse() {
-   const botonRegistrarse = document.getElementById("botonRegistro");
-   botonRegistrarse.addEventListener("click", function() {
-     window.location = '#/registro'
-   }); 
-};
+// export function funcionRegistrarse() {
+//    const botonRegistrarse = document.getElementById("botonRegistro");
+//    botonRegistrarse.addEventListener("click", function() {
+//      window.location = '#/registro'
+//    }); 
+// };
 
 
 

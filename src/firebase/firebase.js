@@ -9,23 +9,27 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 const auth = firebase.auth();
+
 
 export function ingresar() {
   let email = document.getElementById("email"); 
   let password = document.getElementById("password"); 
-  const promise = auth.signInWithEmailAndPassword(email.value, password.value);
-  promise.then(function() {
-   return true; 
+  console.log(email.value, password.value)
+  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // ...
+    console.log(user)
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage)
   });
-  promise.catch(function(error) {
-        console.log(alert(error))}
-        
-        );
-    
-  return promise
-}
+};
+
 
   // console.log("no funciona :(")})
 
