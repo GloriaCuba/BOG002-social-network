@@ -9,37 +9,26 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
 const auth = firebase.auth();
-export function ingresar() {
-  let email = document.getElementById("email"); 
-  let password = document.getElementById("password"); 
-  console.log(email.value, password.value)
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    // ...
-    console.log(user)
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorMessage)
-  });
+
+export function ingresar(email, password) {
+  const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+  return promise
 };
 
-  // console.log("no funciona :(")})
-
-//   promise.catch(function(error) {
-//     console.log(console.log(error))});
-// return promise
 
 
 
 
-// promise.catch(function(error) {
-//   console.log(alert(error))});
+
+
+
+
+
+
+
+
+
 
 // let botonRegistrarse=document.getElementById("botonSubir");
 // botonRegistrarse.addEventListener("click", function(){
