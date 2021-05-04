@@ -1,4 +1,4 @@
-import { iniciarSesion,funcionIngresar} from '../components/iniciarSesion.js';
+import { iniciarSesion,funcionIngresar,funcionRegistrarse} from '../components/iniciarSesion.js';
 import { inicio } from '../components/paginaInicio.js'
 import { registrarse } from '../components/registro.js'
 
@@ -16,8 +16,8 @@ export const router = (routes) => {
       default:
         rootDiv.appendChild(iniciarSesion());
         funcionIngresar();
-        // funcionRegistrarse();
-        break;
+        funcionRegistrarse()
+       break;
     }
 };
 

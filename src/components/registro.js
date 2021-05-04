@@ -1,6 +1,15 @@
 export function registrarse() {
     let registro = `
-    <p> Este es el formulario de registro </p>
+    <div id="contenedorRegistro">
+      <h1>Registro</h1>
+      <button type="button" id=registroFacebook">Facebook</button> 
+      <button type="button" id="registroGmail">Gmail</button> <br>
+    <h4>o si lo prefieres registra tu correo</h4><br>
+      <input type="email" id="registroEmail" placeholder="E-mail" required ><br>
+      <input type="password" id="registroPassword" placeholder="Contraseña" required ><br>
+      <input type="password" id="validaPassword" placeholder="Valida tu contraseña" required ><br>
+    <button type="button" id="botonUnirme">Unirme</button> <br>
+    </div>
     `;
     const divRegistro = document.createElement("div");
     divRegistro.innerHTML = registro;

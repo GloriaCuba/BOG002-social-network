@@ -3,44 +3,46 @@ import { registrarse } from '../components/registro.js'
 
 export function iniciarSesion() {
 
-   let formulario =
+   let formularioInicio =
 
-   `<form class="formulario" method ="post">
+   `<div id="contenedorInicio">
+   <form id="formulario" method ="post">
     <h1>PETBOOK</h1>
      <div class="emailandpasword">
         <label for="email"></label><input type="email" id="email" placeholder="Email" required>
         <label for="password"></label><br>
         <input type="password" id="password" placeholder="Password" name="password" required ><br>
         <button type="button" id="botonIngresar">ingresar</button> <br>
-      <a href=""> ¿Olvidaste tu contraseña?</a>
+     <h4><a href=""> ¿Olvidaste tu contraseña?</a></h4>
       </div>
-     <div class="registrarse">
-        <h4>¿Aun no tienes una cuenta?<h4>
-        <button id="botonRegistro">registrarse</button>
-     </div>
-     </form>
-
+    </form>
+     <h4>¿Aun no tienes una cuenta?<h4>
+        <button type="button" id="botonRegistro">Registrate</button>
+   </div>
  ` 
 
 const divFormulario = document.createElement("div");
-divFormulario.innerHTML = formulario;
+divFormulario.innerHTML = formularioInicio;
 return divFormulario
 }
 
 export function funcionIngresar() {
 let botonIngresar = document.querySelector("#botonIngresar");
 botonIngresar.addEventListener("click", () => {
+   window.location = '#/inicio'
    ingresar()
-   // window.location = '#/inicio'
+   
  });
 };
 
-// export function funcionRegistrarse() {
-//    const botonRegistrarse = document.getElementById("botonRegistro");
-//    botonRegistrarse.addEventListener("click", function() {
-//      window.location = '#/registro'
-//    }); 
-// };
+export function funcionRegistrarse() {
+   let botonRegistrarse = document.querySelector("#botonRegistro");
+   botonRegistrarse.addEventListener("click",()=>{
+      console.log("hagoclick")
+      window.location = '#/registro'
+      registrarse()
+   }); 
+};
 
 
 
