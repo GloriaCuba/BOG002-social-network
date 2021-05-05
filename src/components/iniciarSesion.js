@@ -1,4 +1,4 @@
-import { ingresar } from '../firebase/firebase.js'
+import { ingresar, facebookInicio } from '../firebase/firebase.js'
 
 export function iniciarSesion() {
    let formulario =
@@ -7,7 +7,7 @@ export function iniciarSesion() {
     <h1>PETBOOK</h1>
     <div class="inicioGoogleFacebook">
          <button type="button" id="botonGoogle">Google</button> <br>
-         <button type="button" id="Facebook">Facebook</button> <br>
+         <button type="button" id="botonFacebook">Facebook</button> <br>
      </div>
      <div class="emailandpasword">
         <label for="email"></label><input type="email" id="email" placeholder="Email" required>
@@ -40,3 +40,26 @@ botonIngresar.addEventListener("click", () => {
        });
      })
 };
+
+export function iniciarConGoogle() {
+   let registroGoogle = document.querySelector("#botonGoogle");
+      registroGoogle.addEventListener("click",() =>{
+          console.log("hagoclikc")
+        })
+      }
+        
+
+export function iniciarConFacebook() {
+   let registroFacebook = document.querySelector("#botonFacebook");
+         registroFacebook.addEventListener("click",() =>{
+            facebookInicio().then(() => {
+            window.location = '#/inicio';
+               location.reload()
+             })
+             .catch(error => {
+               console.log(error)
+             });
+         })
+         }
+                 
+         

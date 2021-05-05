@@ -23,6 +23,12 @@ export function autenticar(email, password){
   return promise   
 };
 
+export function facebookInicio() {
+var provider = new firebase.auth.FacebookAuthProvider();
+let validarFacebook = auth.signInWithPopup(provider)
+  return validarFacebook
+}
+
 // function cerrarSesión(){
 //   auth.signOut();
 //   alert ("Has cerrado sesión")  
