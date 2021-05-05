@@ -4,19 +4,19 @@
 }
 
 #contenedorInicio{
-    background-image: url("Img/PaisajePrincipal.png");
+    background-image: url("Img/otro\ fondo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 #contenedorRegistro{
-    background-image: url("Img/Paisaje.png");
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 #contenedorMuro{
-    background-image: url("Img/Paisaje.png");
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -11,63 +11,18 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+export function ingresar(email, password) {
+  const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+  return promise
+};
 
-export function ingresar() {
-  let email = document.getElementById("email"); 
-  let password = document.getElementById("password"); 
-  console.log(email.value, password.value)
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    // ...
-    console.log(user)
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorMessage)
-  });
+export function autenticar(email, password){
+  const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
+  return promise   
 };
 
 
-  // console.log("no funciona :(")})
-
-//   promise.catch(function(error) {
-//     console.log(console.log(error))});
-// return promise
-
-
-
-
-// promise.catch(function(error) {
-//   console.log(alert(error))});
-
-// let botonRegistrarse=document.getElementById("botonSubir");
-// botonRegistrarse.addEventListener("click", function(){
-//   console.log("funcina")
-// })
-
-// let botonRegistr=document.getElementById("botonSubir");
-// botonRegistra.addEventListener("click", autenticar);
-//   function autenticar(){
-//   console.log("Botón Enviar")
-//   let email = document.getElementById("emailRegistrarse"); 
-//   let password = document.getElementById("passwordRegistrarse"); 
-//   const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
-//   promise.catch(e =>alert(e.message));
-//   alert("Registrado");    
-// };
-
-
-
-
-// let botonSubir= document.getElementById("botonSubir").addEventListener("click", autenticar);   
-// let botonCerrarSesión= document.getElementById("botonCerrarSesión").addEventListener("click", cerrarSesión);  
-
-
-
-
+ 
 
 // function cerrarSesión(){
 //   auth.signOut();

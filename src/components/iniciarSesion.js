@@ -1,5 +1,4 @@
 import { ingresar } from '../firebase/firebase.js'
-import { registrarse } from '../components/registro.js'
 
 export function iniciarSesion() {
 
@@ -27,12 +26,21 @@ return divFormulario
 }
 
 export function funcionIngresar() {
+let email = document.getElementById("email"); 
+let password = document.getElementById("password");
+
 let botonIngresar = document.querySelector("#botonIngresar");
 botonIngresar.addEventListener("click", () => {
-   window.location = '#/inicio'
-   ingresar()
-   
- });
+   ingresar(email,password)
+   .then(() => {
+      window.location = '#/inicio';
+      location.reload()
+     }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage)
+    });
+  })
 };
 
 export function funcionRegistrarse() {
@@ -40,11 +48,15 @@ export function funcionRegistrarse() {
    botonRegistrarse.addEventListener("click",()=>{
       console.log("hagoclick")
       window.location = '#/registro'
-      registrarse()
+      location.reload()
+      
    }); 
 };
 
 
 
+// 
+// console.log(window.location = '#/inicio')
+// });
 
 

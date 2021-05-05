@@ -1,6 +1,6 @@
 import { router } from './router/router.js'
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
 router(window.location.hash)
 });
 
