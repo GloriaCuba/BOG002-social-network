@@ -2,15 +2,16 @@ import { autenticar } from '../firebase/firebase.js'
 
 export function registrarse() {
     let registro = `
-    <form class="formulario" id="formulario" method ="post">
-    <h1>PETBOOK</h1>
-     <div class="emailandpasword">
-        <label for="email"></label><input type="email" id="emailAuth" placeholder="Email" required>
-        <label for="password"></label><br>
-        <input type="password" id="passwordAuth" placeholder="Password" name="password" required ><br>
-        <button type="button" id="botonUnirse">Unirse</button>
-      </div>
-     </form>
+     <div id="contenedorRegistro" class="formulario">
+      <h1>Registro</h1>
+      <button type="button" id=registroFacebook">Facebook</button> 
+      <button type="button" id="registroGmail">Gmail</button> <br>
+    <h4>o si lo prefieres registra tu correo</h4><br>
+      <input type="email" id="emailAuth" placeholder="E-mail" required ><br>
+      <input type="password" id="passwordAuth" placeholder="Contraseña" required ><br>
+      <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required ><br>
+    <button type="button" id="botonUnirse">Unirme</button> <br>
+    </div>
     `
     const divRegistro = document.createElement("div");
     divRegistro.innerHTML = registro;
