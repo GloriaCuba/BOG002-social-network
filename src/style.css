@@ -4,7 +4,7 @@
 }
 
 #contenedorInicio{
-    background-image: url("Img/otro\ fondo.jpg");
+    background-image: url("Img/fondo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -15,17 +15,60 @@
     background-size: cover;
     background-position: center;
 }
-#contenedorMuro{
 
-    background-repeat: no-repeat;
-    background-size: cover;
+.body{
+    margin: 0;
+    /* background-image: url("Img/fondo.png"); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
     background-position: center;
 }
 .container {
     display: grid;
 }
-/****************************************Iniciar Sesion************************************/
-#contenedorInicio, #contenedorRegistro,#contenedorMuro {
+
+.home {
+    text-align: center;
+    padding:2em;
+    margin:2em;
+    border-radius:20px;
+    font-weight:bolder;
+    font-size:larger; 
+}
+
+.home h1 {
+    margin-bottom:2.5em ;
+}
+
+.home h4 {
+    cursor: pointer;
+}
+
+.home a {
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.home button {
+    width: 12em;
+    height: 3em;
+    margin: 2em;
+    border-radius: 5%;
+    background-color: white;
+    transition: ease all 0.3s;
+}
+
+.home button:hover {
+    width: 14em;
+    height: 4em;
+    border: 0.2em yellowgreen solid;
+}
+
+#botonRegistro {
+    margin-top: 5em;
+}
+
+.formulario{
     text-align: center;
     padding:6em;
     /* margin:2em; */

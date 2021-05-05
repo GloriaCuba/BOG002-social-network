@@ -10,7 +10,9 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+// var db = firebase.firestore();
 
+// signIn, singOut and Logout with firebase
 export function ingresar(email, password) {
   const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   return promise
@@ -21,10 +23,38 @@ export function autenticar(email, password){
   return promise   
 };
 
+export function ingresarGmail(){
+let provider = new firebase.auth.GoogleAuthProvider();
+//firebase.auth()
+const validarGmail=auth.signInWithPopup(provider)
+return validarGmail
 
- 
+}
+
+export function ingresarFaceBook(){
+var provider = new firebase.auth.FacebookAuthProvider();
+const validarFacebook=auth.signInWithPopup(provider)
+return validarFacebook
+}
 
 // function cerrarSesión(){
 //   auth.signOut();
 //   alert ("Has cerrado sesión")  
 // }
+
+// fireStore 
+// export function post(publicacion) {
+// auth.onAuthStateChanged(user => {
+//   if (user) {
+//     db.collection("publicaciones")
+//     .get()
+//     .then((snapshot)=> {
+//      publicacion(snapshot.docs)
+//      console.log(snapshot.docs)
+//     })
+//   } else {
+//     console.log("signout")
+//    }
+//  })
+// }
+

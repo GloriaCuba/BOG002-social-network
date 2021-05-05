@@ -1,6 +1,8 @@
+// import { post } from '../firebase/firebase.js'
+
 export function inicio() {
    let muro = `
-  <div id="contenedorMuro">
+   <div id="contenedorMuro">
    <h1>Pet Book</h1>
    <div id="containerFiltro">
    <h3>!Encuentra a tus amigos¡</h3>
@@ -20,3 +22,26 @@ export function inicio() {
 
    return divMuro
     }
+
+  
+
+   // const listaPublicaciones = document.querySelector("#publicaciones")
+   //  export const setUpPublicaciones = data => {
+   //      if(data.length){
+   //         let html = ""
+   //         data.forEach(doc => {
+   //          const post = doc.data();
+   //          const li = `<li> 
+   //             <h5>${post.titulo}</h5>
+   //             <p>${post.descripcion}</p>
+   //             </li>
+   //             `;
+   //           html += li;
+   //         });
+   //         listaPublicaciones.innerHTML = html
+   //      } else {
+   //         listaPublicaciones.innerHTML = "<p>logueate para ver las públicaciones</p>"
+   //      }
+   //   };
+
+   //   post(setUpPublicaciones);

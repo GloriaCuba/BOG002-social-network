@@ -1,26 +1,36 @@
-import { iniciarSesion,funcionIngresar, funcionRegistrarse} from '../components/iniciarSesion.js';
+import { iniciarSesion,funcionIngresar} from '../components/iniciarSesion.js';
 import { inicio } from '../components/paginaInicio.js'
-import { registrarse, funcionAutenticar} from '../components/registro.js'
-
+import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} from '../components/registro.js'
+import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
   rootDiv.innerHTML="";
   switch(routes){
-      case '#/inicio':
-        rootDiv.appendChild(inicio());
+      case '#/iniciarSesion':
+        rootDiv.appendChild(iniciarSesion());
+        funcionIngresar();
         break;
       case '#/registro':
         rootDiv.appendChild(registrarse());
         funcionAutenticar();
+        registroConGoogle();
+        registroConFacebook()
+        break;
+      case '#/inicio':
+        rootDiv.appendChild(inicio());
         break;
       default:
-        rootDiv.appendChild(iniciarSesion());
-        funcionIngresar();
+        rootDiv.appendChild(interfazPrincipal());
+        ingresoApp();
         funcionRegistrarse();
         break;
     }
 };
+
+
+
+
 
 // default :
 //         rootDiv.appendChild(iniciarSesion());
