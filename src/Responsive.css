@@ -1,0 +1,110 @@
+@media screen and (max-width: 700px){
+    .container{
+       height: 100vh;
+       width: 100%;
+    }
+    #home {
+        background-image: url("Img/otro_fondo_1.png");
+        background-color:#9A6BAF;
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-position: absolute;
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        grid-template-rows: 25% 25% 25% 25%;
+        justify-items: center;
+        left: -7.32px;     
+        height: 100vh;
+        width: 100%;
+   }
+   #titulo{
+       font-size: 2em;
+   }
+
+/* pagina inicio de sesion */
+/* pagina inicio de sesion */
+
+.formulario {
+    background-color: #26798E;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% ;
+    grid-template-rows: 25% 50% 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario h1 {
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+}
+
+.formulario .emailandpasword {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.emailandpassword input{
+    width: 12.5em;
+    height: 2.5em;
+    background: #FEEF6A;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 0.2px;
+    margin: 0.5em;
+    text-align: center;
+}
+
+.emailandpassword button {
+    background: #8FC1DF;
+    border: 0.1em solid #FFFFFF;
+    box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
+    border-radius: 0.2em;
+    height: 2.5em;
+    width: 12.5em;
+    margin-bottom: 0.9em;
+}
+
+.emailandpassword img {
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.emailandpassword h4 {
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    padding-bottom: 2em;
+    border-bottom: 2px solid rgb(204, 7, 155);
+    border-bottom-style: dashed;
+    margin-top: 0.8em;
+  }
+
+.inicioConProveedores h4 {
+    display: block;
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.inicioGoogleFacebook{
+    display: grid;
+    grid-auto-flow: column;;
+    position: relative;
+    justify-content: center;
+    }
+
+.inicioGoogleFacebook button {
+    width: 6em;
+    height: 5em;
+    background:#26798E url(Img/Icon_Huellita.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 1em;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+}

@@ -37,10 +37,10 @@ const validarFacebook=auth.signInWithPopup(provider)
 return validarFacebook
 }
 
-// function cerrarSesión(){
-//   auth.signOut();
-//   alert ("Has cerrado sesión")  
-// }
+export function cerrarSesión(){
+ const salir= auth.signOut();
+ return salir
+}
 
 // fireStore 
 // export function post(publicacion) {

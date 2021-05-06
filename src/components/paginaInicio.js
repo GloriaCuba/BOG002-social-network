@@ -1,10 +1,11 @@
-// import { post } from '../firebase/firebase.js'
+import { cerrarSesión } from '../firebase/firebase.js'
 
 export function inicio() {
    let muro = `
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
    <div id="containerFiltro">
+   <button type="button" id="salir">Salir</button>
    <h3>!Encuentra a tus amigos¡</h3>
    <button type="button" id="filtroCaninos"> Caninos</button>
    <button type="button" id="filtroFelinos"> Felinos </button>
@@ -23,7 +24,18 @@ export function inicio() {
    return divMuro
     }
 
-  
+   export function salir(){
+      const salir=document.querySelector("#salir");
+      salir.addEventListener("click",()=>{
+         cerrarSesión()
+            window.location = '#/';
+            location.reload()
+            console.log("cerrarSesion")
+            
+          
+      })
+   }
+   
 
    // const listaPublicaciones = document.querySelector("#publicaciones")
    //  export const setUpPublicaciones = data => {

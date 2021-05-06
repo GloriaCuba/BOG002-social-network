@@ -1,26 +1,32 @@
-import { ingresar } from '../firebase/firebase.js'
+import { ingresar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js'
 
 export function iniciarSesion() {
-   let formulario =
-
-   `<form class="formulario" id="formulario" method ="post">
-    <h1>PETBOOK</h1>
-    <div class="inicioGoogleFacebook">
-         <button type="button" id="botonGoogle">Google</button> <br>
-         <button type="button" id="botonFacebook">Facebook</button> <br>
-     </div>
-     <div class="emailandpasword">
-        <label for="email"></label><input type="email" id="email" placeholder="Email" required>
-        <label for="password"></label><br>
-        <input type="password" id="password" placeholder="Password" name="password" required ><br>
-        <button type="button" id="botonIngresar">ingresar</button> <br>
-         <a href=""> ¿Olvidaste tu contraseña?</a>
-      </div>
+   let formularioInicioSesion =
+   `
+     <form class="formulario" id="formulario" method ="post">
+         <h1>¡Hola de nuevo! </h1> 
+         <div class="emailandpassword">
+            <label for="email"></label><input type="email" id="email" placeholder="Email" required>
+            <label for="password"></label><br>
+            <input type="password" id="password" placeholder="Password" name="password" required ><br>
+            <img src="Img/gato_negro_.png" alt=""> 
+            <button type="button" id="botonIngresar">ingresar</button> <br>
+            <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4>
+         </div>
+         <div class="inicioConProveedores">
+             <h4>Ingresa con tu cuenta de Google o Facebook </h4>
+            <div class="inicioGoogleFacebook">
+               <button type="button" id="botonGoogle">G+</button> <br>
+               <button type="button" id="botonFacebook">F</button>
+         </div>
+         </div>
      </form>
+    
  ` 
  
 const divFormulario = document.createElement("div");
-divFormulario.innerHTML = formulario;
+divFormulario.className = "formularioInicioSesion"
+divFormulario.innerHTML = formularioInicioSesion;
 return divFormulario
 }
 
@@ -41,25 +47,34 @@ botonIngresar.addEventListener("click", () => {
      })
 };
 
-export function iniciarConGoogle() {
-   let registroGoogle = document.querySelector("#botonGoogle");
-      registroGoogle.addEventListener("click",() =>{
-          console.log("hagoclikc")
-        })
-      }
-        
-
-export function iniciarConFacebook() {
-   let registroFacebook = document.querySelector("#botonFacebook");
-         registroFacebook.addEventListener("click",() =>{
-            facebookInicio().then(() => {
-            window.location = '#/inicio';
-               location.reload()
-             })
-             .catch(error => {
-               console.log(error)
-             });
-         })
-         }
+         export function iniciarConGoogle(){
+            let registroGoogle=document.getElementById("botonGoogle");
+            registroGoogle.addEventListener("click",() =>{
+             ingresarGmail().then(()=> {
+                window.location = '#/inicio';
+                location.reload()
+                console.log("ingreso gmail")
+                
+              }).catch(err => {
+                console.log(err)
+               
+              })
+              })
+            }
+            
+            
+            export function iniciarConFacebook(){
+              let registroFacebook=document.getElementById("botonFacebook");
+              registroFacebook.addEventListener("click",() =>{
+                ingresarFaceBook().then(()=> {
+                  window.location = '#/inicio';
+                  location.reload()
+                  console.log("ingreso facebook")
+                  
+                }).catch(err => {
+                  console.log(err)
                  
-         
+                })
+                
+              })
+              }
