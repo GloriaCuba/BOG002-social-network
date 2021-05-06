@@ -47,34 +47,34 @@ botonIngresar.addEventListener("click", () => {
      })
 };
 
-         export function iniciarConGoogle(){
-            let registroGoogle=document.getElementById("botonGoogle");
-            registroGoogle.addEventListener("click",() =>{
-             ingresarGmail().then(()=> {
-                window.location = '#/inicio';
-                location.reload()
-                console.log("ingreso gmail")
-                
-              }).catch(err => {
-                console.log(err)
-               
-              })
-              })
-            }
+export function iniciarConGoogle(){
+   let registroGoogle=document.getElementById("botonGoogle");
+   registroGoogle.addEventListener("click",() =>{
+      ingresarGmail().then(()=> {
+         window.location = '#/inicio';
+         location.reload()
+         console.log("ingreso gmail")
+         
+      }).catch(err => {
+         console.log(err)
+      
+      })
+      })
+   }
             
             
-            export function iniciarConFacebook(){
-              let registroFacebook=document.getElementById("botonFacebook");
-              registroFacebook.addEventListener("click",() =>{
-                ingresarFaceBook().then(()=> {
-                  window.location = '#/inicio';
-                  location.reload()
-                  console.log("ingreso facebook")
-                  
-                }).catch(err => {
-                  console.log(err)
-                 
-                })
-                
-              })
-              }
+export function iniciarConFacebook(){
+   let registroFacebook=document.getElementById("botonFacebook");
+   registroFacebook.addEventListener("click",() =>{
+      ingresarFaceBook().then(()=> {
+      window.location = '#/inicio';
+      location.reload()
+      console.log("ingreso facebook")
+      
+      }).catch(err => {
+      console.log(err)
+      
+      })
+      
+   })
+   }
