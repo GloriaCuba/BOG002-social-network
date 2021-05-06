@@ -3,19 +3,6 @@
     padding:0;
 }
 
-#contenedorInicio{
-    background-image: url("Img/fondo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-#contenedorRegistro{
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
 .body{
     margin: 0;
     /* background-image: url("Img/fondo.png"); */
@@ -23,6 +10,21 @@
     /* background-size: cover; */
     background-position: center;
 }
+.home{
+    background-image: url("Img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#contenedorRegistro{
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
 .container {
     display: grid;
 }

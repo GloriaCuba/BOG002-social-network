@@ -2,8 +2,8 @@ import { ingresar } from '../firebase/firebase.js'
 
 export function iniciarSesion() {
    let formulario =
-
-   `<form class="formulario" id="formulario" method ="post">
+   `<div id="contenedorInicio">
+   <form class="formulario" id="formulario" method ="post">
     <h1>PETBOOK</h1>
     <div class="inicioGoogleFacebook">
          <button type="button" id="botonGoogle">Google</button> <br>
@@ -17,6 +17,7 @@ export function iniciarSesion() {
          <a href=""> ¿Olvidaste tu contraseña?</a>
       </div>
      </form>
+     </div>
  ` 
  
 const divFormulario = document.createElement("div");
