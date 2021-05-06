@@ -1,9 +1,9 @@
 export function interfazPrincipal() {
     let seleccionarIngreso=
     `
-      <div class="home">
-        <h1>PETBOOK</h1>
-        <button type="button" id="botonOverlayIngreso">Iniciar sesión</button> <br>
+      <div id="home" class="home">
+        <h1 id="titulo">PETBOOK</h1>
+        <button type="button" id="botonIngreso">Iniciar sesión</button>
         <h4 id="botonRegistro" class="botonRegistro">registrate</h4>
       </div>     
   ` 
@@ -13,7 +13,7 @@ export function interfazPrincipal() {
  }
 
  export function ingresoApp() {
-    const botonRegistrarse = document.getElementById("botonOverlayIngreso");
+    const botonRegistrarse = document.getElementById("botonIngreso");
     botonRegistrarse.addEventListener("click", function() {
      window.location = '#/iniciarSesion';
      location.reload()
