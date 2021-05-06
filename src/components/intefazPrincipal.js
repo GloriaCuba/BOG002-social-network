@@ -2,9 +2,10 @@ export function interfazPrincipal() {
     let seleccionarIngreso=
     `
       <div id="home" class="home">
-        <h1 id="titulo">PETBOOK</h1>
+        <h1 id="titulo">PET<br>BOOK</h1>
         <button type="button" id="botonIngreso">Iniciar sesión</button>
-        <h4 id="botonRegistro" class="botonRegistro">registrate</h4>
+        <h3 id="invitacion">¿Aún no eres parte de PetBook?</h3>
+        <h3 id="botonRegistro" class="botonRegistro">Registrate</h3>
       </div>     
   ` 
  const divIngreso = document.createElement("div");

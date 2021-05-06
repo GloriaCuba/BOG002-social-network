@@ -11,14 +11,40 @@
         background-repeat:no-repeat;
         background-position: absolute;
         display: grid;
-        grid-template-columns: 25% 50% 25%;
-        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns:100%;
+        grid-template-rows: 50% 10% 30% 0%;
+        justify-content: center;
         justify-items: center;
-        left: -7.32px;     
         height: 100vh;
         width: 100%;
+        align-items: center;
    }
    #titulo{
        font-size: 2em;
+       text-align:center;
+       color: white;
+       font-family: 'Cherry Cream Soda', cursive;
+    }
+   
+   #botonIngreso{
+       width: 149px;
+       height: 37px;
+       font-family: 'Cherry Cream Soda', cursive;
+       color:black ;
+       background-color:#FFE929;
    }
+   
+   #invitacion{
+       color:black;
+       font-family: 'Cherry Cream Soda', cursive;
+       font-size: 1em;
+    }
+
+   #botonRegistro{
+       
+       line-height: 14px;
+       text-decoration-line: underline;
+       font-family: 'Cherry Cream Soda', cursive;
+       font-size: 1em;
+    }
 }
