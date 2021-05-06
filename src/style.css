@@ -1,5 +1,22 @@
+*{
+    margin:0;
+    padding:0;
+}
 
-body{
+#contenedorInicio{
+    background-image: url("Img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#contenedorRegistro{
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.body{
     margin: 0;
     /* background-image: url("Img/fondo.png"); */
     /* background-repeat: no-repeat; */
@@ -53,11 +70,12 @@ body{
 
 .formulario{
     text-align: center;
-    padding:2em;
-    margin:2em;
-    border-radius:20px;
+    padding:6em;
+    /* margin:2em; */
+    /* border-radius:20px; */
     font-weight:bolder;
     font-size:larger; 
+    height: 100%;
 }
 
 .formulario .emailandpasword {
@@ -78,7 +96,7 @@ body{
 form #password{
     margin:1em 0em 0em 0em;
 }
-#botonIngresar{
+#botonIngresar, #botonRegistro{
     color:white;
     background-color:black;
     margin: 0.5em 3em 0em;
@@ -92,7 +110,24 @@ form #password{
     height: 2.5em;
 }
 
+h4{
+    font-size: 0.8em;
+    margin: 1em 0em 0em;
+}
 h6{
     margin: 1em 0em 0em;
     margin-left: 1em;
 }
+
+/****************************************Iniciar Sesion************************************/
+/* #registroGmail{
+background-image: url(Img/Gmail.png);
+background-repeat: no-repeat;
+background-size: cover;
+
+position: absolute;
+width: 4em;
+height: 4em;
+left: 89px;
+top: 215px; 
+}*/

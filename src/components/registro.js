@@ -1,4 +1,4 @@
-import { autenticar } from '../firebase/firebase.js'
+import { autenticar,ingresarGmail,ingresarFaceBook} from '../firebase/firebase.js'
 
 export function registrarse() {
     let registro = `
@@ -21,8 +21,8 @@ export function registrarse() {
 
 
 export function funcionAutenticar() {
-  let email = document.getElementById("emailAuth"); 
-  let password = document.getElementById("passwordAuth");
+  let email = document.querySelector("#emailAuth"); 
+  let password = document.querySelector("#passwordAuth");
         
   let botonIngresar = document.querySelector("#botonUnirse");
     botonIngresar.addEventListener("click", () => {
@@ -37,8 +37,34 @@ export function funcionAutenticar() {
              })
         };
 
-// let registroGoogle = document.getElementById("registroGmail");
-//       registroGoogle.addEventListener("click",() =>{
-//           console.log("hagoclikc")
-//         })
-        
+export function registroConGoogle(){
+let registroGoogle=document.getElementById("registroGmail");
+registroGoogle.addEventListener("click",() =>{
+ ingresarGmail().then(()=> {
+    window.location = '#/inicio';
+    location.reload()
+    console.log("ingreso gmail")
+    
+  }).catch(err => {
+    console.log(err)
+   
+  })
+  })
+}
+
+
+export function registroConFacebook(){
+  let registroFacebook=document.getElementById("registroFacebook");
+  registroFacebook.addEventListener("click",() =>{
+    ingresarFaceBook().then(()=> {
+      window.location = '#/inicio';
+      location.reload()
+      console.log("ingreso facebook")
+      
+    }).catch(err => {
+      console.log(err)
+     
+    })
+    
+  })
+  }

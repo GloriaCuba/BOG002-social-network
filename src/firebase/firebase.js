@@ -23,10 +23,18 @@ export function autenticar(email, password){
   return promise   
 };
 
-export function facebookInicio() {
+export function ingresarGmail(){
+let provider = new firebase.auth.GoogleAuthProvider();
+//firebase.auth()
+const validarGmail=auth.signInWithPopup(provider)
+return validarGmail
+
+}
+
+export function ingresarFaceBook(){
 var provider = new firebase.auth.FacebookAuthProvider();
-let validarFacebook = auth.signInWithPopup(provider)
-  return validarFacebook
+const validarFacebook=auth.signInWithPopup(provider)
+return validarFacebook
 }
 
 // function cerrarSesión(){

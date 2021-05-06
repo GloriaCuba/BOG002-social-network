@@ -1,4 +1,4 @@
-import { ingresar, facebookInicio } from '../firebase/firebase.js'
+import { ingresar } from '../firebase/firebase.js'
 
 export function iniciarSesion() {
    let formulario =

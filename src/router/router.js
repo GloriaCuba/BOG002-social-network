@@ -1,6 +1,6 @@
 import { iniciarSesion,funcionIngresar, iniciarConGoogle, iniciarConFacebook} from '../components/iniciarSesion.js';
 import { inicio } from '../components/paginaInicio.js'
-import { registrarse, funcionAutenticar} from '../components/registro.js'
+import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} from '../components/registro.js'
 import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
 
 const rootDiv = document.getElementById('root');
@@ -16,6 +16,8 @@ export const router = (routes) => {
       case '#/registro':
         rootDiv.appendChild(registrarse());
         funcionAutenticar();
+        registroConGoogle();
+        registroConFacebook()
         break;
       case '#/inicio':
         rootDiv.appendChild(inicio());
