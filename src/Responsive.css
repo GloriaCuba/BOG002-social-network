@@ -3,11 +3,13 @@
        height: 100vh;
        width: 100%;
        font-family: 'Cherry Cream Soda', cursive;
+       /*font-family: 'Frank Ruhl Libre', serif;*/
     }
 /* pagina interfaz principal */
 /* pagina interfaz principal */
 
     #home {
+        
        height: 100vh;
        width: 100%;
        background-image: url("Img/fondo_perros.jpg");
@@ -48,6 +50,7 @@
        color: white; 
        -webkit-text-stroke: 0.02vw black;
        font-weight: bolder;
+     
    }
 
    #botonIngreso{
@@ -67,7 +70,7 @@
 /* pagina inicio de sesion */
 
     .formulario {
-        background-color: #26798E;
+        background-color: #26798E; 
         height: 100vh;
         width: 100%;
         display: grid;
@@ -209,4 +212,81 @@
         font-family: inherit;
     }
   
+/*Interfaz- Formulario de Registro*/
+.formularioRegistro{
+    background-color: #045C73;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 200px;
+    grid-template-rows: 120px 60px 240px 50px 60px 45px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    font-family:sans-serif;
+   }
+   .formularioRegistro h1{
+    color: white;
+    font-size: 26px;
+    text-align:center;
+    margin-top: 55px;
+    }
+    .formularioRegistro p{
+    color: white;
+    font-size: 12px;
+    text-align:center;  
+    }
+     
+   .formularioRegistro input{
+    height: 40px;
+    width: 200px;
+    background-color:#FEEF6A;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    display: grid;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 12px;
+   }
+    .formularioRegistro button{
+    height: 40px;
+    width: 200px;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-top:10px;
+   }
+   .formularioRegistro h4{
+    display:inline-block;
+    position:relative;   
+    color:white; 
+    font-size: 12px;
+    font-weight: normal;
+   }
+   .formularioRegistro h4::after,h4::before{
+       content:'';
+       position:absolute;
+       width: 80px;
+       height:3px;
+       background-color:#F043A0;   
+       top:6px; 
+    }
+    .formularioRegistro h4::before{
+        left: -95px;
+    }
+    .formularioRegistro h4::after{
+        right: -95px;
+    }
+   .formularioRegistro figure{
+       display: grid;
+       grid-template-columns: 100px 100px;
+       grid-row: auto;
+       justify-content: center;
+       justify-items: center;
+   }
+   .formularioRegistro figure,img{
+       width: 60%;
+   }
+   
 }
+

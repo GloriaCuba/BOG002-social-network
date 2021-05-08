@@ -1,4 +1,4 @@
-import { cerrarSesión } from '../firebase/firebase.js'
+import { cerrarSesión } from '../firebase/firebase.js';
 
 export function inicio() {
    let muro = `
