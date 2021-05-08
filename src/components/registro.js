@@ -6,11 +6,11 @@ export function registrarse() {
       <h1>Registro</h1>
       <button type="button" id="registroFacebook">Facebook</button> 
       <button type="button" id="registroGmail">Gmail</button> <br>
-    <h4>o si lo prefieres registra tu correo</h4><br>
+       <h4>o si lo prefieres registra tu correo</h4><br>
       <input type="email" id="emailAuth" placeholder="E-mail" required ><br>
       <input type="password" id="passwordAuth" placeholder="Contraseña" required ><br>
       <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required ><br>
-    <button type="button" id="botonUnirse">Unirme</button> <br>
+      <button type="button" id="botonUnirse">Unirme</button> <br>
     </div>
     `
     const divRegistro = document.createElement("div");

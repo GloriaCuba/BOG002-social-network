@@ -5,7 +5,7 @@ export function interfazPrincipal() {
         <h1 id="titulo">PET<br>BOOK</h1>
         <button type="button" id="botonIngreso">Iniciar sesión</button>
         <h3 id="invitacion">¿Aún no eres parte de PetBook?</h3>
-        <h3 id="botonRegistro" class="botonRegistro">Registrate</h3>
+        <button type="button" id="botonRegistro">Registrate</button>
       </div>     
   ` 
  const divIngreso = document.createElement("div");

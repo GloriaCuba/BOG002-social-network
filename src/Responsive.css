@@ -1,51 +1,164 @@
 @media screen and (max-width: 700px){
     .container{
-       background-color: blue;
        height: 100vh;
        width: 100%;
+       font-family: 'Cherry Cream Soda', cursive;
     }
+/* pagina interfaz principal */
+
+
     #home {
-        background-image: url("Img/otro\ fondo\ 1.png");
-        background-color:#9A6BAF;
-        background-size: contain;
-        background-repeat:no-repeat;
-        background-position: absolute;
-        display: grid;
-        grid-template-columns:100%;
-        grid-template-rows: 50% 10% 30% 0%;
-        justify-content: center;
-        justify-items: center;
-        height: 100vh;
-        width: 100%;
-        align-items: center;
-   }
-   #titulo{
-       font-size: 2em;
-       text-align:center;
-       color: white;
-       font-family: 'Cherry Cream Soda', cursive;
-    }
-   
-   #botonIngreso{
-       width: 149px;
-       height: 37px;
-       font-family: 'Cherry Cream Soda', cursive;
-       color:black ;
-       background-color:#FFE929;
-   }
-   
-   #invitacion{
-       color:black;
-       font-family: 'Cherry Cream Soda', cursive;
-       font-size: 1em;
+       height: 100vh;
+       width: 100%;
+       background-image: url("Img/fondo_perros.jpg");
+       background-color:#9A6BAF;
+       /* background-size: cover; */
+       /* background-repeat:no-repeat; */
+       /* background-position: absolute; */
+       display: grid;
+       grid-template-columns:repeat (4,1fr);
+       grid-template-rows: repeat (5,1fr);
+       /* grid-template-columns:100%;
+       grid-template-rows: 50% 10% 30% 0%; */
+       justify-content: center;
+       justify-items: center;
+       align-items: center;
+       text-align: center;
     }
 
-   #botonRegistro{
-       
-       line-height: 14px;
-       text-decoration-line: underline;
-       font-family: 'Cherry Cream Soda', cursive;
+   #home #invitacion{
+       color:black;
        font-size: 1em;
+       align-items: initial;
+   }
+
+   #home #botonRegistro {
+    width: 9em;
+    height: 3em;
+    background: none;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    text-decoration-line: underline;
+    font-family: inherit;
+    font-size: 1.1em;
+    -webkit-text-stroke: 0.1vw black;
+    margin-bottom: 2.3em;
+   }
+
+   #home #titulo{
+       font-size: 2.5em;
+       justify-self:center;
+       color: white; 
+       -webkit-text-stroke: 0.02vw black;
+       font-weight: bolder;
+   }
+
+   #home #botonIngreso{
+       width: 9em;
+       height: 3em;
+       color:black ;
+       border: 0.1em solid rgb(0, 0, 0);
+       box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+       border-radius: 0.2em; 
+       background: none;  
+       font-size: 1.1em;
+       font-family: inherit;
+   }
+
+
+/* pagina inicio de sesion */
+
+
+    .formulario {
+        background-color: #26798E;
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% ;
+        grid-template-rows: 25% 50% 25%;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .formulario h1 {
+        text-align: center;
+        color: white;
+        font-weight: lighter;
+        font-family: inherit;
+    }
+
+    .emailandpassword {
+        justify-items: center;
+    }
+
+    .formulario .emailandpasword {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .emailandpassword input{
+        width: 12.5em;
+        height: 2.5em;
+        background: #FEEF6A;
+        border: 2px solid #FFFFFF;
+        box-sizing: border-box;
+        border-radius: 0.2px;
+        margin: 0.5em;
+        text-align: center;
+    }
+
+    .emailandpassword button {
+        background: #8FC1DF;
+        border: 0.1em solid #FFFFFF;
+        box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
+        border-radius: 0.2em;
+        height: 2.5em;
+        width: 12.5em;
+        margin-bottom: 0.9em;
+    }
+
+    .emailandpassword img {
+        margin-top: 1em;
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+
+    .emailandpassword h4 {
+        cursor: pointer;
+        text-align: center;
+        color: white;
+        padding-bottom: 0.5em;
+        border-bottom: 2px solid rgb(204, 7, 155);
+        border-bottom-style: dashed;
+        margin-top: 0.8em;
+        font-size: 0.8em;
+    }
+
+    .inicioConProveedores h4 {
+        display: block;
+        color: white;
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .inicioGoogleFacebook{
+        display: grid;
+        grid-auto-flow: column;;
+        position: relative;
+        justify-content: center;
+        }
+
+    .inicioGoogleFacebook button {
+        width: 6em;
+        height: 5em;
+        background:#26798E url(Img/Icon_Huellita.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 1em;
+        font-weight: bolder;
+        cursor: pointer;
     }
 
     #contenedorMuro{
@@ -72,9 +185,6 @@
 
 
     }
-
-
-
 
 
 
