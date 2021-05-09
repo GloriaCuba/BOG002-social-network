@@ -9,7 +9,26 @@ window.addEventListener("haschange", () => {
 })
 
 
-//window.location = '#/iniciarSesion'
+
+// window.onhashchange = function() {
+//       if (window.location.hash != '#undefined') {
+//           goBack();
+//       } else {
+//           history.pushState("", document.title, window.location.pathname);
+//           location.reload();
+//       }
+//   }
+
+// function goBack()
+// { history.back()}
+
+// function goahead()
+// { history.forward()}
+
+
+
+
+
 
 
 
