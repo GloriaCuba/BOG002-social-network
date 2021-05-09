@@ -17,12 +17,12 @@ auth.useDeviceLanguage();
 export function ingresar(email, password) {
   const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   return promise
-};
+}
 
 export function autenticar(email, password){
   const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
   return promise   
-};
+}
 
 export function verificarEmail(){
   const promise = auth.currentUser.sendEmailVerification();
