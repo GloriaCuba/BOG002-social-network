@@ -24,12 +24,15 @@ export function autenticar(email, password){
   return promise   
 };
 
-export function ingresarGmail(){
-let provider = new firebase.auth.GoogleAuthProvider();
-//firebase.auth()
-const validarGmail=auth.signInWithPopup(provider)
-return validarGmail
-
+export function verificarEmail(){
+  const promise = auth.currentUser.sendEmailVerification();
+  return promise
+}
+export function ingresarGmail() {
+  let provider = new firebase.auth.GoogleAuthProvider();
+  //firebase.auth()
+  const validarGmail=auth.signInWithPopup(provider)
+  return validarGmail
 }
 
 export function ingresarFaceBook(){

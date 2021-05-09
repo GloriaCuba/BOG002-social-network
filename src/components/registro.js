@@ -1,5 +1,4 @@
-import { autenticar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
-
+import {autenticar, verificarEmail, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
 export function registrarse() {
   const registro = `
     <div class="formularioRegistro">
@@ -30,10 +29,9 @@ export function funcionAutenticar() {
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
     autenticar(email, password).then(() => {
-      window.location = '#/inicio';
-      location.reload();
+      alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
+      verificarEmail();
     }).catch((error) => {
-      const errorPassword = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
       console.log(error);
