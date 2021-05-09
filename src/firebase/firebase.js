@@ -16,20 +16,27 @@ auth.useDeviceLanguage();
 // signIn, singOut and Logout with firebase
 export function ingresar(email, password) {
   const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-  return promise
-};
-
-export function autenticar(email, password){
+  return promise;
+}
+export function autenticar(email, password) {
   const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
-  return promise   
-};
+  return promise;
+}
+export function verificarEmail() {
+  let actionCodeSettings = {
+   /* url: 'http://localhost:5000/#/iniciarSesion/?email=' + auth.currentUser.email,*/
+    url: 'http://localhost:5000/#/iniciarSesion',
+    handleCodeInApp: true,
+  };
+  const promise = auth.currentUser.sendEmailVerification(actionCodeSettings);
+  return promise;
+}
 
-export function ingresarGmail(){
-let provider = new firebase.auth.GoogleAuthProvider();
-//firebase.auth()
-const validarGmail=auth.signInWithPopup(provider)
-return validarGmail
-
+export function ingresarGmail() {
+  let provider = new firebase.auth.GoogleAuthProvider();
+  //firebase.auth()
+  const validarGmail=auth.signInWithPopup(provider)
+  return validarGmail
 }
 
 export function ingresarFaceBook(){

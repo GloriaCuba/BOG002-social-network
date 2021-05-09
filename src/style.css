@@ -1,135 +1,435 @@
+@media screen and (min-width: 700px){
 *{
     margin:0;
     padding:0;
 }
+.container{
+    height: 100vh;
+    width: 100%;
+    font-family: 'Cherry Cream Soda', cursive;
+    
+ }
+/************************************Interfaz principal***************************************************/
 
-/* .body{
-    margin: 0;
-    background-image: url("Img/fondo.png");
-    background-repeat: no-repeat; 
-    background-size: cover;
-    background-position: center;
-}
-.home{
-    background-image: url("Img/fondo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
+ #home {
+    height:100vh;
+    width: 100%;
+    background: #12c2e9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-#contenedorRegistro{
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-
-.container {
+    /* background-image: url("Img/fondo.jpg");
+    background-color:rgb(132, 209, 223); */
+    /* background-position:center;
+    background-repeat:no-repeat; */
     display: grid;
-}
-
-.home {
+    grid-template-columns:repeat (4,1fr);
+    grid-template-rows: repeat (5,1fr);
+    /* justify-content: center; */
+    
+ }
+ #home #titulo{
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end: 2;
+    justify-self:center;
+    align-self: center;
+    font-size: 2.5em;
+    color:white; 
+    -webkit-text-stroke: 0.02vw black;
+    font-weight: bolder;
     text-align: center;
-    padding:2em;
-    margin:2em;
-    border-radius:20px;
-    font-weight:bolder;
-    font-size:larger; 
+  }
+
+  #home #fondoPerro{
+    grid-column-start:1;
+    grid-column-end: 1;
+    grid-row-start:2;
+    grid-row-end: 3;
+    transform: rotate(330deg);
+  }
+
+  #home #fondoGato{
+    grid-column-start:3;
+    grid-column-end: 3;
+    grid-row-start:3;
+    grid-row-end: 4;
+    transform: rotate(20deg);
+  }
+
+  
+  #home #fondoPerro2{
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:4;
+    grid-row-end: 4;
+    transform: rotate(20deg);
+  }
+
+  #home img{
+    width: 30%;
+  }
+
+  #home #invitacion{
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:3;
+    grid-row-end: 4;
+    justify-self:  center;
+    align-self: center;
+    -webkit-text-stroke: 0.02vw  #045C73;
+    color:hsl(203, 56%, 72%);
+    font-size:1.5em;
+    
 }
 
-.home h1 {
-    margin-bottom:2.5em ;
+#home #botonIngreso{
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:2;
+    grid-row-end: 3;
+    justify-self: center;
+    align-self:end;
+    width: 9em;
+    height: 3em;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 1.1em;
+    font-family: inherit;
 }
 
-.home h4 {
+#home #botonRegistro {
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:4;
+    grid-row-end: 5;
+    justify-self: center;
+    align-self: end;
+    width: 9em;
+    height: 3em;
+    background: white;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    text-decoration-line: underline;
+    font-family: inherit;
+    font-size: 1.1em;
+    -webkit-text-stroke: 0.1vw black;
+    margin-bottom: 2.3em;
+}
+/************************************pagina inicio de sesion***************************************************/
+
+ .formulario {
+    background-color: #26798E; 
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 90% ;
+    grid-template-rows: 20% 45% 10% 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario h1 {
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    font-family: inherit;
+}
+
+.emailandpassword {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.emailandpassword input{
+    width: 12.5em;
+    height: 2.5em;
+    background: #FEEF6A;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 0.2px;
+    margin: 0.5em;
+    text-align: center;
+    
+}
+
+.emailandpassword button {
+    background: #8FC1DF;
+    border: 0.1em solid #FFFFFF;
+    box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
+    border-radius: 0.2em;
+    height: 2.5em;
+    width: 12.5em;
+    margin-bottom: 0.9em;
+}
+
+.emailandpassword img {
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.emailandpassword h4 {
     cursor: pointer;
-}
-
-.home a {
-    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding-bottom: 2vh;
+    border-bottom: 0.2em solid rgb(204, 7, 155);
+    border-bottom-style: dashed;
+    margin-top: 0.8em;
     font-size: 0.8em;
 }
 
-.home button {
-    width: 12em;
-    height: 3em;
-    margin: 2em;
-    border-radius: 5%;
-    background-color: white;
-    transition: ease all 0.3s;
-}
-
-.home button:hover {
-    width: 14em;
-    height: 4em;
-    border: 0.2em yellowgreen solid;
-}
-
-#botonRegistro {
+.inicioConProveedores h4 {
+    display: block;
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
     margin-top: 5em;
 }
 
-.formulario{
-    text-align: center;
-    padding:6em;
-     margin:2em; 
-    border-radius:20px;
-    font-weight:bolder;
-    font-size:larger; 
-    height: 100%;
-}
-
-.formulario .emailandpasword {
-   margin-top: 4em;
-}
-
-.formulario .emailandpasword h4{
-  font-size: 0.8em;
-  padding: 1.3em;
-}
-
-.formulario .emailandpasword a {
-    text-decoration: none;  
-    color: black;
-    font-size: 0.8em;
-  }
-  
-form #password{
-    margin:1em 0em 0em 0em;
-}
-#botonIngresar, #botonRegistro{
-    color:white;
-    background-color:black;
-    margin: 0.5em 3em 0em;
-    width: 8em;
-    height: 2em;
-    margin: 2em;
-    transition: .3s ease all;
-}
-#botonIngresar:hover{
-    width: 10em;
-    height: 2.5em;
-}
-
-h4{
-    font-size: 0.8em;
-    margin: 1em 0em 0em;
-}
-h6{
-    margin: 1em 0em 0em;
-    margin-left: 1em;
+/* .inicioGoogleFacebook button {
+    width: 6em;
+    height: 5em;
+    background:#26798E url(Img/Icon_Huellita.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 1em;
+    font-weight: bolder;
+    cursor: pointer;
 } */
 
-/****************************************Iniciar Sesion************************************/
-/* #registroGmail{
-background-image: url(Img/Gmail.png);
-background-repeat: no-repeat;
-background-size: cover;
+.formulario figure{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    justify-items: center;
+   }
+   .formulario figure img{
+       width: 70%;
 
-position: absolute;
-width: 4em;
-height: 4em;
-left: 89px;
-top: 215px; 
-}*/
+   }
+
+   /* .formulario {
+    background-color: #26798E;
+    height: 100vh;
+    width: 100%;
+    display: grid; */
+    /* grid-template-columns:repeat (4,1fr);
+    grid-template-rows: repeat (3,1fr);   */
+    /* grid-template-columns: 90% ;
+    grid-template-rows: 20% 50% 10% 30%;
+    justify-content: center;
+  
+    align-items: center;
+}
+
+.formulario h1 {
+   grid-column-start:2;
+   grid-column-end: 3;
+   grid-row-start:1;
+   grid-row-end:2;
+   justify-self: center;
+   align-self: center;
+   text-align: center;
+   color: white;
+   font-weight: lighter;
+   font-family: inherit;
+} */
+
+ /* .emailandpassword {
+   grid-column-start:1;
+   grid-column-end: 4;
+   grid-row-start:2;
+   grid-row-end:3;
+   justify-self:center;
+   align-self:center; */
+   /* margin-left: 5%; */
+ 
+
+/************************************Registro***************************************************/
+
+.formularioRegistro{
+    background-color:#045C73;
+    display: grid;
+    grid-template-columns: 90% ;
+    grid-template-rows: 30% 40% 10% 20% ;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    }
+
+    .formularioRegistro h1 {
+        margin-bottom: 2em;
+    }
+      
+   .formularioRegistro input{
+    height: 40px;
+    width: 200px;
+    background-color:#FEEF6A;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    display: grid;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 12px;
+   }
+    .formularioRegistro button{
+    height: 40px;
+    width: 200px;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-top:10px;
+   }
+   
+    .inputRegistro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+   .formularioRegistro figure{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    justify-items: center;
+   }
+   .formularioRegistro figure img{
+       width: 70%;
+   }
+
+    /* .formularioRegistro h6{
+    display:inline-block;
+    position:relative;   
+    color:white; 
+    font-size: 12px;
+    font-weight: normal;
+   } */
+   /* .formularioRegistro h6::after,h6::before{
+       content:'';
+       position:absolute;
+       width: 80px;
+       height:3px;
+       background-color:#F043A0;   
+       top:6px; 
+    }
+    .formularioRegistro h6::before{
+        left: -95px;
+    }
+    .formularioRegistro h6::after{
+        right: -95px;
+    }  */
+
+
+
+
+
+    /************************************Muro***************************************************/
+
+ #contenedorMuro{
+     background-image: url(Img/fondo2.png);
+     background-color:white;
+     background-size: contain;
+     background-repeat:no-repeat;
+     /* background-position: absolute; */
+     display: grid;
+     grid-template-columns:25% 50% 25%;
+     grid-template-rows: 20% 40% 70% 10%;
+     height: 100vh;
+     width: 100%;
+     align-items: center;
+ }
+
+ #contenedorMuro h1{
+    grid-column-start:1;
+    grid-column-end:2;
+    grid-row-start:1;
+    grid-row-end:1;
+    justify-self:center;
+    align-self: center;
+    text-align:left;
+    color: white;
+    font-family: 'Cherry Cream Soda', cursive;
+ }
+ 
+ #contenedorMuro #salir{
+    grid-column-start:3;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;
+    justify-self:end;
+    align-self: start; 
+    width: 6em;
+    height: 2em;
+    margin: 1em;
+    font-weight: bolder;
+    cursor: pointer;
+ }
+ 
+#contenedorMuro #post{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start:2 ;
+    grid-row-end: 3;
+    justify-self:left;
+    align-self: center;
+    background-color:transparent;
+    padding: 20%;
+    
+}
+
+#containerFiltro{
+    justify-self:center;
+}
+
+#containerFiltro h3{
+    text-align: center;
+    color: #26798E;
+    margin-top: 6em;
+}
+
+#containerFiltro img{
+    border-radius: 100%;
+    height: 5em;
+    width: 5em;
+    margin: 1em; 
+    margin-bottom: 10px;
+}
+
+
+footer{
+    min-height: 2em;
+    background-color: #191919;
+    background-image: -webkit-linear-gradient(#3a3a3a, #000000);
+    background-image: linear-gradient(top, #353535, #000000);
+    border-top: 1px solid rgba(50, 50, 50, 0.3);
+    width: 100%;
+    position:fixed;
+    clear: both;
+    margin-top: 0px;
+    padding-top: 2px;
+    bottom: 0%;
+    color: #ffffff;
+    text-align: center;
+    justify-content:space-evenly;
+    display:flex;
+  }
+  
+  footer a{
+      background-color: transparent;
+      color: white;    
+  }
+}

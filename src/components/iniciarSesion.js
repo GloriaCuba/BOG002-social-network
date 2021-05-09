@@ -13,13 +13,12 @@ export function iniciarSesion() {
             <button type="button" id="botonIngresar">ingresar</button> <br>
             <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4>
          </div>
-         <div class="inicioConProveedores">
-             <h4>Ingresa con tu cuenta de Google o Facebook </h4>
-            <div class="inicioGoogleFacebook">
-               <button type="button" id="botonGoogle">G+</button> <br>
-               <button type="button" id="botonFacebook">F</button>
-         </div>
-         </div>
+         <div class="inicioConProveedores"><h4>Ingresa con tu cuenta de Google o Facebook </h4></div>
+          <figure>
+             <img type="button" id="botonGoogle" src="img/Icono_Google.png"> 
+             <img type="button" id="botonFacebook" src="img/Icono_Facebook.png">
+           </figure> 
+      
      </form>
     
  `  
@@ -79,6 +78,7 @@ export function iniciarConFacebook(){
 export function olvidarContrasena() {
  let nuevaContrasena =document.getElementById("olvidarContrasena");
  nuevaContrasena.addEventListener("click",() =>{
+    console.log("hola")
    window.location = '#/restablecerContrasena';
    location.reload()
   })

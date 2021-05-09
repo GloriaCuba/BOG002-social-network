@@ -3,33 +3,37 @@
        height: 100vh;
        width: 100%;
        font-family: 'Cherry Cream Soda', cursive;
+       /*font-family: 'Frank Ruhl Libre', serif;*/
     }
-/* pagina interfaz principal */
-/* pagina interfaz principal */
+
+    
+/************************************Pagina interfaz principal***************************************************/
 
     #home {
        height: 100vh;
        width: 100%;
        background-image: url("Img/fondo_perros.jpg");
-       background-color:#9A6BAF;
-       background-size: cover;
-       background-repeat:no-repeat;
-       background-position: absolute;
+       background-size: cover; 
+       background-repeat:no-repeat; 
+       background-position: absolute; 
        display: grid;
-       grid-template-columns:100%;
-       grid-template-rows: 50% 10% 30% 0%;
+       /* grid-template-columns:repeat (4,1fr);
+       grid-template-rows: repeat (5,1fr);  */
+       /* grid: template columns 80%; */
+       grid-template-rows: 50% 20% 10% 20% ;
        justify-content: center;
        justify-items: center;
        align-items: center;
+       text-align: center;
     }
 
-   #invitacion{
+   #home #invitacion{
        color:black;
        font-size: 1em;
-       align-items: initial;
+   
    }
 
-   #botonRegistro {
+   #home #botonRegistro {
     width: 9em;
     height: 3em;
     background: none;
@@ -39,18 +43,23 @@
     font-family: inherit;
     font-size: 1.1em;
     -webkit-text-stroke: 0.1vw black;
-    margin-bottom: 2.3em;
+    margin-bottom: 3em;
    }
 
-   #titulo{
+   #home #titulo{
        font-size: 2.5em;
-       text-align:center;
+       text-align: center;
        color: white; 
        -webkit-text-stroke: 0.02vw black;
        font-weight: bolder;
    }
 
-   #botonIngreso{
+   #home img{
+  display: none;
+  
+}
+
+   #home #botonIngreso{
        width: 9em;
        height: 3em;
        color:black ;
@@ -60,153 +69,270 @@
        background: none;  
        font-size: 1.1em;
        font-family: inherit;
+       margin-bottom: 3em;
    }
 
 
-/* pagina inicio de sesion */
-/* pagina inicio de sesion */
 
-    .formulario {
-        background-color: #26798E;
-        height: 100vh;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 50% ;
-        grid-template-rows: 25% 50% 25%;
+/************************************Pagina inicio de sesion***************************************************/
+
+
+.formulario {
+    background-color: #26798E; 
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 90% ;
+    grid-template-rows: 20% 45% 10% 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario h1 {
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    font-family: inherit;
+}
+
+.emailandpassword {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.emailandpassword input{
+    width: 12.5em;
+    height: 2.5em;
+    background: #FEEF6A;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 0.2px;
+    margin: 0.5em;
+    text-align: center;
+    
+}
+
+.emailandpassword button {
+    background: #8FC1DF;
+    border: 0.1em solid #FFFFFF;
+    box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
+    border-radius: 0.2em;
+    height: 2.5em;
+    width: 12.5em;
+    margin-bottom: 0.9em;
+}
+
+.emailandpassword img {
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.emailandpassword h4 {
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    padding-bottom: 1vh;
+    border-bottom: 0.2em solid rgb(204, 7, 155);
+    border-bottom-style: dashed;
+    margin-top: 0.8em;
+    font-size: 0.8em;
+}
+
+.inicioConProveedores h4 {
+    display: block;
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 5em;
+}
+
+/* .inicioGoogleFacebook button {
+    width: 6em;
+    height: 5em;
+    background:#26798E url(Img/Icon_Huellita.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 1em;
+    font-weight: bolder;
+    cursor: pointer;
+} */
+
+.formulario figure{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    justify-items: center;
+   }
+   .formulario figure img{
+       width: 60%;
+    
+   }
+
+/************************************Registro***************************************************/
+
+.formularioRegistro{
+    background-color:#045C73;
+    display: grid;
+    grid-template-columns: 90% ;
+    grid-template-rows: 30% 40% 10% 20% ;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    }
+
+    .formularioRegistro h1 {
+        margin-bottom: 2em;
+    }
+      
+   .formularioRegistro input{
+    height: 40px;
+    width: 200px;
+    background-color:#FEEF6A;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    display: grid;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 12px;
+   }
+    .formularioRegistro button{
+    height: 40px;
+    width: 200px;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-top:10px;
+   }
+   
+    .inputRegistro {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        justify-items: center;
-        align-items: center;
-    }
-
-    .formulario h1 {
-        text-align: center;
-        color: white;
-        font-weight: lighter;
-        font-family: inherit;
-    }
-
-    .emailandpassword {
-        justify-items: center;
-    }
-
-    .formulario .emailandpasword {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .emailandpassword input{
-        width: 12.5em;
-        height: 2.5em;
-        background: #FEEF6A;
-        border: 2px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 0.2px;
-        margin: 0.5em;
-        text-align: center;
-    }
+   .formularioRegistro figure{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    justify-items: center;
+   }
+   .formularioRegistro figure img{
+       width: 70%;
+   }
 
-    .emailandpassword button {
-        background: #8FC1DF;
-        border: 0.1em solid #FFFFFF;
-        box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
-        border-radius: 0.2em;
-        height: 2.5em;
-        width: 12.5em;
-        margin-bottom: 0.9em;
+    /* .formularioRegistro h6{
+    display:inline-block;
+    position:relative;   
+    color:white; 
+    font-size: 12px;
+    font-weight: normal;
+   } */
+   /* .formularioRegistro h6::after,h6::before{
+       content:'';
+       position:absolute;
+       width: 80px;
+       height:3px;
+       background-color:#F043A0;   
+       top:6px; 
     }
+    .formularioRegistro h6::before{
+        left: -95px;
+    }
+    .formularioRegistro h6::after{
+        right: -95px;
+    }  */
 
-    .emailandpassword img {
-        margin-top: 1em;
-        margin-left: 2em;
-        margin-right: 2em;
-    }
 
-    .emailandpassword h4 {
-        cursor: pointer;
-        text-align: center;
-        color: white;
-        padding-bottom: 0.5em;
-        border-bottom: 2px solid rgb(204, 7, 155);
-        border-bottom-style: dashed;
-        margin-top: 0.8em;
-        font-size: 0.8em;
-    }
 
-    .inicioConProveedores h4 {
-        display: block;
-        color: white;
-        font-size: 0.8em;
-        text-align: center;
-    }
+ /************************************Muro***************************************************/
 
-    .inicioGoogleFacebook{
-        display: grid;
-        grid-auto-flow: column;
-        position: relative;
-        justify-content: center;
-        }
-
-    .inicioGoogleFacebook button {
-        width: 6em;
-        height: 5em;
-        background:#26798E url(Img/Icon_Huellita.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        margin: 1em;
-        font-weight: bolder;
-        cursor: pointer;
-    }
-     
-    /* restablecimiento de la contraseña */
-     
-    .formularioRestablecerContrasena {
-        background-color: #8EC1DE;
-        color:black;
-        font-size: 1em;
-        text-align: center;
-        height: 100vh;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100% ;
-        grid-template-rows: 45% 10% 45%;
-     
-    }
-    .formularioRestablecerContrasena .imagen img {
-        width: 12em;
-        height: 10em;
-        margin-top: 6em;
-    }
-    .formularioRestablecerContrasena .descripcion {
-        grid-row: 2;
-    }
-
-    .formularioRestablecerContrasena .input {
-        grid-row: 3;
-    }
-
-    .formularioRestablecerContrasena .input input{
-        width: 12.5em;
-        height: 2.5em;
-        background: #FEEF6A;
-        border: 2px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 0.2px;
-        margin: 0.5em;
-        text-align: center;
-    }
-
-    .formularioRestablecerContrasena .input button {
-        margin-top: 1em;
-        width: 9em;
-        height: 3em;
-        color:black ;
-        border: 0.1em solid rgb(0, 0, 0);
-        box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-        border-radius: 0.2em; 
-        background: none;  
-        font-size: 1.1em;
-        font-family: inherit;
-    }
-  
+ #contenedorMuro{
+    background-color:#045C73;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: absolute;
+    display: grid;
+    grid-template-columns:25% 50% 25%;
+    grid-template-rows: 20% 40% 70% 10%;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
 }
+
+#contenedorMuro h1{
+   grid-column-start:1;
+   grid-column-end:2;
+   grid-row-start:1;
+   grid-row-end:1;
+   justify-self:center;
+   align-self: center;
+   text-align:left;
+   color: white;
+   font-family: 'Cherry Cream Soda', cursive;
+}
+
+#contenedorMuro #salir{
+   grid-column-start:3;
+   grid-column-end: 3;
+   grid-row-start:1;
+   grid-row-end:2;
+   justify-self:end;
+   align-self: start; 
+   width: 6em;
+   height: 2em;
+   margin: 1em;
+   font-weight: bolder;
+   cursor: pointer;
+}
+
+#contenedorMuro #post{
+   grid-column-start: 1;
+   grid-column-end: 3;
+   grid-row-start:2 ;
+   grid-row-end: 3;
+   justify-self:left;
+   align-self: center;
+   background-color:transparent;
+   padding: 20%;
+   
+}
+
+#containerFiltro{
+   margin-top: 5em;
+   justify-self:center;
+   grid-column-start:1;
+   grid-column-end: 4;
+   grid-row-start:1;
+   grid-row-end:1;
+}
+
+#containerFiltro h3{
+   text-align: center;
+   color: white;
+   margin-top: 6em;
+}
+#containerFiltro img{
+   border-radius: 100%;
+   height:3em;
+   width: 3em;
+   margin: 1em; 
+   margin-bottom: 10px;
+}
+
+#post h4{
+    color:white;
+    margin-top: 2em;
+    
+}
+
+}
+

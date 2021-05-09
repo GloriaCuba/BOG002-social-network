@@ -22,6 +22,8 @@ export function restableceContrasena(){
     let email = document.getElementById("emailRestablecer"); 
     let botonRestablecer=document.getElementById("botonRestablecer");
       botonRestablecer.addEventListener("click",() =>{
+        alert("Revisa tu correo")
+        console.log("hola")
         restablecimientoContrasena(email).then(function() {
         //    window.location = "http://localhost:5000/"
         //    location.reload()
