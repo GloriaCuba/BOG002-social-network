@@ -84,7 +84,7 @@
 
     .formulario h1 {
         text-align: center;
-        color: white;
+        color: rgb(255, 255, 255);
         font-weight: lighter;
         font-family: inherit;
     }
@@ -256,14 +256,14 @@
     border-radius: 3px;
     margin-top:10px;
    }
-   .formularioRegistro h4{
+   .formularioRegistro h6{
     display:inline-block;
     position:relative;   
     color:white; 
     font-size: 12px;
     font-weight: normal;
    }
-   .formularioRegistro h4::after,h4::before{
+   .formularioRegistro h6::after,h6::before{
        content:'';
        position:absolute;
        width: 80px;
@@ -271,10 +271,10 @@
        background-color:#F043A0;   
        top:6px; 
     }
-    .formularioRegistro h4::before{
+    .formularioRegistro h6::before{
         left: -95px;
     }
-    .formularioRegistro h4::after{
+    .formularioRegistro h6::after{
         right: -95px;
     }
    .formularioRegistro figure{

@@ -10,7 +10,7 @@ export function registrarse() {
         <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required >
         <button type="button" id="botonUnirse">Unirme</button> 
         </div>
-      <h4>O</h4>  
+      <h6>O</h6>  
       <p>Registrate con tu cuenta de Google o Facebook</p>
       <figure>
         <img type="button" id="registroGmail" src="img/Icono_Google.png"> 
@@ -38,6 +38,8 @@ export function funcionAutenticar() {
     });
   });
 }
+
+
 
 export function registroConGoogle() {
   const registroGoogle = document.getElementById('registroGmail');
