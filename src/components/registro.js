@@ -1,5 +1,4 @@
-import { autenticar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
-
+import {autenticar, verificarEmail, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
 export function registrarse() {
   const registro = `
     <div class="formularioRegistro">
@@ -11,7 +10,7 @@ export function registrarse() {
         <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required >
         <button type="button" id="botonUnirse">Unirme</button> 
         </div>
-      <h4>O</h4>  
+      <h6>O</h6>  
       <p>Registrate con tu cuenta de Google o Facebook</p>
       <figure>
         <img type="button" id="registroGmail" src="img/Icono_Google.png"> 
@@ -30,16 +29,17 @@ export function funcionAutenticar() {
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
     autenticar(email, password).then(() => {
-      window.location = '#/inicio';
-      location.reload();
+      alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
+      verificarEmail();
     }).catch((error) => {
-      const errorPassword = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
       console.log(error);
     });
   });
 }
+
+
 
 export function registroConGoogle() {
   const registroGoogle = document.getElementById('registroGmail');

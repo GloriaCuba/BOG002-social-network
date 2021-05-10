@@ -177,17 +177,47 @@
     width: 100%;
     align-items: center;
     }
-
-    #contenedorMuro h1{
-        font-size:1em;
-        text-align:left;
-        color: white;
-        font-family: 'Cherry Cream Soda', cursive;
+     
+   .formularioRegistro input{
+    height: 40px;
+    width: 200px;
+    background-color:#FEEF6A;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    display: grid;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 12px;
+   }
+    .formularioRegistro button{
+    height: 40px;
+    width: 200px;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-top:10px;
+   }
+   .formularioRegistro h6{
+    display:inline-block;
+    position:relative;   
+    color:white; 
+    font-size: 12px;
+    font-weight: normal;
+   }
+   .formularioRegistro h6::after,h6::before{
+       content:'';
+       position:absolute;
+       width: 80px;
+       height:3px;
+       background-color:#F043A0;   
+       top:6px; 
     }
-    #salir{
-        grid-column: 4;
-
-
+    .formularioRegistro h6::before{
+        left: -95px;
+    }
+    .formularioRegistro h6::after{
+        right: -95px;
     }
  /************************************Muro***************************************************/
 
