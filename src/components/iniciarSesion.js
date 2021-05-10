@@ -22,14 +22,14 @@ export function iniciarSesion() {
          </div>
      </form>
     
- ` 
- 
+ `  
 const divFormulario = document.createElement("div");
 divFormulario.className = "formularioInicioSesion"
 divFormulario.innerHTML = formularioInicioSesion;
 return divFormulario
 }
 
+// iniciar sesion con email y contraseña
 export function funcionIngresar() {
 let email = document.getElementById("email"); 
 let password = document.getElementById("password");
@@ -47,6 +47,7 @@ botonIngresar.addEventListener("click", () => {
      })
 };
 
+// iniciar sesion con google
 export function iniciarConGoogle(){
    let registroGoogle=document.getElementById("botonGoogle");
    registroGoogle.addEventListener("click",() =>{
@@ -61,8 +62,7 @@ export function iniciarConGoogle(){
       })
       })
    }
-            
-            
+// iniciar sesion con facebook        
 export function iniciarConFacebook(){
    let registroFacebook=document.getElementById("botonFacebook");
    registroFacebook.addEventListener("click",() =>{
@@ -70,11 +70,17 @@ export function iniciarConFacebook(){
       window.location = '#/inicio';
       location.reload()
       console.log("ingreso facebook")
-      
       }).catch(err => {
-      console.log(err)
-      
+      console.log(err)  
       })
-      
-   })
+    })
    }
+
+export function olvidarContrasena() {
+ let nuevaContrasena =document.getElementById("olvidarContrasena");
+ nuevaContrasena.addEventListener("click",() =>{
+    console.log("hola")
+   window.location = '#/restablecerContrasena';
+   location.reload()
+  })
+}

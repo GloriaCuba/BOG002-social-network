@@ -1,21 +1,23 @@
-import { cerrarSesión } from '../firebase/firebase.js'
+import { cerrarSesión } from '../firebase/firebase.js';
 
 export function inicio() {
    let muro = `
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
+   <button type="button" id="salir">Salir</button> 
    <div id="containerFiltro">
-   <button type="button" id="salir">Salir</button>
    <h3>!Encuentra a tus amigos¡</h3>
-   <button type="button" id="filtroCaninos"> Caninos</button>
-   <button type="button" id="filtroFelinos"> Felinos </button>
-   <button type="button" id="filtroRoedores"> Roedores </button>
-   <button type="button" id="filtroOtros"> Otros </button> <br>
+   <img src="Img/Perro.jpg" width= 200px height=200px id="filtroCaninos">
+   <img src="Img/Gato.jpg" width= 200px height=200px id="filtroFelinos">
+   <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
+   <img src="Img/pez1.jpg" width= 200px height=200px id="filtroRoedores">
    </div>
+   <div id="post">
    <h4>¿Que estas pensando<h4>
-   <input type="text" id="post"></input><br>
-   <input type="text" id="post"></input><br>
-   <input type="text" id="post"></input><br>
+   <input type="text" id"text"></input><br>
+   <input type="text" id"text"></input><br>
+   <input type="text" id"text"></input><br>
+   </div>
    </div>
    `;
    const divMuro = document.createElement("div");

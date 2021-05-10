@@ -9,18 +9,17 @@
  }
 /************************************Interfaz principal***************************************************/
 
-
  #home {
     height:100vh;
     width: 100%;
     background-image: url("Img/fondo.jpg");
-    background-color:#045C73;
+    background-color:white;
     background-position:center;
     background-repeat:no-repeat;
     display: grid;
-    grid-template-columns:repeat (4,1fr);
+    /* grid-template-columns:repeat (4,1fr);
     grid-template-rows: repeat (5,1fr);
-    
+     */
  }
  #home #titulo{
     grid-column-start:1;
@@ -85,36 +84,51 @@
     -webkit-text-stroke: 0.1vw black;
     margin-bottom: 2.3em;
 }
-/* ***********************************pagina inicio de sesion***************************************************/
+/************************************pagina inicio de sesion***************************************************/
  
 .formulario {
      background-color: #26798E;
      height: 100vh;
      width: 100%;
      display: grid;
-     grid-template-columns: 50% ;
-     grid-template-rows: 25% 50% 25%;
-     justify-content: right;
+     grid-template-columns:repeat (4,1fr);
+     grid-template-rows: repeat (3,1fr);  
+     /* grid-template-columns: 50% ;
+     grid-template-rows: 25% 50% 25%;  */
+     /* justify-content: right;  */
+     align-self:center;
+     justify-self: center;
      align-items: center;
-     justify-items: center;
-     /* align-items: center; */
  }
 
  .formulario h1 {
-     text-align: center;
-     color: white;
-     font-weight: lighter;
-     font-family: inherit;
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    font-family: inherit;
  }
 
- .emailandpassword {
-     justify-items: center;
+  .emailandpassword {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+    justify-self:center;
+    align-self:center;
+    /* margin-left: 5%; */
+    
  }
 
  .formulario .emailandpasword {
      margin-left: auto;
      margin-right: auto;
- }
+ }  
 
  .emailandpassword input{
      width: 12.5em;
@@ -128,32 +142,53 @@
  }
 
  .emailandpassword button {
-     background: #8FC1DF;
-     border: 0.1em solid #FFFFFF;
-     box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
-     border-radius: 0.2em;
-     height: 2.5em;
-     width: 12.5em;
-     margin-bottom: 0.9em;
+    background: #8FC1DF;
+    border: 0.1em solid #FFFFFF;
+    box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
+    border-radius: 0.2em;
+    height: 2.5em;
+    width: 12.5em;
+    margin-bottom: 0.9em;
+    
  }
 
- .emailandpassword img {
+ /* .emailandpassword img {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:2;
+    justify-self:center;
+    align-self: center;
      margin-top: 1em;
      margin-left: 2em;
-     margin-right: 2em;
- }
+     margin-right: 2em; 
+ }  */
 
  .emailandpassword h4 {
-     cursor: pointer;
-     text-align: center;
-     color: white;
-     padding-bottom: 0.5em;
-     border-bottom: 2px solid rgb(204, 7, 155);
-     border-bottom-style: dashed;
-     margin-top: 0.8em;
-     font-size: 0.8em;
+    grid-column-start:0;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+    justify-self:center;
+    align-self: center;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    padding-bottom: 0.5em;
+    /* border-bottom: 2px solid rgb(204, 7, 155);
+    border-bottom-style: dashed;  */
+     /* margin-top: 0.8em;
+     font-size: 0.8em; */
  }
 
+ .inicioConProveedores{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end:4;
+    justify-self:center;
+    align-self: center;
+ }
  .inicioConProveedores h4 {
      display: block;
      color: white;
@@ -163,7 +198,7 @@
 
  .inicioGoogleFacebook{
      display: grid;
-     grid-auto-flow: column;;
+     grid-auto-flow: column;
      position: relative;
      justify-content: center;
      }
@@ -179,13 +214,16 @@
      cursor: pointer;
  }
 
+    /************************************Muro***************************************************/
+
  #contenedorMuro{
-     background-color:#045C73;
+     background-image: url(Img/fondo2.png);
+     background-color:white;
      background-size: contain;
      background-repeat:no-repeat;
-     background-position: absolute;
+     /* background-position: absolute; */
      display: grid;
-     grid-template-columns:20% 50% ;
+     grid-template-columns:25% 50% 25%;
      grid-template-rows: 20% 40% 70% 10%;
      height: 100vh;
      width: 100%;
@@ -193,130 +231,82 @@
  }
 
  #contenedorMuro h1{
-     font-size:1em;
-     text-align:left;
-     color: white;
-     font-family: 'Cherry Cream Soda', cursive;
+    grid-column-start:1;
+    grid-column-end:2;
+    grid-row-start:1;
+    grid-row-end:1;
+    justify-self:center;
+    align-self: center;
+    text-align:left;
+    color: white;
+    font-family: 'Cherry Cream Soda', cursive;
  }
- #salir{
-     grid-column: 4;
-
-
-/* .body{
-    margin: 0;
-    background-image: url("Img/fondo.png");
-    background-repeat: no-repeat; 
-    background-size: cover;
-    background-position: center;
-}
-.home{
-    background-image: url("Img/fondo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-#contenedorRegistro{
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-
-.container {
-    display: grid;
-}
-
-.home {
-    text-align: center;
-    padding:2em;
-    margin:2em;
-    border-radius:20px;
-    font-weight:bolder;
-    font-size:larger; 
-}
-
-.home h1 {
-    margin-bottom:2.5em ;
-}
-
-.home h4 {
+ 
+ #contenedorMuro #salir{
+    grid-column-start:3;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;
+    justify-self:end;
+    align-self: start; 
+    width: 6em;
+    height: 2em;
+    margin: 1em;
+    font-weight: bolder;
     cursor: pointer;
+ }
+ 
+#contenedorMuro #post{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start:2 ;
+    grid-row-end: 3;
+    justify-self:left;
+    align-self: center;
+    background-color:transparent;
+    padding: 20%;
+    
 }
 
-.home a {
-    text-decoration: none;
-    font-size: 0.8em;
+#containerFiltro{
+    justify-self:center;
 }
 
-.home button {
-    width: 12em;
-    height: 3em;
-    margin: 2em;
-    border-radius: 5%;
-    background-color: white;
-    transition: ease all 0.3s;
-}
-
-.home button:hover {
-    width: 14em;
-    height: 4em;
-    border: 0.2em yellowgreen solid;
-}
-
-#botonRegistro {
-    margin-top: 5em;
-}
-
-.formulario{
+#containerFiltro h3{
     text-align: center;
-    padding:6em;
-     margin:2em; 
-    border-radius:20px;
-    font-weight:bolder;
-    font-size:larger; 
-    height: 100%;
+    color: #26798E;
+    margin-top: 6em;
 }
 
-.formulario .emailandpasword {
-   margin-top: 4em;
+#containerFiltro img{
+    border-radius: 100%;
+    height: 5em;
+    width: 5em;
+    margin: 1em; 
+    margin-bottom: 10px;
 }
 
-.formulario .emailandpasword h4{
-  font-size: 0.8em;
-  padding: 1.3em;
-}
 
-.formulario .emailandpasword a {
-    text-decoration: none;  
-    color: black;
-    font-size: 0.8em;
+footer{
+    min-height: 2em;
+    background-color: #191919;
+    background-image: -webkit-linear-gradient(#3a3a3a, #000000);
+    background-image: linear-gradient(top, #353535, #000000);
+    border-top: 1px solid rgba(50, 50, 50, 0.3);
+    width: 100%;
+    position:fixed;
+    clear: both;
+    margin-top: 0px;
+    padding-top: 2px;
+    bottom: 0%;
+    color: #ffffff;
+    text-align: center;
+    justify-content:space-evenly;
+    display:flex;
   }
   
-form #password{
-    margin:1em 0em 0em 0em;
-}
-#botonIngresar, #botonRegistro{
-    color:white;
-    background-color:black;
-    margin: 0.5em 3em 0em;
-    width: 8em;
-    height: 2em;
-    margin: 2em;
-    transition: .3s ease all;
-}
-#botonIngresar:hover{
-    width: 10em;
-    height: 2.5em;
-}
-
-h4{
-    font-size: 0.8em;
-    margin: 1em 0em 0em;
-}
-h6{
-    margin: 1em 0em 0em;
-    margin-left: 1em;
-} */
+  footer a{
+      background-color: transparent;
+      color: white;    
+  }
 

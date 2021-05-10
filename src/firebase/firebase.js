@@ -10,6 +10,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+auth.useDeviceLanguage();
 // var db = firebase.firestore();
 
 // signIn, singOut and Logout with firebase
@@ -41,6 +42,14 @@ export function cerrarSesión(){
  const salir= auth.signOut();
  return salir
 }
+
+export function restablecimientoContrasena(email){
+var emailAddress = email.value;
+var restablecer= auth.sendPasswordResetEmail(emailAddress)
+return restablecer
+}
+
+
 
 // fireStore 
 // export function post(publicacion) {
