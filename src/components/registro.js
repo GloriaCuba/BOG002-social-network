@@ -2,21 +2,22 @@ import {autenticar, verificarEmail, ingresarGmail, ingresarFaceBook } from '../f
 export function registrarse() {
   const registro = `
     <div class="formularioRegistro">
-      <div><h1>¡Bienvenido!</h1>
+      <h1>¡Bienvenido!</h1>
       <p> Estas a punto de hacer parte de la red más divertida</p>
-       </div> 
-        <div class="inputRegistro"> <input type="email" id="emailAuth" placeholder="E-mail" required >
+        <div>
+        <input type="email" id="emailAuth" placeholder="E-mail" required >
         <input type="password" id="passwordAuth" placeholder="Contraseña" required >
         <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required >
         <button type="button" id="botonUnirse">Unirme</button> 
         </div>
-        <div class="registrateGoogle">  <p>Registrate con tu cuenta de Google o Facebook</p></div>
-       <figure>
+      <h4>O</h4>  
+      <p>Registrate con tu cuenta de Google o Facebook</p>
+      <figure>
         <img type="button" id="registroGmail" src="img/Icono_Google.png"> 
         <img type="button" id="registroFacebook" src="img/Icono_Facebook.png">
-      </figure> 
+      </figure>
     </div>
-    `;
+    `
   const divRegistro = document.createElement('div');
   divRegistro.innerHTML = registro;
   return divRegistro;
