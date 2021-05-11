@@ -47,7 +47,15 @@ return validarFacebook
 
 export function cerrarSesión(){
  const salir= auth.signOut();
- return salir
+//  return salir
+auth.onAuthStateChanged(function(user){
+  if(user){
+    let email=user.email;
+    alert("Usuario activo"+email)
+  }else{
+    console.log("Sesion Cerrada")
+  }
+})
 }
 
 export function restablecimientoContrasena(email){
