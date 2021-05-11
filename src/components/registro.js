@@ -10,8 +10,8 @@ export function registrarse() {
         <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required >
         <button type="button" id="botonUnirse">Unirme</button> 
         </div>
-      <h4>O</h4>  
-      <p>Registrate con tu cuenta de Google o Facebook</p>
+      <h6>O</h6>  
+      <p>Regístrate con tu cuenta de Google o Facebook</p>
       <figure>
         <img type="button" id="registroGmail" src="img/Icono_Google.png"> 
         <img type="button" id="registroFacebook" src="img/Icono_Facebook.png">

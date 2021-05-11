@@ -3,7 +3,7 @@ import { inicio,salir } from '../components/paginaInicio.js'
 import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} from '../components/registro.js'
 import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js'
-import { configPerfil, menuEspecies} from '../components/configPerfil.js'
+import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js'
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
@@ -33,6 +33,7 @@ export const router = (routes) => {
         case '#/configuracionPerfil':
         rootDiv.appendChild(configPerfil());
         menuEspecies();
+        irAlMuro();
         break;
 
       default:
