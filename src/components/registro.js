@@ -31,6 +31,7 @@ export function funcionAutenticar() {
     autenticar(email, password).then(() => {
       alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
       verificarEmail();
+      /* Aquí iría la Configuración para ir a #/configuracionPerfil*/
     }).catch((error) => {
       const errorMessage = error.message;
       alert(errorMessage);
