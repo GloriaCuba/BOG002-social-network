@@ -248,7 +248,6 @@
        width: 60%;
    }
 
-}
 /*Interfaz- Configuración de Perfil*/
 .contenedorPerfil {
     background-color: #045C73;
@@ -463,6 +462,10 @@
         background: none;  
         font-size: 1.1em;
         font-family: inherit;
+    }
+
+    .descripcionError {
+        display: none;
     }
 
 }

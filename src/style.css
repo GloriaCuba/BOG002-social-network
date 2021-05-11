@@ -330,8 +330,6 @@
    .formularioRegistro figure,img{
        width: 60%;
    }
-
-}
     /************************************ restablecimiento de la contraseña***************************************************/
 
     .formularioRestablecerContrasena {
@@ -481,4 +479,8 @@ footer{
       background-color: transparent;
       color: white;    
   }
+
+  .descripcionError {
+    display: none;
+}
 }

@@ -7,3 +7,4 @@ describe('registrarse', () => {
     expect(typeof registrarse).toBe('function');
   });
 })
+
