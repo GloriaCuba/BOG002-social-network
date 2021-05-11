@@ -1,13 +1,13 @@
 import {autenticar, verificarEmail, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
 export function registrarse() {
   const registro = `
-    <div class="formularioRegistro">
+    <div id="formularioRegistro" class="formularioRegistro">
       <h1>¡Bienvenido!</h1>
       <p> Estas a punto de hacer parte de la red más divertida</p>
         <div>
         <input type="email" id="emailAuth" placeholder="E-mail" required >
         <input type="password" id="passwordAuth" placeholder="Contraseña" required >
-        <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required >
+        <input type="password" id="passwordAuth2" placeholder="Valida tu contraseña" required >
         <button type="button" id="botonUnirse">Unirme</button> 
         </div>
       <h4>O</h4>  
