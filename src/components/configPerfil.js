@@ -18,6 +18,7 @@ export function configPerfil() {
           <figure>
               <img src='img/foto_perfil.jpg' id='userImage'>
           </figure>
+          <button type='button' id='botonGuardar'>Guardar</button>
       </div>
     `;
     const divPerfil = document.createElement('div');
@@ -32,5 +33,10 @@ export function configPerfil() {
       return console.log('hiciste click');
     });
   }
-  
-  
+  export function irAlMuro() {
+    let botonGuardar = document.getElementById("botonGuardar");
+    botonGuardar.addEventListener("click", () => {
+             window.location = '#/inicio';
+             location.reload()
+            });
+}

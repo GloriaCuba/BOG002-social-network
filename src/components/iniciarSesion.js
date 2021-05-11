@@ -36,7 +36,7 @@ let botonIngresar = document.querySelector("#botonIngresar");
 
 botonIngresar.addEventListener("click", () => {
       ingresar(email, password ).then(() => {
-         window.location = '#/inicio';
+         window.location = '#/configuracionPerfil';
          location.reload()
         }).catch((error) => {
          var errorCode = error.code;

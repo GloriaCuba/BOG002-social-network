@@ -257,21 +257,28 @@
 /************************************Registro***************************************************/
 
 .formularioRegistro{
-    background-color:#045C73;
-    display: grid;
-    grid-template-columns: 90% ;
-    grid-template-rows: 30% 40% 10% 20% ;
+    background-color: #045C73;
     height: 100vh;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 200px;
+    grid-template-rows: 120px 60px 240px 50px 60px 45px;
     justify-content: center;
-    text-align: center;
+    justify-items: center;
+    align-items: center;
+    font-family:sans-serif;
+   }
+   .formularioRegistro h1{
     color: white;
+    font-size: 26px;
+    text-align:center;
+    margin-top: 55px;
+    }
+    .formularioRegistro p{
+    color: white;
+    font-size: 12px;
+    text-align:center;  
     }
 
-    .formularioRegistro h1 {
-        margin-bottom: 2em;
-    }
-      
    .formularioRegistro input{
     height: 40px;
     width: 200px;
@@ -292,33 +299,14 @@
     border-radius: 3px;
     margin-top:10px;
    }
-   
-    .inputRegistro {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-   .formularioRegistro figure{
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: center;
-    justify-items: center;
-   }
-   .formularioRegistro figure img{
-       width: 70%;
-   }
-
-    /* .formularioRegistro h6{
+   .formularioRegistro h6{
     display:inline-block;
     position:relative;   
     color:white; 
     font-size: 12px;
     font-weight: normal;
-   } */
-   /* .formularioRegistro h6::after,h6::before{
+   }
+   .formularioRegistro h6::after,h6::before{
        content:'';
        position:absolute;
        width: 80px;
@@ -331,8 +319,19 @@
     }
     .formularioRegistro h6::after{
         right: -95px;
-    }  */
+    }
+   .formularioRegistro figure{
+       display: grid;
+       grid-template-columns: 100px 100px;
+       grid-row: auto;
+       justify-content: center;
+       justify-items: center;
+   }
+   .formularioRegistro figure,img{
+       width: 60%;
+   }
 
+}
     /************************************ restablecimiento de la contraseña***************************************************/
 
     .formularioRestablecerContrasena {

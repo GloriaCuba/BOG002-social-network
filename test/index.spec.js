@@ -17,4 +17,4 @@ describe('interfazPrincipal', () => {
     console.log("test");
     expect(typeof interfazPrincipal).toBe('function');
   });
-});
+})
