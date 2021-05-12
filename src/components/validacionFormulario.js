@@ -1,8 +1,3 @@
-const formulario = document.getElementById('emailAuth');
-const contraseña2 = document.getElementById('passwordAuth2');
-const contraseña = document.querySelector('passwordAuth');
-console.log(contraseña)
-
 const expresiones = {
 	contraseña: /^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/, // 4 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -13,7 +8,6 @@ export function validarFormulario(e){
 switch(e.target.name) {
     case "email" :
         if (expresiones.email.test(e.target.value)){
-         console.log("correcto")
          document.getElementById("emailAuth").style.borderColor = '#25FA00'
          document.getElementById("emailAuth").style.borderWidth = "5px 5px 5px 5px"
         } else {

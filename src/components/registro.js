@@ -41,7 +41,7 @@ export function funcionAutenticar() {
 
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
-    autenticar(email(), password).then(() => {
+    autenticar(email, password).then(() => {
       alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
       verificarEmail();
       /* Aquí iría la Configuración para ir a #/configuracionPerfil*/
