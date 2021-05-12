@@ -17,6 +17,7 @@ auth.useDeviceLanguage();
 export function ingresar(email, password) {
   const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   return promise;
+  preventDefault ()
 }
 export function autenticar(email, password) {
   const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
@@ -46,17 +47,27 @@ return validarFacebook
 }
 
 export function cerrarSesión(){
- const salir= auth.signOut();
-//  return salir
+ 
+  // auth.signOut().then(()=>{
+  // console.log('user signed out')
+
+  // })
+ firebase.auth().signOut().then(function() {
+    console.log('Signed Out');
+  }, function(error) {
+    console.error('Sign Out Error', error);
+  });
+ }
+
 auth.onAuthStateChanged(function(user){
   if(user){
     let email=user.email;
-    alert("Usuario activo"+email)
+    alert("Usuario activo "+email)
   }else{
     console.log("Sesion Cerrada")
   }
 })
-}
+
 
 export function restablecimientoContrasena(email){
 var emailAddress = email.value;
