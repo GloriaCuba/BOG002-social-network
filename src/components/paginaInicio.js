@@ -32,7 +32,7 @@ export function inicio() {
          cerrarSesión()
             window.location = '#/';
             location.reload()
-                   
+                               
       })
    }
    
