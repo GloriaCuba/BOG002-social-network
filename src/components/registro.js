@@ -1,15 +1,18 @@
 import {autenticar, verificarEmail, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
+import { validarFormulario } from '../components/validacionFormulario.js';
+
 export function registrarse() {
   const registro = `
-    <div class="formularioRegistro">
+    <div id="formularioRegistro" class="formularioRegistro">
       <h1>¡Bienvenido!</h1>
       <p> Estas a punto de hacer parte de la red más divertida</p>
-        <div>
-        <input type="email" id="emailAuth" placeholder="E-mail" required >
-        <input type="password" id="passwordAuth" placeholder="Contraseña" required >
-        <input type="password" id="passwordAuth" placeholder="Valida tu contraseña" required >
+        <form id="formularioInputs">
+        <input type="email" id="emailAuth" placeholder="E-mail" name="email" required >
+        <input type="password" id="passwordAuth" placeholder="Contraseña" name="contraseña" required >
+        <p class="descripcionError" id="descripcionError"> La contraseña debe ser de almenos 6 digitos y contener una mayuscula y un numero</p><br>
+        <input type="password" id="passwordAuth2" placeholder="Valida tu contraseña" name="contraseña2" required >
         <button type="button" id="botonUnirse">Unirme</button> 
-        </div>
+        </form>
       <h6>O</h6>  
       <p>Regístrate con tu cuenta de Google o Facebook</p>
       <figure>
@@ -25,7 +28,17 @@ export function registrarse() {
 
 export function funcionAutenticar() {
   const email = document.querySelector('#emailAuth');
+  email.addEventListener("keyup", validarFormulario)
+  email.addEventListener("blur", validarFormulario)
+
   const password = document.querySelector('#passwordAuth');
+  password.addEventListener("keyup", validarFormulario)
+  password.addEventListener("blur", validarFormulario)
+
+  const password2 = document.querySelector('#passwordAuth2');
+  password2.addEventListener("keyup", validarFormulario)
+  password2.addEventListener("blur", validarFormulario)
+
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
     autenticar(email, password).then(() => {

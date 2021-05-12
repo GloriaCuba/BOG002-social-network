@@ -18,3 +18,4 @@ describe('interfazPrincipal', () => {
     expect(typeof interfazPrincipal).toBe('function');
   });
 })
+
