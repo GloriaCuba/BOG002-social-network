@@ -1,7 +1,6 @@
 const expresiones = {
 	contraseña: /^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/, // 4 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-
 }
 
 export function validarFormulario(e){

@@ -13,16 +13,20 @@ const auth = firebase.auth();
 auth.useDeviceLanguage();
 // var db = firebase.firestore();
 
-// signIn, singOut and Logout with firebase
+// funcion ingresar con email y contraseña
 export function ingresar(email, password) {
   const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   return promise;
   preventDefault ()
 }
+
+// funcion registrarse con email y contraseña
 export function autenticar(email, password) {
   const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
   return promise;
 }
+
+// funcion registrarse y verificacion del email escrito
 export function verificarEmail() {
   let actionCodeSettings = {
    /* url: 'http://localhost:5000/#/iniciarSesion/?email=' + auth.currentUser.email,*/
@@ -33,6 +37,7 @@ export function verificarEmail() {
   return promise;
 }
 
+// funcion de ingresar con gmail 
 export function ingresarGmail() {
   let provider = new firebase.auth.GoogleAuthProvider();
   //firebase.auth()
@@ -40,18 +45,15 @@ export function ingresarGmail() {
   return validarGmail
 }
 
+// funcion de ingresar con facebook
 export function ingresarFaceBook(){
 var provider = new firebase.auth.FacebookAuthProvider();
 const validarFacebook=auth.signInWithPopup(provider)
 return validarFacebook
 }
 
+// funcion de cerrar sesion 
 export function cerrarSesión(){
- 
-  // auth.signOut().then(()=>{
-  // console.log('user signed out')
-
-  // })
  firebase.auth().signOut().then(function() {
     console.log('Signed Out');
   }, function(error) {
@@ -68,13 +70,27 @@ auth.onAuthStateChanged(function(user){
   }
 })
 
-
+// funcion restablecer contraseña cuando se ha olvidado
 export function restablecimientoContrasena(email){
 var emailAddress = email.value;
 var restablecer= auth.sendPasswordResetEmail(emailAddress)
 return restablecer
 }
 
+export function UsuarioActivo() {
+var user = firebase.auth().currentUser;
+  if (user) {
+    return true
+  } else {
+   return false
+  }
+}
+
+
+  // auth.signOut().then(()=>{
+  // console.log('user signed out')
+  // })
+  
 
 
 // fireStore 

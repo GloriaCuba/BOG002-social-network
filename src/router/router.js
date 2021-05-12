@@ -4,10 +4,19 @@ import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} f
 import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js'
 import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js'
+import { UsuarioActivo } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
   rootDiv.innerHTML="";
+  if (UsuarioActivo == true) {
+   window.location = '#/inicio'
+   
+   console.log("usuario Activo")
+  } else {
+    window.location = '#/iniciarSesion'
+   
+  }
   switch(routes){
       case '#/iniciarSesion':
         rootDiv.appendChild(iniciarSesion());
@@ -35,7 +44,6 @@ export const router = (routes) => {
         menuEspecies();
         irAlMuro();
         break;
-
       default:
         rootDiv.appendChild(interfazPrincipal());
         ingresoApp();
