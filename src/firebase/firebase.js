@@ -13,6 +13,7 @@ const auth = firebase.auth();
 auth.useDeviceLanguage();
 // var db = firebase.firestore();
 
+
 // signIn, singOut and Logout with firebase
 export function ingresar(email, password) {
   const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
@@ -59,15 +60,21 @@ export function cerrarSesión(){
   });
  }
 
-auth.onAuthStateChanged(function(user){
+/*auth.onAuthStateChanged(function(user){
   if(user){
     let email=user.email;
     alert("Usuario activo "+email)
   }else{
     console.log("Sesion Cerrada")
   }
-})
+})*/
 
+export function usuarioActual(){ 
+let user = firebase.auth().currentUser;
+let email = user.email;
+console.log(email);
+return user
+}
 
 export function restablecimientoContrasena(email){
 var emailAddress = email.value;
