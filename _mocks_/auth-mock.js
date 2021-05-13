@@ -27,7 +27,7 @@ const auth = () => ({
 });
 
 
-   const firebase = {
+ export  const firebase = {
         auth,
     };
 
