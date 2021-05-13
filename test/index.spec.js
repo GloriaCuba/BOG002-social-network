@@ -1,13 +1,21 @@
-// // importamos la funcion que vamos a testear
-global.firebase = jest.fn();
+import { firebaseMock} from '../_mocks_/auth-mock.js'
+import { ingresar} from '../src/firebase/firebase.js'
+// global.firebase = jest.fn();
 import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
-import {registrarse} from '../src/components/registro.js'
+// import {autenticar} from '../src/firebase/firebase.js';
 
+console.log("global",global.firebase)
+console.log("ingresar",ingresar)
 
-describe('registrarse', () => {
+const auth= new ingresar();
+global.firebase=firebaseMock();
+
+describe('ingresar', () => {
   it('debería ser una función', () => {
     console.log("test");
-    expect(typeof registrarse).toBe('function');
+    console.log("global",global.firebase)
+console.log("ingresar",ingresar)
+    expect(typeof auth.ingresar).toBe('function');
   });
 });
 
