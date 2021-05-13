@@ -61,30 +61,14 @@ export function cerrarSesión(){
   });
  }
 
-auth.onAuthStateChanged(function(user){
-  if(user){
-    let email=user.email;
-    alert("Usuario activo "+email)
-  }else{
-    console.log("Sesion Cerrada")
-  }
-})
 
-// funcion restablecer contraseña cuando se ha olvidado
 export function restablecimientoContrasena(email){
 var emailAddress = email.value;
 var restablecer= auth.sendPasswordResetEmail(emailAddress)
 return restablecer
 }
 
-export function UsuarioActivo() {
-var user = firebase.auth().currentUser;
-  if (user) {
-    return true
-  } else {
-   return false
-  }
-}
+
 
 
   // auth.signOut().then(()=>{

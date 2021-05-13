@@ -1,4 +1,4 @@
-import { ingresar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js'
+import { ingresar, ingresarGmail, ingresarFaceBook, usuarioActual} from '../firebase/firebase.js'
 
 export function iniciarSesion() {
    let formularioInicioSesion =
@@ -38,6 +38,7 @@ botonIngresar.addEventListener("click", () => {
       ingresar(email, password ).then(() => {
          window.location = '#/inicio';
          location.reload()
+         usuarioActual();
         }).catch((error) => {
          var errorCode = error.code;
          var errorMessage = error.message;
