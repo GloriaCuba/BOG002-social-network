@@ -1,4 +1,4 @@
-import { ingresar, ingresarGmail, ingresarFaceBook, usuarioActual} from '../firebase/firebase.js'
+import { ingresar, ingresarGmail, ingresarFaceBook} from '../firebase/firebase.js'
 
 export function iniciarSesion() {
    let formularioInicioSesion =
@@ -36,16 +36,15 @@ let botonIngresar = document.querySelector("#botonIngresar");
 
 botonIngresar.addEventListener("click", () => {
       ingresar(email, password ).then(() => {
-         window.location = '#/inicio';
-         location.reload()
-         usuarioActual();
+        window.location = '#/inicio';
+        location.reload()
         }).catch((error) => {
          var errorCode = error.code;
          var errorMessage = error.message;
          alert(errorMessage)
        });
-     })
-};
+     });
+}
 
 // iniciar sesion con google
 export function iniciarConGoogle(){

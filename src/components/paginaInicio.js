@@ -1,4 +1,4 @@
-import { cerrarSesión, usuarioActual} from '../firebase/firebase.js';
+import { cerrarSesión} from '../firebase/firebase.js';
 
 export function inicio() {
    let muro = `
@@ -30,7 +30,7 @@ export function inicio() {
       const salir=document.querySelector("#salir");
       salir.addEventListener("click",()=>{
          cerrarSesión()
-            window.location = '#/';
+            window.location = '';
             location.reload()
                                
       })
