@@ -9,7 +9,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+export const auth = firebase.auth();
 auth.useDeviceLanguage();
 // var db = firebase.firestore();
 
@@ -60,21 +60,18 @@ export function cerrarSesión(){
   });
  }
 
-/*auth.onAuthStateChanged(function(user){
-  if(user){
-    let email=user.email;
-    alert("Usuario activo "+email)
-  }else{
-    console.log("Sesion Cerrada")
-  }
-})*/
+/*export function estadoUsuario
+ let estado = auth.onAuthStateChanged(function(user){
+   console.log(estado)
+ return estado
+})
 
 export function usuarioActual(){ 
 let user = firebase.auth().currentUser;
 let email = user.email;
-console.log(email);
+console.log(user);
 return user
-}
+}*/
 
 export function restablecimientoContrasena(email){
 var emailAddress = email.value;
