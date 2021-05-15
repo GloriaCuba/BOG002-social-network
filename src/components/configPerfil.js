@@ -1,5 +1,5 @@
 export function configPerfil() {
-    const formularioPerfil = `
+  const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
           <h1>Configuración de Perfil</h1>
           <input id='inputUserName' placeholder="Nombre de Usuario">
@@ -21,22 +21,24 @@ export function configPerfil() {
           <button type='button' id='botonGuardar'>Guardar</button>
       </div>
     `;
-    const divPerfil = document.createElement('div');
-    divPerfil.innerHTML = formularioPerfil;
-    return divPerfil;
-  }
-  export function menuEspecies() {
-    const linkMenu = document.getElementById('linkMenuEspecies');
-    const subMenu = document.getElementById('subMenuEspecies');
-    linkMenu.addEventListener('click', function () {
-      subMenu.classList.toggle('mostrarMenu');
-      return console.log('hiciste click');
-    });
-  }
-  export function irAlMuro() {
-    let botonGuardar = document.getElementById("botonGuardar");
-    botonGuardar.addEventListener("click", () => {
-             window.location = '#/inicio';
-             location.reload()
-            });
+  const divPerfil = document.createElement('div');
+  divPerfil.innerHTML = formularioPerfil;
+  return divPerfil;
+}
+export function menuEspecies() {
+  const linkMenu = document.getElementById('linkMenuEspecies');
+  const subMenu = document.getElementById('subMenuEspecies');
+  linkMenu.addEventListener('click', () => {
+    subMenu.classList.toggle('mostrarMenu');
+    // eslint-disable-next-line no-console
+    return console.log('hiciste click');
+  });
+}
+export function irAlMuro() {
+  const botonGuardar = document.getElementById('botonGuardar');
+  botonGuardar.addEventListener('click', () => {
+    window.location = '#/inicio';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  });
 }

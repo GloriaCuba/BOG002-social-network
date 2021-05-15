@@ -1,17 +1,22 @@
-import { iniciarSesion,funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena } from '../components/iniciarSesion.js';
-import { inicio,salir } from '../components/paginaInicio.js'
-import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} from '../components/registro.js'
-import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
-import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js'
-import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js'
-import { auth } from '../firebase/firebase.js'
+import {
+  iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
+} from '../components/iniciarSesion.js';
+import { inicio, salir } from '../components/paginaInicio.js';
+import {
+  registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
+} from '../components/registro.js';
+import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
+import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
+import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js';
+import { auth } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
-  rootDiv.innerHTML="";
-  auth.onAuthStateChanged(function(user) {
+  rootDiv.innerHTML = '';
+  auth.onAuthStateChanged((user) => {
     if (user) {
-        switch(routes){
+      // eslint-disable-next-line default-case
+      switch (routes) {
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
           funcionIngresar();
@@ -23,17 +28,17 @@ export const router = (routes) => {
           rootDiv.appendChild(registrarse());
           funcionAutenticar();
           registroConGoogle();
-          registroConFacebook()
+          registroConFacebook();
           break;
         case '#/inicio':
           rootDiv.appendChild(inicio());
-          salir()
+          salir();
           break;
         case '#/restablecerContrasena':
-          rootDiv.appendChild(resetContraseña())
+          rootDiv.appendChild(resetContraseña());
           restableceContrasena();
           break;
-         case '#/configuracionPerfil':
+        case '#/configuracionPerfil':
           rootDiv.appendChild(configPerfil());
           menuEspecies();
           irAlMuro();
@@ -43,10 +48,10 @@ export const router = (routes) => {
           ingresoApp();
           funcionRegistrarse();
           break;
-        }
       }
-      else {
-      switch(routes){
+    } else {
+      // eslint-disable-next-line default-case
+      switch (routes) {
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
           funcionIngresar();
@@ -58,14 +63,12 @@ export const router = (routes) => {
           rootDiv.appendChild(registrarse());
           funcionAutenticar();
           registroConGoogle();
-          registroConFacebook()
+          registroConFacebook();
           break;
-        
         case '#/restablecerContrasena':
-          rootDiv.appendChild(resetContraseña())
+          rootDiv.appendChild(resetContraseña());
           restableceContrasena();
           break;
-         
         case '':
           rootDiv.appendChild(interfazPrincipal());
           ingresoApp();
@@ -77,21 +80,16 @@ export const router = (routes) => {
           ingresoApp();
           funcionRegistrarse();
           break;
-        }
       }
-   }); 
-}
-
-
-
-
+    }
+  });
+};
 
 // default :
 //         rootDiv.appendChild(iniciarSesion());
 //         funcionIngresar();
 //         funcionRegistrarse();
 //         break;
-
 
 // rootDiv.innerHTML = routes["#/" + location.hash];
 // console.log(location.hash);

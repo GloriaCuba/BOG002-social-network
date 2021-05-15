@@ -1,7 +1,7 @@
-import { cerrarSesión} from '../firebase/firebase.js';
+import { cerrarSesión } from '../firebase/firebase.js';
 
 export function inicio() {
-   let muro = `
+  const muro = `
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
    <button type="button" id="salir">Salir</button> 
@@ -20,40 +20,40 @@ export function inicio() {
    </div>
    </div>
    `;
-   const divMuro = document.createElement("div");
-   divMuro.innerHTML = muro;
+  const divMuro = document.createElement('div');
+  divMuro.innerHTML = muro;
 
-   return divMuro
-    }
-   
-   export function salir(){
-      const salir=document.querySelector("#salir");
-      salir.addEventListener("click",()=>{
-         cerrarSesión()
-            window.location = '';
-            location.reload()
-                               
-      })
-   }
-   
+  return divMuro;
+}
 
-   // const listaPublicaciones = document.querySelector("#publicaciones")
-   //  export const setUpPublicaciones = data => {
-   //      if(data.length){
-   //         let html = ""
-   //         data.forEach(doc => {
-   //          const post = doc.data();
-   //          const li = `<li> 
-   //             <h5>${post.titulo}</h5>
-   //             <p>${post.descripcion}</p>
-   //             </li>
-   //             `;
-   //           html += li;
-   //         });
-   //         listaPublicaciones.innerHTML = html
-   //      } else {
-   //         listaPublicaciones.innerHTML = "<p>logueate para ver las públicaciones</p>"
-   //      }
-   //   };
+export function salir() {
+  // eslint-disable-next-line no-shadow
+  const salir = document.querySelector('#salir');
+  salir.addEventListener('click', () => {
+    cerrarSesión();
+    window.location = '';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  });
+}
 
-   //   post(setUpPublicaciones);
+// const listaPublicaciones = document.querySelector("#publicaciones")
+//  export const setUpPublicaciones = data => {
+//      if(data.length){
+//         let html = ""
+//         data.forEach(doc => {
+//          const post = doc.data();
+//          const li = `<li> ;
+//             <h5>${post.titulo}</h5>
+//             <p>${post.descripcion}</p>
+//             </li>
+//             `;
+//           html += li;
+//         });
+//         listaPublicaciones.innerHTML = html
+//      } else {
+//         listaPublicaciones.innerHTML = "<p>logueate para ver las públicaciones</p>"
+//      }
+//   };
+
+//   post(setUpPublicaciones)

@@ -1,8 +1,7 @@
-import { ingresar, ingresarGmail, ingresarFaceBook} from '../firebase/firebase.js'
+import { ingresar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
 
 export function iniciarSesion() {
-   let formularioInicioSesion =
-   `
+  const formularioInicioSesion = `
      <form class="formulario" id="formulario" method ="post">
          <h1>¡Hola de nuevo! </h1> 
          <div class="emailandpassword">
@@ -21,65 +20,71 @@ export function iniciarSesion() {
       
      </form>
     
- `  
-const divFormulario = document.createElement("div");
-divFormulario.className = "formularioInicioSesion"
-divFormulario.innerHTML = formularioInicioSesion;
-return divFormulario
+ `;const divFormulario = document.createElement('div');
+  divFormulario.className = 'formularioInicioSesion';
+  divFormulario.innerHTML = formularioInicioSesion;
+  return divFormulario;
 }
 
 // iniciar sesion con email y contraseña
 export function funcionIngresar() {
-let email = document.getElementById("email"); 
-let password = document.getElementById("password");
-let botonIngresar = document.querySelector("#botonIngresar");
+  const email = document.getElementById('email');
+  const password = document.getElementById('password');
+  const botonIngresar = document.querySelector('#botonIngresar');
 
-botonIngresar.addEventListener("click", () => {
-      ingresar(email, password ).then(() => {
-        window.location = '#/inicio';
-        location.reload()
-        }).catch((error) => {
-         var errorCode = error.code;
-         var errorMessage = error.message;
-         alert(errorMessage)
-       });
-     });
+  botonIngresar.addEventListener('click', () => {
+    ingresar(email, password).then(() => {
+      window.location = '#/inicio';
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+    }).catch((error) => {
+    // const errorCode = error.code;
+      const errorMessage = error.message;
+      // eslint-disable-next-line no-alert
+      alert(errorMessage);
+    });
+  });
 }
 
 // iniciar sesion con google
-export function iniciarConGoogle(){
-   let registroGoogle=document.getElementById("botonGoogle");
-   registroGoogle.addEventListener("click",() =>{
-      ingresarGmail().then(()=> {
-         window.location = '#/inicio';
-         location.reload()
-         console.log("ingreso gmail")
-         
-      }).catch(err => {
-         console.log(err)
-      
-      })
-      })
-   }
-// iniciar sesion con facebook        
-export function iniciarConFacebook(){
-   let registroFacebook=document.getElementById("botonFacebook");
-   registroFacebook.addEventListener("click",() =>{
-      ingresarFaceBook().then(()=> {
+export function iniciarConGoogle() {
+  const registroGoogle = document.getElementById('botonGoogle');
+  registroGoogle.addEventListener('click', () => {
+    ingresarGmail().then(() => {
       window.location = '#/inicio';
-      location.reload()
-      console.log("ingreso facebook")
-      }).catch(err => {
-      console.log(err)  
-      })
-    })
-   }
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+      // eslint-disable-next-line no-console
+      console.log('ingreso gmail');
+    }).catch((err) => {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    });
+  });
+}
+
+// iniciar sesion con facebook
+export function iniciarConFacebook() {
+  const registroFacebook = document.getElementById('botonFacebook');
+  registroFacebook.addEventListener('click', () => {
+    ingresarFaceBook().then(() => {
+      window.location = '#/inicio';
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+      // eslint-disable-next-line no-console
+      console.log('ingreso facebook');
+    }).catch((err) => {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    });
+  });
+}
 
 export function olvidarContrasena() {
- let nuevaContrasena =document.getElementById("olvidarContrasena");
- nuevaContrasena.addEventListener("click",() =>{
-    console.log("hola")
-   window.location = '#/restablecerContrasena';
-   location.reload()
-  })
+  const nuevaContrasena = document.getElementById('olvidarContrasena');
+  nuevaContrasena.addEventListener('click', () => {
+    window.location = '#/restablecerContrasena';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  });
 }
