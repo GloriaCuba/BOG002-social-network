@@ -5,6 +5,7 @@ export function inicio() {
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
    <button type="button" id="salir">Salir</button> 
+   <button type="button" id="editarPerfil">Configurar perfil</button> 
    <div id="containerFiltro">
    <h3>!Encuentra a tus amigos¡</h3>
    <img src="Img/Perro.jpg" width= 200px height=200px id="filtroCaninos">
@@ -32,6 +33,16 @@ export function salir() {
   salir.addEventListener('click', () => {
     cerrarSesión();
     window.location = '';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  });
+}
+
+export function editarPerfil() {
+  // eslint-disable-next-line no-shadow
+  const editarPerfil = document.querySelector('#editarPerfil');
+  editarPerfil.addEventListener('click', () => {
+    window.location = '#/configuracionPerfil';
     // eslint-disable-next-line no-restricted-globals
     location.reload();
   });

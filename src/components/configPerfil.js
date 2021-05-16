@@ -2,13 +2,13 @@ export function configPerfil() {
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
           <h1>Configuración de Perfil</h1>
-          <input type='text' id='userId'>User Id </input><br>
-          <input id='nombreUsuario' placeholder="Nombre de Usuario">
-          <input id='especie' placeholder="Especie">
+          <input type='text' id='userId'placeholder="Nombre de Usuario"></input>
+          <input id='nombreMascota' placeholder="Nombre de tu mascota"></input>
+          <input id='especie' placeholder="Especie"></imput>
+          <button id='btnDatos'>Guardar</button>
           <p>Sube una imagen de perfil</p>
           <input type='file' id='inputUserImage'>
-          <button id='btnDatos'>Add</button>
-          <ul class="menuEspecies">
+            <ul class="menuEspecies">
               <li><a id="linkMenuEspecies" href="#">Selecciona tu especie</a>
                   <ul class="subMenuEspecies" id="subMenuEspecies">
                       <li><a href="#">Canino</a></li>
@@ -48,7 +48,7 @@ export function irAlMuro() {
 
 export function recoletandoDatos() {
   const userId = document.getElementById('userId');
-  const nomUsuario = document.getElementById('nombreUsuario');
+  const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('especie');
   const database = firebase.firestore();
   const datosCollection = database.collection('Datos');
@@ -58,8 +58,8 @@ export function recoletandoDatos() {
     console.log('click');
     e.preventDefault();
     datosCollection.doc(userId.value).set({
-      nomUsuario: nomUsuario.value,
-      especie: especie.value,
+      Nombre_Mascota: nomMascota.value,
+      Especie: especie.value,
     })
       // eslint-disable-next-line no-console
       .then(() => { console.log('Data'); })
