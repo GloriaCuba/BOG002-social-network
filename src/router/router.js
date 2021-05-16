@@ -7,7 +7,9 @@ import {
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
-import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js';
+import {
+  configPerfil, menuEspecies, irAlMuro, recoletandoDatos,
+} from '../components/configPerfil.js';
 import { auth } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
@@ -42,6 +44,7 @@ export const router = (routes) => {
           rootDiv.appendChild(configPerfil());
           menuEspecies();
           irAlMuro();
+          recoletandoDatos();
           break;
         case '':
           rootDiv.appendChild(interfazPrincipal());

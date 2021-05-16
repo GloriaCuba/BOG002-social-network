@@ -35,7 +35,7 @@ export function funcionAutenticar() {
 
   const password = document.querySelector('#passwordAuth');
   password.addEventListener('keyup', validarFormulario);
-  password.addEventListener('blur, validarFormulario');
+  password.addEventListener('blur', validarFormulario);
 
   const password2 = document.querySelector('#passwordAuth2');
   password2.addEventListener('keyup', validarFormulario);
