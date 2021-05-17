@@ -1,7 +1,7 @@
 import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
-import { inicio, salir, editarPerfil } from '../components/paginaInicio.js';
+import { inicio, salir, editarPerfil, postMuro } from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
 } from '../components/registro.js';
@@ -36,6 +36,7 @@ export const router = (routes) => {
           rootDiv.appendChild(inicio());
           salir();
           editarPerfil();
+          postMuro();
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());

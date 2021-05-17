@@ -13,11 +13,11 @@ export function inicio() {
    <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
    <img src="Img/pez1.jpg" width= 200px height=200px id="filtroRoedores">
    </div>
-   <div id="post">
+   <div id="muro">
    <h4>¿Que estas pensando<h4>
-   <input type="text" id"text"></input><br>
-   <input type="text" id"text"></input><br>
-   <input type="text" id"text"></input><br>
+   <input type="text" id="mensaje">Post</input><br>
+   <button type="button" id="postear">Enviar</button>
+   
    </div>
    </div>
    `;
@@ -45,6 +45,28 @@ export function editarPerfil() {
     window.location = '#/configuracionPerfil';
     // eslint-disable-next-line no-restricted-globals
     location.reload();
+  });
+}
+
+export function postMuro() {
+// const idPost = document.getElementById('la');
+  const mensaje = document.getElementById('mensaje');
+  const postear = document.getElementById('postear');
+  // const especie = document.getElementById('especie');
+  const database = firebase.firestore();
+  const posteando = database.collection('muro');
+  // const btndatos = document.getElementById('btnDatos');
+  postear.addEventListener('click', (e) => {
+    // eslint-disable-next-line no-console
+    console.log('posteo');
+    e.preventDefault();
+    posteando.add({
+      mensaje: mensaje.value,
+    })
+      // eslint-disable-next-line no-console
+      .then(() => { console.log('Data'); })
+      // eslint-disable-next-line no-console
+      .catch((error) => { console.error(error); });
   });
 }
 
