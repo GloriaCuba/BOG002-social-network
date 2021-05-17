@@ -1,23 +1,9 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyChnpSpbN4XUjpjy-cVAXdAhlE8aMNIjX0",
-  authDomain: "social-network-sn9.firebaseapp.com",
-  projectId: "social-network-sn9",
-  storageBucket: "social-network-sn9.appspot.com",
-  messagingSenderId: "227673003549",
-  appId: "1:227673003549:web:c58d79d806e57adb2f58f4",
-  measurementId: "G-NX0STFY82X"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-export const auth = firebase.auth();
-auth.useDeviceLanguage();
-// var db = firebase.firestore();
 
 // funcion ingresar con email y contraseña
 export function ingresar(email, password) {
-  const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+  const promise = auth.signInWithEmailAndPassword(email.value, password.value)
   return promise;
-  preventDefault ()
+  // preventDefault ()
 }
 
 // funcion registrarse con email y contraseña
@@ -33,21 +19,21 @@ export function verificarEmail() {
     url: 'http://localhost:5000/#/iniciarSesion',
     handleCodeInApp: true,
   };
-  const promise = auth.currentUser.sendEmailVerification(actionCodeSettings);
+  const promise = firebase.auth().currentUser.sendEmailVerification(actionCodeSettings);
   return promise;
 }
 
 // funcion de ingresar con gmail 
 export function ingresarGmail() {
-  let provider = new firebase.auth.GoogleAuthProvider();
+  let provider = new firebase.auth().GoogleAuthProvider();
   //firebase.auth()
-  const validarGmail=auth.signInWithPopup(provider)
+  const validarGmail= firebase.auth().signInWithPopup(provider)
   return validarGmail
 }
 
 // funcion de ingresar con facebook
 export function ingresarFaceBook(){
-var provider = new firebase.auth.FacebookAuthProvider();
+var provider = new firebase.auth().FacebookAuthProvider();
 const validarFacebook=auth.signInWithPopup(provider)
 return validarFacebook
 }
@@ -61,26 +47,11 @@ export function cerrarSesión(){
   });
  }
 
-/*export function estadoUsuario
- let estado = auth.onAuthStateChanged(function(user){
-   console.log(estado)
- return estado
-})
-
-export function usuarioActual(){ 
-let user = firebase.auth().currentUser;
-let email = user.email;
-console.log(user);
-return user
-}*/
-
 export function restablecimientoContrasena(email){
 var emailAddress = email.value;
 var restablecer= auth.sendPasswordResetEmail(emailAddress)
 return restablecer
 }
-
-
 
 
   // auth.signOut().then(()=>{

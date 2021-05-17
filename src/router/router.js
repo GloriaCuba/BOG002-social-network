@@ -1,15 +1,15 @@
 import { iniciarSesion,funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena } from '../components/iniciarSesion.js';
-import { inicio,salir } from '../components/paginaInicio.js'
+import { inicio,salir, menuToggle } from '../components/paginaInicio.js'
 import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} from '../components/registro.js'
 import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js'
 import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js'
-import { auth } from '../firebase/firebase.js'
+// import { auth } from '../firebase/configFirebase.js'
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
   rootDiv.innerHTML="";
-  auth.onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         switch(routes){
         case '#/iniciarSesion':
@@ -27,6 +27,7 @@ export const router = (routes) => {
           break;
         case '#/inicio':
           rootDiv.appendChild(inicio());
+          menuToggle();
           salir()
           break;
         case '#/restablecerContrasena':
@@ -44,8 +45,7 @@ export const router = (routes) => {
           funcionRegistrarse();
           break;
         }
-      }
-      else {
+       } else {
       switch(routes){
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
