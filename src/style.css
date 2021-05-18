@@ -2,12 +2,13 @@
 *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
 .container{
     height: 100vh;
     width: 100%;
     font-family: 'Cherry Cream Soda', cursive;
-    
+
  }
 /************************************Interfaz principal***************************************************/
 
@@ -26,7 +27,7 @@
     grid-template-columns:repeat (4,1fr);
     grid-template-rows: repeat (5,1fr);
     /* justify-content: center; */
-    
+
  }
  #home #titulo{
     grid-column-start:2;
@@ -36,7 +37,7 @@
     justify-self:center;
     align-self: center;
     font-size: 2.5em;
-    color:white; 
+    color:white;
     -webkit-text-stroke: 0.02vw black;
     font-weight: bolder;
     text-align: center;
@@ -58,7 +59,7 @@
     transform: rotate(20deg);
   }
 
-  
+
   #home #fondoPerro2{
     grid-column-start:2;
     grid-column-end: 3;
@@ -81,7 +82,7 @@
     -webkit-text-stroke: 0.02vw  #045C73;
     color:hsl(203, 56%, 72%);
     font-size:1.5em;
-    
+
 }
 
 #home #botonIngreso{
@@ -96,8 +97,8 @@
     color:black ;
     border: 0.1em solid rgb(0, 0, 0);
     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-    border-radius: 0.2em; 
-    background: white;  
+    border-radius: 0.2em;
+    background: white;
     font-size: 1.1em;
     font-family: inherit;
 }
@@ -123,7 +124,7 @@
 /************************************pagina inicio de sesion***************************************************/
 
  .formulario {
-    background-color: #26798E; 
+    background-color: #26798E;
     height: 100vh;
     width: 100%;
     display: grid;
@@ -157,7 +158,7 @@
     border-radius: 0.2px;
     margin: 0.5em;
     text-align: center;
-    
+
 }
 
 .emailandpassword button {
@@ -227,7 +228,7 @@
     /* grid-template-columns: 90% ;
     grid-template-rows: 20% 50% 10% 30%;
     justify-content: center;
-  
+
     align-items: center;
 }
 
@@ -252,7 +253,7 @@
    justify-self:center;
    align-self:center; */
    /* margin-left: 5%; */
- 
+
 
 /************************************Registro***************************************************/
 
@@ -276,7 +277,7 @@
     .formularioRegistro p{
     color: white;
     font-size: 12px;
-    text-align:center;  
+    text-align:center;
     }
 
    .formularioRegistro input{
@@ -301,8 +302,8 @@
    }
    .formularioRegistro h6{
     display:inline-block;
-    position:relative;   
-    color:white; 
+    position:relative;
+    color:white;
     font-size: 12px;
     font-weight: normal;
    }
@@ -311,8 +312,8 @@
        position:absolute;
        width: 80px;
        height:3px;
-       background-color:#F043A0;   
-       top:6px; 
+       background-color:#F043A0;
+       top:6px;
     }
     .formularioRegistro h6::before{
         left: -95px;
@@ -375,8 +376,8 @@
         color:black ;
         border: 0.1em solid rgb(0, 0, 0);
         box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-        border-radius: 0.2em; 
-        background: none;  
+        border-radius: 0.2em;
+        background: none;
         font-size: 1.1em;
         font-family: inherit;
     }
@@ -387,8 +388,8 @@
     /************************************Muro***************************************************/
 
  #contenedorMuro{
-     background-image: url(Img/fondo2.png);
-     background-color:white;
+     /* background-image: url(Img/fondo2.png); */
+     background-color: #045C73;
      background-size: contain;
      background-repeat:no-repeat;
      /* background-position: absolute; */
@@ -411,23 +412,18 @@
     color: white;
     font-family: 'Cherry Cream Soda', cursive;
  }
- 
- #contenedorMuro #salir{
+
+ /* #contenedorMuro #salir{
     grid-column-start:3;
     grid-column-end: 3;
     grid-row-start:1;
     grid-row-end:2;
     justify-self:end;
-    align-self: start; 
-    width: 6em;
-    height: 2em;
-    margin: 1em;
-    font-weight: bolder;
-    cursor: pointer;
- }
- 
-#contenedorMuro #post{
-    grid-column-start: 2;
+    align-self: start;
+ } */
+
+ #contenedorMuro #post{
+    grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start:2 ;
     grid-row-end: 3;
@@ -435,26 +431,120 @@
     align-self: center;
     background-color:transparent;
     padding: 20%;
-    
-}
 
-#containerFiltro{
+ }
+
+ #containerFiltro{
+    margin-top: 5em;
     justify-self:center;
-}
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:1;
+    grid-gap: 10em;
+ }
 
-#containerFiltro h3{
+ #containerFiltro h3{
     text-align: center;
-    color: #26798E;
+    color: white;
     margin-top: 6em;
-}
-
-#containerFiltro img{
+ }
+ #containerFiltro img{
     border-radius: 100%;
-    height: 5em;
-    width: 5em;
-    margin: 1em; 
+    height:3em;
+    width: 3em;
+    margin: 1em;
     margin-bottom: 10px;
-}
+ }
+
+ #post h4{
+     color:white;
+     margin-top: 2em;
+
+ }
+
+ .menu {
+     top: 100%;
+     right: 0;
+     background: rgb(25, 156, 179);
+     height: 0;
+     overflow: hidden;
+     justify-self: right;
+     text-align: center;
+     grid-column-start:3;
+     grid-column-end:3;
+     grid-row-start:1;
+     grid-row-end:2;
+     margin-top: 4em;
+ }
+
+ .menu button {
+     color: rgb(255, 255, 255);
+     background-color: rgb(25, 156, 179);
+ }
+
+ .menu #editarPerfil{
+     width: 10em;
+     height: 4em;
+     font-weight: bolder;
+     border: none;
+     cursor: pointer;
+ }
+ .menu #salir{
+     width: 10em;
+     height: 4em;
+     font-weight: bolder;
+     border: none;
+     cursor: pointer;
+ }
+
+ .menu button:hover,
+ .menu button:focus {
+     color: black;
+     text-transform: uppercase;
+     border-color: 2em rgb(5, 7, 4) solid;
+ }
+
+ .opcionesMenuOpen {
+     height: auto;
+     z-index: 100;
+ }
+
+     .menuToggle {
+         padding: 1em;
+         position: absolute;
+         top: .3em;
+         right: .2em;
+     }
+     .menuToggleOpen .inicio{
+         transform: rotate(45deg);
+         }
+     .menuToggleOpen .inicio::before{
+      opacity: 0;
+     }
+     .menuToggleOpen .inicio::after{
+         transform: translateY(-3px) rotate(-90deg);
+        }
+     .inicio,
+     .inicio::before,
+     .inicio::after{
+     content: " ";
+     display: block;
+     background: rgb(0, 0, 0);
+     height: 3px;
+     width: 1.7em;
+     border-radius: 3px;
+     }
+     .inicio::before{
+         transform: translateY(-6px);
+     }
+     .inicio::after{
+         transform: translateY(3px);
+     }
+
+
+
+
 
 
 footer{
@@ -474,10 +564,10 @@ footer{
     justify-content:space-evenly;
     display:flex;
   }
-  
+
   footer a{
       background-color: transparent;
-      color: white;    
+      color: white;
   }
 
   .descripcionError {

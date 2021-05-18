@@ -4,15 +4,13 @@ export function inicio() {
    let muro = `
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
-   <div class="iconoMenu"">
-      <img src="Img/menu-regular.png" width= 15em height=40em id="iconoMenu">
+   <div id="menu" class="menu">
+      <button type="button" id="salir">Salir</button> 
+      <button type="button" id="editarPerfil">Configurar perfil</button>
    </div>
-   <div id="menu" class="menu active">
-   <ul>
-     <li><button type="button" id="perfil" class="perfil">Perfil</button></li>
-     <li>  <button type="button" id="salir" class="salir">Salir</button></li>
-   </ul>
-   </div>
+   <div id="menuToggle" class="menuToggle">
+      <div class="inicio"></div>
+   </div> 
    <div id="containerFiltro">
       <h3>!Encuentra a tus amigos¡</h3>
       <img src="Img/Perro.jpg" width= 200px height=200px id="filtroCaninos">
@@ -33,34 +31,44 @@ export function inicio() {
 
    return divMuro
     }  
+
+   //  <button type="button" id="perfil" class="perfil">Perfil</button>
+   //  <button type="button" id="salir" class="salir">Salir</button>
+
+ 
+//     <div class="iconoMenu"">
+//     <img src="Img/menu-regular.png" id="iconoMenu">
+//  </div>
+
+ 
    
+   export function menuToggle() {
+      let icono = document.querySelector("#menuToggle")
+        icono.addEventListener("click", () => {
+         let menu = document.querySelector("#menu");  
+         menu.classList.toggle("opcionesMenuOpen")
+         let menuOpen = document.getElementById('menuToggle');
+         menuOpen.classList.toggle('menuToggleOpen'); 
+        })          
+      }
+
+      export function irAperfil(){
+         const perfil=document.getElementById("editarPerfil");
+         perfil.addEventListener("click",()=>{
+               window.location = '#/configuracionPerfil';
+               location.reload()                          
+         })
+   }
+
    export function salir(){
       const salir=document.querySelector("#salir");
       salir.addEventListener("click",()=>{
-         cerrarSesión()
+            cerrarSesión()
             window.location = '';
             location.reload()                          
       })
    }
-
-   export function menuToggle() {
-   const icono = document.querySelector("#iconoMenu")
-   const menu = document.querySelector("menu");
-
-     icono.addEventListener("click", () => {
-      menu.classList.toggle("active");
-      document.body.classList.toggle("opacity");
-       })
-     }
-
-   // const rutaActual = e.target.getAttribute("src")
-   // if (rutaActual== "Img/menu-regular.png"){
-   //    e.target.setAttribute("src", "Img/menu-regular2.png")
-   // }else {
-   //    e.target.setAttribute("src", "Img/menu-regular2.png")
-   // }
-
-   
+  
 
    // const listaPublicaciones = document.querySelector("#publicaciones")
    //  export const setUpPublicaciones = data => {

@@ -365,20 +365,6 @@
    font-family: 'Cherry Cream Soda', cursive;
 }
 
-#contenedorMuro #salir{
-   grid-column-start:3;
-   grid-column-end: 3;
-   grid-row-start:1;
-   grid-row-end:2;
-   justify-self:end;
-   align-self: start; 
-   width: 6em;
-   height: 2em;
-   margin: 1em;
-   font-weight: bolder;
-   cursor: pointer;
-}
-
 #contenedorMuro #post{
    grid-column-start: 1;
    grid-column-end: 3;
@@ -419,6 +405,92 @@
     
 }
 
+.menu {
+    top: 100%;
+    right: 0;
+    background: rgb(25, 156, 179);
+    height: 0;
+    overflow: hidden;
+    justify-self: right;
+    text-align: center;
+    grid-column-start:3;
+    grid-column-end:3;
+    grid-row-start:1;
+    grid-row-end:2;
+    margin-top: 8em;
+  
+}
+
+.menu button {
+    color: rgb(255, 255, 255); 
+    background-color: rgb(25, 156, 179);
+}
+
+.menu #editarPerfil{
+    width: 10em;
+    height: 4em;
+    font-weight: bolder;
+    border: none;
+}
+
+/* #contenedorMuro #salir{
+    grid-column-start:3;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;
+    justify-self:end;
+    align-self: start; 
+ } */
+
+.menu #salir{
+    width: 10em;
+    height: 4em;
+    font-weight: bolder;
+    border: none;
+}
+
+.menu button:hover, 
+.menu button:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.opcionesMenuOpen {
+    height: auto;
+    z-index: 100;
+}
+
+    .menuToggle {
+        padding: 1em;
+        position: absolute;
+        top: .3em;
+        right: .2em;
+    }
+    .menuToggleOpen .inicio{
+        transform: rotate(45deg);
+        }
+    .menuToggleOpen .inicio::before{
+     opacity: 0;
+    }
+    .menuToggleOpen .inicio::after{
+        transform: translateY(-3px) rotate(-90deg);
+       }   
+    .inicio, 
+    .inicio::before,
+    .inicio::after{
+    content: " ";
+    display: block;
+    background: white;
+    height: 3px;
+    width: 1.7em;
+    border-radius: 3px;
+    } 
+    .inicio::before{
+        transform: translateY(-6px);
+    }
+    .inicio::after{
+        transform: translateY(3px);
+    }
  /************************************ restablecimiento de la contraseña***************************************************/
 
     .formularioRestablecerContrasena {
@@ -473,52 +545,5 @@
     .descripcionError {
         display: none;
     }
-
-    .iconoMenu{
-        grid-column-start:3;
-        grid-column-end:3;
-        grid-row-start:1;
-        grid-row-end:1;
-        z-index: 10;
-        position: relative;
-
-    }
-    .iconoMenu img{
-        vertical-align: top;
-        background-color: blue;
-    }
-
-    .menu {
-        background-color: blueviolet;
-        box-shadow: 2px 0px 5px 2px rgb(66,66,66);
-        width: 10em;
-        height: 50vh;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transition: all .5s ease;
-    }
-
-    .menu ul {
-        list-style: none;
-        justify-content: center;
-        margin-top: 5em;
-    }
-
-    menu ul li {
-        color: white;
-        display: block;
-    }
-
-    .active{
-        transform: translate(-600px)
-    }
-
-    .opacity{
-        background-color: rgba(0,0, 0, 0.5);
-        transition: all .5s ease;
-    }
-
-
 }
 

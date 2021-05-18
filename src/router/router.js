@@ -1,9 +1,10 @@
 import { iniciarSesion,funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena } from '../components/iniciarSesion.js';
-import { inicio,salir, menuToggle } from '../components/paginaInicio.js'
+import { inicio, menuToggle, irAperfil, salir } from '../components/paginaInicio.js'
 import { registrarse, funcionAutenticar,registroConGoogle,registroConFacebook} from '../components/registro.js'
 import { interfazPrincipal, ingresoApp, funcionRegistrarse} from '../components/intefazPrincipal.js'
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js'
 import { configPerfil, menuEspecies, irAlMuro } from '../components/configPerfil.js'
+import { perfil } from '../components/perfil.js'
 // import { auth } from '../firebase/configFirebase.js'
 
 const rootDiv = document.getElementById('root');
@@ -27,17 +28,21 @@ export const router = (routes) => {
           break;
         case '#/inicio':
           rootDiv.appendChild(inicio());
+          irAperfil();
+          salir();
           menuToggle();
-          salir()
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña())
           restableceContrasena();
           break;
-         case '#/configuracionPerfil':
+        case '#/configuracionPerfil':
           rootDiv.appendChild(configPerfil());
           menuEspecies();
           irAlMuro();
+          break;
+        case '#/perfil':
+          rootDiv.appendChild(perfil());
           break;
         case '':
           rootDiv.appendChild(interfazPrincipal());
@@ -65,7 +70,9 @@ export const router = (routes) => {
           rootDiv.appendChild(resetContraseña())
           restableceContrasena();
           break;
-         
+          case '#/perfil':
+            rootDiv.appendChild(interfazPrincipal());
+            break;
         case '':
           rootDiv.appendChild(interfazPrincipal());
           ingresoApp();

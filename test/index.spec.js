@@ -10,12 +10,34 @@ console.log(mockFirebase());
 describe('autenticar', () => {
   test('deberia de registrarme', () => {
      autenticar('ben@example.com', 'examplePass').then((user) => {
-        //console.log(user);
+        console.log(user);
         expect(typeof user).toBe("object");
         expect(user.Email).toBe("ben@example.com")
       })
   })
 })
+// import { firebase} from '../_mocks_/auth-mock.js'
+// import { ingresar} from '../src/firebase/firebase.js'
+// // global.firebase = jest.fn();
+// // import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
+// // import {autenticar} from '../src/firebase/firebase.js';
+
+// //console.log("global",global.firebase)
+// // console.log("ingresar",ingresar)
+
+// const auth= new ingresar();
+// global.firebase=firebase();
+
+// describe('ingresar', () => {
+//   it('debería ser una función', () => {
+//    console.log("ingresar")
+//     expect(typeof auth.ingresar).toBe('function');
+//   });
+// });
+
+
+
+
 
 // describe('funcionRegistrarse', () => {
 //   it('debería ser una función', () => {
