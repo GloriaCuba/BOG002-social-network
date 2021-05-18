@@ -1,11 +1,14 @@
 export function configPerfil() {
-    const formularioPerfil = `
+  const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
           <h1>Configuración de Perfil</h1>
-          <input id='inputUserName' placeholder="Nombre de Usuario">
+          <input type='text' id='userId'placeholder="Nombre de Usuario"></input>
+          <input id='nombreMascota' placeholder="Nombre de tu mascota"></input>
+          <input id='especie' placeholder="Especie"></imput>
+          <button id='btnDatos'>Guardar</button>
           <p>Sube una imagen de perfil</p>
           <input type='file' id='inputUserImage'>
-          <ul class="menuEspecies">
+            <ul class="menuEspecies">
               <li><a id="linkMenuEspecies" href="#">Selecciona tu especie</a>
                   <ul class="subMenuEspecies" id="subMenuEspecies">
                       <li><a href="#">Canino</a></li>
@@ -21,22 +24,46 @@ export function configPerfil() {
           <button type='button' id='botonGuardar'>Guardar</button>
       </div>
     `;
-    const divPerfil = document.createElement('div');
-    divPerfil.innerHTML = formularioPerfil;
-    return divPerfil;
-  }
-  export function menuEspecies() {
-    const linkMenu = document.getElementById('linkMenuEspecies');
-    const subMenu = document.getElementById('subMenuEspecies');
-    linkMenu.addEventListener('click', function () {
-      subMenu.classList.toggle('mostrarMenu');
-      return console.log('hiciste click');
-    });
-  }
-  export function irAlMuro() {
-    let botonGuardar = document.getElementById("botonGuardar");
-    botonGuardar.addEventListener("click", () => {
-             window.location = '#/inicio';
-             location.reload()
-            });
+  const divPerfil = document.createElement('div');
+  divPerfil.innerHTML = formularioPerfil;
+  return divPerfil;
+}
+export function menuEspecies() {
+  const linkMenu = document.getElementById('linkMenuEspecies');
+  const subMenu = document.getElementById('subMenuEspecies');
+  linkMenu.addEventListener('click', () => {
+    subMenu.classList.toggle('mostrarMenu');
+    // eslint-disable-next-line no-console
+    return console.log('hiciste click');
+  });
+}
+export function irAlMuro() {
+  const botonGuardar = document.getElementById('botonGuardar');
+  botonGuardar.addEventListener('click', () => {
+    window.location = '#/inicio';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  });
+}
+
+export function recoletandoDatos() {
+  const userId = document.getElementById('userId');
+  const nomMascota = document.getElementById('nombreMascota');
+  const especie = document.getElementById('especie');
+  const database = firebase.firestore();
+  const datosCollection = database.collection('Datos');
+  const btndatos = document.getElementById('btnDatos');
+  btndatos.addEventListener('click', (e) => {
+    // eslint-disable-next-line no-console
+    console.log('click');
+    e.preventDefault();
+    datosCollection.doc(userId.value).set({
+      Nombre_Mascota: nomMascota.value,
+      Especie: especie.value,
+    })
+      // eslint-disable-next-line no-console
+      .then(() => { console.log('Data'); })
+      // eslint-disable-next-line no-console
+      .catch((error) => { console.error(error); });
+  });
 }

@@ -1,7 +1,7 @@
-import { cerrarSesión} from '../firebase/firebase.js';
+import { cerrarSesión } from '../firebase/firebase.js';
 
 export function inicio() {
-   let muro = `
+  const muro = `
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
    <div id="menu" class="menu">
@@ -18,16 +18,16 @@ export function inicio() {
       <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
       <img src="Img/pez1.jpg" width= 200px height=200px id="filtroRoedores">
    </div>
-   <div id="post">
-      <h4>¿Que estas pensando<h4>
-      <input type="text" id"text"></input><br>
-      <input type="text" id"text"></input><br>
-      <input type="text" id"text"></input><br>
+   <div id="muro">
+   <h4>¿Que estas pensando<h4>
+   <input type="text" id="mensaje"></input><br>
+   <button type="button" id="postear">Enviar</button>
+
    </div>
    </div>
    `;
-   const divMuro = document.createElement("div");
-   divMuro.innerHTML = muro;
+  const divMuro = document.createElement('div');
+  divMuro.innerHTML = muro;
 
    return divMuro
     }  
@@ -52,7 +52,7 @@ export function inicio() {
         })          
       }
 
-      export function irAperfil(){
+      export function editarPerfil(){
          const perfil=document.getElementById("editarPerfil");
          perfil.addEventListener("click",()=>{
                window.location = '#/configuracionPerfil';
@@ -69,24 +69,45 @@ export function inicio() {
       })
    }
   
+export function postMuro() {
+// const idPost = document.getElementById('la');
+  const mensaje = document.getElementById('mensaje');
+  const postear = document.getElementById('postear');
+  // const especie = document.getElementById('especie');
+  const database = firebase.firestore();
+  const posteando = database.collection('muro');
+  // const btndatos = document.getElementById('btnDatos');
+  postear.addEventListener('click', (e) => {
+    // eslint-disable-next-line no-console
+    console.log('posteo');
+    e.preventDefault();
+    posteando.add({
+      mensaje: mensaje.value,
+    })
+      // eslint-disable-next-line no-console
+      .then(() => { console.log('Data'); })
+      // eslint-disable-next-line no-console
+      .catch((error) => { console.error(error); });
+  });
+}
 
-   // const listaPublicaciones = document.querySelector("#publicaciones")
-   //  export const setUpPublicaciones = data => {
-   //      if(data.length){
-   //         let html = ""
-   //         data.forEach(doc => {
-   //          const post = doc.data();
-   //          const li = `<li> 
-   //             <h5>${post.titulo}</h5>
-   //             <p>${post.descripcion}</p>
-   //             </li>
-   //             `;
-   //           html += li;
-   //         });
-   //         listaPublicaciones.innerHTML = html
-   //      } else {
-   //         listaPublicaciones.innerHTML = "<p>logueate para ver las públicaciones</p>"
-   //      }
-   //   };
+// const listaPublicaciones = document.querySelector("#publicaciones")
+//  export const setUpPublicaciones = data => {
+//      if(data.length){
+//         let html = ""
+//         data.forEach(doc => {
+//          const post = doc.data();
+//          const li = `<li> ;
+//             <h5>${post.titulo}</h5>
+//             <p>${post.descripcion}</p>
+//             </li>
+//             `;
+//           html += li;
+//         });
+//         listaPublicaciones.innerHTML = html
+//      } else {
+//         listaPublicaciones.innerHTML = "<p>logueate para ver las públicaciones</p>"
+//      }
+//   };
 
-   //   post(setUpPublicaciones);
+//   post(setUpPublicaciones)

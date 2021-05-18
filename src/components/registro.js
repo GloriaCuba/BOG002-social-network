@@ -1,5 +1,7 @@
-import {autenticar, verificarEmail, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
-import { validarFormulario } from '../components/validacionFormulario.js';
+import {
+  autenticar, verificarEmail, ingresarGmail, ingresarFaceBook,
+} from '../firebase/firebase.js';
+import { validarFormulario } from './validacionFormulario.js';
 
 export function registrarse() {
   const registro = `
@@ -20,7 +22,7 @@ export function registrarse() {
         <img type="button" id="registroFacebook" src="img/Icono_Facebook.png">
       </figure>
     </div>
-    `
+    `;
   const divRegistro = document.createElement('div');
   divRegistro.innerHTML = registro;
   return divRegistro;
@@ -28,41 +30,45 @@ export function registrarse() {
 
 export function funcionAutenticar() {
   const email = document.querySelector('#emailAuth');
-  email.addEventListener("keyup", validarFormulario)
-  email.addEventListener("blur", validarFormulario)
+  email.addEventListener('keyup', validarFormulario);
+  email.addEventListener('blur', validarFormulario);
 
   const password = document.querySelector('#passwordAuth');
-  password.addEventListener("keyup", validarFormulario)
-  password.addEventListener("blur", validarFormulario)
+  password.addEventListener('keyup', validarFormulario);
+  password.addEventListener('blur', validarFormulario);
 
   const password2 = document.querySelector('#passwordAuth2');
-  password2.addEventListener("keyup", validarFormulario)
-  password2.addEventListener("blur", validarFormulario)
+  password2.addEventListener('keyup', validarFormulario);
+  password2.addEventListener('blur', validarFormulario);
 
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
     autenticar(email, password).then(() => {
+      // eslint-disable-next-line no-alert
       alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
       verificarEmail();
-      /* Aquí iría la Configuración para ir a #/configuracionPerfil*/
+      /* Aquí iría la Configuración para ir a #/configuracionPerfil */
     }).catch((error) => {
       const errorMessage = error.message;
+      // eslint-disable-next-line no-alert
       alert(errorMessage);
+      // eslint-disable-next-line no-console
       console.log(error);
     });
   });
 }
-
-
 
 export function registroConGoogle() {
   const registroGoogle = document.getElementById('registroGmail');
   registroGoogle.addEventListener('click', () => {
     ingresarGmail().then(() => {
       window.location = '#/inicio';
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
+      // eslint-disable-next-line no-console
       console.log('ingreso gmail');
     }).catch((error) => {
+      // eslint-disable-next-line no-console
       console.log(error);
     });
   });
@@ -73,9 +79,12 @@ export function registroConFacebook() {
   registroFacebook.addEventListener('click', () => {
     ingresarFaceBook().then(() => {
       window.location = '#/inicio';
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
+      // eslint-disable-next-line no-console
       console.log('ingreso facebook');
     }).catch((error) => {
+      // eslint-disable-next-line no-console
       console.log(error);
     });
   });

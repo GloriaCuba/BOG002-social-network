@@ -18,8 +18,8 @@
     #home {
        height: 100vh;
        width: 100%;
-       background-image: url("Img/fondo_perros.jpg");
-       background-size: cover; 
+       background-image: url("Img/otro_fondo_1.png");
+       background-size:cover; 
        background-repeat:no-repeat; 
        background-position: absolute; 
        display: grid;
@@ -34,15 +34,18 @@
     }
 
    #home #invitacion{
-       color:black;
-       font-size: 1em;
+    font-size: 1.2em;
+    text-align: center;
+    color:blue; 
+    -webkit-text-stroke: 0.02vw black;
+    font-weight: bolder;
    
    }
 
    #home #botonRegistro {
     width: 9em;
     height: 3em;
-    background: none;
+    background: white;
     border: 0.1em solid rgb(0, 0, 0);
     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
     text-decoration-line: underline;
@@ -72,7 +75,7 @@
        border: 0.1em solid rgb(0, 0, 0);
        box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
        border-radius: 0.2em; 
-       background: none;  
+       background-color: white;
        font-size: 1.1em;
        font-family: inherit;
        margin-bottom: 3em;
@@ -386,7 +389,7 @@
    grid-row-end:1;
 }
 
-#containerFiltro h3{
+#containerFiltro h2{
    text-align: center;
    color: white;
    margin-top: 6em;
@@ -404,6 +407,35 @@
     margin-top: 2em;
     
 }
+
+/* #contenedorMuro #botones{
+    grid-column-start:3;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;
+    justify-self:end;
+    align-self: start; 
+    width: 6em;
+    height: 2em;
+    margin: 1em;
+    font-weight: bolder;
+    cursor: pointer;   
+ }
+ 
+  #salir,#editarPerfil{
+     width: 5em;
+     height: 3em;
+     color:black ;
+     border: 0.1em solid rgb(0, 0, 0);
+     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+     border-radius: 0.2em; 
+     background: white;  
+     font-size: 1.1em;
+     font-family: inherit;
+     margin-bottom: 1em;
+ } */
+ 
+
 
 .menu {
     top: 100%;
@@ -431,6 +463,8 @@
     height: 4em;
     font-weight: bolder;
     border: none;
+    font-size: 0.9em;
+    
 }
 
 /* #contenedorMuro #salir{
@@ -491,6 +525,19 @@
     .inicio::after{
         transform: translateY(3px);
     }
+#muro{
+    background-color: #8EC1DE;
+    justify-self:center;
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:4;
+    text-align: left;
+    padding:15px;
+    height: 60vh;
+    width: 60%;
+}
+
  /************************************ restablecimiento de la contraseña***************************************************/
 
     .formularioRestablecerContrasena {

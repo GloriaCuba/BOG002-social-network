@@ -8,14 +8,14 @@ export function ingresar(email, password) {
 
 // funcion registrarse con email y contraseña
 export function autenticar(email, password) {
-  const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
+  const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
   return promise;
 }
 
 // funcion registrarse y verificacion del email escrito
 export function verificarEmail() {
-  let actionCodeSettings = {
-   /* url: 'http://localhost:5000/#/iniciarSesion/?email=' + auth.currentUser.email,*/
+  const actionCodeSettings = {
+    /* url: 'http://localhost:5000/#/iniciarSesion/?email=' + auth.currentUser.email, */
     url: 'http://localhost:5000/#/iniciarSesion',
     handleCodeInApp: true,
   };
@@ -25,42 +25,47 @@ export function verificarEmail() {
 
 // funcion de ingresar con gmail 
 export function ingresarGmail() {
-  let provider = new firebase.auth().GoogleAuthProvider();
-  //firebase.auth()
-  const validarGmail= firebase.auth().signInWithPopup(provider)
-  return validarGmail
+  const provider = new firebase.auth.GoogleAuthProvider();
+  // firebase.auth()
+  const validarGmail = auth.signInWithPopup(provider);
+  return validarGmail;
 }
 
-// funcion de ingresar con facebook
-export function ingresarFaceBook(){
-var provider = new firebase.auth().FacebookAuthProvider();
-const validarFacebook=auth.signInWithPopup(provider)
-return validarFacebook
+export function ingresarFaceBook() {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  const validarFacebook = auth.signInWithPopup(provider);
+  return validarFacebook;
 }
 
-// funcion de cerrar sesion 
-export function cerrarSesión(){
- firebase.auth().signOut().then(function() {
+export function cerrarSesión() {
+  firebase.auth().signOut().then(() => {
+    // eslint-disable-next-line no-console
     console.log('Signed Out');
-  }, function(error) {
+  }, (error) => {
+    // eslint-disable-next-line no-console
     console.error('Sign Out Error', error);
   });
- }
-
-export function restablecimientoContrasena(email){
-var emailAddress = email.value;
-var restablecer= auth.sendPasswordResetEmail(emailAddress)
-return restablecer
 }
 
+/* export function estadoUsuario
+ let estado = auth.onAuthStateChanged(function(user){
+   console.log(estado)
+ return estado
+})
+export function usuarioActual(){
+let user = firebase.auth().currentUser;
+let email = user.email;
+console.log(user);
+return user
+} */
 
-  // auth.signOut().then(()=>{
-  // console.log('user signed out')
-  // })
-  
+export function restablecimientoContrasena(email) {
+  const emailAddress = email.value;
+  const restablecer = auth.sendPasswordResetEmail(emailAddress);
+  return restablecer;
+}
 
-
-// fireStore 
+// fireStore
 // export function post(publicacion) {
 // auth.onAuthStateChanged(user => {
 //   if (user) {
@@ -75,4 +80,3 @@ return restablecer
 //    }
 //  })
 // }
-
