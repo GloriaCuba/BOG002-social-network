@@ -24,15 +24,16 @@
  #home {
     height:100vh;
     width: 100%;
-    background-image: url("Img/fondoEscritorio1.jpg");
-    background-color:white;
-    background-position:center;
+    background-image: url("Img/fondo.jpg");
+    background-size: 38%;
+    background-color:#8FC1DF;
+    /* background-color: rgba(154, 107, 175, 0.62);; */
+    background-position:left;
     background-repeat:no-repeat;
     display: grid;
     grid-template-columns:repeat (4,1fr);
     grid-template-rows: repeat (5,1fr);
-    justify-content: center;
-    
+  
  }
  #home #titulo{
     grid-column-start:2;
@@ -41,7 +42,7 @@
     grid-row-end: 2;
     justify-self:center;
     align-self: center;
-    font-size: 2.5em;
+    font-size: 3em;
     color:white; 
     -webkit-text-stroke: 0.02vw black;
     font-weight: bolder;
@@ -84,10 +85,11 @@
     grid-row-end: 4;
     justify-self:  center;
     align-self: end;
-    -webkit-text-stroke: 0.02vw  #045C73;
+    -webkit-text-stroke: 0.02vw  black;
     /* color:hsl(203, 56%, 72%); */
-    color: yellowgreen;
-    font-size:1.7em;
+    color:#045C73;
+    font-size:1.3em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     
 }
 
@@ -104,7 +106,7 @@
     border: 0.1em solid rgb(0, 0, 0);
     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
     border-radius: 0.2em; 
-    background: white;  
+    background:#FEEF6A;  
     font-size: 1.1em;
     font-family: inherit;
 }
@@ -118,9 +120,10 @@
     align-self: center;
     width: 9em;
     height: 3em;
-    background: white;
-    border: 0.1em solid rgb(0, 0, 0);
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    background:none;
+    border: none;
+    /* border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); */
     text-decoration-line: underline;
     font-family: inherit;
     font-size: 1.1em;

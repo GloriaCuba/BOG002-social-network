@@ -1,7 +1,7 @@
 import { firebase} from '../_mocks_/auth-mock.js'
 import { ingresar} from '../src/firebase/firebase.js'
 // global.firebase = jest.fn();
-import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
+// import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
 // import {autenticar} from '../src/firebase/firebase.js';
 
 //console.log("global",global.firebase)
@@ -28,7 +28,7 @@ describe('interfazPrincipal', () => {
     console.log("test");
     expect(typeof interfazPrincipal).toBe('function');
   });
-})
+});
 // describe('autenticar', () => {
 //   it('debería ser una función', () => {
 //     console.log("test");
