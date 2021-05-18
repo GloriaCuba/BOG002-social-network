@@ -4,10 +4,12 @@ export function inicio() {
   const muro = `
    <div id="contenedorMuro">
    <h1>Pet Book</h1>
+   <div id="botones">
    <button type="button" id="salir">Salir</button> 
    <button type="button" id="editarPerfil">Configurar perfil</button> 
+   </div>
    <div id="containerFiltro">
-   <h3>!Encuentra a tus amigos¡</h3>
+   <h2>!Encuentra a tus amigos¡</h2>
    <img src="Img/Perro.jpg" width= 200px height=200px id="filtroCaninos">
    <img src="Img/Gato.jpg" width= 200px height=200px id="filtroFelinos">
    <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
@@ -15,7 +17,7 @@ export function inicio() {
    </div>
    <div id="muro">
    <h4>¿Que estas pensando<h4>
-   <input type="text" id="mensaje">Post</input><br>
+   <input type="text" id="mensaje"></input><br>
    <button type="button" id="postear">Enviar</button>
    
    </div>

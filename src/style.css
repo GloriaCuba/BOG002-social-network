@@ -11,21 +11,27 @@
  }
 /************************************Interfaz principal***************************************************/
 
+ /* #home {
+    height:100vh;
+    width: 100%;
+    background: #12c2e9;  
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); 
+    display: grid;
+    grid-template-columns:repeat (4,1fr);
+    grid-template-rows: repeat (5,1fr); 
+ } */
  #home {
     height:100vh;
     width: 100%;
-    background: #12c2e9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    /* background-image: url("Img/fondo.jpg");
-    background-color:rgb(132, 209, 223); */
-    /* background-position:center;
-    background-repeat:no-repeat; */
+    background-image: url("Img/fondoEscritorio1.jpg");
+    background-color:white;
+    background-position:center;
+    background-repeat:no-repeat;
     display: grid;
     grid-template-columns:repeat (4,1fr);
     grid-template-rows: repeat (5,1fr);
-    /* justify-content: center; */
+    justify-content: center;
     
  }
  #home #titulo{
@@ -77,10 +83,11 @@
     grid-row-start:3;
     grid-row-end: 4;
     justify-self:  center;
-    align-self: center;
+    align-self: end;
     -webkit-text-stroke: 0.02vw  #045C73;
-    color:hsl(203, 56%, 72%);
-    font-size:1.5em;
+    /* color:hsl(203, 56%, 72%); */
+    color: yellowgreen;
+    font-size:1.7em;
     
 }
 
@@ -108,7 +115,7 @@
     grid-row-start:4;
     grid-row-end: 5;
     justify-self: center;
-    align-self: end;
+    align-self: center;
     width: 9em;
     height: 3em;
     background: white;
@@ -117,8 +124,8 @@
     text-decoration-line: underline;
     font-family: inherit;
     font-size: 1.1em;
-    -webkit-text-stroke: 0.1vw black;
-    margin-bottom: 2.3em;
+    /* -webkit-text-stroke: 0.1vw black; */
+    /* margin-bottom: 2.3em; */
 }
 /************************************pagina inicio de sesion***************************************************/
 
@@ -387,11 +394,8 @@
     /************************************Muro***************************************************/
 
  #contenedorMuro{
-     background-image: url(Img/fondo2.png);
-     background-color:white;
-     background-size: contain;
-     background-repeat:no-repeat;
-     /* background-position: absolute; */
+     /* background-color:#045C73; */
+     background-image: url(img/fondo2.png);
      display: grid;
      grid-template-columns:25% 50% 25%;
      grid-template-rows: 20% 40% 70% 10%;
@@ -412,7 +416,7 @@
     font-family: 'Cherry Cream Soda', cursive;
  }
  
- #contenedorMuro #salir{
+ #contenedorMuro #botones{
     grid-column-start:3;
     grid-column-end: 3;
     grid-row-start:1;
@@ -425,6 +429,24 @@
     font-weight: bolder;
     cursor: pointer;
  }
+
+ #salir,#editarPerfil{
+    width: 5em;
+    height: 3em;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 1.1em;
+    font-family: inherit;
+    margin-bottom: 1em;
+}
+
+#editarPerfil{
+    width: 7em;
+    font-size: 0.9em;
+}
  
 #contenedorMuro #post{
     grid-column-start: 2;
@@ -439,12 +461,19 @@
 }
 
 #containerFiltro{
-    justify-self:center;
+        margin-top: 5em;
+        justify-self:center;
+        padding-left: 20%;
+        grid-column-start:1;
+        grid-column-end: 4;
+        grid-row-start:1;
+        grid-row-end:1;
+     }
 }
 
-#containerFiltro h3{
+#containerFiltro h2{
     text-align: center;
-    color: #26798E;
+    color:#045C73;
     margin-top: 6em;
 }
 
@@ -455,6 +484,102 @@
     margin: 1em; 
     margin-bottom: 10px;
 }
+
+
+#post h4{
+    color:white;
+    margin-top: 2em;
+    
+}
+
+#muro{
+    background-color:white;
+    border-radius: 1.5em;
+    justify-self:center;
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:4;
+    text-align: left;
+    padding:15px;
+    height: 50vh;
+    width: 70%;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    font-size: 1.2em;
+}
+
+#postear{
+    width: 4em;
+    height: 1.5em;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit;
+    
+    }
+    
+    #editarPerfil{
+        width: 7em;
+        font-size: 0.9em;
+    }
+
+
+ /************************************ restablecimiento de la contraseña***************************************************/
+
+    .formularioRestablecerContrasena {
+        background-color: #8EC1DE;
+        color:black;
+        font-size: 1em;
+        text-align: center;
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 100% ;
+        grid-template-rows: 45% 10% 45%;
+
+    }
+    .formularioRestablecerContrasena .imagen img {
+        width: 12em;
+        height: 10em;
+        margin-top: 6em;
+    }
+    .formularioRestablecerContrasena .descripcion {
+        grid-row: 2;
+    }
+
+    .formularioRestablecerContrasena .input {
+        grid-row: 3;
+    }
+
+    .formularioRestablecerContrasena .input input{
+        width: 12.5em;
+        height: 2.5em;
+        background: #FEEF6A;
+        border: 2px solid #FFFFFF;
+        box-sizing: border-box;
+        border-radius: 0.2px;
+        margin: 0.5em;
+        text-align: center;
+    }
+
+    .formularioRestablecerContrasena .input button {
+        margin-top: 1em;
+        width: 9em;
+        height: 3em;
+        color:black ;
+        border: 0.1em solid rgb(0, 0, 0);
+        box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+        border-radius: 0.2em; 
+        background: none;  
+        font-size: 1.1em;
+        font-family: inherit;
+    }
+
 
 
 footer{
@@ -480,7 +605,3 @@ footer{
       color: white;    
   }
 
-  .descripcionError {
-    display: none;
-}
-}
