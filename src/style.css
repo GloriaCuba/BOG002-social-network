@@ -342,60 +342,7 @@
    .formularioRegistro figure,img{
        width: 60%;
    }
-    /************************************ restablecimiento de la contraseña***************************************************/
-
-    .formularioRestablecerContrasena {
-        background-color: #8EC1DE;
-        color:black;
-        font-size: 1em;
-        text-align: center;
-        height: 100vh;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100% ;
-        grid-template-rows: 45% 10% 45%;
-
-    }
-    .formularioRestablecerContrasena .imagen img {
-        width: 12em;
-        height: 10em;
-        margin-top: 6em;
-    }
-    .formularioRestablecerContrasena .descripcion {
-        grid-row: 2;
-    }
-
-    .formularioRestablecerContrasena .input {
-        grid-row: 3;
-    }
-
-    .formularioRestablecerContrasena .input input{
-        width: 12.5em;
-        height: 2.5em;
-        background: #FEEF6A;
-        border: 2px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 0.2px;
-        margin: 0.5em;
-        text-align: center;
-    }
-
-    .formularioRestablecerContrasena .input button {
-        margin-top: 1em;
-        width: 9em;
-        height: 3em;
-        color:black ;
-        border: 0.1em solid rgb(0, 0, 0);
-        box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-        border-radius: 0.2em;
-        background: none;
-        font-size: 1.1em;
-        font-family: inherit;
-    }
-
-
-
-
+   
     /************************************Muro***************************************************/
 
  #contenedorMuro{
@@ -524,7 +471,7 @@
      background-color: rgb(25, 156, 179);
  }
 
- .menu #editarPerfil{
+ .menu #perfil{
      width: 10em;
      height: 4em;
      font-weight: bolder;
@@ -583,11 +530,6 @@
          transform: translateY(3px);
      }
 
-
-
-
-
-
 #post h4{
     color:white;
     margin-top: 2em;
@@ -630,6 +572,11 @@
         font-size: 0.9em;
     }
 
+    #contenedorPublicaciones {
+        width: 10em;
+        height: 10em;
+        background-color: #F043A0;
+    }
 
  /************************************ restablecimiento de la contraseña***************************************************/
 
@@ -643,8 +590,9 @@
         display: grid;
         grid-template-columns: 100% ;
         grid-template-rows: 45% 10% 45%;
-
     }
+
+
     .formularioRestablecerContrasena .imagen img {
         width: 12em;
         height: 10em;
@@ -682,7 +630,7 @@
         font-family: inherit;
     }
 
-
+/************************************ restablecimiento de la contraseña***************************************************/
 
 footer{
     min-height: 2em;
@@ -706,4 +654,113 @@ footer{
       background-color: transparent;
       color: white;
   }
+
+/************************************ configurar perfil***************************************************/
+  .contenedorPerfil{
+      display: grid;
+      height: 100vh;
+      width: 100%;
+      grid-template-columns: 10% 40% 40% 10%;
+      grid-template-rows: 20% 20% 20% 20% 20%;
+      justify-content: center;
+      background-color: #8FC1DF;
+      
+  }
+
+  .contenedorPerfil h1 {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end: 1;
+    justify-self:center;
+    align-self: center;
+  }
+
+  .contenedorInputs{
+    grid-column-start:3;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end: 5;
+    justify-self:center;
+    align-self: center; 
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-self:stretch;
+    align-self: stretch;
+  }
+
+  .contenedorInputs input, select, button{
+    margin: 1em;
+    width: 15vw;
+    height: 3em;
+    text-align: center;
+  }
+
+  .contenedorInputs h3{
+   margin-top: 0.5em;
+   font-size: 1em;
+  }
+
+  #userId{
+      margin-top: 1em;
+  }
+
+
+  .contenedorImagen {
+    grid-column-start:3;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end: 5;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-self:stretch;
+    align-self: stretch;
+    display: none; 
+  }
+
+  .contenedorImagen img {
+    margin-top: 1em;
+    width: 15em;
+    height: 10em;
+  }
+ .contenedorOpciones {
+    grid-column-start:2;
+    grid-column-end: 2;
+    grid-row-start:2;
+    grid-row-end: 5;
+    justify-self:center;
+    align-self: center;
+    grid-auto-flow: row;
+    border: none;
+    border-left: 0.2em #F043A0 solid;
+    border-right: 0.2em #F043A0 solid;
+    /* background: green; */
+    width: 60%;
+    height: 100%;
+    text-align: center;
+ }
+
+ .contenedorOpciones button {
+     width: 18vw;
+     height: 4em;
+     border: none;
+     border-top: 0.1vw black solid;
+     border-bottom: 0.1vw black solid;
+     background: none;
+     margin-bottom: 0.1em;
+ }
+
+ .contenedorOpciones button:hover {
+  background-color: rgb(132, 186, 202);
+  color: #000000;
+  font-weight: bolder;
+}
+
+ .contenedorOpciones h3 {
+    margin-top: 0.5em;
+}
+
+}
 

@@ -350,7 +350,7 @@
     background-position: absolute;
     display: grid;
     grid-template-columns:25% 50% 25%;
-    grid-template-rows: 20% 40% 70% 10%;
+    grid-template-rows: repeat(6, 1fr);
     height: 100vh;
     width: 100%;
     align-items: center;
@@ -435,9 +435,47 @@
      margin-bottom: 1em;
  } */
  
+ #muro{
+    background-color: #8EC1DE;
+    justify-self:center;
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+    text-align: center;
+    padding:15px;
+    height: 20vh;
+    width: 80%;
+
+}
+
+#muro input{
+ width: 60vw;
+ margin-top: 1em;
+ height: 4vh;
+}
+
+#muro button {
+    width: 6em;
+    margin-top: 1em;
+    height: 4vh;
+   }
+
+#contenedorPublicaciones{
+    background-color: #8EC1DE;
+    justify-self:center;
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+    text-align: center;
+    padding:15px;
+    height: 20vh;
+    width: 80%;
+}
 
 
-.menu {
+#menu {
     top: 100%;
     right: 0;
     background: rgb(25, 156, 179);
@@ -450,7 +488,6 @@
     grid-row-start:1;
     grid-row-end:2;
     margin-top: 8em;
-  
 }
 
 .menu button {
@@ -466,15 +503,6 @@
     font-size: 0.9em;
     
 }
-
-/* #contenedorMuro #salir{
-    grid-column-start:3;
-    grid-column-end: 3;
-    grid-row-start:1;
-    grid-row-end:2;
-    justify-self:end;
-    align-self: start; 
- } */
 
 .menu #salir{
     width: 10em;
@@ -525,18 +553,7 @@
     .inicio::after{
         transform: translateY(3px);
     }
-#muro{
-    background-color: #8EC1DE;
-    justify-self:center;
-    grid-column-start:1;
-    grid-column-end: 4;
-    grid-row-start:1;
-    grid-row-end:4;
-    text-align: left;
-    padding:15px;
-    height: 60vh;
-    width: 60%;
-}
+
 
  /************************************ restablecimiento de la contraseña***************************************************/
 

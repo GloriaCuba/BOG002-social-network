@@ -6,7 +6,7 @@ export function inicio() {
    <h1>Pet Book</h1>
    <div id="menu" class="menu">
       <button type="button" id="salir">Salir</button> 
-      <button type="button" id="editarPerfil">Configurar perfil</button>
+      <button type="button" id="perfil">Perfil</button>
    </div>
    <div id="menuToggle" class="menuToggle">
       <div class="inicio"></div>
@@ -20,10 +20,12 @@ export function inicio() {
    </div>
    <div id="muro">
    <h4>¿Que estas pensando<h4>
-   <input type="text" id="mensaje"></input><br>
-   <button type="button" id="postear">Enviar</button>
-
+     <form id="mensajePostear">
+     <input type="text" id="mensaje"></input><br>
+     <button type="submit" id="postear">Enviar</button>
+     </form>
    </div>
+   <div id="contenedorPublicaciones"> </div>
    </div>
    `;
   const divMuro = document.createElement('div');
@@ -52,10 +54,10 @@ export function inicio() {
         })          
       }
 
-      export function editarPerfil(){
-         const perfil=document.getElementById("editarPerfil");
+      export function irAPerfil(){
+         const perfil=document.getElementById("perfil");
          perfil.addEventListener("click",()=>{
-               window.location = '#/configuracionPerfil';
+               window.location = '#/perfil';
                location.reload()                          
          })
    }
@@ -68,46 +70,95 @@ export function inicio() {
             location.reload()                          
       })
    }
-  
+let  database = firebase.firestore();
+
 export function postMuro() {
-// const idPost = document.getElementById('la');
-  const mensaje = document.getElementById('mensaje');
-  const postear = document.getElementById('postear');
-  // const especie = document.getElementById('especie');
-  const database = firebase.firestore();
-  const posteando = database.collection('muro');
-  // const btndatos = document.getElementById('btnDatos');
-  postear.addEventListener('click', (e) => {
-    // eslint-disable-next-line no-console
-    console.log('posteo');
-    e.preventDefault();
-    posteando.add({
-      mensaje: mensaje.value,
-    })
-      // eslint-disable-next-line no-console
-      .then(() => { console.log('Data'); })
-      // eslint-disable-next-line no-console
-      .catch((error) => { console.error(error); });
+//   const mensaje = document.getElementById('mensaje');
+  const publicaciones = document.querySelector('#mensajePostear')
+  publicaciones.addEventListener('submit', async (e) =>{
+   e.preventDefault();
+   const mensaje = publicaciones["mensaje"].value;   
+      await guardarPublicacion(mensaje)
+         publicaciones.reset();
+   })
+
+const guardarPublicacion = (mensaje) => 
+database.collection('muro').add({
+   mensaje
+   })
+  }
+
+export function mostrarData() {
+   let contenedorPublicaciones = document.getElementById("contenedorPublicaciones")
+   database.collection("muro").onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc)=> {
+      console.log(`${doc.id} => ${doc.data().mensaje}`)
+      contenedorPublicaciones.innerHTML += `
+         <div> 
+           ${doc.data().mensaje}
+         </div>`
+         })
+      })
+   }
+
+export function borrarCampos() {
+   db.collection("cities").doc("DC").delete().then(() => {
+      console.log("Document successfully deleted!");
+  }).catch((error) => {
+      console.error("Error removing document: ", error);
   });
 }
 
-// const listaPublicaciones = document.querySelector("#publicaciones")
-//  export const setUpPublicaciones = data => {
-//      if(data.length){
-//         let html = ""
-//         data.forEach(doc => {
-//          const post = doc.data();
-//          const li = `<li> ;
-//             <h5>${post.titulo}</h5>
-//             <p>${post.descripcion}</p>
-//             </li>
-//             `;
-//           html += li;
-//         });
-//         listaPublicaciones.innerHTML = html
-//      } else {
-//         listaPublicaciones.innerHTML = "<p>logueate para ver las públicaciones</p>"
-//      }
-//   };
+  //   const postear = document.getElementById('postear');
+//   postear.addEventListener('click', (e) => {
+//     // eslint-disable-next-line no-console
+//     console.log('posteo');
+//     e.preventDefault();
+//     posteando.add({
+//       mensaje: mensaje.value,
+//     })
+//       // eslint-disable-next-line no-console
+//       .then(() => { console.log('Data');})
+//       // eslint-disable-next-line no-console
+//       .catch((error) => { console.error(error); });
 
-//   post(setUpPublicaciones)
+
+
+// export function postear() {
+// const db = firebase.firestore();
+// const publicaciones = document.querySelector('#mensajePostear')
+// publicaciones.addEventListener('submit', async (e) =>{
+//    e.preventDefault();
+
+// const description = publicaciones["mensajePosteo"].value;   
+//    await guardarPublicacion(description)
+// publicaciones.reset();
+// })
+
+// const guardarPublicacion = (description) => 
+// db.collection("publicaciones").doc().set({
+//    description
+//    })
+//   }
+
+
+
+
+// const contenedorPublicaciones = document.querySelector("#contenedorPublicaciones")
+// const mostrarPublicaciones = () => db.collection("publicaciones").get();
+// window.addEventListener("DOMContentLoaded", async (e) => {
+//    const querySnapshot = await mostrarPublicaciones();
+//    querySnapshot.forEach(doc => {
+//       contenedorPublicaciones.innerHTML +=`<div> 
+//        ${doc.data()}
+//       </div>`
+//       console.log(doc.data())
+//    })
+   
+//  })
+// }
+
+
+
+
+

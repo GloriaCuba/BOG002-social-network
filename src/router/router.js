@@ -1,16 +1,18 @@
 import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
-import { inicio, salir, editarPerfil, postMuro, menuToggle} from '../components/paginaInicio.js';
+import { inicio, salir, irAPerfil, postMuro, menuToggle, mostrarData} from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
 import {
-  configPerfil, menuEspecies, irAlMuro, recoletandoDatos,
+  configPerfil, irAlPerfil, recoletandoDatos,mostrarInputs, ocultarCambioImagen
 } from '../components/configPerfil.js';
-// import { auth } from '../firebase/firebase.js';
+import {perfil, configurarPerfil } from '../components/perfil.js';
+
+// menuEspecies
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
@@ -37,8 +39,9 @@ export const router = (routes) => {
           salir();
           menuToggle();
           salir();
-          editarPerfil();
+          irAPerfil();
           postMuro();
+          mostrarData();
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());
@@ -46,12 +49,15 @@ export const router = (routes) => {
           break;
         case '#/configuracionPerfil':
           rootDiv.appendChild(configPerfil());
-          menuEspecies();
-          irAlMuro();
+          // menuEspecies();
+          irAlPerfil();
           recoletandoDatos();
+          mostrarInputs();
+          ocultarCambioImagen();
           break;
         case '#/perfil':
           rootDiv.appendChild(perfil());
+          configurarPerfil();
           break;
         case '':
           rootDiv.appendChild(interfazPrincipal());
@@ -81,6 +87,8 @@ export const router = (routes) => {
           break;
           case '#/perfil':
             rootDiv.appendChild(interfazPrincipal());
+            ingresoApp();
+            funcionRegistrarse();
             break;
         case '':
           rootDiv.appendChild(interfazPrincipal());
@@ -89,6 +97,11 @@ export const router = (routes) => {
           break;
 
         case '#/inicio':
+          rootDiv.appendChild(interfazPrincipal());
+          ingresoApp();
+          funcionRegistrarse();
+          break;
+        case '#/configuracionPerfil':
           rootDiv.appendChild(interfazPrincipal());
           ingresoApp();
           funcionRegistrarse();

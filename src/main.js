@@ -1,3 +1,4 @@
+import { recoletandoDatos } from './components/configPerfil.js';
 import { router } from './router/router.js'
 
 window.addEventListener("load", () => {
@@ -8,22 +9,19 @@ window.addEventListener("haschange", () => {
   router(window.location.hash)
 })
 
+// let siguientePagina = document.getElementById("irDelante");
+// siguientePagina.addEventListener("click", ()=> {
+//   window.history.forward();
+// })
 
+// let paginaAnterior = document.getElementById("irAtras");
+// paginaAnterior.addEventListener("click", ()=> {
+//     window.history.back();
+// })
 
-// window.onhashchange = function() {
-//       if (window.location.hash != '#undefined') {
-//           goBack();
-//       } else {
-//           history.pushState("", document.title, window.location.pathname);
-//           location.reload();
-//       }
-//   }
+//   window.history.go(-1)
+// })
 
-// function goBack()
-// { history.back()}
-
-// function goahead()
-// { history.forward()}
 
 
 

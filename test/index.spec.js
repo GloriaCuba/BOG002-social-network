@@ -1,11 +1,11 @@
 // // importamos la funcion que vamos a testear
 // import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
 
-import { mockFirebase } from "../_mocks_/auth_mock.js";
+import  MockFirebase  from "../_mocks_/auth_mock.js";
 import {autenticar} from '../src/firebase/firebase.js';
 
-global.firebase = mockFirebase;
-console.log(mockFirebase());
+global.firebase = MockFirebase;
+console.log(MockFirebase);
 
 describe('autenticar', () => {
   test('deberia de registrarme', () => {
