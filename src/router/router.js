@@ -10,7 +10,7 @@ import { resetContraseña, restableceContrasena } from '../components/resetContr
 import {
   configPerfil, menuEspecies, irAlMuro, recoletandoDatos,
 } from '../components/configPerfil.js';
-// import { auth } from '../firebase/firebase.js';
+// import { auth } from '../index.html';
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {

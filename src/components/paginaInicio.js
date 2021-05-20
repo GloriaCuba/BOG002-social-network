@@ -1,4 +1,5 @@
 import { cerrarSesión } from '../firebase/firebase.js';
+// import { db } from '../index.html';
 
 export function inicio() {
   const muro = `
@@ -18,12 +19,17 @@ export function inicio() {
       <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
       <img src="Img/pez1.jpg" width= 200px height=200px id="filtroRoedores">
    </div>
-   <div id="muro">
-   <h4>¿Que estas pensando<h4>
-   <input type="text" id="mensaje"></input><br>
-   <button type="button" id="postear">Enviar</button>
-
-   </div>
+   <form id="muro">
+      <div class="textArea">
+         <textarea type="text" id="mensaje" class="campoPosteo" placeholder="¿Qué estas pensando?"></textarea>
+      </div>
+      <div class="botonesTextArea">
+         <button class="botonEnviar id="postear">Enviar</button>
+      </div>
+   </form>
+      <div >
+         <p id="seccionPosteos"></p>
+      </div>
    </div>
    `;
   const divMuro = document.createElement('div');
@@ -68,28 +74,73 @@ export function inicio() {
             location.reload()                          
       })
    }
-  
-export function postMuro() {
-// const idPost = document.getElementById('la');
-  const mensaje = document.getElementById('mensaje');
-  const postear = document.getElementById('postear');
-  // const especie = document.getElementById('especie');
-  const database = firebase.firestore();
-  const posteando = database.collection('muro');
-  // const btndatos = document.getElementById('btnDatos');
-  postear.addEventListener('click', (e) => {
-    // eslint-disable-next-line no-console
-    console.log('posteo');
-    e.preventDefault();
-    posteando.add({
-      mensaje: mensaje.value,
-    })
-      // eslint-disable-next-line no-console
-      .then(() => { console.log('Data'); })
-      // eslint-disable-next-line no-console
-      .catch((error) => { console.error(error); });
-  });
-}
+
+export function postMuro(){
+   const muro = document.getElementById("muro");
+   muro.addEventListener('submit', e =>{
+      e.preventDefault();  /* Para que no se refresque la página*/
+      const mensaje = muro['mensaje'].value;
+   // const mensaje = document.getElementById('mensaje').value;
+      console.log(mensaje);
+      guardarPosts(mensaje)
+      
+   });
+   function guardarPosts(mensaje){
+      let posts = db.collection('posts').doc().set({
+      mensaje,
+      }).then(() => { 
+         //obtener el id del doc, para encontrar la data especifica where
+         //document.getElementById("seccionPosteos").innerHTML="hola, este es tu post " + mensaje;
+         verPosts();
+         imprimirPosts();
+      });
+   }
+      function verPosts(){
+      db.collection('posts').get().then((querySnapshot) => {
+         querySnapshot.forEach((doc) => { 
+         console.log(doc.id);
+         });
+      }).then(() => {
+         console.log(doc.id);
+         //console.log("Este es el .then que se debe ver después de verPosts")
+         // imprimirPosts()
+      });
+   } 
+/*       function imprimirPosts(){
+      db.collection('posts').doc().onSnapshot((doc) => {
+         console.log(doc.id);
+     });
+ */   }   
+
+      function imprimirPosts(){
+         db.collection('posts').doc().onSnapshot((doc)=>{
+             console.log(doc.data().mensaje);
+            });
+      } 
+
+
+
+// export function postMuro() {
+// // const idPost = document.getElementById('la');
+//   const mensaje = document.getElementById('mensaje');
+//   const postear = document.getElementById('postear');
+//   // const especie = document.getElementById('especie');
+//   const database = firebase.firestore();
+//   const posteando = database.collection('muro');
+//   // const btndatos = document.getElementById('btnDatos');
+//   postear.addEventListener('click', (e) => {
+//     // eslint-disable-next-line no-console
+//     console.log('posteo');
+//     e.preventDefault();
+//     posteando.add({
+//       mensaje: mensaje.value,
+//     })
+//       // eslint-disable-next-line no-console
+//       .then(() => { console.log('Data'); })
+//       // eslint-disable-next-line no-console
+//       .catch((error) => { console.error(error); });
+//   });
+// }
 
 // const listaPublicaciones = document.querySelector("#publicaciones")
 //  export const setUpPublicaciones = data => {
