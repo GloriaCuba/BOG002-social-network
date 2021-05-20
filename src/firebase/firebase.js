@@ -1,4 +1,5 @@
-
+export var auth = firebase.auth();
+console.log(firebase.auth);
 // funcion ingresar con email y contraseña
 export function ingresar(email, password) {
   const promise = auth.signInWithEmailAndPassword(email.value, password.value)

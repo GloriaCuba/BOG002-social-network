@@ -29,6 +29,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
 <script>
+
   const firebaseConfig = {
     apiKey: "AIzaSyChnpSpbN4XUjpjy-cVAXdAhlE8aMNIjX0",
     authDomain: "social-network-sn9.firebaseapp.com",
@@ -41,8 +42,8 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
-  const auth = firebase.auth();
-  auth.useDeviceLanguage();
+ 
+  // auth.useDeviceLanguage();
   </script>
 <script type= "module" src="main.js"></script>
 </body>

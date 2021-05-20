@@ -10,6 +10,9 @@ import { resetContraseña, restableceContrasena } from '../components/resetContr
 import {
   configPerfil, menuEspecies, irAlMuro, recoletandoDatos,
 } from '../components/configPerfil.js';
+// eslint-disable-next-line import/named
+import { auth } from '../firebase/firebase.js';
+
 // import { auth } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
