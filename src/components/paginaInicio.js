@@ -27,9 +27,8 @@ export function inicio() {
          <button class="botonEnviar id="postear">Enviar</button>
       </div>
    </form>
-      <div >
-         <p id="seccionPosteos"></p>
-      </div>
+   <div id="seccionPosteos" >
+   </div>
    </div>
    `;
   const divMuro = document.createElement('div');
@@ -80,44 +79,73 @@ export function postMuro(){
    muro.addEventListener('submit', e =>{
       e.preventDefault();  /* Para que no se refresque la página*/
       const mensaje = muro['mensaje'].value;
+      const date = firebase.firestore.Timestamp.now();
+      console.log(date)
    // const mensaje = document.getElementById('mensaje').value;
-      console.log(mensaje);
-      guardarPosts(mensaje)
+      //console.log(mensaje);
+      guardarPosts(mensaje,date)
       
    });
-   function guardarPosts(mensaje){
+   function guardarPosts(mensaje,date){
       let posts = db.collection('posts').doc().set({
       mensaje,
+      date 
       }).then(() => { 
          //obtener el id del doc, para encontrar la data especifica where
          //document.getElementById("seccionPosteos").innerHTML="hola, este es tu post " + mensaje;
-         verPosts();
-         imprimirPosts();
+        verPosts();
+         //imprimirPosts();
       });
    }
-      function verPosts(){
+     /*  function verPosts(){
       db.collection('posts').get().then((querySnapshot) => {
          querySnapshot.forEach((doc) => { 
-         console.log(doc.id);
+         //console.log(doc.id);
          });
       }).then(() => {
          console.log(doc.id);
          //console.log("Este es el .then que se debe ver después de verPosts")
          // imprimirPosts()
       });
+   }  */
+   function verPosts(){
+      db.collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+         document.getElementById("seccionPosteos").innerHTML='';
+         querySnapshot.forEach((doc) => {
+         //console.log(doc.id + doc.data().mensaje );
+         let campo = document.createElement("div")
+         let texto = document.createTextNode(doc.data().mensaje );
+         campo.appendChild(texto);
+         let divOriginal = document.getElementById("seccionPosteos")
+         divOriginal.appendChild(campo);
+         });
+      });
    } 
+  /*  function imprimirPosts(){
+      db.collection("posts").where("mensaje", "==", true)
+      .get()
+      .then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+               // doc.data() is never undefined for query doc snapshots
+               console.log(doc.id, " => ", doc.data());
+         });
+      })
+      .catch((error) => {
+         console.log("Error getting documents: ", error);
+      });
+   } */
 /*       function imprimirPosts(){
       db.collection('posts').doc().onSnapshot((doc) => {
          console.log(doc.id);
      });
- */   }   
+ */    
 
       function imprimirPosts(){
          db.collection('posts').doc().onSnapshot((doc)=>{
              console.log(doc.data().mensaje);
             });
       } 
-
+}
 
 
 // export function postMuro() {
