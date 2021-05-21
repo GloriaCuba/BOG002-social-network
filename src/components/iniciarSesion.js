@@ -33,16 +33,20 @@ export function funcionIngresar() {
   const botonIngresar = document.querySelector('#botonIngresar');
 
   botonIngresar.addEventListener('click', () => {
-    ingresar(email, password).then(() => {
-      window.location = '#/inicio';
-      // eslint-disable-next-line no-restricted-globals
-      location.reload();
-    }).catch((error) => {
-    // const errorCode = error.code;
-      const errorMessage = error.message;
-      // eslint-disable-next-line no-alert
-      alert(errorMessage);
-    });
+    redireccionLogin(email, password);
+  });
+}
+
+export function redireccionLogin(email, password){
+ return ingresar(email, password).then(() => {
+    window.location = '#/inicio';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  }).catch((error) => {
+  // const errorCode = error.code;
+    const errorMessage = error.message;
+    // eslint-disable-next-line no-alert
+    //alert(errorMessage);
   });
 }
 

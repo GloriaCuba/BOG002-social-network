@@ -11,14 +11,13 @@ import {
   configPerfil, menuEspecies, irAlMuro, recoletandoDatos,
 } from '../components/configPerfil.js';
 // eslint-disable-next-line import/named
-import { auth } from '../firebase/firebase.js';
 
 // import { auth } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
   rootDiv.innerHTML = '';
-  auth.onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // eslint-disable-next-line default-case
       switch (routes) {
