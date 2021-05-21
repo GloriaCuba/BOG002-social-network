@@ -1,7 +1,7 @@
 import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
-import { inicio, salir, irAPerfil, postMuro, menuToggle, mostrarData} from '../components/paginaInicio.js';
+import { inicio, salir, irAPerfil, postMuro, menuToggle} from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
 } from '../components/registro.js';
@@ -13,11 +13,14 @@ import {
 import {perfil, configurarPerfil } from '../components/perfil.js';
 
 // menuEspecies
+// eslint-disable-next-line import/named
+
+// import { auth } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
   rootDiv.innerHTML = '';
-  auth.onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // eslint-disable-next-line default-case
       switch (routes) {
@@ -41,7 +44,6 @@ export const router = (routes) => {
           salir();
           irAPerfil();
           postMuro();
-          mostrarData();
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());

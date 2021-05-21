@@ -1,8 +1,9 @@
-import { recoletandoDatos } from './components/configPerfil.js';
-import { router } from './router/router.js'
+import { router } from './router/router.js';
+import { inicializarFirebase } from './firebase/firebaseConfig.js';
 
-window.addEventListener("load", () => {
-router (window.location.hash);
+window.addEventListener('load', () => {
+  inicializarFirebase();
+  router (window.location.hash);
 });
 
 window.addEventListener("haschange", () => {

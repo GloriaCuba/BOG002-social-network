@@ -353,7 +353,7 @@
      /* background-position: absolute; */
      display: grid;
      grid-template-columns:25% 50% 25%;
-     grid-template-rows: 20% 40% 70% 10%;
+     grid-template-rows: 20% 40% 50% 20% 10%;
      height: 100vh;
      width: 100%;
      align-items: center;
@@ -535,7 +535,9 @@
     margin-top: 2em;
     
 }
-
+#seccionPosteos{
+    color:white;
+}
 #muro{
     background-color:white;
     border-radius: 1.5em;
@@ -548,7 +550,7 @@
     padding:15px;
     height: 50vh;
     width: 70%;
-    color:black ;
+    color:rgb(255, 255, 255) ;
     border: 0.1em solid rgb(0, 0, 0);
     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
     font-size: 1.2em;

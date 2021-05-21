@@ -59,8 +59,6 @@ export function irAlPerfil() {
   });
 }
 
-let database = firebase.firestore();
-
 export function recoletandoDatos() {
   const userId = document.getElementById('userId');
   const nomMascota = document.getElementById('nombreMascota');

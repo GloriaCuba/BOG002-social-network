@@ -1,62 +1,51 @@
 // // importamos la funcion que vamos a testear
 // import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
+import { redireccionLogin } from '../src/components/iniciarSesion.js';
+import { ingresoApp } from '../src/components/intefazPrincipal.js';
+import { ingresar, autenticar } from '../src/firebase/firebase.js';
 
-import  MockFirebase  from "../_mocks_/auth_mock.js";
-import {autenticar} from '../src/firebase/firebase.js';
+const firebasemock = require('firebase-mock');
 
-global.firebase = MockFirebase;
-console.log(MockFirebase);
+const mockauth = new firebasemock.MockAuthentication();
+const mocksdk = new firebasemock.MockFirebaseSdk(
+  () => null,
+  () => mockauth,
+);
+mockauth.autoFlush();
+global.firebase = mocksdk;
+
+describe('ingresa a iniciar sesion', () => {
+  it('debe ser una funcion', () => {
+    expect(typeof ingresoApp).toBe('function');
+  });
+});
+
+describe('ingresar', () => {
+  it('deberia ser una funcion', () => {
+    expect(typeof ingresar).toBe('function');
+  });
+});
 
 describe('autenticar', () => {
-  test('deberia de registrarme', () => {
-     autenticar('ben@example.com', 'examplePass').then((user) => {
-        console.log(user);
-        expect(typeof user).toBe("object");
-        expect(user.Email).toBe("ben@example.com")
-      })
-  })
-})
-// import { firebase} from '../_mocks_/auth-mock.js'
-// import { ingresar} from '../src/firebase/firebase.js'
-// // global.firebase = jest.fn();
-// // import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
-// // import {autenticar} from '../src/firebase/firebase.js';
+  test('deberia registrarme', () => {
+  const promesa = redireccionLogin('petBook@hotmail.com', '123456');
+  //   console.log('probando');
+  //   return promesa
+  //  .then(()=>{
+  //     console.log(algo);
+  //  })
 
-// //console.log("global",global.firebase)
-// // console.log("ingresar",ingresar)
+//1. Ingresar input correo y contraseña
+//2. Simular click sobre el boton de registro
+//3. Confirmar que se muestra un alert 
+//4. Confirmar que se envia un correo
 
-// const auth= new ingresar();
-// global.firebase=firebase();
-
-// describe('ingresar', () => {
-//   it('debería ser una función', () => {
-//    console.log("ingresar")
-//     expect(typeof auth.ingresar).toBe('function');
-//   });
-// });
+});
+});
 
 
+// import  MockFirebase  from "../_mocks_/auth_mock.js";
+// import {autenticar} from '../src/firebase/firebase.js';
 
-
-
-// describe('funcionRegistrarse', () => {
-//   it('debería ser una función', () => {
-//     console.log("test");
-//     expect(typeof funcionRegistrarse).toBe('function');
-//   });
-// });
-// describe('interfazPrincipal', () => {
-//   it('debería ser una función', () => {
-//     console.log("test");
-//     expect(typeof interfazPrincipal).toBe('function');
-//   });
-// })
-
-
-
-// describe('autenticar', () => {
-//   it('debería ser una función', () => {
-//     console.log("test");
-//     expect(typeof autenticar).toBe('function');
-//   });
-// });
+// global.firebase = MockFirebase;
+// console.log(MockFirebase);
