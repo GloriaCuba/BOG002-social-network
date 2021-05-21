@@ -10,12 +10,14 @@ import { resetContraseña, restableceContrasena } from '../components/resetContr
 import {
   configPerfil, menuEspecies, irAlMuro, recoletandoDatos,
 } from '../components/configPerfil.js';
-// import { auth } from '../index.html';
+// eslint-disable-next-line import/named
+
+// import { auth } from '../firebase/firebase.js';
 
 const rootDiv = document.getElementById('root');
 export const router = (routes) => {
   rootDiv.innerHTML = '';
-  auth.onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // eslint-disable-next-line default-case
       switch (routes) {

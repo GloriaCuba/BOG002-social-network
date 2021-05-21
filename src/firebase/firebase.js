@@ -1,14 +1,13 @@
-
 // funcion ingresar con email y contraseña
 export function ingresar(email, password) {
-  const promise = auth.signInWithEmailAndPassword(email.value, password.value)
+  const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value);
   return promise;
   // preventDefault ()
 }
 
 // funcion registrarse con email y contraseña
 export function autenticar(email, password) {
-  const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
+  const promise = firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
   return promise;
 }
 
@@ -27,13 +26,13 @@ export function verificarEmail() {
 export function ingresarGmail() {
   const provider = new firebase.auth.GoogleAuthProvider();
   // firebase.auth()
-  const validarGmail = auth.signInWithPopup(provider);
+  const validarGmail = firebase.auth().signInWithPopup(provider);
   return validarGmail;
 }
 
 export function ingresarFaceBook() {
   const provider = new firebase.auth.FacebookAuthProvider();
-  const validarFacebook = auth.signInWithPopup(provider);
+  const validarFacebook = firebase.auth().signInWithPopup(provider);
   return validarFacebook;
 }
 
@@ -61,7 +60,7 @@ return user
 
 export function restablecimientoContrasena(email) {
   const emailAddress = email.value;
-  const restablecer = auth.sendPasswordResetEmail(emailAddress);
+  const restablecer = firebase.auth().sendPasswordResetEmail(emailAddress);
   return restablecer;
 }
 
