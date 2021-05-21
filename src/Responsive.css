@@ -262,82 +262,97 @@
     background-color: #045C73;
     height: 100vh;
     display: grid;
-    grid-template-columns: 200px;
-    grid-template-rows: 120px 120px 30px 30px 150px 150px;;
-    justify-content: center;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: repeat(6, 1fr);;
     justify-items: center;
-    align-items: center;
     font-family:sans-serif;
    }
-    #inputUserName{
-    height: 40px;
-    width: 200px;
-    background-color:#FEEF6A;
-    margin-top: 40px;
-    border: 2px solid white;
-    box-sizing: border-box;
-    display: grid;
-    text-align: center;
-    border-radius: 3px;
-    font-size: 12px;
-   }
-    #inputUserImage{
-    height: 40px;
-    width: 200px;
-    margin-top: 20px;
-    text-align: center;
-    border-radius: 3px;
-    font-size: 12px;
-   }
+ 
    .contenedorPerfil h1{
-    color: white;
-    font-size: 26px;
-    text-align:center;
-    margin-top: 55px;
-    }
-    .contenedorPerfil p{
-    color: white;
-    font-size: 12px;
-    text-align:center;  
-    }
-    .contenedorPerfil figure{
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    .contenedorPerfil  button{
-        height: 40px;
-        width: 200px;
-        background-color: #8FC1DF;
-        border: 2px solid white;
-        border-radius: 3px;
-        margin-top:10px;
-       }
-    .contenedorPerfil img{
-        width: 100%;
-    }
-    .menuEspecies {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end: 1;
+    justify-self:center;
+    align-self: center; 
     text-align: center;
-    background-color: #8FC1DF;
-    border: 2px solid white;
-    border-radius: 3px;
-    padding: 0;
-   }
-   .menuEspecies ul,li{
-    list-style: none;
-    text-decoration: none;
-    padding: 0;
-   }
-    .subMenuEspecies{
-        height: 0;
-        overflow:hidden;
-        transition: all 0.5s;
+   
     }
-    .mostrarMenu{
+    .contenedorInputs{
+        grid-column-start:1;
+        grid-column-end: 4;
+        grid-row-start:3;
+        grid-row-end: 5;
+        justify-self:center;
+        align-self: center; 
+        width: 100%;
         height: 100%;
-        overflow:visible;
-        transition: all 0.5s;
+        text-align: center;
+        justify-self:stretch;
+        align-self: stretch;
+      }
+    
+      .contenedorInputs input, select, button{
+        margin: 1em;
+        width: 50vw;
+        height: 3em;
+        text-align: center;
+      }
+    
+      .contenedorInputs h3{
+       margin-top: 0.5em;
+       font-size: 1em;
+      }
+    
+      .contenedorImagen {
+        grid-column-start:1;
+        grid-column-end: 4;
+        grid-row-start:3;
+        grid-row-end: 5;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        justify-self:stretch;
+        align-self: stretch;
+        display: none; 
+      }
+
+      .contenedorImagen p {
+          margin-top: 1em;
+        font-weight: bolder;
+      }
+
+    
+      .contenedorImagen img {
+        margin-top: 1em;
+        width: 15em;
+        height: 10em;
+      }
+     .contenedorOpciones {
+        grid-column-start:1;
+        grid-column-end: 4;
+        grid-row-start:2;
+        grid-row-end: 3; 
+        justify-self:center;
+        align-self: center;
+        text-align: center;
+     }
+    
+     .contenedorOpciones button {
+        width: 30%;
+        background: none;
+     }
+    
+     .contenedorOpciones button:hover {
+      background-color: rgb(132, 186, 202);
+      color: #000000;
+      font-weight: bolder;
     }
+    
+     .contenedorOpciones h3 {
+        margin-top: 0.5em;
+    }
+
 
 
 
@@ -345,25 +360,24 @@
 
  #contenedorMuro{
     background-color:#045C73;
-    background-size: contain;
-    background-repeat:no-repeat;
-    background-position: absolute;
+    /* background-size: cover; */
+    /* background-repeat:no-repeat; */
+    /* background-position: absolute; */
     display: grid;
     grid-template-columns:25% 50% 25%;
     grid-template-rows: repeat(6, 1fr);
-    height: 100vh;
+    height: 100%;
     width: 100%;
     align-items: center;
 }
 
 #contenedorMuro h1{
    grid-column-start:1;
-   grid-column-end:2;
+   grid-column-end:3;
    grid-row-start:1;
    grid-row-end:1;
    justify-self:center;
-   align-self: center;
-   text-align:left;
+   align-self: flex-start;
    color: white;
    font-family: 'Cherry Cream Soda', cursive;
 }
@@ -462,20 +476,27 @@
    }
 
 #contenedorPublicaciones{
-    background-color: #8EC1DE;
     justify-self:center;
     grid-column-start:1;
     grid-column-end: 4;
-    grid-row-start:4;
+    grid-row-start:2;
     grid-row-end:5;
-    text-align: center;
-    padding:15px;
+    /* padding:15px; */
     height: 20vh;
-    width: 80%;
+    width: 90%;
+}
+
+.contenedorPost{
+    background-color: #8EC1DE;
+    text-align: center;
+    justify-self: stretch;
+    margin: 1em;
+    height: 10vh;
+    text-align: center;
 }
 
 
-#menu {
+.menu {
     top: 100%;
     right: 0;
     background: rgb(25, 156, 179);
@@ -487,7 +508,7 @@
     grid-column-end:3;
     grid-row-start:1;
     grid-row-end:2;
-    margin-top: 8em;
+    margin-top: 2em;
 }
 
 .menu button {
@@ -495,7 +516,7 @@
     background-color: rgb(25, 156, 179);
 }
 
-.menu #editarPerfil{
+.menu #perfil{
     width: 10em;
     height: 4em;
     font-weight: bolder;

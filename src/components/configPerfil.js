@@ -29,8 +29,8 @@ export function configPerfil() {
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
              <input type='file' id='inputUserImage'>
-             <figure>
-              <img src='img/foto_perfil.jpg' id='userImage'>
+             <figure id="imagenPerfil">
+                <img src='' id='userImage'>
              </figure>
             <button type='button' id='botonGuardar'>Guardar</button>
           </div>
@@ -59,29 +59,79 @@ export function irAlPerfil() {
   });
 }
 
+let database = firebase.firestore();
+
 export function recoletandoDatos() {
   const userId = document.getElementById('userId');
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
-  const database = firebase.firestore();
   const datosCollection = database.collection('Datos');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', (e) => {
     // eslint-disable-next-line no-console
     console.log('click');
-    // window.location = '#/perfil';
-    //         location.reload() 
     e.preventDefault();
     datosCollection.doc(userId.value).set({
+      usuario: userId.value,
       Nombre_Mascota: nomMascota.value,
       Especie: especie.value,
     })
-      // eslint-disable-next-line no-console
       .then(() => { console.log('Data'); })
-      // eslint-disable-next-line no-console
+        location.reload()
       .catch((error) => { console.error(error); });
   });
 }
+
+// function init() {
+//   var inputFile = document.getElementById('inputUserImage');
+//   inputFile.addEventListener('change', mostrarImagen, false);
+// }
+
+// export function mostrarImagen(event) {
+//   var file = event.target.files[0];
+//   var reader = new FileReader();
+//   reader.onload = function(event) {
+//     var img = document.getElementById('userImage');
+//     img.src= event.target.result;
+//   }
+//   reader.readAsDataURL(file);
+// }
+
+// window.addEventListener('load', init, false);
+
+
+
+// export function seleccionarFoto() {
+//   const divPhoto = document.getElementById(' imagenPerfil');
+//   const inputUser = document.getElementById('inputUserImage').value;
+//   inputUser.addEventListener("click", ()=> {
+//     let img = document.createElement("img")
+//     img = `${doc.userPhoto}`;
+//     divPhoto.appendChild(img)
+//   })
+// }
+
+// export function fotoUsuario(){
+//   // const userId = document.getElementById('userId');
+//   const userPhoto = document.getElementById('userImage');
+//   const datosCollection = database.collection('Datos');
+//   const btnPhoto = document.getElementById('botonGuardar');
+//   btnPhoto.addEventListener('click', (e) => {
+//     console.log('click');
+//     e.preventDefault();
+//     datosCollection.doc(userId.value).set({
+//       // usuario: userId.value,
+//       fotoPerfil: userPhoto
+//     })     
+//     .then(() => { 
+//     let div = document.createElement("img")
+
+  
+//     })
+//   .catch((error) => { console.error(error); });
+//    });
+// }
+
 
 export function mostrarInputs() {
 const botonMostrarInputs= document.getElementById('botonInputs');

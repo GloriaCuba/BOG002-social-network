@@ -33,17 +33,8 @@ export function inicio() {
 
    return divMuro
     }  
-
-   //  <button type="button" id="perfil" class="perfil">Perfil</button>
-   //  <button type="button" id="salir" class="salir">Salir</button>
-
  
-//     <div class="iconoMenu"">
-//     <img src="Img/menu-regular.png" id="iconoMenu">
-//  </div>
 
- 
-   
    export function menuToggle() {
       let icono = document.querySelector("#menuToggle")
         icono.addEventListener("click", () => {
@@ -70,36 +61,47 @@ export function inicio() {
             location.reload()                          
       })
    }
+
+
 let  database = firebase.firestore();
 
 export function postMuro() {
-//   const mensaje = document.getElementById('mensaje');
-  const publicaciones = document.querySelector('#mensajePostear')
+
+const publicaciones = document.querySelector('#mensajePostear')
   publicaciones.addEventListener('submit', async (e) =>{
    e.preventDefault();
    const mensaje = publicaciones["mensaje"].value;   
+   const date: firebase.firestore.Timestamp.now();
       await guardarPublicacion(mensaje)
          publicaciones.reset();
    })
-
-const guardarPublicacion = (mensaje) => 
-database.collection('muro').add({
-   mensaje
+   
+const guardarPublicacion = (mensaje, date) => 
+database.collection('muro').doc().set({
+   mensaje,
+   date: firebase.firestore.Timestamp.now()
    })
   }
 
 export function mostrarData() {
    let contenedorPublicaciones = document.getElementById("contenedorPublicaciones")
-   database.collection("muro").onSnapshot((querySnapshot) => {
+   database.collection("muro").orderBy('date', 'desc').onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc)=> {
-      console.log(`${doc.id} => ${doc.data().mensaje}`)
-      contenedorPublicaciones.innerHTML += `
+      let div= document.createElement("div")
+      div.className = "contenedorPost"
+      contenedorPublicaciones.appendChild(div)
+      div.innerHTML += `
          <div> 
            ${doc.data().mensaje}
          </div>`
          })
       })
    }
+
+
+   // firebase.firestore.Timestamp.now()
+
+
 
 export function borrarCampos() {
    db.collection("cities").doc("DC").delete().then(() => {
