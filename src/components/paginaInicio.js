@@ -71,7 +71,7 @@ const publicaciones = document.querySelector('#mensajePostear')
   publicaciones.addEventListener('submit', async (e) =>{
    e.preventDefault();
    const mensaje = publicaciones["mensaje"].value;   
-   const date: firebase.firestore.Timestamp.now();
+   const date= firebase.firestore.Timestamp.now();
       await guardarPublicacion(mensaje)
          publicaciones.reset();
    })
