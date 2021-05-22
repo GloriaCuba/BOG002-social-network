@@ -454,188 +454,74 @@
 /************************************Muro***************************************************/
 
 #contenedorMuro{
-background-color:#045C73;
-background-size: contain;
-background-repeat:no-repeat;
-background-position: absolute;
-display: grid;
-grid-template-columns:25% 50% 25%;
-grid-template-rows: 20%, 40%, 70%, 10%;
-height: 100vh;
-width: 100%;
-align-items: center;
+    background-color: #045C73;
+    background-size: cover;
+    background-repeat:repeat;
+    display: grid;
+    grid-template-columns:33% 33% 33%;
+    grid-template-rows: 10% 10% 30% 50% ;
+    height: 100vh;
+    width: 100%;
+    /* align-items: center; */
 }
 
 #contenedorMuro h1{
-grid-column-start:1;
-grid-column-end:3;
-grid-row-start:1;
-grid-row-end:1;
-justify-self:center;
-align-self: flex-start;
-color: white;
-font-family: 'Cherry Cream Soda', cursive;
+    grid-column-start:1;
+    grid-column-end:3;
+    grid-row-start:1;
+    grid-row-end:1;
+    margin-top: 0.5em;
+    justify-self:center;
+    text-align:center;
+    color: white;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 6vw;
 }
-
-#contenedorMuro #post{
-grid-column-start: 1;
-grid-column-end: 3;
-grid-row-start:2 ;
-grid-row-end: 3;
-justify-self:left;
-align-self: center;
-background-color:transparent;
-padding: 20%;
-
-}
-
-#containerFiltro{
-margin-top: 5em;
-justify-self:center;
-grid-column-start:1;
-grid-column-end: 4;
-grid-row-start:1;
-grid-row-end:1;
-}
-
-#containerFiltro h2{
-text-align: center;
-color: white;
-margin-top: 6em;
-}
-#containerFiltro img{
-border-radius: 100%;
-height:3em;
-width: 3em;
-margin: 1em; 
-margin-bottom: 10px;
-}
-
-#post h4{
-color:white;
-margin-top: 2em;
-
-}
-
-/* #contenedorMuro #botones{
-grid-column-start:3;
-grid-column-end: 3;
-grid-row-start:1;
-grid-row-end:2;
-justify-self:end;
-align-self: start; 
-width: 6em;
-height: 2em;
-margin: 1em;
-font-weight: bolder;
-cursor: pointer;   
-}
-
-#salir,#editarPerfil{
-    width: 5em;
-    height: 3em;
-    color:black ;
-    border: 0.1em solid rgb(0, 0, 0);
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-    border-radius: 0.2em; 
-    background: white;  
-    font-size: 1.1em;
-    font-family: inherit;
-    margin-bottom: 1em;
-} */
-
-#muro{
-background-color: #8EC1DE;
-justify-self:center;
-grid-column-start:1;
-grid-column-end: 4;
-grid-row-start:2;
-grid-row-end:3;
-text-align: center;
-padding:15px;
-height: 20vh;
-width: 80%;
-
-}
-
-#muro input{
-width: 60vw;
-margin-top: 1em;
-height: 4vh;
-}
-
-#muro button {
-width: 6em;
-margin-top: 1em;
-height: 4vh;
-}
-
-#contenedorPublicaciones{
-justify-self:center;
-grid-column-start:1;
-grid-column-end: 4;
-grid-row-start:2;
-grid-row-end:5;
-/* padding:15px; */
-height: 20vh;
-width: 90%;
-}
-
-.contenedorPost{
-background-color: #8EC1DE;
-text-align: center;
-justify-self: stretch;
-margin: 1em;
-height: 10vh;
-text-align: center;
-}
-
 
 .menu {
-top: 100%;
-right: 0;
-background: rgb(25, 156, 179);
-height: 0;
-overflow: hidden;
-justify-self: right;
-text-align: center;
-grid-column-start:3;
-grid-column-end:3;
-grid-row-start:1;
-grid-row-end:2;
-margin-top: 2em;
+    top: 100%;
+    right: 0;
+    background: rgb(25, 156, 179);
+    height: 0;
+    overflow: hidden;
+    justify-self: right;
+    text-align: center;
+    grid-column-start:3;
+    grid-column-end:3;
+    grid-row-start:1;
+    grid-row-end:4;
+    margin-top: 2.5em;
 }
-
+    
 .menu button {
-color: rgb(255, 255, 255); 
-background-color: rgb(25, 156, 179);
+    color: rgb(255, 255, 255); 
+    background-color: rgb(25, 156, 179);
 }
-
+    
 .menu #perfil{
-width: 10em;
-height: 4em;
-font-weight: bolder;
-border: none;
-font-size: 0.9em;
-
+    width: 10em;
+    height: 4em;
+    font-weight: bolder;
+    border: none;
+    font-size: 0.9em;
 }
-
+    
 .menu #salir{
-width: 10em;
-height: 4em;
-font-weight: bolder;
-border: none;
+    width: 10em;
+    height: 4em;
+    font-weight: bolder;
+    border: none;
 }
-
+    
 .menu button:hover, 
 .menu button:focus {
-background-color: rgba(0, 0, 0, 0.2);
-color: black;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: black;
 }
 
 .opcionesMenuOpen {
-height: auto;
-z-index: 100;
+    height: auto;
+    z-index: 100;
 }
 
 .menuToggle {
@@ -644,32 +530,161 @@ z-index: 100;
     top: .3em;
     right: .2em;
 }
+
 .menuToggleOpen .inicio{
     transform: rotate(45deg);
-    }
+}
+
 .menuToggleOpen .inicio::before{
     opacity: 0;
 }
+
 .menuToggleOpen .inicio::after{
     transform: translateY(-3px) rotate(-90deg);
-    }   
+}   
+
 .inicio, 
 .inicio::before,
 .inicio::after{
-content: " ";
-display: block;
-background: white;
-height: 3px;
-width: 1.7em;
-border-radius: 3px;
+    content: " ";
+    display: block;
+    background: white;
+    height: 3px;
+    width: 1.7em;
+    border-radius: 3px;
 } 
+
 .inicio::before{
     transform: translateY(-6px);
 }
+
 .inicio::after{
     transform: translateY(3px);
 }
+   
+#containerFiltro{
+    grid-column-start:1;
+    grid-column-end:4;
+    grid-row-start:2;
+    grid-row-end:3;
+    justify-self: center;
+    align-self: center;
+ }
 
+ #containerFiltro h3{
+    text-align: center;
+    color:#045C73;
+    /* margin-top: 6em; */
+}
+
+#containerFiltro img{
+    border-radius: 100%;
+    height:3em;
+    width: 3em;
+    margin: 1em;
+    margin-bottom: 10px;
+}
+
+#muro{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end:4;
+    /* justify-content: center; */
+    justify-self: center;
+    align-self: flex-end;
+    background-color:rgb(255, 255, 255);
+    border-radius: 1.5em;
+    height: 20vh;
+    width: 90%;
+    color:rgb(255, 255, 255) ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    font-size: 1.2em;  
+}
+
+#muro #mensaje{
+   margin-top: 0.5em;
+   margin-left: 1em;
+   margin-right: 1em;
+   height: 6em;
+   width: 90%;
+   text-align: center;
+   font-size: inherit;
+   border-radius: 1.5em;
+}
+
+#muro .botonesTextArea{
+    margin-left: 5em;
+    width: 90%;
+ }
+
+#muro #postear{
+    width: 30vw;
+    height: 2em;
+    /* border: 0.1em solid rgb(0, 0, 0); */
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+    margin-left: 4.5vw;
+}
+
+#seccionPosteos{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+    justify-content: center;
+    align-self: initial;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.elementosPosts{
+    background-color: ivory;
+    margin: 0.8em 0;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    height: 40%;
+    width: 90%;
+    position: relative;
+    margin-left: 4.5vw;
+    box-sizing: border-box
+   
+}
+
+.botonEditar{
+    width: 7vw;
+    height: 3em;
+    position: absolute;
+    top: 0;
+    left: 78%;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+}
+
+.botonBorrar{
+    width: 20vw;
+    height: 3em;
+    position: absolute;
+    top: 6em;
+    left: 70%;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+}
+
+    
 
 /************************************ restablecimiento de la contraseña***************************************************/
 

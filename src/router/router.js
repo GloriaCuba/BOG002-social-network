@@ -1,16 +1,18 @@
 import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
-import { inicio, salir, irAPerfil, postMuro, menuToggle} from '../components/paginaInicio.js';
+import {
+  inicio, salir, irAPerfil, postMuro, menuToggle,
+} from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
 import {
-  configPerfil, irAlPerfil, recoletandoDatos,mostrarInputs, ocultarCambioImagen
+  configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen,
 } from '../components/configPerfil.js';
-import {perfil, configurarPerfil } from '../components/perfil.js';
+import { perfil, configurarPerfil } from '../components/perfil.js';
 
 // menuEspecies
 // eslint-disable-next-line import/named
@@ -88,17 +90,16 @@ export const router = (routes) => {
           rootDiv.appendChild(resetContraseña());
           restableceContrasena();
           break;
-          case '#/perfil':
-            rootDiv.appendChild(interfazPrincipal());
-            ingresoApp();
-            funcionRegistrarse();
-            break;
+        case '#/perfil':
+          rootDiv.appendChild(interfazPrincipal());
+          ingresoApp();
+          funcionRegistrarse();
+          break;
         case '':
           rootDiv.appendChild(interfazPrincipal());
           ingresoApp();
           funcionRegistrarse();
           break;
-
         case '#/inicio':
           rootDiv.appendChild(interfazPrincipal());
           ingresoApp();

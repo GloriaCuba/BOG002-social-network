@@ -28,21 +28,19 @@ describe('ingresar', () => {
 
 describe('autenticar', () => {
   test('deberia registrarme', () => {
-  const promesa = redireccionLogin('petBook@hotmail.com', '123456');
-  //   console.log('probando');
-  //   return promesa
-  //  .then(()=>{
-  //     console.log(algo);
-  //  })
+    const promesa = redireccionLogin('petBook@hotmail.com', '123456');
+    // console.log('probando');
+    // return promesa
+    // .then(()=>{
+    // console.log(algo);
+    // })
 
-//1. Ingresar input correo y contraseña
-//2. Simular click sobre el boton de registro
-//3. Confirmar que se muestra un alert 
-//4. Confirmar que se envia un correo
-
+    // 1. Ingresar input correo y contraseña
+    // 2. Simular click sobre el boton de registro
+    // 3. Confirmar que se muestra un alert
+    // 4. Confirmar que se envia un correo;
 });
 });
-
 
 // import  MockFirebase  from "../_mocks_/auth_mock.js";
 // import {autenticar} from '../src/firebase/firebase.js';

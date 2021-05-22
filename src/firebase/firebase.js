@@ -22,7 +22,7 @@ export function verificarEmail() {
   return promise;
 }
 
-// funcion de ingresar con gmail 
+// funcion de ingresar con gmail
 export function ingresarGmail() {
   const provider = new firebase.auth.GoogleAuthProvider();
   // firebase.auth()

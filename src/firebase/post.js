@@ -5,6 +5,6 @@
 //    mensaje
 // })
 
-// export const mostrarPosts = (callback) => db.collection("muro").orderBy('', 'desc').onSnapshot(callback);
+// export const mostrarPosts = () => firebase.firestore().collection("muro").orderBy('', 'desc').onSnapshot();
 
 // export const borrarCampos = () => db.collection("muro").doc().delete(); 
