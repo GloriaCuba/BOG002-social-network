@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 import { ingresar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
 
 export function iniciarSesion() {
@@ -37,8 +39,8 @@ export function funcionIngresar() {
   });
 }
 
-export function redireccionLogin(email, password){
- return ingresar(email, password).then(() => {
+export function redireccionLogin(email, password) {
+  return ingresar(email, password).then(() => {
     window.location = '#/inicio';
     // eslint-disable-next-line no-restricted-globals
     location.reload();
@@ -46,7 +48,7 @@ export function redireccionLogin(email, password){
   // const errorCode = error.code;
     const errorMessage = error.message;
     // eslint-disable-next-line no-alert
-    //alert(errorMessage);
+    // alert(errorMessage);
   });
 }
 

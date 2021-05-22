@@ -1,5 +1,5 @@
+/* eslint-disable no-use-before-define */
 import { cerrarSesión } from '../firebase/firebase.js';
-// import { db } from '../index.html';
 
 export function inicio() {
   const muro = `
@@ -10,7 +10,7 @@ export function inicio() {
       <button type="button" id="perfil">Perfil</button>
    </div>
    <div id="menuToggle" class="menuToggle">
-      <div class="inicio"></div>
+   <div class="inicio"></div>
    </div> 
    <div id="containerFiltro">
       <h3>!Encuentra a tus amigos¡</h3>
@@ -25,7 +25,7 @@ export function inicio() {
       </div>
       <div class="botonesTextArea">
          <button class="botonEnviar id="postear">Enviar</button>
-      </div>
+       </div>
    </form>
    <div id="seccionPosteos"> </div>
    </div>
@@ -33,65 +33,63 @@ export function inicio() {
   const divMuro = document.createElement('div');
   divMuro.innerHTML = muro;
 
-   return divMuro
-    }  
+  return divMuro;
+}
 
-   export function menuToggle() {
-      let icono = document.querySelector("#menuToggle")
-        icono.addEventListener("click", () => {
-         let menu = document.querySelector("#menu");  
-         menu.classList.toggle("opcionesMenuOpen")
-         let menuOpen = document.getElementById('menuToggle');
-         menuOpen.classList.toggle('menuToggleOpen'); 
-        })          
-      }
+export function menuToggle() {
+  const icono = document.querySelector('#menuToggle');
+  icono.addEventListener('click', () => {
+    const menu = document.querySelector('#menu');
+    menu.classList.toggle('opcionesMenuOpen');
+    const menuOpen = document.getElementById('menuToggle');
+    menuOpen.classList.toggle('menuToggleOpen');
+  });
+}
 
-      export function irAPerfil(){
-         const perfil=document.getElementById("perfil");
-         perfil.addEventListener("click",()=>{
-               window.location = '#/perfil';
-               location.reload()                          
-         })
-   }
+export function irAPerfil() {
+  const perfil = document.getElementById('perfil');
+  perfil.addEventListener('click', () => {
+    window.location = '#/perfil';
+    location.reload();
+  });
+}
 
-   export function salir(){
-      const salir=document.querySelector("#salir");
-      salir.addEventListener("click",()=>{
-            cerrarSesión()
-            window.location = '';
-            location.reload()                          
-      })
-   }
+export function salir() {
+  const salir = document.querySelector('#salir');
+  salir.addEventListener('click', () => {
+    cerrarSesión();
+    window.location = '';
+    location.reload();
+  });
+}
 
-export function postMuro(){
-   const muro = document.getElementById("muro");
-   muro.addEventListener('submit', e =>{
-      e.preventDefault();  /* Para que no se refresque la página*/
-      const mensaje = muro['mensaje'].value;
-      const date = firebase.firestore.Timestamp.now();
-      console.log(date)
-   // const mensaje = document.getElementById('mensaje').value;
-      //console.log(mensaje);
-      guardarPosts(mensaje,date)
-      
-   });
+export function postMuro() {
+  const muro = document.getElementById('muro');
+  muro.addEventListener('submit', e => {
+    e.preventDefault(); // Para que no se refresque la página
+    const mensaje = muro['mensaje'].value;
+    const date = firebase.firestore.Timestamp.now();
+    console.log(date);
+    // const mensaje = document.getElementById('mensaje').value;
+    // console.log(mensaje);
+    guardarPosts(mensaje, date);
+  });
+}
 
-
-
-   function guardarPosts(mensaje,date){
-      let posts = firebase.firestore().collection('posts').doc().set({
-      mensaje,
-      date 
-      }).then(() => { 
-         //obtener el id del doc, para encontrar la data especifica where
-         //document.getElementById("seccionPosteos").innerHTML="hola, este es tu post " + mensaje;
-        verPosts();
-         //imprimirPosts();
-      });
-   }
-     /*  function verPosts(){
+function guardarPosts(mensaje, date) {
+  const posts = firebase.firestore().collection('posts').doc().set({
+    mensaje,
+    date,
+  }).then(() => {
+    // obtener el id del doc, para encontrar la data especifica where
+    // document.getElementById("seccionPosteos").innerHTML="hola, este es tu post " + mensaje;
+    verPosts();
+    // imprimirPosts();
+  });
+}
+/*  function verPosts(){
       db.collection('posts').get().then((querySnapshot) => {
-         querySnapshot.forEach((doc) => { 
+         querySnapshot.forEach((doc) => {
          //console.log(doc.id);
          });
       }).then(() => {
@@ -100,20 +98,42 @@ export function postMuro(){
          // imprimirPosts()
       });
    }  */
-   function verPosts(){
-      firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-         document.getElementById("seccionPosteos").innerHTML='';
-         querySnapshot.forEach((doc) => {
-         //console.log(doc.id + doc.data().mensaje );
-         let campo = document.createElement("div")
-         let texto = document.createTextNode(doc.data().mensaje );
-         campo.appendChild(texto);
-         let divOriginal = document.getElementById("seccionPosteos")
-         divOriginal.appendChild(campo);
-         });
+function verPosts() {
+  firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+    document.getElementById('seccionPosteos').innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id + doc.data().mensaje );
+      const mensaje = document.createElement('li');
+      const campo = document.createElement('span');
+      const cross = document.createElement('div');
+      const texto = document.createTextNode(doc.data().mensaje);
+      // const fecha = document.createTextNode(doc.data().date);
+      mensaje.setAttribute('data-id', doc.id);
+      cross.textContent = 'x';
+      cross.setAttribute('id', 'cross');
+      campo.appendChild(texto);
+      const divOriginal = document.getElementById('seccionPosteos');
+      divOriginal.appendChild(mensaje);
+      divOriginal.appendChild(campo);
+      // divOriginal.appendChild(fecha);
+      divOriginal.appendChild(cross);
+      cross.addEventListener('click', () => {
+        botonEliminar(doc.id);
+        console.log(doc.id);
       });
-   } 
-  /*  function imprimirPosts(){
+    });
+  });
+}
+
+function botonEliminar(id) {
+  firebase.firestore().collection('posts').doc(id).delete().then(() => {
+    console.log('Document successfully deleted!');
+  }).catch((error) => {
+    console.error('Error removing document: ', error);
+  });
+}
+
+/*  function imprimirPosts(){
       db.collection("posts").where("mensaje", "==", true)
       .get()
       .then((querySnapshot) => {
@@ -137,8 +157,6 @@ export function postMuro(){
              console.log(doc.data().mensaje);
             });
       } 
-}
-
 
 // export function postMuro() {
 // // const idPost = document.getElementById('la');
