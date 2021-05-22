@@ -9,14 +9,14 @@ export function registrarse() {
       <h1>¡Bienvenido!</h1>
       <p> Estas a punto de hacer parte de la red más divertida</p>
         <form id="formularioInputs">
-        <input type="email" id="emailAuth" placeholder="E-mail" name="email" required >
-        <input type="password" id="passwordAuth" placeholder="Contraseña" name="contraseña" required >
-        <p class="descripcionError" id="descripcionError"> La contraseña debe ser de almenos 6 digitos y contener una mayuscula y un numero</p><br>
-        <input type="password" id="passwordAuth2" placeholder="Valida tu contraseña" name="contraseña2" required >
-        <button type="button" id="botonUnirse">Unirme</button> 
+          <input type="email" id="emailAuth" placeholder="E-mail" name="email" required ><br>
+          <input type="password" id="passwordAuth" placeholder="Contraseña" name="contraseña" required > <br>
+          <p class="descripcionError" id="descripcionError"> La contraseña debe ser de almenos 6 digitos y contener una mayuscula y un numero</p><br>
+          <input type="password" id="passwordAuth2" placeholder="Valida tu contraseña" name="contraseña2" required> <br>
+          <button type="button" id="botonUnirse">Unirme</button> 
         </form>
       <h6>O</h6>  
-      <p>Regístrate con tu cuenta de Google o Facebook</p>
+      <p class="registroProveedores">Regístrate con tu cuenta de Google o Facebook</p>
       <figure>
         <img type="button" id="registroGmail" src="img/Icono_Google.png"> 
         <img type="button" id="registroFacebook" src="img/Icono_Facebook.png">

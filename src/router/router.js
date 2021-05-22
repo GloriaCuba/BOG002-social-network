@@ -44,6 +44,7 @@ export const router = (routes) => {
           salir();
           irAPerfil();
           postMuro();
+          // ocultarMostrarPost();
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());

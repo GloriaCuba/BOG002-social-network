@@ -1,48 +1,47 @@
 @media screen and (max-width: 700px){
    
-    * {
-        margin: 0;
-        padding:0;
-        box-sizing: border-box;
-    }
-    .container{
-       height: 100vh;
-       width: 100%;
-       font-family: 'Cherry Cream Soda', cursive;
-       /*font-family: 'Frank Ruhl Libre', serif;*/
-    }
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    font-family: 'Cherry Cream Soda', cursive;
+    /*font-family: 'Frank Ruhl Libre', serif;*/
+}
 
-    
+
 /************************************Pagina interfaz principal***************************************************/
 
-    #home {
-       height: 100vh;
-       width: 100%;
-       background-image: url("Img/otro_fondo_1.png");
-       background-size:cover; 
-       background-repeat:no-repeat; 
-       background-position: absolute; 
-       display: grid;
-       /* grid-template-columns:repeat (4,1fr);
-       grid-template-rows: repeat (5,1fr);  */
-       /* grid: template columns 80%; */
-       grid-template-rows: 50% 20% 10% 20% ;
-       justify-content: center;
-       justify-items: center;
-       align-items: center;
-       text-align: center;
-    }
+#home {
+    height: 100vh;
+    width: 100%;
+    background-image: url("Img/otro_fondo_1.png");
+    background-size:cover; 
+    background-repeat:no-repeat; 
+    background-position: absolute; 
+    display: grid;
+    /* grid-template-columns:repeat (4,1fr);
+    grid-template-rows: repeat (5,1fr);  */
+    /* grid: template columns 80%; */
+    grid-template-rows: 50% 20% 10% 20% ;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
 
-   #home #invitacion{
+#home #invitacion{
     font-size: 1.2em;
     text-align: center;
-    color:blue; 
-    -webkit-text-stroke: 0.02vw black;
+    color:rgb(0, 0, 0); 
+    -webkit-text-stroke: 0.001vw rgb(60, 173, 248);
     font-weight: bolder;
-   
-   }
+}
 
-   #home #botonRegistro {
+#home #botonRegistro {
     width: 9em;
     height: 3em;
     background: white;
@@ -53,211 +52,306 @@
     font-size: 1.1em;
     -webkit-text-stroke: 0.1vw black;
     margin-bottom: 3em;
-   }
-
-   #home #titulo{
-       font-size: 2.5em;
-       text-align: center;
-       color: white; 
-       -webkit-text-stroke: 0.02vw black;
-       font-weight: bolder;
-   }
-
-   #home img{
-  display: none;
-  
 }
 
-   #home #botonIngreso{
-       width: 9em;
-       height: 3em;
-       color:black ;
-       border: 0.1em solid rgb(0, 0, 0);
-       box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-       border-radius: 0.2em; 
-       background-color: white;
-       font-size: 1.1em;
-       font-family: inherit;
-       margin-bottom: 3em;
-   }
+#home #titulo{
+    font-size: 2.5em;
+    text-align: center;
+    color: white; 
+    -webkit-text-stroke: 0.02vw black;
+    font-weight: bolder;
+}
+
+#home img{
+    display: none;
+}
+
+#home #botonIngreso{
+    width: 9em;
+    height: 3em;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    border-radius: 0.2em; 
+    background-color: white;
+    font-size: 1.1em;
+    font-family: inherit;
+    margin-bottom: 3em;
+}
 
 
 
 /************************************Pagina inicio de sesion***************************************************/
 
-
 .formulario {
-    background-color: #26798E; 
+    background-color: #045C73;
     height: 100vh;
-    width: 100%;
     display: grid;
-    grid-template-columns: 90% ;
-    grid-template-rows: 20% 45% 10% 25%;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 15% 45% 10% 10% 20% ;
+    font-family:sans-serif;
 }
 
 .formulario h1 {
-    text-align: center;
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:1;
     color: white;
-    font-weight: lighter;
-    font-family: inherit;
+    font-size: 40px;
+    text-align: center;
+    justify-self: center;
+    margin-top: 1em;
+    align-self: flex-end;
 }
 
 .emailandpassword {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:4;
+    margin-left: 20vw;
+    align-self: center;
+
 }
 
 .emailandpassword input{
-    width: 12.5em;
-    height: 2.5em;
-    background: #FEEF6A;
-    border: 2px solid #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 0.2px;
-    margin: 0.5em;
+    height: 40px;
+    width: 50vw;
+    background-color:#FEEF6A;
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 12px;
     text-align: center;
-    
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
 }
 
 .emailandpassword button {
-    background: #8FC1DF;
-    border: 0.1em solid #FFFFFF;
-    box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
-    border-radius: 0.2em;
-    height: 2.5em;
-    width: 12.5em;
-    margin-bottom: 0.9em;
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
 }
 
 .emailandpassword img {
-    margin-top: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
+    /* justify-content: center;
+    justify-self: center; */
+    margin-left: 18vw;
+  
 }
 
 .emailandpassword h4 {
-    cursor: pointer;
-    text-align: center;
     color: white;
-    padding-bottom: 1vh;
-    border-bottom: 0.2em solid rgb(204, 7, 155);
-    border-bottom-style: dashed;
-    margin-top: 0.8em;
-    font-size: 0.8em;
+    font-size: 1em;
+    text-decoration: underline;
+    /* margin-left: 10vw; */
+
 }
 
-.inicioConProveedores h4 {
-    display: block;
+.formulario .inicioConProveedores{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
     color: white;
-    font-size: 0.8em;
+    font-size: 1em;
+    align-self: center;
+    /* margin: 0 1em; */
     text-align: center;
-    margin-top: 5em;
 }
 
-/* .inicioGoogleFacebook button {
-    width: 6em;
-    height: 5em;
-    background:#26798E url(Img/Icon_Huellita.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 1em;
-    font-weight: bolder;
-    cursor: pointer;
-} */
+.formulario h6{
+    grid-column-start:3;
+    grid-column-end: 2;
+    grid-row-start:3;
+    grid-row-end:3;
+    display:inline-block;
+    position:relative;
+    color:white;
+    font-size: 12px;
+    font-weight: normal;
+    align-self: center;
+    justify-self: center;
+    align-self: flex-end;
+}
+
+.formulario h6::after,h6::before{
+    content:'';
+    position:absolute;
+    width: 80px;
+    height:3px;
+    background-color:#F043A0;
+    top:6px;
+}
+
+.formulario h6::before{
+    left: -95px;
+}
+
+.formulario h6::after{
+    right: -95px;
+}
 
 .formulario figure{
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: center;
-    justify-items: center;
-   }
-   .formulario figure img{
-       width: 60%;
-    
-   }
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:5;
+    grid-row-end:7;
+    color: white;
+    justify-self: center;
+    align-self: center;
+    /* justify-items: center; */
+}
 
-/*Interfaz- Formulario de Registro*/
+.formulario figure img{
+    width: 20%;
+    cursor: pointer;
+    margin-left: 4.5em;
+}
+
+
+/*****************************************Registro**********************************************************/
+
 .formularioRegistro{
     background-color: #045C73;
     height: 100vh;
     display: grid;
-    grid-template-columns: 200px;
-    grid-template-rows: 120px 60px 240px 50px 60px 45px;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 10% 10% 50% 10% 10% 10% ;
+    /* grid-template-rows: 120px 60px 240px 50px 60px 45px; */
+    font-family:sans-serif;
+    /* 
     justify-content: center;
     justify-items: center;
-    align-items: center;
-    font-family:sans-serif;
-   }
-   .formularioRegistro h1{
+    align-items: center; */
+}
+
+.formularioRegistro h1{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:1;
     color: white;
     font-size: 26px;
     text-align:center;
-    margin-top: 55px;
-    }
-    .formularioRegistro p{
-    color: white;
-    font-size: 12px;
-    text-align:center;  
-    }
+    justify-self: center;
+    margin-top: 0.5em;
+}
 
-   .formularioRegistro input{
-    height: 40px;
-    width: 200px;
-    background-color:#FEEF6A;
-    margin-bottom: 10px;
-    border: 2px solid white;
-    box-sizing: border-box;
-    display: grid;
+.formularioRegistro p{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+    color: white;
+    font-size: 1em;
+    justify-self: center;
     text-align: center;
+    align-self: center;
+    margin: 0em 1em;
+}
+
+#descripcionError{
+    display: none;
+}
+
+.formularioRegistro .registroProveedores{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+    color: white;
+    font-size: 1em;
+    align-self: center;
+    /* margin-top: 1em; */
+}
+
+#formularioInputs {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end:4;
+    justify-self: center;
+    margin-right: 2.5vw;
+    align-self: center;
+    /* margin-left: 3vw; */
+    /* justify-items: center;
+    justify-content: center; */
+}
+
+#formularioInputs input{
+    height: 40px;
+    width: 50vw;
+    background-color:#FEEF6A;
+    border: 2px solid white;
     border-radius: 3px;
     font-size: 12px;
-   }
-    .formularioRegistro button{
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+#formularioInputs button{
     height: 40px;
-    width: 200px;
+    width: 50vw;
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
-    margin-top:10px;
-   }
-   .formularioRegistro h6{
+}
+
+.formularioRegistro h6{
+    grid-column-start:3;
+    grid-column-end: 2;
+    grid-row-start:3;
+    grid-row-end:3;
     display:inline-block;
-    position:relative;   
-    color:white; 
+    position:relative;
+    color:white;
     font-size: 12px;
     font-weight: normal;
-   }
-   .formularioRegistro h6::after,h6::before{
-       content:'';
-       position:absolute;
-       width: 80px;
-       height:3px;
-       background-color:#F043A0;   
-       top:6px; 
-    }
-    .formularioRegistro h6::before{
-        left: -95px;
-    }
-    .formularioRegistro h6::after{
-        right: -95px;
-    }
-   .formularioRegistro figure{
-       display: grid;
-       grid-template-columns: 100px 100px;
-       grid-row: auto;
-       justify-content: center;
-       justify-items: center;
-   }
-   .formularioRegistro figure,img{
-       width: 60%;
-   }
+    align-self: flex-end;
+    justify-self: center;
+}
 
-/*Interfaz- Configuración de Perfil*/
+.formularioRegistro h6::after,h6::before{
+    content:'';
+    position:absolute;
+    width: 80px;
+    height:3px;
+    background-color:#F043A0;
+    top:6px;
+}
+
+.formularioRegistro h6::before{
+    left: -95px;
+}
+
+.formularioRegistro h6::after{
+    right: -95px;
+}
+
+.formularioRegistro figure{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:5;
+    grid-row-end:7;
+    color: white;
+    justify-self: center;
+    align-self: center;
+    /* justify-items: center; */
+}
+
+.formularioRegistro figure img{
+    width: 20%;
+    cursor: pointer;
+    margin-left: 4.5em;
+}
+
+/************************************Interfaz-Configuración de Perfil***************************************************/
+
 .contenedorPerfil {
     background-color: #045C73;
     height: 100vh;
@@ -266,9 +360,9 @@
     grid-template-rows: repeat(6, 1fr);;
     justify-items: center;
     font-family:sans-serif;
-   }
- 
-   .contenedorPerfil h1{
+}
+
+.contenedorPerfil h1{
     grid-column-start:1;
     grid-column-end: 4;
     grid-row-start:1;
@@ -276,359 +370,360 @@
     justify-self:center;
     align-self: center; 
     text-align: center;
-   
-    }
-    .contenedorInputs{
-        grid-column-start:1;
-        grid-column-end: 4;
-        grid-row-start:3;
-        grid-row-end: 5;
-        justify-self:center;
-        align-self: center; 
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        justify-self:stretch;
-        align-self: stretch;
-      }
-    
-      .contenedorInputs input, select, button{
-        margin: 1em;
-        width: 50vw;
-        height: 3em;
-        text-align: center;
-      }
-    
-      .contenedorInputs h3{
-       margin-top: 0.5em;
-       font-size: 1em;
-      }
-    
-      .contenedorImagen {
-        grid-column-start:1;
-        grid-column-end: 4;
-        grid-row-start:3;
-        grid-row-end: 5;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        justify-self:stretch;
-        align-self: stretch;
-        display: none; 
-      }
 
-      .contenedorImagen p {
-          margin-top: 1em;
-        font-weight: bolder;
-      }
-
-    
-      .contenedorImagen img {
-        margin-top: 1em;
-        width: 15em;
-        height: 10em;
-      }
-     .contenedorOpciones {
-        grid-column-start:1;
-        grid-column-end: 4;
-        grid-row-start:2;
-        grid-row-end: 3; 
-        justify-self:center;
-        align-self: center;
-        text-align: center;
-     }
-    
-     .contenedorOpciones button {
-        width: 30%;
-        background: none;
-     }
-    
-     .contenedorOpciones button:hover {
-      background-color: rgb(132, 186, 202);
-      color: #000000;
-      font-weight: bolder;
-    }
-    
-     .contenedorOpciones h3 {
-        margin-top: 0.5em;
-    }
-
-
-
-
- /************************************Muro***************************************************/
-
- #contenedorMuro{
-    background-color:#045C73;
-    background-size: contain;
-    background-repeat:no-repeat;
-    background-position: absolute;
-    display: grid;
-    grid-template-columns:25% 50% 25%;
-    grid-template-rows: 20%, 40%, 70%, 10%;
-    height: 100vh;
-    width: 100%;
-    align-items: center;
 }
-
-#contenedorMuro h1{
-   grid-column-start:1;
-   grid-column-end:3;
-   grid-row-start:1;
-   grid-row-end:1;
-   justify-self:center;
-   align-self: flex-start;
-   color: white;
-   font-family: 'Cherry Cream Soda', cursive;
-}
-
-#contenedorMuro #post{
-   grid-column-start: 1;
-   grid-column-end: 3;
-   grid-row-start:2 ;
-   grid-row-end: 3;
-   justify-self:left;
-   align-self: center;
-   background-color:transparent;
-   padding: 20%;
-   
-}
-
-#containerFiltro{
-   margin-top: 5em;
-   justify-self:center;
-   grid-column-start:1;
-   grid-column-end: 4;
-   grid-row-start:1;
-   grid-row-end:1;
-}
-
-#containerFiltro h2{
-   text-align: center;
-   color: white;
-   margin-top: 6em;
-}
-#containerFiltro img{
-   border-radius: 100%;
-   height:3em;
-   width: 3em;
-   margin: 1em; 
-   margin-bottom: 10px;
-}
-
-#post h4{
-    color:white;
-    margin-top: 2em;
-    
-}
-
-/* #contenedorMuro #botones{
-    grid-column-start:3;
-    grid-column-end: 3;
-    grid-row-start:1;
-    grid-row-end:2;
-    justify-self:end;
-    align-self: start; 
-    width: 6em;
-    height: 2em;
-    margin: 1em;
-    font-weight: bolder;
-    cursor: pointer;   
- }
- 
-  #salir,#editarPerfil{
-     width: 5em;
-     height: 3em;
-     color:black ;
-     border: 0.1em solid rgb(0, 0, 0);
-     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-     border-radius: 0.2em; 
-     background: white;  
-     font-size: 1.1em;
-     font-family: inherit;
-     margin-bottom: 1em;
- } */
- 
- #muro{
-    background-color: #8EC1DE;
+.contenedorInputs{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end: 5;
     justify-self:center;
+    align-self: center; 
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-self:stretch;
+    align-self: stretch;
+}
+
+.contenedorInputs input, select, button{
+    margin: 1em;
+    width: 50vw;
+    height: 3em;
+    text-align: center;
+}
+
+.contenedorInputs h3{
+    margin-top: 0.5em;
+    font-size: 1em;
+}
+
+.contenedorImagen {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end: 5;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-self:stretch;
+    align-self: stretch;
+    display: none; 
+}
+
+.contenedorImagen p {
+        margin-top: 1em;
+    font-weight: bolder;
+}
+
+
+.contenedorImagen img {
+    margin-top: 1em;
+    width: 15em;
+    height: 10em;
+}
+
+.contenedorOpciones {
     grid-column-start:1;
     grid-column-end: 4;
     grid-row-start:2;
-    grid-row-end:3;
+    grid-row-end: 3; 
+    justify-self:center;
+    align-self: center;
     text-align: center;
-    padding:15px;
-    height: 20vh;
-    width: 80%;
+}
+
+.contenedorOpciones button {
+    width: 30%;
+    background: none;
+}
+
+.contenedorOpciones button:hover {
+    background-color: rgb(132, 186, 202);
+    color: #000000;
+    font-weight: bolder;
+}
+
+.contenedorOpciones h3 {
+    margin-top: 0.5em;
+}
+
+
+
+
+/************************************Muro***************************************************/
+
+#contenedorMuro{
+background-color:#045C73;
+background-size: contain;
+background-repeat:no-repeat;
+background-position: absolute;
+display: grid;
+grid-template-columns:25% 50% 25%;
+grid-template-rows: 20%, 40%, 70%, 10%;
+height: 100vh;
+width: 100%;
+align-items: center;
+}
+
+#contenedorMuro h1{
+grid-column-start:1;
+grid-column-end:3;
+grid-row-start:1;
+grid-row-end:1;
+justify-self:center;
+align-self: flex-start;
+color: white;
+font-family: 'Cherry Cream Soda', cursive;
+}
+
+#contenedorMuro #post{
+grid-column-start: 1;
+grid-column-end: 3;
+grid-row-start:2 ;
+grid-row-end: 3;
+justify-self:left;
+align-self: center;
+background-color:transparent;
+padding: 20%;
+
+}
+
+#containerFiltro{
+margin-top: 5em;
+justify-self:center;
+grid-column-start:1;
+grid-column-end: 4;
+grid-row-start:1;
+grid-row-end:1;
+}
+
+#containerFiltro h2{
+text-align: center;
+color: white;
+margin-top: 6em;
+}
+#containerFiltro img{
+border-radius: 100%;
+height:3em;
+width: 3em;
+margin: 1em; 
+margin-bottom: 10px;
+}
+
+#post h4{
+color:white;
+margin-top: 2em;
+
+}
+
+/* #contenedorMuro #botones{
+grid-column-start:3;
+grid-column-end: 3;
+grid-row-start:1;
+grid-row-end:2;
+justify-self:end;
+align-self: start; 
+width: 6em;
+height: 2em;
+margin: 1em;
+font-weight: bolder;
+cursor: pointer;   
+}
+
+#salir,#editarPerfil{
+    width: 5em;
+    height: 3em;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 1.1em;
+    font-family: inherit;
+    margin-bottom: 1em;
+} */
+
+#muro{
+background-color: #8EC1DE;
+justify-self:center;
+grid-column-start:1;
+grid-column-end: 4;
+grid-row-start:2;
+grid-row-end:3;
+text-align: center;
+padding:15px;
+height: 20vh;
+width: 80%;
 
 }
 
 #muro input{
- width: 60vw;
- margin-top: 1em;
- height: 4vh;
+width: 60vw;
+margin-top: 1em;
+height: 4vh;
 }
 
 #muro button {
-    width: 6em;
-    margin-top: 1em;
-    height: 4vh;
-   }
+width: 6em;
+margin-top: 1em;
+height: 4vh;
+}
 
 #contenedorPublicaciones{
-    justify-self:center;
-    grid-column-start:1;
-    grid-column-end: 4;
-    grid-row-start:2;
-    grid-row-end:5;
-    /* padding:15px; */
-    height: 20vh;
-    width: 90%;
+justify-self:center;
+grid-column-start:1;
+grid-column-end: 4;
+grid-row-start:2;
+grid-row-end:5;
+/* padding:15px; */
+height: 20vh;
+width: 90%;
 }
 
 .contenedorPost{
-    background-color: #8EC1DE;
-    text-align: center;
-    justify-self: stretch;
-    margin: 1em;
-    height: 10vh;
-    text-align: center;
+background-color: #8EC1DE;
+text-align: center;
+justify-self: stretch;
+margin: 1em;
+height: 10vh;
+text-align: center;
 }
 
 
 .menu {
-    top: 100%;
-    right: 0;
-    background: rgb(25, 156, 179);
-    height: 0;
-    overflow: hidden;
-    justify-self: right;
-    text-align: center;
-    grid-column-start:3;
-    grid-column-end:3;
-    grid-row-start:1;
-    grid-row-end:2;
-    margin-top: 2em;
+top: 100%;
+right: 0;
+background: rgb(25, 156, 179);
+height: 0;
+overflow: hidden;
+justify-self: right;
+text-align: center;
+grid-column-start:3;
+grid-column-end:3;
+grid-row-start:1;
+grid-row-end:2;
+margin-top: 2em;
 }
 
 .menu button {
-    color: rgb(255, 255, 255); 
-    background-color: rgb(25, 156, 179);
+color: rgb(255, 255, 255); 
+background-color: rgb(25, 156, 179);
 }
 
 .menu #perfil{
-    width: 10em;
-    height: 4em;
-    font-weight: bolder;
-    border: none;
-    font-size: 0.9em;
-    
+width: 10em;
+height: 4em;
+font-weight: bolder;
+border: none;
+font-size: 0.9em;
+
 }
 
 .menu #salir{
-    width: 10em;
-    height: 4em;
-    font-weight: bolder;
-    border: none;
+width: 10em;
+height: 4em;
+font-weight: bolder;
+border: none;
 }
 
 .menu button:hover, 
 .menu button:focus {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: black;
+background-color: rgba(0, 0, 0, 0.2);
+color: black;
 }
 
 .opcionesMenuOpen {
-    height: auto;
-    z-index: 100;
+height: auto;
+z-index: 100;
 }
 
-    .menuToggle {
-        padding: 1em;
-        position: absolute;
-        top: .3em;
-        right: .2em;
+.menuToggle {
+    padding: 1em;
+    position: absolute;
+    top: .3em;
+    right: .2em;
+}
+.menuToggleOpen .inicio{
+    transform: rotate(45deg);
     }
-    .menuToggleOpen .inicio{
-        transform: rotate(45deg);
-        }
-    .menuToggleOpen .inicio::before{
-     opacity: 0;
-    }
-    .menuToggleOpen .inicio::after{
-        transform: translateY(-3px) rotate(-90deg);
-       }   
-    .inicio, 
-    .inicio::before,
-    .inicio::after{
-    content: " ";
-    display: block;
-    background: white;
-    height: 3px;
-    width: 1.7em;
-    border-radius: 3px;
-    } 
-    .inicio::before{
-        transform: translateY(-6px);
-    }
-    .inicio::after{
-        transform: translateY(3px);
-    }
+.menuToggleOpen .inicio::before{
+    opacity: 0;
+}
+.menuToggleOpen .inicio::after{
+    transform: translateY(-3px) rotate(-90deg);
+    }   
+.inicio, 
+.inicio::before,
+.inicio::after{
+content: " ";
+display: block;
+background: white;
+height: 3px;
+width: 1.7em;
+border-radius: 3px;
+} 
+.inicio::before{
+    transform: translateY(-6px);
+}
+.inicio::after{
+    transform: translateY(3px);
+}
 
 
- /************************************ restablecimiento de la contraseña***************************************************/
+/************************************ restablecimiento de la contraseña***************************************************/
 
-    .formularioRestablecerContrasena {
-        background-color: #8EC1DE;
-        color:black;
-        font-size: 1em;
-        text-align: center;
-        height: 100vh;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100% ;
-        grid-template-rows: 45% 10% 45%;
+.formularioRestablecerContrasena {
+    background-color: #8EC1DE;
+    color:black;
+    font-size: 1em;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100% ;
+    grid-template-rows: 45% 10% 45%;
 
-    }
-    .formularioRestablecerContrasena .imagen img {
-        width: 12em;
-        height: 10em;
-        margin-top: 6em;
-    }
-    .formularioRestablecerContrasena .descripcion {
-        grid-row: 2;
-    }
+}
+.formularioRestablecerContrasena .imagen img {
+    width: 12em;
+    height: 10em;
+    margin-top: 6em;
+}
+.formularioRestablecerContrasena .descripcion {
+    grid-row: 2;
+}
 
-    .formularioRestablecerContrasena .input {
-        grid-row: 3;
-    }
+.formularioRestablecerContrasena .input {
+    grid-row: 3;
+}
 
-    .formularioRestablecerContrasena .input input{
-        width: 12.5em;
-        height: 2.5em;
-        background: #FEEF6A;
-        border: 2px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 0.2px;
-        margin: 0.5em;
-        text-align: center;
-    }
+.formularioRestablecerContrasena .input input{
+    width: 12.5em;
+    height: 2.5em;
+    background: #FEEF6A;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 0.2px;
+    margin: 0.5em;
+    text-align: center;
+}
 
-    .formularioRestablecerContrasena .input button {
-        margin-top: 1em;
-        width: 9em;
-        height: 3em;
-        color:black ;
-        border: 0.1em solid rgb(0, 0, 0);
-        box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-        border-radius: 0.2em; 
-        background: none;  
-        font-size: 1.1em;
-        font-family: inherit;
-    }
+.formularioRestablecerContrasena .input button {
+    margin-top: 1em;
+    width: 9em;
+    height: 3em;
+    color:black ;
+    border: 0.1em solid rgb(0, 0, 0);
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    border-radius: 0.2em; 
+    background: none;  
+    font-size: 1.1em;
+    font-family: inherit;
+}
 
-    .descripcionError {
-        display: none;
-    }
+.descripcionError {
+    display: none;
+}
 }
 

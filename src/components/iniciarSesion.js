@@ -12,6 +12,7 @@ export function iniciarSesion() {
             <button type="button" id="botonIngresar">ingresar</button> <br>
             <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4>
          </div>
+          <h6>O</h6>  
          <div class="inicioConProveedores"><h4>Ingresa con tu cuenta de Google o Facebook </h4></div>
           <figure>
              <img type="button" id="botonGoogle" src="img/Icono_Google.png"> 

@@ -12,16 +12,6 @@
  }
 /************************************Interfaz principal***************************************************/
 
- /* #home {
-    height:100vh;
-    width: 100%;
-    background: #12c2e9;  
-    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); 
-    display: grid;
-    grid-template-columns:repeat (4,1fr);
-    grid-template-rows: repeat (5,1fr); 
- } */
  #home {
     height:100vh;
     width: 100%;
@@ -35,8 +25,8 @@
     grid-template-columns:repeat (4,1fr);
     grid-template-rows: repeat (5,1fr);
     /* justify-content: center; */
-
  }
+
  #home #titulo{
     grid-column-start:2;
     grid-column-end: 3;
@@ -49,35 +39,6 @@
     -webkit-text-stroke: 0.02vw black;
     font-weight: bolder;
     text-align: center;
-  }
-
-  #home #fondoPerro{
-    grid-column-start:1;
-    grid-column-end: 1;
-    grid-row-start:2;
-    grid-row-end: 3;
-    transform: rotate(330deg);
-  }
-
-  #home #fondoGato{
-    grid-column-start:3;
-    grid-column-end: 3;
-    grid-row-start:3;
-    grid-row-end: 4;
-    transform: rotate(20deg);
-  }
-
-
-  #home #fondoPerro2{
-    grid-column-start:2;
-    grid-column-end: 3;
-    grid-row-start:4;
-    grid-row-end: 4;
-    transform: rotate(20deg);
-  }
-
-  #home img{
-    width: 30%;
   }
 
   #home #invitacion{
@@ -124,68 +85,75 @@
     height: 3em;
     background:none;
     border: none;
-    /* border: 0.1em solid rgb(0, 0, 0);
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); */
     text-decoration-line: underline;
     font-family: inherit;
     font-size: 1.1em;
     /* -webkit-text-stroke: 0.1vw black; */
-    /* margin-bottom: 2.3em; */
 }
 /************************************pagina inicio de sesion***************************************************/
-
- .formulario {
-    background-color: #26798E;
-    height: 100vh;
+.formulario {
+    background-color: #045C73;
     width: 100%;
+    height: 100vh;
     display: grid;
-    grid-template-columns: 90% ;
-    grid-template-rows: 20% 45% 10% 25%;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 15% 45% 10% 10% 20% ;
+    /* grid-template-rows: 120px 60px 240px 50px 60px 45px; */
+    font-family:sans-serif;
+/* 
     justify-content: center;
-    align-items: center;
+    justify-items: center;
+    align-items: center; */
 }
 
 .formulario h1 {
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;
+    align-self: center;
     text-align: center;
     color: white;
-    font-weight: lighter;
-    font-family: inherit;
 }
 
 .emailandpassword {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:2;
+    grid-row-end:3;
+    align-items: center;
+    margin-left: 2em;
+    grid-auto-flow: row;
 }
 
 .emailandpassword input{
-    width: 12.5em;
-    height: 2.5em;
-    background: #FEEF6A;
-    border: 2px solid #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 0.2px;
-    margin: 0.5em;
+    
+    height: 40px;
+    /* width: 16em; */
+    width: 25vw;
+    background-color:#FEEF6A;
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 1em;
     text-align: center;
-
+    margin-top: 1em;
+    margin-left: 1em; 
 }
 
 .emailandpassword button {
-    background: #8FC1DF;
-    border: 0.1em solid #FFFFFF;
-    box-shadow: 0.1em 0.3em 0.3em #CDEBFD;
-    border-radius: 0.2em;
-    height: 2.5em;
-    width: 12.5em;
-    margin-bottom: 0.9em;
+    height: 40px;
+    /* width: 20em; */
+    width: 25vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .emailandpassword img {
     margin-top: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 8.5vw;
+
 }
 
 .emailandpassword h4 {
@@ -193,78 +161,71 @@
     text-align: center;
     color: white;
     padding-bottom: 2vh;
-    border-bottom: 0.2em solid rgb(204, 7, 155);
-    border-bottom-style: dashed;
     margin-top: 0.8em;
-    font-size: 0.8em;
+    font-size: 1em;
+    margin-right: 1.5em;
+    text-decoration: underline;
 }
 
-.inicioConProveedores h4 {
-    display: block;
+.formulario h6{
+    grid-column-start:3;
+    grid-column-end: 2;
+    grid-row-start:3;
+    grid-row-end:3;
+    display:inline-block;
+    position:relative;
+    color:white;
+    font-size: 12px;
+    font-weight: normal;
+    align-self: flex-end;
+    justify-self: center;
+}
+
+.formulario h6::after,h6::before{
+    content:'';
+    position:absolute;
+    width: 80px;
+    height:3px;
+    background-color:#F043A0;
+    top:6px;
+}
+
+.formulario h6::before{
+    left: -95px;
+}
+
+.formulario h6::after{
+    right: -95px;
+}
+
+.inicioConProveedores {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
     color: white;
-    font-size: 0.8em;
-    text-align: center;
-    margin-top: 5em;
+    font-size: 1em;
+    align-self: center;
+    margin-top: 1em;
+    justify-self: center;
 }
-
-/* .inicioGoogleFacebook button {
-    width: 6em;
-    height: 5em;
-    background:#26798E url(Img/Icon_Huellita.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 1em;
-    font-weight: bolder;
-    cursor: pointer;
-} */
 
 .formulario figure{
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: center;
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:5;
+    grid-row-end:7;
+    color: white;
+    justify-self: center;
     justify-items: center;
-   }
-   .formulario figure img{
-       width: 70%;
-
-   }
-
-   /* .formulario {
-    background-color: #26798E;
-    height: 100vh;
-    width: 100%;
-    display: grid; */
-    /* grid-template-columns:repeat (4,1fr);
-    grid-template-rows: repeat (3,1fr);   */
-    /* grid-template-columns: 90% ;
-    grid-template-rows: 20% 50% 10% 30%;
-    justify-content: center;
-
-    align-items: center;
+    margin-left: 10em;
 }
+.formulario figure img{
+    width: 25%;
+    cursor: pointer;
+    padding-left: 0.5em;
 
-.formulario h1 {
-   grid-column-start:2;
-   grid-column-end: 3;
-   grid-row-start:1;
-   grid-row-end:2;
-   justify-self: center;
-   align-self: center;
-   text-align: center;
-   color: white;
-   font-weight: lighter;
-   font-family: inherit;
-} */
-
- /* .emailandpassword {
-   grid-column-start:1;
-   grid-column-end: 4;
-   grid-row-start:2;
-   grid-row-end:3;
-   justify-self:center;
-   align-self:center; */
-   /* margin-left: 5%; */
-
+}
 
 /************************************Registro***************************************************/
 
@@ -272,91 +233,146 @@
     background-color: #045C73;
     height: 100vh;
     display: grid;
-    grid-template-columns: 200px;
-    grid-template-rows: 120px 60px 240px 50px 60px 45px;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 10% 10% 50% 10% 10% 10% ;
+    /* grid-template-rows: 120px 60px 240px 50px 60px 45px; */
+    font-family:sans-serif;
+/* 
     justify-content: center;
     justify-items: center;
-    align-items: center;
-    font-family:sans-serif;
-   }
-   .formularioRegistro h1{
+    align-items: center; */
+}
+
+.formularioRegistro h1{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:1;
+    grid-row-end:1;
     color: white;
     font-size: 26px;
     text-align:center;
-    margin-top: 55px;
-    }
-    .formularioRegistro p{
-    color: white;
-    font-size: 12px;
-    text-align:center;
-    }
+    justify-self: center;
+    margin-top: 0.5em;
+}
 
-   .formularioRegistro input{
+.formularioRegistro p{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+    color: white;
+    font-size: 1em;
+    justify-self: center;
+}
+
+#descripcionError{
+    display: none;
+}
+ 
+.formularioRegistro .registroProveedores{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+    color: white;
+    font-size: 1em;
+    align-self: initial;
+    margin-top: 1em;
+}
+
+#formularioInputs {
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:3;
+    grid-row-end:4;
+    justify-self: right;
+    margin-right: 2.5vw;
+    /* margin-left: 3vw; */
+    /* justify-items: center;
+    justify-content: center; */
+}
+
+#formularioInputs input{
     height: 40px;
-    width: 200px;
+    width: 25vw;
     background-color:#FEEF6A;
-    margin-bottom: 10px;
     border: 2px solid white;
-    box-sizing: border-box;
-    display: grid;
-    text-align: center;
     border-radius: 3px;
     font-size: 12px;
-   }
-    .formularioRegistro button{
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+#formularioInputs button{
     height: 40px;
-    width: 200px;
+    width: 25vw;
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
-    margin-top:10px;
-   }
-   .formularioRegistro h6{
+}
+
+.formularioRegistro h6{
+    grid-column-start:3;
+    grid-column-end: 2;
+    grid-row-start:3;
+    grid-row-end:3;
     display:inline-block;
     position:relative;
     color:white;
     font-size: 12px;
     font-weight: normal;
-   }
-   .formularioRegistro h6::after,h6::before{
-       content:'';
-       position:absolute;
-       width: 80px;
-       height:3px;
-       background-color:#F043A0;
-       top:6px;
-    }
-    .formularioRegistro h6::before{
-        left: -95px;
-    }
-    .formularioRegistro h6::after{
-        right: -95px;
-    }
-   .formularioRegistro figure{
-       display: grid;
-       grid-template-columns: 100px 100px;
-       grid-row: auto;
-       justify-content: center;
-       justify-items: center;
-   }
-   .formularioRegistro figure,img{
-       width: 60%;
-   }
-   
+    align-self: flex-end;
+    justify-self: center;
+}
+
+.formularioRegistro h6::after,h6::before{
+    content:'';
+    position:absolute;
+    width: 80px;
+    height:3px;
+    background-color:#F043A0;
+    top:6px;
+}
+
+.formularioRegistro h6::before{
+    left: -95px;
+}
+
+.formularioRegistro h6::after{
+    right: -95px;
+}
+
+.formularioRegistro figure{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:5;
+    grid-row-end:7;
+    color: white;
+    justify-self: center;
+    justify-items: center;
+    margin-left: 13em;
+}
+
+.formularioRegistro figure img{
+    width: 20%;
+    cursor: pointer;
+    padding-left: 1em;
+}
+
+ 
     /************************************Muro***************************************************/
 
  #contenedorMuro{
-     /* background-image: url(Img/fondo2.png); */
      background-color: #045C73;
-     background-size: contain;
-     background-repeat:no-repeat;
-     /* background-position: absolute; */
+     background-size: cover;
+     background-repeat:repeat;
      display: grid;
-     grid-template-columns:25% 50% 25%;
-     grid-template-rows: 20% 40% 50% 20% 10%;
+     grid-template-columns:33% 33% 33%;
+     grid-template-rows: 10% 10% 30% 50% ;
      height: 100vh;
      width: 100%;
-     align-items: center;
+     /* align-items: center; */
  }
 
  #contenedorMuro h1{
@@ -371,215 +387,209 @@
     font-family: 'Cherry Cream Soda', cursive;
  }
 
- /* #contenedorMuro #salir{}
- 
- #contenedorMuro #botones{
+ .menu {
+    top: 100%;
+    right: 0;
+    background: rgb(25, 156, 179);
+    height: 0;
+    overflow: hidden;
+    justify-self: right;
+    text-align: center;
     grid-column-start:3;
-    grid-column-end: 3;
+    grid-column-end:3;
     grid-row-start:1;
     grid-row-end:2;
-    justify-self:end;
-    align-self: start;
- } */
-
- #contenedorMuro #post{
-    grid-column-start: 1;
-    align-self: start; 
-    width: 6em;
-    height: 2em;
-    margin: 1em;
-    font-weight: bolder;
-    cursor: pointer;
- }
-
- /* #salir,#editarPerfil{
-    width: 5em;
-    height: 3em;
-    color:black ;
-    border: 0.1em solid rgb(0, 0, 0);
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-    border-radius: 0.2em; 
-    background: white;  
-    font-size: 1.1em;
-    font-family: inherit;
-    margin-bottom: 1em;
-} */
-
-/* #editarPerfil{
-    width: 7em;
-    font-size: 0.9em;
-} */
- 
-#contenedorMuro #post{
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start:2 ;
-    grid-row-end: 3;
-    justify-self:left;
-    align-self: center;
-    background-color:transparent;
-    padding: 20%;
+    margin-top: 4em;
 }
 
- #containerFiltro{
-        margin-top: 5em;
-        justify-self:center;
-        padding-left: 20%;
-        grid-column-start:1;
-        grid-column-end: 4;
-        grid-row-start:1;
-        grid-row-end:1;
-     }
+.menu button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(25, 156, 179);
+}
 
+.menu #perfil{
+    width: 10em;
+    height: 4em;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+}
+.menu #salir{
+    width: 10em;
+    height: 4em;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+}
 
-#containerFiltro h2{
+.menu button:hover,
+.menu button:focus {
+    color: black;
+    text-transform: uppercase;
+    border-color: 2em rgb(5, 7, 4) solid;
+}
+
+.opcionesMenuOpen {
+    height: auto;
+    z-index: 100;
+}
+
+.menuToggle {
+    padding: 1em;
+    position: absolute;
+    top: .3em;
+    right: .2em;
+}
+.menuToggleOpen .inicio{
+    transform: rotate(45deg);
+    }
+.menuToggleOpen .inicio::before{
+    opacity: 0;
+}
+.menuToggleOpen .inicio::after{
+    transform: translateY(-3px) rotate(-90deg);
+    }
+.inicio,
+.inicio::before,
+.inicio::after{
+    content: " ";
+    display: block;
+    background: rgb(0, 0, 0);
+    height: 3px;
+    width: 1.7em;
+    border-radius: 3px;
+}
+.inicio::before{
+    transform: translateY(-6px);
+}
+.inicio::after{
+    transform: translateY(3px);
+}
+
+#containerFiltro{
+    grid-column-start:1;
+    grid-column-end:4;
+    grid-row-start:2;
+    grid-row-end:3;
+    justify-self: center;
+    align-self: stretch;
+ }
+
+#containerFiltro h3{
     text-align: center;
     color:#045C73;
-    margin-top: 6em;
- }
- #containerFiltro img{
+    /* margin-top: 6em; */
+}
+#containerFiltro img{
     border-radius: 100%;
     height:3em;
     width: 3em;
     margin: 1em;
     margin-bottom: 10px;
- }
-
- #post h4{
-     color:white;
-     margin-top: 2em;
-
- }
-
- .menu {
-     top: 100%;
-     right: 0;
-     background: rgb(25, 156, 179);
-     height: 0;
-     overflow: hidden;
-     justify-self: right;
-     text-align: center;
-     grid-column-start:3;
-     grid-column-end:3;
-     grid-row-start:1;
-     grid-row-end:2;
-     margin-top: 4em;
- }
-
- .menu button {
-     color: rgb(255, 255, 255);
-     background-color: rgb(25, 156, 179);
- }
-
- .menu #perfil{
-     width: 10em;
-     height: 4em;
-     font-weight: bolder;
-     border: none;
-     cursor: pointer;
- }
- .menu #salir{
-     width: 10em;
-     height: 4em;
-     font-weight: bolder;
-     border: none;
-     cursor: pointer;
- }
-
- .menu button:hover,
- .menu button:focus {
-     color: black;
-     text-transform: uppercase;
-     border-color: 2em rgb(5, 7, 4) solid;
- }
-
- .opcionesMenuOpen {
-     height: auto;
-     z-index: 100;
- }
-
-     .menuToggle {
-         padding: 1em;
-         position: absolute;
-         top: .3em;
-         right: .2em;
-     }
-     .menuToggleOpen .inicio{
-         transform: rotate(45deg);
-         }
-     .menuToggleOpen .inicio::before{
-      opacity: 0;
-     }
-     .menuToggleOpen .inicio::after{
-         transform: translateY(-3px) rotate(-90deg);
-        }
-     .inicio,
-     .inicio::before,
-     .inicio::after{
-     content: " ";
-     display: block;
-     background: rgb(0, 0, 0);
-     height: 3px;
-     width: 1.7em;
-     border-radius: 3px;
-     }
-     .inicio::before{
-         transform: translateY(-6px);
-     }
-     .inicio::after{
-         transform: translateY(3px);
-     }
-
-#post h4{
-    color:white;
-    margin-top: 2em;
-    
 }
-#seccionPosteos{
-    color:white;
-}
+
 #muro{
-    background-color:white;
-    border-radius: 1.5em;
-    justify-self:center;
     grid-column-start:2;
-    grid-column-end: 4;
-    grid-row-start:1;
+    grid-column-end: 3;
+    grid-row-start:3;
     grid-row-end:4;
-    text-align: left;
-    padding:15px;
-    height: 50vh;
-    width: 70%;
+    justify-content: center;
+    align-self: flex-end;
+    background-color:rgb(255, 255, 255);
+    border-radius: 1.5em;
+    height: 23vh;
+    width: 100%;
     color:rgb(255, 255, 255) ;
     border: 0.1em solid rgb(0, 0, 0);
     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
     font-size: 1.2em;
+    grid-auto-flow: row;
+   
 }
 
-#postear{
-    width: 4em;
+#muro #mensaje{
+   margin-top: 0.5em;
+   margin-left: 1em;
+   margin-right: 1em;
+   height: 5em;
+   width: 90%;
+   text-align: center;
+   font-size: inherit;
+   border-radius: 1.5em;
+}
+
+#muro .botonesTextArea{
+    margin-left: 4em;
+    width: 30%;
+ }
+
+#muro #postear{
+    width: 10vw;
     height: 1.5em;
-    color:black ;
-    border: 0.1em solid rgb(0, 0, 0);
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
+    /* border: 0.1em solid rgb(0, 0, 0); */
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
     border-radius: 0.2em; 
     background: white;  
     font-size: 0.8em;
-    font-family: inherit;
-    
-    }
-    
-    #editarPerfil{
-        width: 7em;
-        font-size: 0.9em;
-    }
+    font-family: inherit; 
+    text-align: center;
+    margin-left: 4.5vw;
+}
 
-    #contenedorPublicaciones {
-        width: 10em;
-        height: 10em;
-        background-color: #F043A0;
-    }
+#seccionPosteos{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+    justify-content: center;
+    align-self: initial;
+    text-align: center;
+    margin-top: 1em;
+}
 
+.elementosPosts{
+    background-color: ivory;
+    margin: 0.8em 0;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    height: 40%;
+    width: 50%;
+    position: relative;
+    margin-left: 24vw;
+    box-sizing: border-box
+   
+}
+
+.botonEditar{
+    width: 7vw;
+    height: 3em;
+    position: absolute;
+    top: 0;
+    left: 78%;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+}
+
+.botonBorrar{
+    width: 7vw;
+    height: 3em;
+    position: absolute;
+    top: 4em;
+    left: 78%;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+}
+
+
+    
  /************************************ restablecimiento de la contraseña***************************************************/
 
     .formularioRestablecerContrasena {

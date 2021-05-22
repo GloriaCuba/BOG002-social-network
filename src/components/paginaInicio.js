@@ -4,30 +4,30 @@ import { cerrarSesión } from '../firebase/firebase.js';
 export function inicio() {
   const muro = `
    <div id="contenedorMuro">
-   <h1>Pet Book</h1>
-   <div id="menu" class="menu">
-      <button type="button" id="salir">Salir</button> 
-      <button type="button" id="perfil">Perfil</button>
-   </div>
-   <div id="menuToggle" class="menuToggle">
-      <div class="inicio"></div>
-   </div> 
-   <div id="containerFiltro">
-      <h3>!Encuentra a tus amigos¡</h3>
-      <img src="Img/Perro.jpg" width= 200px height=200px id="filtroCaninos">
-      <img src="Img/Gato.jpg" width= 200px height=200px id="filtroFelinos">
-      <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
-      <img src="Img/pez1.jpg" width= 200px height=200px id="filtroRoedores">
-   </div>
-   <form id="muro">
-      <div class="textArea">
-         <textarea type="text" id="mensaje" class="campoPosteo" placeholder="¿Qué estas pensando?"></textarea>
+      <h1>Pet Book</h1>
+      <div id="menu" class="menu">
+         <button type="button" id="salir">Salir</button> 
+         <button type="button" id="perfil">Perfil</button>
       </div>
-      <div class="botonesTextArea">
-         <button class="botonEnviar id="postear">Enviar</button>
+      <div id="menuToggle" class="menuToggle">
+         <div class="inicio"></div>
+      </div> 
+      <div id="containerFiltro">
+         <h3>!Encuentra a tus amigos¡</h3>
+         <img src="Img/Perro.jpg" width= 200px height=200px id="filtroCaninos">
+         <img src="Img/Gato.jpg" width= 200px height=200px id="filtroFelinos">
+         <img src="Img/conejo.jpg" width= 200px height=200px id="filtroRoedores">
+         <img src="Img/pez1.jpg" width= 200px height=200px id="filtroRoedores">
       </div>
-   </form>
-   <div id="seccionPosteos"> </div>
+      <form id="muro">
+         <div class="textArea">
+            <textarea type="text" id="mensaje" class="campoPosteo" placeholder="¿Qué estas pensando?"></textarea>
+         </div>
+         <div class="botonesTextArea">
+            <button class="botonEnviar" id="postear">Publicar</button>
+         </div>
+      </form>
+      <div id="seccionPosteos"> </div>
    </div>
    `;
   const divMuro = document.createElement('div');
@@ -76,8 +76,6 @@ export function postMuro(){
       
    });
 
-
-
    function guardarPosts(mensaje,date){
       let posts = firebase.firestore().collection('posts').doc().set({
       mensaje,
@@ -89,31 +87,57 @@ export function postMuro(){
          //imprimirPosts();
       });
    }
-     /*  function verPosts(){
-      db.collection('posts').get().then((querySnapshot) => {
-         querySnapshot.forEach((doc) => { 
-         //console.log(doc.id);
-         });
-      }).then(() => {
-         console.log(doc.id);
-         //console.log("Este es el .then que se debe ver después de verPosts")
-         // imprimirPosts()
-      });
-   }  */
    function verPosts(){
       firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
          document.getElementById("seccionPosteos").innerHTML='';
          querySnapshot.forEach((doc) => {
-         //console.log(doc.id + doc.data().mensaje );
+         let divOriginal = document.getElementById("seccionPosteos")
          let campo = document.createElement("div")
+         campo.className="elementosPosts"
+
+         let botonEditar = document.createElement("button")
+         botonEditar.className="botonEditar"
+         botonEditar.type = 'button'; 
+         botonEditar.innerText = 'Editar post'; 
+
+         let botonBorrar = document.createElement("button")
+         botonBorrar.className="botonBorrar"
+         botonBorrar.type = 'button'; 
+         botonBorrar.innerText = 'Borrar Post'; 
+         
+         campo.appendChild(botonBorrar)
+         campo.appendChild(botonEditar)
+
          let texto = document.createTextNode(doc.data().mensaje );
          campo.appendChild(texto);
-         let divOriginal = document.getElementById("seccionPosteos")
          divOriginal.appendChild(campo);
          });
       });
-   } 
-  /*  function imprimirPosts(){
+   };
+
+   function mostrarDiv() {
+      let div =document.querySelector(".divEditar");
+   
+
+   }
+
+   // function ocultarMostrarPost() {
+   //    let eventoMostrar = document.querySelector(".botonMostrarOpciones")
+   //    eventoMostrar.addEventListener("click", ()=>{
+   //       console.log('funciono')
+   //       // document.querySelector(".divEditar").display="inline"
+   //    } )
+   // } 
+
+      function imprimirPosts(){
+         firebase.firestore().collection('posts').doc().onSnapshot((doc)=>{
+             console.log(doc.data().mensaje);
+            });
+      } 
+}
+
+
+        /*  function imprimirPosts(){
       db.collection("posts").where("mensaje", "==", true)
       .get()
       .then((querySnapshot) => {
@@ -130,14 +154,21 @@ export function postMuro(){
       db.collection('posts').doc().onSnapshot((doc) => {
          console.log(doc.id);
      });
- */    
+ */   
 
-      function imprimirPosts(){
-         firebase.firestore().collection('posts').doc().onSnapshot((doc)=>{
-             console.log(doc.data().mensaje);
-            });
-      } 
-}
+     /*  function verPosts(){
+      db.collection('posts').get().then((querySnapshot) => {
+         querySnapshot.forEach((doc) => { 
+         //console.log(doc.id);
+         });
+      }).then(() => {
+         console.log(doc.id);
+         //console.log("Este es el .then que se debe ver después de verPosts")
+         // imprimirPosts()
+      });
+   }  */
+
+
 
 
 // export function postMuro() {
