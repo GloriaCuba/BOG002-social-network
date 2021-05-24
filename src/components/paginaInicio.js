@@ -67,7 +67,7 @@ export function postMuro() {
       // console.log(mensaje);
       guardarPosts(mensaje, date);
    });
-   }
+  
 
 function guardarPosts(mensaje,date){
    let posts = firebase.firestore().collection('posts').doc().set({
@@ -80,8 +80,8 @@ function guardarPosts(mensaje,date){
       //imprimirPosts();
    });
 }
-
-function verPosts() {
+}
+ export function verPosts() {
    firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
       document.getElementById('seccionPosteos').innerHTML = '';
       querySnapshot.forEach((doc) => {
@@ -89,12 +89,18 @@ function verPosts() {
          const mensaje = document.createElement('div');
          mensaje.className="elementosPosts";
          const texto = document.createTextNode(doc.data().mensaje);
-         const campo = document.createElement('span');
+         const campo = document.createElement('p');
          const  botonBorrar = document.createElement('button');
+         const  botonEditar = document.createElement('button');
+         campo.setAttribute('id', 'campo');
          botonBorrar.className="botonBorrar"
          botonBorrar.type = 'button'; 
          botonBorrar.textContent = 'Borrar post';
          botonBorrar.setAttribute('id', 'botonBorrar');
+         botonEditar.className="botonEditar"
+         botonEditar.type = 'button'; 
+         botonEditar.textContent = 'Editar';
+         botonEditar.setAttribute('id', 'botonEditar');
       //  botonEditar.innerText = 'Editar post'; 
          // const fecha = document.createTextNode(doc.data().date);
          mensaje.setAttribute('data-id', doc.id);
@@ -102,17 +108,19 @@ function verPosts() {
          mensaje.appendChild(campo);
          // divOriginal.appendChild(fecha);
          mensaje.appendChild(botonBorrar);
+         mensaje.appendChild(botonEditar);
          divOriginal.appendChild(mensaje);
 
          botonBorrar.addEventListener('click', () => {
          botonEliminar(doc.id);
          console.log(doc.id);
          });
+         botonEditar.addEventListener('click', () => {
+         botonEditarPost(doc.id, doc.data().mensaje);
+         });
       });
    });
-   }
-
-   
+} 
    function botonEliminar(id) {
    firebase.firestore().collection('posts').doc(id).delete().then(() => {
       console.log('Document successfully deleted!');
@@ -120,16 +128,40 @@ function verPosts() {
       console.error('Error removing document: ', error);
    });
    }
+   function botonEditarPost(id,mensaje) {
+      document.getElementById('campo').value = mensaje;
+      console.log(id + mensaje);
+      /* firebase.firestore.Timestamp.now();
+      let date = firebase.firestore.Timestamp.now(); */
+      let postear = document.getElementById('postear');
+      postear.innerHTML='Actualizar';
+      postear.addEventListener('click', () => { 
+      
+      let nuevoPost = firebase.firestore().collection('posts').doc(id)
+      return nuevoPost.update({
+         mensaje:mensaje,
+      }).then(() => {
+         
+      });
+      });
+   };
+
+   export function salir() {
+   const salir = document.querySelector('#salir');
+   salir.addEventListener('click', () => {
+      cerrarSesión();
+      window.location = '';
+      location.reload();
+   });
+   };
 
 
-export function salir() {
-  const salir = document.querySelector('#salir');
-  salir.addEventListener('click', () => {
-    cerrarSesión();
-    window.location = '';
-    location.reload();
-  });
-};
+  /*  function verPostSiempre(){
+      db.collection('posts').get().then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+         //console.log(doc.id);
+         });
+      }) */
 
 
       //       let botonEditar = document.createElement("button")
