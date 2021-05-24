@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { cerrarSesión } from '../firebase/firebase.js';
-// import { mostrarPosts } from '../firebase/post.js';
+// import { guardarPublicacion } from '../firebase/post.js';
 
 
 export function inicio() {
@@ -58,28 +58,26 @@ export function irAPerfil() {
 
 export function postMuro() {
    const muro = document.getElementById('muro');
-   muro.addEventListener('submit', e => {
+   muro.addEventListener('submit', (e) => {
       e.preventDefault(); // Para que no se refresque la página
       const mensaje = muro['mensaje'].value;
       const date = firebase.firestore.Timestamp.now();
-      console.log(date);
-      // const mensaje = document.getElementById('mensaje').value;
-      // console.log(mensaje);
-      guardarPosts(mensaje, date);
+        console.log(date);
+         guardarPosts(mensaje, date)
+          muro.reset()
    });
    }
 
 function guardarPosts(mensaje,date){
-   let posts = firebase.firestore().collection('posts').doc().set({
+    let posts = firebase.firestore().collection('posts').doc().set({
    mensaje,
    date 
    }).then(() => { 
-      //obtener el id del doc, para encontrar la data especifica where
-      //document.getElementById("seccionPosteos").innerHTML="hola, este es tu post " + mensaje;
-   verPosts();
+       verPosts();
       //imprimirPosts();
    });
 }
+
 
 function verPosts() {
    firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
@@ -89,24 +87,37 @@ function verPosts() {
          const mensaje = document.createElement('div');
          mensaje.className="elementosPosts";
          const texto = document.createTextNode(doc.data().mensaje);
-         const campo = document.createElement('span');
+         const campo = document.createElement('p');
+         campo.setAttribute('id', 'campo');
+
          const  botonBorrar = document.createElement('button');
          botonBorrar.className="botonBorrar"
          botonBorrar.type = 'button'; 
          botonBorrar.textContent = 'Borrar post';
          botonBorrar.setAttribute('id', 'botonBorrar');
-      //  botonEditar.innerText = 'Editar post'; 
-         // const fecha = document.createTextNode(doc.data().date);
+
+         const  botonEditar = document.createElement('button');
+         botonEditar.className="botonEditar"
+         botonEditar.type = 'button'; 
+         botonEditar.textContent = 'Editar post';
+         botonEditar.setAttribute('id', 'botonEditar');
+
          mensaje.setAttribute('data-id', doc.id);
          campo.appendChild(texto);
          mensaje.appendChild(campo);
-         // divOriginal.appendChild(fecha);
          mensaje.appendChild(botonBorrar);
+         mensaje.appendChild(botonEditar)
          divOriginal.appendChild(mensaje);
 
          botonBorrar.addEventListener('click', () => {
          botonEliminar(doc.id);
          console.log(doc.id);
+         });
+         
+         botonEditar.addEventListener('click', () => {
+            console.log("funciono")
+            botonEditarMensaje(doc.id, doc.data().mensaje);
+            console.log(doc.id);
          });
       });
    });
@@ -120,6 +131,21 @@ function verPosts() {
       console.error('Error removing document: ', error);
    });
    }
+
+   function botonEditarMensaje(id, mensaje) {
+   let campoCambiar = document.getElementById("campo").value = mensaje
+   console.log(campoCambiar)
+   var washingtonRef = firebase.firestore().collection("posts").doc(id);
+      return washingtonRef.update({
+         mensaje: mensaje
+})
+.then(() => {
+    console.log("Document successfully updated!");
+})
+.catch((error) => {
+    console.error("Error updating document: ", error);
+});
+}
 
 
 export function salir() {

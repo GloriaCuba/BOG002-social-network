@@ -41,15 +41,6 @@ export function configPerfil() {
   return divPerfil;
 }
 
-// export function menuEspecies() {
-//   const linkMenu = document.getElementById('linkMenuEspecies');
-//   const subMenu = document.getElementById('subMenuEspecies');
-//   linkMenu.addEventListener('click', () => {
-//     subMenu.classList.toggle('mostrarMenu');
-//     eslint-disable-next-line no-console
-//     return console.log('hiciste click');
-//   });
-// }
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
@@ -63,7 +54,7 @@ export function recoletandoDatos() {
   const userId = document.getElementById('userId');
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
-  const datosCollection = database.collection('Datos');
+  const datosCollection = firebase.firestore().collection('Datos');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', (e) => {
     // eslint-disable-next-line no-console
@@ -74,11 +65,54 @@ export function recoletandoDatos() {
       Nombre_Mascota: nomMascota.value,
       Especie: especie.value,
     })
-      .then(() => { console.log('Data'); })
-        location.reload()
+      .then(() => { console.log('Data'); 
+        // recoletandoImagen()
+        // location.reload()
+      })
       .catch((error) => { console.error(error); });
   });
 }
+
+export function recoletandoImagen() {
+  const datosCollection = firebase.firestore().collection('Datos');
+  let userImagen = document.querySelector('#inputUserImag');
+  const btnGuardarPhoto = document.getElementById('botonGuardar');
+  btnGuardarPhoto.addEventListener('click', (e) => {
+    // eslint-disable-next-line no-console
+    console.log('click');
+    e.preventDefault();
+    datosCollection.doc(userId.value).set({
+      usuario: userId.value,
+      Foto: userImagen
+    })
+      .then(() => { 
+        console.log('Data'); 
+    })
+      .catch((error) => { console.error(error); });
+  });
+}
+
+
+
+export function mostrarInputs() {
+  const botonMostrarInputs= document.getElementById('botonInputs');
+  botonMostrarInputs.addEventListener("click", ()=> {
+    document.querySelector("#contenedorImagen").style.display="none"
+    document.querySelector("#contenedorInputs").style.display="block"
+   })
+  }
+  
+  export function ocultarCambioImagen() {
+    const botonMostrarInputs= document.getElementById('botonImagen');
+    botonMostrarInputs.addEventListener("click", ()=> {
+     document.querySelector("#contenedorImagen").style.display="block"
+     document.querySelector("#contenedorInputs").style.display="none"
+     
+    })
+  }
+
+
+
 
 // function init() {
 //   var inputFile = document.getElementById('inputUserImage');
@@ -131,20 +165,12 @@ export function recoletandoDatos() {
 // }
 
 
-export function mostrarInputs() {
-const botonMostrarInputs= document.getElementById('botonInputs');
-botonMostrarInputs.addEventListener("click", ()=> {
-  document.querySelector("#contenedorImagen").style.display="none"
-  document.querySelector("#contenedorInputs").style.display="block"
- })
-}
-
-export function ocultarCambioImagen() {
-  const botonMostrarInputs= document.getElementById('botonImagen');
-  botonMostrarInputs.addEventListener("click", ()=> {
-   document.querySelector("#contenedorImagen").style.display="block"
-   document.querySelector("#contenedorInputs").style.display="none"
-   
-  })
-}
-
+// export function menuEspecies() {
+//   const linkMenu = document.getElementById('linkMenuEspecies');
+//   const subMenu = document.getElementById('subMenuEspecies');
+//   linkMenu.addEventListener('click', () => {
+//     subMenu.classList.toggle('mostrarMenu');
+//     eslint-disable-next-line no-console
+//     return console.log('hiciste click');
+//   });
+// }

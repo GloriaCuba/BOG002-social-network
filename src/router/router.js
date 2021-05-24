@@ -10,7 +10,7 @@ import {
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
 import {
-  configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen,
+  configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recoletandoImagen
 } from '../components/configPerfil.js';
 import { perfil, configurarPerfil } from '../components/perfil.js';
 
@@ -59,6 +59,7 @@ export const router = (routes) => {
           recoletandoDatos();
           mostrarInputs();
           ocultarCambioImagen();
+          recoletandoImagen()
           break;
         case '#/perfil':
           rootDiv.appendChild(perfil());
