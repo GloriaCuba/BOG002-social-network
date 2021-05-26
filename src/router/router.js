@@ -2,7 +2,7 @@ import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
 import {
-  inicio, salir, irAPerfil, postMuro, menuToggle,
+  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,
 } from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
@@ -46,6 +46,7 @@ export const router = (routes) => {
           salir();
           irAPerfil();
           postMuro();
+          verPosts();
           // ocultarMostrarPost();
           break;
         case '#/restablecerContrasena':
