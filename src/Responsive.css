@@ -458,8 +458,8 @@
     background-size: cover;
     background-repeat:repeat;
     display: grid;
-    grid-template-columns:33% 33% 33%;
-    grid-template-rows: 10% 10% 30% 50% ;
+    grid-template-columns:5% 30% 30% 30% 5%;
+    grid-template-rows: 15% 10% 18% 62% ;
     height: 100vh;
     width: 100%;
     /* align-items: center; */
@@ -471,11 +471,22 @@
     grid-row-start:1;
     grid-row-end:1;
     margin-top: 0.5em;
-    justify-self:center;
+    justify-self:start;
     text-align:center;
     color: white;
     font-family: 'Cherry Cream Soda', cursive;
-    font-size: 6vw;
+    font-size: 36px;
+}
+#contenedorMuro h2{
+    grid-column-start:1;
+    grid-column-end:3;
+    grid-row-start:1;
+    grid-row-end:1;
+    justify-self:start;
+    text-align:center;
+    color: white;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 22px;
 }
 
 .menu {
@@ -486,10 +497,10 @@
     overflow: hidden;
     justify-self: right;
     text-align: center;
-    grid-column-start:3;
-    grid-column-end:3;
+    grid-column-start:4;
+    grid-column-end:5;
     grid-row-start:1;
-    grid-row-end:4;
+    grid-row-end:3;
     margin-top: 2.5em;
 }
     
@@ -499,16 +510,16 @@
 }
     
 .menu #perfil{
-    width: 10em;
-    height: 4em;
+    width: 7em;
+    height: 2em;
     font-weight: bolder;
     border: none;
     font-size: 0.9em;
 }
     
 .menu #salir{
-    width: 10em;
-    height: 4em;
+    width: 7em;
+    height: 2em;
     font-weight: bolder;
     border: none;
 }
@@ -563,11 +574,11 @@
 }
    
 #containerFiltro{
-    grid-column-start:1;
-    grid-column-end:4;
+    grid-column-start:2;
+    grid-column-end:6;
     grid-row-start:2;
     grid-row-end:3;
-    justify-self: center;
+    justify-content: center;
     align-self: center;
  }
 
@@ -581,101 +592,119 @@
     border-radius: 100%;
     height:3em;
     width: 3em;
-    margin: 1em;
-    margin-bottom: 10px;
+    box-shadow: 3px 3px 1px 1px #F043A0;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
-#muro{
-    grid-column-start:1;
-    grid-column-end: 4;
+.textArea {
+    grid-column-start:2;
+    grid-column-end:5;
     grid-row-start:3;
     grid-row-end:4;
-    /* justify-content: center; */
-    justify-self: center;
-    align-self: flex-end;
-    background-color:rgb(255, 255, 255);
-    border-radius: 1.5em;
-    height: 20vh;
-    width: 90%;
-    color:rgb(255, 255, 255) ;
-    border: 0.1em solid rgb(0, 0, 0);
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0);
-    font-size: 1.2em;  
 }
-
-#muro #mensaje{
-   margin-top: 0.5em;
-   margin-left: 1em;
-   margin-right: 1em;
-   height: 6em;
-   width: 90%;
-   text-align: center;
-   font-size: inherit;
-   border-radius: 1.5em;
+.muro{
+    display: grid;
+    grid-template-columns: 5% 20% 25% 25% 20% 5%;
+    grid-template-rows: 10% 20% 20% 25% 20% 5%;
+    width:100%;
+    height: 100%;
 }
-
-#muro .botonesTextArea{
-    margin-left: 5em;
-    width: 90%;
- }
-
-#muro #postear{
-    width: 30vw;
-    height: 2em;
-    /* border: 0.1em solid rgb(0, 0, 0); */
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
-    border-radius: 0.2em; 
-    background: white;  
-    font-size: 0.8em;
-    font-family: inherit; 
+.campoPosteo{
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-start:3;
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 50px;
+   
     text-align: center;
-    margin-left: 4.5vw;
+    resize: none;
 }
-
-#seccionPosteos{
-    grid-column-start:1;
-    grid-column-end: 4;
+.quePiensas{
+    grid-column-start:2;
+    grid-column-end:4;
+    grid-row-start:2;
+    align-self: center;
+    color:white;
+    font-size:12px;
+}
+.star{
+    justify-self: start;
+    align-self: end;
+    grid-column-start:2;
+    grid-row-start:5;
+}
+.botonEnviar {
+    justify-self: end;
+    align-self: end;
+    grid-column-end:6;
+    grid-row-start:5;
+    width: 55px;
+    height: 22px;
+    background: #8FC1DF;
+    border-color: #b3d9f0;
+    border-radius: 6px;
+    margin: 0;
+    font-size: 10px;
+}
+.divSeccionPosts{
+    grid-column-start:2;
+    grid-column-end:5;
     grid-row-start:4;
     grid-row-end:5;
-    justify-content: center;
     align-self: initial;
+    height: auto;
+}
+.logo{
+    grid-column-start:2;
+    justify-self: start;
+    margin-left: 7%;
+}
+.holaUsuario{
+    font-size: 12px;
+    color:white;
+    grid-column-start:2;
+    grid-column-end:5;
+    grid-row-start:2;
+}
+.divMuro{
+    display: grid;
+    grid-template-columns: 5% 20% 25% 25% 20% 5%;
+    grid-template-rows: 11.52px 23.03px 23.03px 28.80px 23.03px 5.75px; 
+    width:100%;
+    height: auto;
+}
+.divText{
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-end:5;
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 50px;
+    align-self: end;
     text-align: center;
-    margin-top: 1em;
+    resize: none;
 }
-
-.elementosPosts{
-    background-color: ivory;
-    margin: 0.8em 0;
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
-    border-radius: 0.2em; 
-    height: 40%;
-    width: 90%;
-    position: relative;
-    margin-left: 4.5vw;
-    box-sizing: border-box
-   
-}
-
-.botonEditar{
-    width: 7vw;
-    height: 3em;
-    position: absolute;
-    top: 0;
-    left: 78%;
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
-    border-radius: 0.2em; 
-    background: white;  
-    font-size: 0.8em;
-    font-family: inherit; 
-    text-align: center;
-}
-
 .botonBorrar{
     width: 20vw;
     height: 3em;
     position: absolute;
-    top: 6em;
+    top: 5em;
     left: 70%;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+}
+.botonEditar{
+    width: 20vw;
+    height: 3em;
+    position: absolute;
+    top: 5em;
+    left: 40%;
     box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
     border-radius: 0.2em; 
     background: white;  

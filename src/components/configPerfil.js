@@ -30,7 +30,11 @@ export function configPerfil() {
           </div>
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
+<<<<<<< HEAD
              <input type='file' id='inputUserImage' multiple="false" accept="image/*">
+=======
+            <input type='file' id='inputUserImage' multiple="false" accept="image/*">
+>>>>>>> 3a232c6cc1e7805398bc5e67dbaa4b8c0bdfddb4
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
@@ -49,28 +53,47 @@ export function configPerfil() {
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
-    // window.location = '#/perfil';
+ /*    window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    // location.reload();
+    location.reload(); */
   });
 }
 
 
 export function recoletandoDatos() {
-    const userId = document.getElementById('userId');
-    const nomMascota = document.getElementById('nombreMascota');
-    const especie = document.getElementById('menuEspecies');
-    // const datosCollection = firebase.firestore().collection('Datos');
-    const btndatos = document.getElementById('btnDatos');
-    btndatos.addEventListener('click', () => {
-      datosCollection(userId, nomMascota, especie)
-      .then(() => { console.log('Data'); 
-      // recoletandoImagen()
-      // location.reload()
-    })
-    .catch((error) => { console.error(error); });
-   }); 
+  const userId = document.getElementById('userId');
+  const nomMascota = document.getElementById('nombreMascota');
+  const especie = document.getElementById('menuEspecies');
+  // const datosCollection = firebase.firestore().collection('Datos');
+  const btndatos = document.getElementById('btnDatos');
+  btndatos.addEventListener('click', () => {
+    datosCollection(userId, nomMascota, especie)
+    .then(() => { console.log('Data'); 
+    // recoletandoImagen()
+    // location.reload()
+  })
+  .catch((error) => { console.error(error); });
+ }); 
 }
+export function recolectandoImagen() {
+  const ref = firebase.storage().ref()
+  const btnGuardarPhoto = document.getElementById('botonGuardar');
+    btnGuardarPhoto.addEventListener('click', (e) => {
+    console.log("diste click")
+    let userImagen = document.querySelector('#inputUserImage').files[0];
+    const campoFoto= document.getElementById("userImage")
+    const name = userImagen.name
+    const task = ref.child(name).put(userImagen)
+    task.then(snapshot => snapshot.ref.getDownloadURL())
+    .then(url=> {
+      console.log(url)
+      console.log("subio")
+      campoFoto.src= url
+    })
+   })
+  }
+
+
 
 // export function recoletandoImagen() {
 // const btnGuardarPhoto = document.getElementById('botonGuardar');
