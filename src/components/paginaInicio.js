@@ -57,13 +57,14 @@ export function irAPerfil() {
 
 export function postMuro() {
   const muro = document.getElementById('muro');
-  muro.addEventListener('submit', (e) => {
+  muro.addEventListener('click', (e) => {
+    console.log('click');
     e.preventDefault(); // Para que no se refresque la página
     const mensaje = muro.mensaje.value;
     const date = firebase.firestore.Timestamp.now();
     //  console.log(date);
     // const mensaje = document.getElementById('mensaje').value;
-    // console.log(mensaje);
+     console.log(mensaje);
     guardarPosts(mensaje, date);
   });
 
@@ -113,11 +114,11 @@ export function verPosts() {
 
       botonBorrar.addEventListener('click', () => {
         botonEliminar(doc.id);
-        console.log(doc.id);
+        // console.log(doc.id);
       });
       botonEditar.addEventListener('click', () => {
         botonEditarPost(doc.id, campo);
-      // console.log(mensaje);
+        console.log(campo);
       });
     });
   });
@@ -132,28 +133,29 @@ function botonEliminar(id) {
       console.error('Error removing document: ', error);
     });
 }
+
 function botonEditarPost(id, campo) {
-  document.getElementById('campo').value = mensaje;
+  document.getElementById('mensaje').value = mensaje;
   mensaje.innerHTML = campo;
   console.log (id, '=>'+ mensaje);
-  actualizandoPost(id);
+  actualizandoPost(id,campo);
   /* firebase.firestore.Timestamp.now();
       let date = firebase.firestore.Timestamp.now(); */
-};
+}
 
 function actualizandoPost(id) {
-const postear = document.getElementById('postear');
+  const postear = document.getElementById('postear');
 
   postear.innerHTML = 'Actualizar';
   postear.addEventListener('click', () => {
     const nuevoPost = firebase.firestore().collection('posts').doc(id);
     const posteditado = document.getElementById('mensaje').value;
-    console.log(nuevoPost)
+    console.log(nuevoPost);
     return nuevoPost.update({
       mensaje: posteditado,
     }).then(() => {
       console.log('editado');
-      postear.innerHTML = 'Guardar';
+      postear.innerHTML = 'Publicar';
     })
       .catch((error) => {
         console.error('error al editar');
