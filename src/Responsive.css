@@ -687,7 +687,6 @@
     resize: none;
 }
 .botonBorrar{
-<<<<<<< HEAD
     justify-self: start;
     align-self: end;
     grid-column-start:5;
@@ -713,35 +712,6 @@
     margin: 0;
     font-size: 10px;
 }
-=======
-    width: 20vw;
-    height: 3em;
-    position: absolute;
-    top: 5em;
-    left: 70%;
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
-    border-radius: 0.2em; 
-    background: white;  
-    font-size: 0.8em;
-    font-family: inherit; 
-    text-align: center;
-}
-.botonEditar{
-    width: 20vw;
-    height: 3em;
-    position: absolute;
-    top: 5em;
-    left: 40%;
-    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
-    border-radius: 0.2em; 
-    background: white;  
-    font-size: 0.8em;
-    font-family: inherit; 
-    text-align: center;
-}
-
-    
->>>>>>> fbf69a6f04e2f7ca22105371f08406e6610fbb28
 
 /************************************ restablecimiento de la contraseña***************************************************/
 
