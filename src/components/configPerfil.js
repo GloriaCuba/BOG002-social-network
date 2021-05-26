@@ -1,3 +1,5 @@
+import { datosCollection } from '../firebase/firestore.js';
+
 export function configPerfil() {
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
@@ -28,9 +30,9 @@ export function configPerfil() {
           </div>
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
-             <input type='file' id='inputUserImage'>
+            <input type='file' id='inputUserImage' multiple="false" accept="image/*">
              <figure id="imagenPerfil">
-                <img src='' id='userImage'>
+                <img id='userImage'>
              </figure>
             <button type='button' id='botonGuardar'>Guardar</button>
           </div>
@@ -53,9 +55,9 @@ export function configPerfil() {
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
-    window.location = '#/perfil';
+ /*    window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    location.reload(); */
   });
 }
 
@@ -63,22 +65,36 @@ export function recoletandoDatos() {
   const userId = document.getElementById('userId');
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
-  const datosCollection = database.collection('Datos');
+  // const datosCollection = firebase.firestore().collection('Datos');
   const btndatos = document.getElementById('btnDatos');
-  btndatos.addEventListener('click', (e) => {
-    // eslint-disable-next-line no-console
-    console.log('click');
-    e.preventDefault();
-    datosCollection.doc(userId.value).set({
-      usuario: userId.value,
-      Nombre_Mascota: nomMascota.value,
-      Especie: especie.value,
-    })
-      .then(() => { console.log('Data'); })
-        location.reload()
-      .catch((error) => { console.error(error); });
-  });
+  btndatos.addEventListener('click', () => {
+    datosCollection(userId, nomMascota, especie)
+    .then(() => { console.log('Data'); 
+    // recoletandoImagen()
+    // location.reload()
+  })
+  .catch((error) => { console.error(error); });
+ }); 
 }
+export function recolectandoImagen() {
+  const ref = firebase.storage().ref()
+  const btnGuardarPhoto = document.getElementById('botonGuardar');
+    btnGuardarPhoto.addEventListener('click', (e) => {
+    console.log("diste click")
+    let userImagen = document.querySelector('#inputUserImage').files[0];
+    const campoFoto= document.getElementById("userImage")
+    const name = userImagen.name
+    const task = ref.child(name).put(userImagen)
+    task.then(snapshot => snapshot.ref.getDownloadURL())
+    .then(url=> {
+      console.log(url)
+      console.log("subio")
+      campoFoto.src= url
+    })
+   })
+  }
+
+
 
 // function init() {
 //   var inputFile = document.getElementById('inputUserImage');
