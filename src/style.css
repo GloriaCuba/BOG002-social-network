@@ -560,6 +560,20 @@
    
 }
 
+.botonGuardar{
+    width: 7vw;
+    height: 3em;
+    position: absolute;
+    top: 4em;
+    left: 50%;
+    box-shadow: 0.2em 0.3em 0.3em rgb(0, 0, 0); 
+    border-radius: 0.2em; 
+    background: white;  
+    font-size: 0.8em;
+    font-family: inherit; 
+    text-align: center;
+}
+
 .botonEditar{
     width: 7vw;
     height: 3em;

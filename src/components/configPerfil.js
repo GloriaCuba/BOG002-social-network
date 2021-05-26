@@ -1,3 +1,5 @@
+import { datosCollection } from '../firebase/firestore.js';
+
 export function configPerfil() {
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
@@ -28,11 +30,11 @@ export function configPerfil() {
           </div>
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
-             <input type='file' id='inputUserImage'>
+             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
              <figure id="imagenPerfil">
-                <img src='' id='userImage'>
+                <img id='userImage'>
              </figure>
-            <button type='button' id='botonGuardar'>Guardar</button>
+              <button type='button' id='botonGuardar'>Guardar</button>
           </div>
       </div>
     `;
@@ -41,57 +43,72 @@ export function configPerfil() {
   return divPerfil;
 }
 
+
+/* <button onclick="recoletandoImagen() id="botonGuardar"> Guardar </button> */
+
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
-    window.location = '#/perfil';
+    // window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    // location.reload();
   });
 }
+
 
 export function recoletandoDatos() {
-  const userId = document.getElementById('userId');
-  const nomMascota = document.getElementById('nombreMascota');
-  const especie = document.getElementById('menuEspecies');
-  const datosCollection = firebase.firestore().collection('Datos');
-  const btndatos = document.getElementById('btnDatos');
-  btndatos.addEventListener('click', (e) => {
-    // eslint-disable-next-line no-console
-    console.log('click');
-    e.preventDefault();
-    datosCollection.doc(userId.value).set({
-      usuario: userId.value,
-      Nombre_Mascota: nomMascota.value,
-      Especie: especie.value,
-    })
+    const userId = document.getElementById('userId');
+    const nomMascota = document.getElementById('nombreMascota');
+    const especie = document.getElementById('menuEspecies');
+    // const datosCollection = firebase.firestore().collection('Datos');
+    const btndatos = document.getElementById('btnDatos');
+    btndatos.addEventListener('click', () => {
+      datosCollection(userId, nomMascota, especie)
       .then(() => { console.log('Data'); 
-        // recoletandoImagen()
-        // location.reload()
-      })
-      .catch((error) => { console.error(error); });
-  });
+      // recoletandoImagen()
+      // location.reload()
+    })
+    .catch((error) => { console.error(error); });
+   }); 
 }
+
+// export function recoletandoImagen() {
+// const btnGuardarPhoto = document.getElementById('botonGuardar');
+//   btnGuardarPhoto.addEventListener('click', (e) => {
+//   let userImagen = document.querySelector('#inputUserImage').files[0];
+//   const campoFoto= document.getElementById("userImage");
+//   const name = userImagen.name;
+//   guardarFotoPerfil(name, userImagen)
+//   .then((url) => {
+//     console.log(url)
+//     alert("subio")
+//     campoFoto.src= url
+//   })
+//  })
+// }
 
 export function recoletandoImagen() {
-  const datosCollection = firebase.firestore().collection('Datos');
-  let userImagen = document.querySelector('#inputUserImag');
+  const ref = firebase.storage().ref()
   const btnGuardarPhoto = document.getElementById('botonGuardar');
-  btnGuardarPhoto.addEventListener('click', (e) => {
-    // eslint-disable-next-line no-console
-    console.log('click');
-    e.preventDefault();
-    datosCollection.doc(userId.value).set({
-      usuario: userId.value,
-      Foto: userImagen
+    btnGuardarPhoto.addEventListener('click', (e) => {
+    let userImagen = document.querySelector('#inputUserImage').files[0];
+    const campoFoto= document.getElementById("userImage")
+    const name = userImagen.name
+    const task = ref.child(name).put(userImagen)
+    task.then(snapshot => snapshot.ref.getDownloadURL())
+    .then(url=> {
+      console.log(url)
+      alert("subio")
+      campoFoto.src= url
     })
-      .then(() => { 
-        console.log('Data'); 
-    })
-      .catch((error) => { console.error(error); });
-  });
-}
+   })
+  }
 
+  
+
+
+
+  
 
 
 export function mostrarInputs() {
@@ -113,64 +130,3 @@ export function mostrarInputs() {
 
 
 
-
-// function init() {
-//   var inputFile = document.getElementById('inputUserImage');
-//   inputFile.addEventListener('change', mostrarImagen, false);
-// }
-
-// export function mostrarImagen(event) {
-//   var file = event.target.files[0];
-//   var reader = new FileReader();
-//   reader.onload = function(event) {
-//     var img = document.getElementById('userImage');
-//     img.src= event.target.result;
-//   }
-//   reader.readAsDataURL(file);
-// }
-
-// window.addEventListener('load', init, false);
-
-
-
-// export function seleccionarFoto() {
-//   const divPhoto = document.getElementById(' imagenPerfil');
-//   const inputUser = document.getElementById('inputUserImage').value;
-//   inputUser.addEventListener("click", ()=> {
-//     let img = document.createElement("img")
-//     img = `${doc.userPhoto}`;
-//     divPhoto.appendChild(img)
-//   })
-// }
-
-// export function fotoUsuario(){
-//   // const userId = document.getElementById('userId');
-//   const userPhoto = document.getElementById('userImage');
-//   const datosCollection = database.collection('Datos');
-//   const btnPhoto = document.getElementById('botonGuardar');
-//   btnPhoto.addEventListener('click', (e) => {
-//     console.log('click');
-//     e.preventDefault();
-//     datosCollection.doc(userId.value).set({
-//       // usuario: userId.value,
-//       fotoPerfil: userPhoto
-//     })     
-//     .then(() => { 
-//     let div = document.createElement("img")
-
-  
-//     })
-//   .catch((error) => { console.error(error); });
-//    });
-// }
-
-
-// export function menuEspecies() {
-//   const linkMenu = document.getElementById('linkMenuEspecies');
-//   const subMenu = document.getElementById('subMenuEspecies');
-//   linkMenu.addEventListener('click', () => {
-//     subMenu.classList.toggle('mostrarMenu');
-//     eslint-disable-next-line no-console
-//     return console.log('hiciste click');
-//   });
-// }
