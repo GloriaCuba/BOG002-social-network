@@ -30,11 +30,7 @@ export function configPerfil() {
           </div>
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
-<<<<<<< HEAD
-             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
-=======
             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
->>>>>>> 3a232c6cc1e7805398bc5e67dbaa4b8c0bdfddb4
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
@@ -94,38 +90,22 @@ export function recolectandoImagen() {
   }
 
 
-
 // export function recoletandoImagen() {
-// const btnGuardarPhoto = document.getElementById('botonGuardar');
-//   btnGuardarPhoto.addEventListener('click', (e) => {
-//   let userImagen = document.querySelector('#inputUserImage').files[0];
-//   const campoFoto= document.getElementById("userImage");
-//   const name = userImagen.name;
-//   guardarFotoPerfil(name, userImagen)
-//   .then((url) => {
-//     console.log(url)
-//     alert("subio")
-//     campoFoto.src= url
-//   })
-//  })
-// }
-
-export function recoletandoImagen() {
-  const ref = firebase.storage().ref()
-  const btnGuardarPhoto = document.getElementById('botonGuardar');
-    btnGuardarPhoto.addEventListener('click', (e) => {
-    let userImagen = document.querySelector('#inputUserImage').files[0];
-    const campoFoto= document.getElementById("userImage")
-    const name = userImagen.name
-    const task = ref.child(name).put(userImagen)
-    task.then(snapshot => snapshot.ref.getDownloadURL())
-    .then(url=> {
-      console.log(url)
-      alert("subio")
-      campoFoto.src= url
-    })
-   })
-  }
+//   const ref = firebase.storage().ref()
+//   const btnGuardarPhoto = document.getElementById('botonGuardar');
+//     btnGuardarPhoto.addEventListener('click', (e) => {
+//     let userImagen = document.querySelector('#inputUserImage').files[0];
+//     const campoFoto= document.getElementById("userImage")
+//     const name = userImagen.name
+//     const task = ref.child(name).put(userImagen)
+//     task.then(snapshot => snapshot.ref.getDownloadURL())
+//     .then(url=> {
+//       console.log(url)
+//       alert("subio")
+//       campoFoto.src= url
+//     })
+//    })
+//   }
 
   
 

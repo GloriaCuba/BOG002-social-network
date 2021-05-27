@@ -12,7 +12,7 @@ import { resetContraseña, restableceContrasena } from '../components/resetContr
 import {
   configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,
 } from '../components/configPerfil.js';
-import { perfil, configurarPerfil } from '../components/perfil.js';
+import { perfil, configurarPerfil, infoPerfil } from '../components/perfil.js';
 
 // menuEspecies
 // eslint-disable-next-line import/named
@@ -67,6 +67,7 @@ export const router = (routes) => {
         case '#/perfil':
           rootDiv.appendChild(perfil());
           configurarPerfil();
+          infoPerfil()
           break;
         case '':
           rootDiv.appendChild(interfazPrincipal());

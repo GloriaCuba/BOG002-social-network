@@ -76,97 +76,108 @@ export function postMuro() {
    muro.addEventListener('submit', submitHandler);
    }
 
-export function verPosts() {
-   obtenerPosts((querySnapshot) => {     
-   document.getElementById('divSeccionPosts').innerHTML = '';
-   querySnapshot.forEach((doc) => {
-      const divOriginal = document.getElementById('divSeccionPosts');
-      const divMuro = document.createElement('div');
-      divMuro.setAttribute('class','divMuro');
-      divOriginal.appendChild(divMuro);
-      const textPost = document.createElement('textarea');
-      textPost.setAttribute('class','divText');
-      textPost.innerHTML=(doc.data().mensaje);
-      divMuro.appendChild(textPost);
-      const star = document.createElement('img');
-      star.setAttribute('class','star');
-      star.src = 'Img/Star_Likes.png';
-      divMuro.appendChild(star);
-      let user = firebase.auth().currentUser;
-      let email = user.email;
-      document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
-      const campoBotones = document.createElement('div');
-      const botonBorrar = document.createElement('button');
-      const botonEditar = document.createElement('button');
-      campoBotones.appendChild(botonBorrar);
-      campoBotones.appendChild(botonEditar);
-      botonBorrar.className="botonBorrar"
-      botonBorrar.type = 'button'; 
-      botonBorrar.textContent = 'Borrar post';
-      botonBorrar.setAttribute('id', 'botonBorrar');
+   export function verPosts() {
+      obtenerPosts((querySnapshot) => {     
+      document.getElementById('divSeccionPosts').innerHTML = '';
+      querySnapshot.forEach((doc) => {
+         const divOriginal = document.getElementById('divSeccionPosts');
+         const divMuro = document.createElement('div');
+         divMuro.setAttribute('class','divMuro');
+         const textPost = document.createElement('textarea');
+         textPost.setAttribute('class','divText');
+         textPost.innerHTML=(doc.data().mensaje);
+         const star = document.createElement('img');
+         star.setAttribute('class','star');
+         star.src = 'Img/Star_Likes.png';
+         let user = firebase.auth().currentUser;
+         let email = user.email;
+         document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
+         const campoBotones = document.createElement('div');
+         const botonBorrar = document.createElement('button');
+         botonBorrar.className="botonBorrar"
+         botonBorrar.type = 'button'; 
+         botonBorrar.textContent = 'Borrar post';
+         botonBorrar.setAttribute('id', 'botonBorrar');
+         const botonEditar = document.createElement('button');
+         botonEditar.className="botonEditar"
+         botonEditar.type = 'button'; 
+         botonEditar.textContent = 'Editar';
+         botonEditar.setAttribute('id', 'botonEditar');
 
-      let botonEditar = document.createElement('button');
-      botonEditar.className="botonEditar"
-      botonEditar.type = 'button'; 
-      botonEditar.textContent = 'Editar post';
-      botonEditar.setAttribute('id', 'botonEditar');
-      divMuro.appendChild(botonEditar);
-      divMuro.appendChild(botonBorrar);
-      botonBorrar.addEventListener('click', () => {
-      botonEliminar(doc.id);
-      console.log(doc.id);
+         campoBotones.appendChild(botonBorrar);
+         campoBotones.appendChild(botonEditar);
+         divMuro.appendChild(botonEditar);
+         divMuro.appendChild(botonBorrar);
+         divMuro.appendChild(textPost);
+         divMuro.appendChild(star);
+         divOriginal.appendChild(divMuro);
+
+         botonBorrar.addEventListener('click', () => {
+         botonEliminar(doc.id);
+         console.log(doc.id);
+         });
+         botonEditar.addEventListener('click', () => {
+         botonEditarPost(doc.id, doc.data().mensaje);
+         });
       });
-      botonEditar.addEventListener('click', () => {
-      botonEditarPost(doc.id, doc.data().mensaje);
-      });
-      // botonGuardar.addEventListener('click', () => {
-      // botonEditarPost(doc.id, doc.data().mensaje);
-      // });
    });
-});
 
    function botonEliminar(id) {
       eliminarPost(id);
    }
 }
 
-   function botonEditarPost(id, campo) {
-      document.getElementById('mensaje').value = campo;
-      console.log (id, campo);
-      actualizandoPost(id, campo);
-      /* firebase.firestore.Timestamp.now();
-          let date = firebase.firestore.Timestamp.now(); */
-    }
+function botonEditarPost(id, campo) {
+   document.getElementById('mensaje').value = campo;
+   console.log (id, campo);
+   actualizandoPost(id, campo);
+}
 
-    function actualizandoPost(id) {
-      const muro = document.getElementById('muro');
-      const postear = document.getElementById('postear');
-      postear.innerHTML = 'Actualizar';
-      muro.removeEventListener('submit', submitHandler);
-      postear.addEventListener('click', () => {
-         const nuevoPost = firebase.firestore().collection('posts').doc(id);
-         const posteditado = document.getElementById('mensaje').value;
-         console.log(nuevoPost);
-         return nuevoPost.update({
-          mensaje: posteditado,
-        }).then(() => {
-          console.log('editado');
-          postear.innerHTML = 'Publicar';
-        })
-          .catch((error) => {
-            console.error('error al editar', error);
-          });
-      });
-    } 
+function actualizandoPost(id) {
+const muro = document.getElementById('muro');
+muro.removeEventListener('submit', submitHandler);
+const postear = document.getElementById('postear');
+postear.innerHTML = 'Actualizar';
 
-   export function salir() {
-   const salir = document.querySelector('#salir');
-   salir.addEventListener('click', () => {
-      cerrarSesión();
-      window.location = '';
+postear.addEventListener('click', function (){
+   const nuevoPost = firebase.firestore().collection('posts').doc(id);
+   const posteditado = document.getElementById('mensaje').value;
+   console.log(nuevoPost);
+   return nuevoPost.update({
+      mensaje: posteditado,
+   }).then(() => {
+      console.log('editado');
+      postear.innerHTML = 'Publicar';
+      muro.addEventListener('submit', submitHandler);
+      window.location = '#/inicio';
       location.reload();
-   });
-   };
+   })
+      .catch((error) => {
+      console.error('error al editar', error);
+      });
+});
+} 
+ 
+export function salir() {
+const salir = document.querySelector('#salir');
+salir.addEventListener('click', () => {
+   cerrarSesión();
+   window.location = '';
+   location.reload();
+});
+};
+
+// export function salir() {
+// const salir = document.querySelector('#salir');
+// salir.addEventListener('click', () => {
+//    cerrarSesión();
+//    window.location = '';
+//    location.reload();
+// });
+// };
+
+
+
 
    /*  function actualizandoPost() {
       const muro = document.getElementById('muro');
@@ -200,40 +211,3 @@ export function verPosts() {
       const postear = document.getElementById('postear');
       postear.removeEventListener('click', submitHandler2());
     } */
-  
-
-
-
-
-    /*    function botonEliminar(id) {
-      firebase.firestore().collection('posts').doc(id).delete()
-        .then(() => {
-          console.log('Document successfully deleted!');
-        })
-        .catch((error) => {
-          console.error('Error removing document: ', error);
-        });
-    } */
-
-   /* function botonEditarPost(id,mensaje) {
-      document.getElementById('mensaje').value = mensaje;
-      console.log(id + mensaje);
-      /* firebase.firestore.Timestamp.now();
-      let date = firebase.firestore.Timestamp.now();
-      let postear = document.getElementById('postear');
-      postear.innerHTML='Actualizar';
-      postear.addEventListener('click', (id) => { 
-      firebase.firestore().collection('postss').doc(id).update(mensaje);
-      })     
-   } */
-
-
-
-
-        
-      /*.then(function(doc) { 
-         console.log('El documento se creo con el ID: ', doc.id);
-         verPosts();
-      }).catch((error) => {
-         console.error("Error adding document: ", error);
-     });*/
