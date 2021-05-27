@@ -69,12 +69,7 @@ export function recoletandoDatos() {
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', () => {
     datosCollection(userId, nomMascota, especie)
-    .then(() => { console.log('Data'); 
-    // recoletandoImagen()
-    // location.reload()
-  })
-  .catch((error) => { console.error(error); });
- }); 
+  });
 }
 export function recolectandoImagen() {
   const ref = firebase.storage().ref()
@@ -89,10 +84,18 @@ export function recolectandoImagen() {
     .then(url=> {
       console.log(url)
       console.log("subio")
+      var user = firebase.auth().currentUser;
+      console.log(user);
+      user.updateProfile({
+      photoURL: url
+      }).then(() =>{
       campoFoto.src= url
+      }).catch(function(error) {
+      // An error happened.
+      });
     })
    })
-  }
+}
 
 
 

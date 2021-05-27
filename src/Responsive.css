@@ -687,9 +687,9 @@
     resize: none;
 }
 .botonBorrar{
-    justify-self: start;
+    justify-self: end;
     align-self: end;
-    grid-column-start:5;
+    grid-column-start:4;
     grid-row-start:5;
     width: 55px;
     height: 22px;
