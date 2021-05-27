@@ -227,3 +227,34 @@ function actualizandoPost(id) {
       const postear = document.getElementById('postear');
       postear.removeEventListener('click', submitHandler2());
     } */
+    function actualizandoPost(id) {
+      const muro = document.getElementById('muro');
+      const postear = document.getElementById('postear');
+      postear.innerHTML = 'Actualizar';
+      muro.removeEventListener('submit', submitHandler);
+      postear.addEventListener('click', function x(){
+         const nuevoPost = firebase.firestore().collection('posts').doc(id);
+         const posteditado = document.getElementById('mensaje').value;
+         console.log(nuevoPost);
+         return nuevoPost.update({
+          mensaje: posteditado,
+        }).then(() => {
+          console.log('editado');
+          postear.innerHTML = 'Publicar';
+          muro.addEventListener('submit', submitHandler);
+          window.location = '#/inicio';
+          location.reload();
+        })
+          .catch((error) => {
+            console.error('error al editar', error);
+          });
+      });
+    } 
+   export function salir() {
+   const salir = document.querySelector('#salir');
+   salir.addEventListener('click', () => {
+      cerrarSesión();
+      window.location = '';
+      location.reload();
+   });
+   };

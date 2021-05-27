@@ -67,10 +67,10 @@ export function recoletandoDatos() {
   const especie = document.getElementById('menuEspecies');
   // const datosCollection = firebase.firestore().collection('Datos');
   const btndatos = document.getElementById('btnDatos');
-    btndatos.addEventListener('click', () => {
-  console.log('click');
-   datosCollection(userId, nomMascota, especie)
-    });
+  btndatos.addEventListener('click', () => {
+    console.log('click');
+    datosCollection(userId, nomMascota, especie)
+  });
 }
 
 export function recolectandoImagen() {
@@ -143,12 +143,10 @@ export function recolectandoImagen() {
 //     .then(() => { 
 //     let div = document.createElement("img")
 
-  
 //     })
 //   .catch((error) => { console.error(error); });
 //    });
 // }
-
 
 export function mostrarInputs() {
 const botonMostrarInputs= document.getElementById('botonInputs');
