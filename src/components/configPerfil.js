@@ -51,13 +51,13 @@ export function configPerfil() {
 //     eslint-disable-next-line no-console
 //     return console.log('hiciste click');
 //   });
-// }
+//
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
- /*    window.location = '#/perfil';
+  //  window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    location.reload(); */
+  // location.reload();
   });
 }
 
@@ -67,19 +67,16 @@ export function recoletandoDatos() {
   const especie = document.getElementById('menuEspecies');
   // const datosCollection = firebase.firestore().collection('Datos');
   const btndatos = document.getElementById('btnDatos');
-  btndatos.addEventListener('click', () => {
-    datosCollection(userId, nomMascota, especie)
-    .then(() => { console.log('Data'); 
-    // recoletandoImagen()
-    // location.reload()
-  })
-  .catch((error) => { console.error(error); });
- }); 
+    btndatos.addEventListener('click', () => {
+  console.log('click');
+   datosCollection(userId, nomMascota, especie)
+  });
 }
+
 export function recolectandoImagen() {
   const ref = firebase.storage().ref()
   const btnGuardarPhoto = document.getElementById('botonGuardar');
-    btnGuardarPhoto.addEventListener('click', (e) => {
+   btnGuardarPhoto.addEventListener('click', (e) => {
     console.log("diste click")
     let userImagen = document.querySelector('#inputUserImage').files[0];
     const campoFoto= document.getElementById("userImage")

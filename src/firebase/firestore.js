@@ -4,8 +4,13 @@ export const datosCollection = (userId, nomMascota, especie) => {
       usuario: userId.value,
       NombreMascota: nomMascota.value,
       Especie: especie.value,
-     })
-   }
+    }).then(() => { console.log('Data');
+      // recoletandoImagen()
+      // location.reload()
+    })
+   .catch((error) => { console.error(error); })
+  }
+ 
  
  //guardar imagen de perfil en la base de datos  
  export const guardarFotoPerfil = (name, userImagen) => {
