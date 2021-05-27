@@ -70,13 +70,13 @@ export function recoletandoDatos() {
     btndatos.addEventListener('click', () => {
   console.log('click');
    datosCollection(userId, nomMascota, especie)
-  });
+    });
 }
 
 export function recolectandoImagen() {
   const ref = firebase.storage().ref()
   const btnGuardarPhoto = document.getElementById('botonGuardar');
-   btnGuardarPhoto.addEventListener('click', (e) => {
+    btnGuardarPhoto.addEventListener('click', (e) => {
     console.log("diste click")
     let userImagen = document.querySelector('#inputUserImage').files[0];
     const campoFoto= document.getElementById("userImage")
@@ -86,12 +86,18 @@ export function recolectandoImagen() {
     .then(url=> {
       console.log(url)
       console.log("subio")
+      var user = firebase.auth().currentUser;
+      console.log(user);
+      user.updateProfile({
+      photoURL: url
+      }).then(() =>{
       campoFoto.src= url
+      }).catch(function(error) {
+      // An error happened.
+      });
     })
    })
-  }
-
-
+}
 
 // function init() {
 //   var inputFile = document.getElementById('inputUserImage');
