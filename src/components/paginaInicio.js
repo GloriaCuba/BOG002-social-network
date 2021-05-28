@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import { cerrarSesión } from '../firebase/firebase.js';
-import {  guardarPosts, obtenerPosts, eliminarPost } from '../firebase/firestore.js';
-
+import { guardarPosts, obtenerPosts, eliminarPost } from '../firebase/firestore.js';
 
 // import { mostrarPosts } from '../firebase/post.js';
 
@@ -62,8 +61,8 @@ export function irAPerfil() {
   });
 }
 
- function submitHandler(e){
-   e.preventDefault(); // Para que no se refresque la página
+function submitHandler(e){
+e.preventDefault(); // Para que no se refresque la página
    const mensaje = muro['mensaje'].value;
    const date = firebase.firestore.Timestamp.now();
    let user = firebase.auth().currentUser;
@@ -75,111 +74,97 @@ export function postMuro() {
    const muro = document.getElementById('muro');
    muro.addEventListener('submit', submitHandler);
    }
-
-   export function verPosts() {
-      obtenerPosts((querySnapshot) => {     
-      document.getElementById('divSeccionPosts').innerHTML = '';
-      querySnapshot.forEach((doc) => {
-         const divOriginal = document.getElementById('divSeccionPosts');
-         const divMuro = document.createElement('div');
-         divMuro.setAttribute('class','divMuro');
-         const textPost = document.createElement('textarea');
-         textPost.setAttribute('class','divText');
-         textPost.innerHTML=(doc.data().mensaje);
-         const star = document.createElement('img');
-         star.setAttribute('class','star');
-         star.src = 'Img/Star_Likes.png';
-         let user = firebase.auth().currentUser;
-         let email = user.email;
-         document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
-         const campoBotones = document.createElement('div');
-         const botonBorrar = document.createElement('button');
-         botonBorrar.className="botonBorrar"
-         botonBorrar.type = 'button'; 
-         botonBorrar.textContent = 'Borrar post';
-         botonBorrar.setAttribute('id', 'botonBorrar');
-         const botonEditar = document.createElement('button');
-         botonEditar.className="botonEditar"
-         botonEditar.type = 'button'; 
-         botonEditar.textContent = 'Editar';
-         botonEditar.setAttribute('id', 'botonEditar');
-
-         campoBotones.appendChild(botonBorrar);
-         campoBotones.appendChild(botonEditar);
-         divMuro.appendChild(botonEditar);
-         divMuro.appendChild(botonBorrar);
-         divMuro.appendChild(textPost);
-         divMuro.appendChild(star);
-         divOriginal.appendChild(divMuro);
-
-         botonBorrar.addEventListener('click', () => {
-         botonEliminar(doc.id);
-         console.log(doc.id);
-         });
-         botonEditar.addEventListener('click', () => {
-         botonEditarPost(doc.id, doc.data().mensaje);
-         });
+export function verPosts() {
+  obtenerPosts((querySnapshot) => {
+    document.getElementById('divSeccionPosts').innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      const divOriginal = document.getElementById('divSeccionPosts');
+      const divMuro = document.createElement('div');
+      divMuro.setAttribute('class', 'divMuro');
+      divOriginal.appendChild(divMuro);
+      const autorPost = document.createElement('h3');
+      autorPost.setAttribute('class', 'autorPost');
+      divMuro.appendChild(autorPost);
+      autorPost.innerHTML = (doc.data().user);
+      const textPost = document.createElement('textarea');
+      textPost.setAttribute('class', 'divText');
+      textPost.innerHTML = (doc.data().mensaje);
+      divMuro.appendChild(textPost);
+      const star = document.createElement('img');
+      star.setAttribute('class', 'star');
+      star.src = 'Img/Star_Likes.png';
+      divMuro.appendChild(star);
+      let user = firebase.auth().currentUser;
+      const usuario = user.displayName;
+      document.getElementById("holaUsuario").innerHTML = ('Hola ' + usuario);
+      const campoBotones = document.createElement('div');
+      const botonBorrar = document.createElement('button');
+      const botonEditar = document.createElement('button');
+      campoBotones.appendChild(botonBorrar);
+      campoBotones.appendChild(botonEditar);
+      botonBorrar.className="botonBorrar"
+      botonBorrar.type = 'button'; 
+      botonBorrar.textContent = 'Borrar post';
+      botonBorrar.setAttribute('id', 'botonBorrar');
+      botonEditar.className="botonEditar"
+      botonEditar.type = 'button';
+      botonEditar.textContent = 'Editar';
+      botonEditar.setAttribute('id', 'botonEditar');
+      divMuro.appendChild(botonEditar);
+      divMuro.appendChild(botonBorrar);
+      botonBorrar.addEventListener('click', () => {
+        botonEliminar(doc.id);
+        console.log(doc.id);
       });
-   });
-
-   function botonEliminar(id) {
-      eliminarPost(id);
-   }
+      botonEditar.addEventListener('click', () => {
+        botonEditarPost(doc.id, doc.data().mensaje);
+      });
+    });
+});
+  function botonEliminar(id) {
+    eliminarPost(id);
+  }
 }
 
 function botonEditarPost(id, campo) {
-   document.getElementById('mensaje').value = campo;
-   console.log (id, campo);
-   actualizandoPost(id, campo);
-}
-
+     document.getElementById('mensaje').value = campo;
+      console.log (id, campo);
+      actualizandoPost(id, campo);
+    }
+   
 function actualizandoPost(id) {
-const muro = document.getElementById('muro');
-muro.removeEventListener('submit', submitHandler);
-const postear = document.getElementById('postear');
-postear.innerHTML = 'Actualizar';
-
-postear.addEventListener('click', function (){
-   const nuevoPost = firebase.firestore().collection('posts').doc(id);
-   const posteditado = document.getElementById('mensaje').value;
-   console.log(nuevoPost);
-   return nuevoPost.update({
-      mensaje: posteditado,
-   }).then(() => {
-      console.log('editado');
-      postear.innerHTML = 'Publicar';
-      muro.addEventListener('submit', submitHandler);
-      window.location = '#/inicio';
-      location.reload();
-   })
-      .catch((error) => {
-      console.error('error al editar', error);
+  const muro = document.getElementById('muro');
+  const postear = document.getElementById('postear');
+  postear.innerHTML = 'Actualizar';
+  muro.removeEventListener('submit', submitHandler);
+  postear.addEventListener('click', function x(){
+  const nuevoPost = firebase.firestore().collection('posts').doc(id);
+  const posteditado = document.getElementById('mensaje').value;
+  console.log(nuevoPost);
+    return nuevoPost.update({
+     mensaje: posteditado,
+        }).then(() => {
+          console.log('editado');
+          postear.innerHTML = 'Publicar';
+          muro.addEventListener('submit', submitHandler);
+          window.location = '#/inicio';
+          location.reload();
+        })
+          .catch((error) => {
+            console.error('error al editar', error);
+          });
       });
-});
-} 
- 
-export function salir() {
-const salir = document.querySelector('#salir');
-salir.addEventListener('click', () => {
-   cerrarSesión();
-   window.location = '';
-   location.reload();
-});
-};
+    } 
+   export function salir() {
+   const salir = document.querySelector('#salir');
+   salir.addEventListener('click', () => {
+      cerrarSesión();
+      window.location = '';
+      location.reload();
+   });
+   }
 
-// export function salir() {
-// const salir = document.querySelector('#salir');
-// salir.addEventListener('click', () => {
-//    cerrarSesión();
-//    window.location = '';
-//    location.reload();
-// });
-// };
-
-
-
-
-   /*  function actualizandoPost() {
+/*  function actualizandoPost() {
       const muro = document.getElementById('muro');
       const postear = document.getElementById('postear');
       postear.innerHTML = 'Actualizar';
@@ -196,7 +181,7 @@ salir.addEventListener('click', () => {
           postear.innerHTML = 'Publicar';
           muro.addEventListener('submit', submitHandler);
           postMuro() */
-         /*  postear.removeEventListener('click', submitHandler2); 
+         /*  postear.removeEventListener('click', submitHandler2);
         })
           .catch((error) => {
             console.error('error al editar', error);

@@ -448,8 +448,9 @@
     margin-top: 0.5em;
 }
 
-
-
+.mensajeCargarFoto {
+    display: none;
+ }
 
 /************************************Muro***************************************************/
 
@@ -617,10 +618,10 @@
     background: rgba(255, 255, 255, 0.84);
     border-radius: 15px;
     height: 50px;
-   
     text-align: center;
     resize: none;
 }
+
 .quePiensas{
     grid-column-start:2;
     grid-column-end:4;
@@ -662,6 +663,13 @@
     margin-left: 7%;
 }
 .holaUsuario{
+    font-size: 12px;
+    color:white;
+    grid-column-start:2;
+    grid-column-end:5;
+    grid-row-start:2;
+}
+.autorPost{
     font-size: 12px;
     color:white;
     grid-column-start:2;
@@ -770,10 +778,66 @@
 
 /************************************ perfil***************************************************/
 
-.datosUsuario{
-    width: 10em;
-    height: 10em;
-    background: #F043A0;
+/* .contenedorPerfil{
+    background: #045C73;
+    background-size: cover;
+    background-repeat:repeat;
+    display: grid;
+    grid-template-columns: 5% 30% 30% 30% 5% ;
+    grid-template-rows: 20% 20% 20% 40% ;
+    height: 100vh;
+    width: 100%;
 }
 
+.imagenPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    margin-top: 1em;
+    justify-self: center;
+    align-self: start;
+    /* border: 2px white solid;
+    border-radius: 100%; */
+    padding: 0.3em;
+    z-index: 100;
+} */
 
+ .imagenPerfil  img {
+    width: 10em;
+    height: 10em;  
+    border-radius: 100%;
+
+} 
+
+/* .datosPerfil {
+    grid-row-start: 2 ;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    justify-self: center;
+    align-self: end;
+    border: 2px white solid;
+    width: 100%;
+    height: 80%;
+    background: #00899D;
+    z-index: 0;
+    ;
+}
+.datosPerfil p {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.publicacionesUsuario{
+    grid-column-start:2;
+    grid-column-end:5;
+    grid-row-start:3;
+    grid-row-end:5;
+    margin-top: 2em;
+    align-self: initial;
+    height: auto;
+    background: chartreuse;
+} */
+
+}

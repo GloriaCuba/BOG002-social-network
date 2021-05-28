@@ -1,4 +1,4 @@
-import { datosCollection } from '../firebase/firestore.js';
+import { datosCollection, guardarFotoPerfil } from '../firebase/firestore.js';
 
 export function configPerfil() {
   const formularioPerfil = `
@@ -31,10 +31,11 @@ export function configPerfil() {
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
+            <p id="mensajeCargarFoto" class="mensajeCargarFoto"> Espere un momento mientras carga la foto </p>
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
-              <button type='button' id='botonGuardar'>Guardar</button>
+            <button type='button' id='botonGuardar'>Guardar</button>
           </div>
       </div>
     `;
@@ -43,15 +44,12 @@ export function configPerfil() {
   return divPerfil;
 }
 
-
-/* <button onclick="recoletandoImagen() id="botonGuardar"> Guardar </button> */
-
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
- /*    window.location = '#/perfil';
+  //  window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    location.reload(); */
+  // location.reload();
   });
 }
 
@@ -60,76 +58,44 @@ export function recoletandoDatos() {
   const userId = document.getElementById('userId');
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
-  // const datosCollection = firebase.firestore().collection('Datos');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', () => {
-    datosCollection(userId, nomMascota, especie)
-    .then(() => { console.log('Data'); 
-    // recoletandoImagen()
-    // location.reload()
-  })
-  .catch((error) => { console.error(error); });
- }); 
-}
+   datosCollection(userId, nomMascota, especie)
+  });
+};
+
+
 export function recolectandoImagen() {
+  const campoFoto= document.getElementById("userImage")
+  var user = firebase.auth().currentUser;
+  campoFoto.src = user.photoURL;
   const ref = firebase.storage().ref()
   const btnGuardarPhoto = document.getElementById('botonGuardar');
     btnGuardarPhoto.addEventListener('click', (e) => {
+    document.getElementById("mensajeCargarFoto").style.display="block"
     console.log("diste click")
     let userImagen = document.querySelector('#inputUserImage').files[0];
-    const campoFoto= document.getElementById("userImage")
     const name = userImagen.name
-    const task = ref.child(name).put(userImagen)
-    task.then(snapshot => snapshot.ref.getDownloadURL())
-    .then(url=> {
-      console.log(url)
-      console.log("subio")
-      campoFoto.src= url
+    guardarFotoPerfil(name, userImagen)
     })
-   })
   }
-
-
-// export function recoletandoImagen() {
-//   const ref = firebase.storage().ref()
-//   const btnGuardarPhoto = document.getElementById('botonGuardar');
-//     btnGuardarPhoto.addEventListener('click', (e) => {
-//     let userImagen = document.querySelector('#inputUserImage').files[0];
-//     const campoFoto= document.getElementById("userImage")
-//     const name = userImagen.name
-//     const task = ref.child(name).put(userImagen)
-//     task.then(snapshot => snapshot.ref.getDownloadURL())
-//     .then(url=> {
-//       console.log(url)
-//       alert("subio")
-//       campoFoto.src= url
-//     })
-//    })
-//   }
-
   
 
-
-
-  
 
 
 export function mostrarInputs() {
-  const botonMostrarInputs= document.getElementById('botonInputs');
+const botonMostrarInputs= document.getElementById('botonInputs');
+botonMostrarInputs.addEventListener("click", ()=> {
+  document.querySelector("#contenedorImagen").style.display="none"
+  document.querySelector("#contenedorInputs").style.display="block"
+ })
+}
+
+export function ocultarCambioImagen() {
+  const botonMostrarInputs= document.getElementById('botonImagen');
   botonMostrarInputs.addEventListener("click", ()=> {
-    document.querySelector("#contenedorImagen").style.display="none"
-    document.querySelector("#contenedorInputs").style.display="block"
-   })
-  }
-  
-  export function ocultarCambioImagen() {
-    const botonMostrarInputs= document.getElementById('botonImagen');
-    botonMostrarInputs.addEventListener("click", ()=> {
-     document.querySelector("#contenedorImagen").style.display="block"
-     document.querySelector("#contenedorInputs").style.display="none"
-     
-    })
-  }
-
-
-
+   document.querySelector("#contenedorImagen").style.display="block"
+   document.querySelector("#contenedorInputs").style.display="none"
+   
+  })
+}
