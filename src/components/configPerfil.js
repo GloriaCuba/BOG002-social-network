@@ -1,4 +1,4 @@
-import { datosCollection } from '../firebase/firestore.js';
+import { datosCollection, guardarFotoPerfil } from '../firebase/firestore.js';
 
 export function configPerfil() {
   const formularioPerfil = `
@@ -51,13 +51,13 @@ export function configPerfil() {
 //     eslint-disable-next-line no-console
 //     return console.log('hiciste click');
 //   });
-// }
+//
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
- /*    window.location = '#/perfil';
+  //  window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    location.reload(); */
+  // location.reload();
   });
 }
 
@@ -71,34 +71,36 @@ export function recoletandoDatos() {
     datosCollection(userId, nomMascota, especie)
   });
 }
+
 export function recolectandoImagen() {
+  const campoFoto= document.getElementById("userImage")
+  var user = firebase.auth().currentUser;
+  campoFoto.src = user.photoURL;
   const ref = firebase.storage().ref()
   const btnGuardarPhoto = document.getElementById('botonGuardar');
     btnGuardarPhoto.addEventListener('click', (e) => {
     console.log("diste click")
     let userImagen = document.querySelector('#inputUserImage').files[0];
-    const campoFoto= document.getElementById("userImage")
     const name = userImagen.name
-    const task = ref.child(name).put(userImagen)
-    task.then(snapshot => snapshot.ref.getDownloadURL())
-    .then(url=> {
-      console.log(url)
-      console.log("subio")
-      var user = firebase.auth().currentUser;
-      console.log(user);
-      user.updateProfile({
-      photoURL: url
-      }).then(() =>{
-      campoFoto.src= url
-      }).catch(function(error) {
-      // An error happened.
-      });
-    })
+    readImage();
+    guardarFotoPerfil(name, userImagen)
    })
 }
-
-
-
+export function readImage() {
+  const campoFoto= document.getElementById("userImage")
+  const btnFile= document.getElementById("inputUserImage")
+  btnFile.addEventListener("change", function() {
+    const file = this.files[0];
+    const reader=new FileReader();
+    reader.onload =function(){ 
+    const result= reader.result;
+    campoFoto.src = result;
+  }
+  if (file){ 
+  reader.readAsDataURL(file);
+  }
+  });
+}
 // function init() {
 //   var inputFile = document.getElementById('inputUserImage');
 //   inputFile.addEventListener('change', mostrarImagen, false);
@@ -143,12 +145,10 @@ export function recolectandoImagen() {
 //     .then(() => { 
 //     let div = document.createElement("img")
 
-  
 //     })
 //   .catch((error) => { console.error(error); });
 //    });
 // }
-
 
 export function mostrarInputs() {
 const botonMostrarInputs= document.getElementById('botonInputs');
