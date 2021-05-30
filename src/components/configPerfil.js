@@ -60,7 +60,7 @@ export function recoletandoDatos() {
   const especie = document.getElementById('menuEspecies');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', () => {
-   datosCollection(userId, nomMascota, especie)
+    datosCollection(userId, nomMascota, especie)
   });
 };
 
@@ -76,10 +76,39 @@ export function recolectandoImagen() {
     console.log("diste click")
     let userImagen = document.querySelector('#inputUserImage').files[0];
     const name = userImagen.name
+    readImage();
     guardarFotoPerfil(name, userImagen)
-    })
+   })
+}
+export function readImage() {
+  const campoFoto= document.getElementById("userImage")
+  const btnFile= document.getElementById("inputUserImage")
+  btnFile.addEventListener("change", function() {
+    const file = this.files[0];
+    const reader=new FileReader();
+    reader.onload =function(){ 
+    const result= reader.result;
+    campoFoto.src = result;
   }
-  
+  if (file){ 
+  reader.readAsDataURL(file);
+  }
+  });
+}
+// function init() {
+//   var inputFile = document.getElementById('inputUserImage');
+//   inputFile.addEventListener('change', mostrarImagen, false);
+// }
+
+// export function mostrarImagen(event) {
+//   var file = event.target.files[0];
+//   var reader = new FileReader();
+//   reader.onload = function(event) {
+//     var img = document.getElementById('userImage');
+//     img.src= event.target.result;
+//   }
+//   reader.readAsDataURL(file);
+// }
 
 
 

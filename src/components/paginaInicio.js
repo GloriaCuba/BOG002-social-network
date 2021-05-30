@@ -30,7 +30,7 @@ export function inicio() {
          <p id="holaUsuario" class="holaUsuario" ></p>
             <textarea type="text" id="mensaje" class="campoPosteo" placeholder="¿Qué estas pensando?"></textarea>
             <img src="Img/Star_Likes.png" class="star">
-            <button class="botonEnviar" id="postear">Publicar</button>
+            <button class="botonEnviar" id="postear">Publicar</button> 
          </form>
       </div>
       <div id="divSeccionPosts" class="divSeccionPosts">
@@ -67,13 +67,15 @@ e.preventDefault(); // Para que no se refresque la página
    const date = firebase.firestore.Timestamp.now();
    let user = firebase.auth().currentUser;
    let email = user.email;
-   guardarPosts(mensaje, date, email);
+   let imagen = user.photoURL;
+   guardarPosts(mensaje, date, email, imagen);
    muro.reset()
  }
 export function postMuro() {
    const muro = document.getElementById('muro');
    muro.addEventListener('submit', submitHandler);
    }
+   
 export function verPosts() {
   obtenerPosts((querySnapshot) => {
     document.getElementById('divSeccionPosts').innerHTML = '';
@@ -86,7 +88,7 @@ export function verPosts() {
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
       autorPost.innerHTML = (doc.data().user);
-      const textPost = document.createElement('textarea');
+      const textPost = document.createElement('p');
       textPost.setAttribute('class', 'divText');
       textPost.innerHTML = (doc.data().mensaje);
       divMuro.appendChild(textPost);
@@ -95,8 +97,13 @@ export function verPosts() {
       star.src = 'Img/Star_Likes.png';
       divMuro.appendChild(star);
       let user = firebase.auth().currentUser;
-      const usuario = user.displayName;
-      document.getElementById("holaUsuario").innerHTML = ('Hola ' + usuario);
+      console.log(user.email);
+      const email = user.email;
+      document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
+      const photoProfile= document.createElement('img');
+      photoProfile.setAttribute('class', 'photoProfile');
+      photoProfile.src = (doc.data().imagen);
+      divMuro.appendChild(photoProfile);
       const campoBotones = document.createElement('div');
       const botonBorrar = document.createElement('button');
       const botonEditar = document.createElement('button');
@@ -164,35 +171,3 @@ function actualizandoPost(id) {
    });
    }
 
-/*  function actualizandoPost() {
-      const muro = document.getElementById('muro');
-      const postear = document.getElementById('postear');
-      postear.innerHTML = 'Actualizar';
-      muro.removeEventListener('submit', submitHandler);
-      postear.addEventListener('click', submitHandler2)
-   } */
-      /* function submitHandler2(id){
-         const nuevoPost = firebase.firestore().collection('posts').doc(id);
-         const posteditado = document.getElementById('mensaje').value;
-         return nuevoPost.update({
-          mensaje: posteditado,
-        }).then(() => {
-          console.log('editado');
-          postear.innerHTML = 'Publicar';
-          muro.addEventListener('submit', submitHandler);
-          postMuro() */
-         /*  postear.removeEventListener('click', submitHandler2);
-        })
-          .catch((error) => {
-            console.error('error al editar', error);
-          });
-      }; */
-      /* function remover(){
-         const postear = document.getElementById('postear');
-         postear.removeEventListener('click', submitHandler2());
-       } */
- 
- /*    function remover(){
-      const postear = document.getElementById('postear');
-      postear.removeEventListener('click', submitHandler2());
-    } */

@@ -5,13 +5,18 @@
     padding:0;
     box-sizing: border-box;
 }
-.container{
+body {
     height: 100vh;
     width: 100%;
+    background: #045C73;
+}
+.container{
     font-family: 'Cherry Cream Soda', cursive;
-    /*font-family: 'Frank Ruhl Libre', serif;*/
 }
 
+#irAtras, #irDelante{
+    z-index: 100;
+}
 
 /************************************Pagina interfaz principal***************************************************/
 
@@ -350,6 +355,11 @@
     margin-left: 4.5em;
 }
 
+.fotoPerfil {
+    margin-top: 1em;
+    width: 15em;
+    height: 10em;
+}
 /************************************Interfaz-Configuración de Perfil***************************************************/
 
 .contenedorPerfil {
@@ -630,6 +640,16 @@
     color:white;
     font-size:12px;
 }
+.photoProfile{
+    border-radius: 100%;
+    height: 2.8em;
+    width: 2.8em;
+    box-shadow: 3px 3px 1px 1px #faf755;
+    margin-right: 2%;
+    margin-left: 2%;
+    grid-column-start:2;
+    grid-row-start:3;
+}
 .star{
     justify-self: start;
     align-self: end;
@@ -689,7 +709,7 @@
     grid-row-end:5;
     background: rgba(255, 255, 255, 0.84);
     border-radius: 15px;
-    height: 50px;
+    height: 55px;
     align-self: end;
     text-align: center;
     resize: none;
@@ -778,66 +798,149 @@
 
 /************************************ perfil***************************************************/
 
-/* .contenedorPerfil{
+.contenedorInterfazPerfil{
     background: #045C73;
     background-size: cover;
     background-repeat:repeat;
     display: grid;
     grid-template-columns: 5% 30% 30% 30% 5% ;
-    grid-template-rows: 20% 20% 20% 40% ;
+    grid-template-rows: 10% 10% 10% 20% 50% ;
     height: 100vh;
     width: 100%;
 }
 
-.imagenPerfil {
+.datosUsuarioPerfil{
+    grid-row-start: 2 ;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 6; 
+}
+
+.divPerfilUsuario{
+    display: grid;
+    grid-template-columns: 5% 15% 15% 30% 30% 5% ;
+    grid-template-rows: 33% 33% 33% ;
+}
+
+ .fotoPerfilUsuario {
     grid-row-start: 1 ;
-    grid-row-end: 3;
+    grid-row-end: 4;
     grid-column-start: 2;
-    grid-column-end: 5;
-    margin-top: 1em;
-    justify-self: center;
-    align-self: start;
-    /* border: 2px white solid;
-    border-radius: 100%; */
-    padding: 0.3em;
+    grid-column-end: 5; 
+    align-self: stretch;
     z-index: 100;
-} */
-
- .imagenPerfil  img {
-    width: 10em;
-    height: 10em;  
-    border-radius: 100%;
-
 } 
 
-/* .datosPerfil {
-    grid-row-start: 2 ;
-    grid-row-end: 2;
-    grid-column-start: 2;
-    grid-column-end: 5;
+ .fotoPerfilUsuario img {
+    width: 8em;
+    height: 100%;  
+    border-radius: 100%;
+    border: 3px white solid;
+
+}  
+
+ .datosPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 6; 
     justify-self: center;
-    align-self: end;
+    align-self: center;
     border: 2px white solid;
     width: 100%;
-    height: 80%;
-    background: #00899D;
+    height: 90%;
+    background: none;
     z-index: 0;
     ;
 }
-.datosPerfil p {
+.datosPerfil h2 {
     text-align: center;
-    margin-top: 2em;
+    justify-self: center;
+    margin-top: 0.5em;
+    color: white;
+    font-size: 1.5em;
 }
 
+#configuracionPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    justify-self: end;
+    align-self: start;
+    margin: 1em 1em;
+    width: 10vw;
+}
+
+.textAreaPerfil {
+    grid-column-start:2;
+    grid-column-end:5;
+    grid-row-start:4;
+    grid-row-end:5;
+}
+.muroPerfil{
+    display: grid;
+    grid-template-columns: 5% 20% 25% 25% 20% 5%;
+    grid-template-rows: 10% 20% 20% 25% 20% 5%;
+    width:100%;
+    height: 100%;
+}
+.campoPosteoPerfil{
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-start:3;
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 50px;
+    text-align: center;
+    resize: none;
+}
+
+/* .quePiensas{
+    grid-column-start:2;
+    grid-column-end:4;
+    grid-row-start:2;
+    align-self: center;
+    color:white;
+    font-size:12px;
+} */
+
+/* .photoProfile{
+    border-radius: 100%;
+    height: 2.8em;
+    width: 2.8em;
+    box-shadow: 3px 3px 1px 1px #faf755;
+    margin-right: 2%;
+    margin-left: 2%;
+    grid-column-start:2;
+    grid-row-start:3;
+} */
+.starPerfil{
+    justify-self: start;
+    align-self: end;
+    grid-column-start:2;
+    grid-row-start:5;
+}
+.botonEnviarPerfil {
+    justify-self: end;
+    align-self: end;
+    grid-column-end:6;
+    grid-row-start:5;
+    width: 55px;
+    height: 22px;
+    background: #8FC1DF;
+    border-color: #b3d9f0;
+    border-radius: 6px;
+    margin: 0;
+    font-size: 10px;
+}
 .publicacionesUsuario{
     grid-column-start:2;
     grid-column-end:5;
-    grid-row-start:3;
-    grid-row-end:5;
-    margin-top: 2em;
+    grid-row-start:5;
+    grid-row-end:6;
     align-self: initial;
     height: auto;
-    background: chartreuse;
-} */
+}
 
 }

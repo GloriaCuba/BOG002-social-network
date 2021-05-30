@@ -12,9 +12,6 @@ export const datosCollection = (userId, nomMascota, especie) => {
       console.log(user)
     })
   }
-
-export const obtenerDatos = (callback) => firebase.firestore().collection('Datos').onSnapshot(callback);
- 
 //  guardar imagen de perfil en la base de datos  
  export const guardarFotoPerfil = (name, userImagen) => {
    const ref = firebase.storage().ref()
@@ -29,30 +26,31 @@ export const obtenerDatos = (callback) => firebase.firestore().collection('Datos
  }
 
 function userProfile(url) {
-const campoFoto= document.getElementById("userImage")
-var user = firebase.auth().currentUser;
+  const campoFoto= document.getElementById("userImage")
+  var user = firebase.auth().currentUser;
   console.log(user);
   user.updateProfile({
     photoURL: url
-}).then(() =>{
-campoFoto.src= url
-})
+    }).then(() =>{
+      campoFoto.src= url
+    });
 }
- 
- 
+
+
  // creacion de una base de datos posts usuarios
- export const guardarPosts = (mensaje, date, email) => {
+ export const guardarPosts = (mensaje, date, email, imagen) => {
    firebase.firestore().collection('posts').doc().set({
     mensaje: mensaje,
     date: firebase.firestore.Timestamp.now(),
-    user:email
+    user:email,
+    imagen: imagen
   })
  }
  
  // obtencion de post para hacerlos visibles en pantalla
  export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
- /*firebase.firestore().collection('postss').orderBy('date', 'desc').onSnapshot((querySnapshot) => {*/
-  export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('Datos').onSnapshot(callback);
+
+ export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
  //eliminar post
  export const eliminarPost = (id) =>  {
