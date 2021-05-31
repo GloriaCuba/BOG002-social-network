@@ -1,4 +1,4 @@
-export function interfazPrincipal() {
+export function interfazPrincipal() {//Bienvenida a la interfaz, redirecciona segun si te logeas o registras
   const seleccionarIngreso = `
       <div id="home" class="home">
         <h1 id="titulo">PET<br>BOOK</h1>

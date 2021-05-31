@@ -94,7 +94,7 @@ export function verPosts() {
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
       autorPost.innerHTML = (doc.data().user);
-      const textPost = document.createElement('textarea');
+      const textPost = document.createElement('p');
       textPost.setAttribute('class', 'divText');
       textPost.innerHTML = (doc.data().mensaje);
       divMuro.appendChild(textPost);

@@ -1,6 +1,6 @@
-import { datosCollection, guardarFotoPerfil } from '../firebase/firestore.js';
+import { datosCollection, guardarFotoPerfil } from '../firebase/firestore.js';// traemos las funciones de firestore que guardan los campos
 
-export function configPerfil() {
+export function configPerfil() {// template de # configperfil
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
           <h1>Configuración de Perfil</h1>
@@ -55,9 +55,9 @@ export function configPerfil() {
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
-  //  window.location = '#/perfil';
-    // eslint-disable-next-line no-restricted-globals
-  // location.reload();
+    console.log('hola1')
+    window.location = '#/perfil';
+    location.reload();
   });
 }
 
@@ -68,102 +68,55 @@ export function recoletandoDatos() {
   // const datosCollection = firebase.firestore().collection('Datos');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', () => {
+    console.log('hola'),
+    window.location = '#/perfil';
+    location.reload();
     datosCollection(userId, nomMascota, especie)
   });
 }
 
 export function recolectandoImagen() {
   const campoFoto= document.getElementById("userImage")
-  var user = firebase.auth().currentUser;
-  campoFoto.src = user.photoURL;
-  const ref = firebase.storage().ref()
+  var user = firebase.auth().currentUser;//se le asigna una variable al usuario actual
+  campoFoto.src = user.photoURL;//al usuario se le asigna la URL de la foto cargada
+  const ref = firebase.storage().ref()// se declara una varible para la ref. de storage donde almacenara las imagenes
   const btnGuardarPhoto = document.getElementById('botonGuardar');
     btnGuardarPhoto.addEventListener('click', (e) => {
     console.log("diste click")
-    let userImagen = document.querySelector('#inputUserImage').files[0];
+    let userImagen = document.querySelector('#inputUserImage').files[0];//donde se ingresa la foto
     const name = userImagen.name
     readImage();
     guardarFotoPerfil(name, userImagen)
    })
 }
 export function readImage() {
-  const campoFoto= document.getElementById("userImage")
+  const campoFoto= document.getElementById("userImage")//donde se mostrara la foto
   const btnFile= document.getElementById("inputUserImage")
-  btnFile.addEventListener("change", function() {
-    const file = this.files[0];
-    const reader=new FileReader();
-    reader.onload =function(){ 
-    const result= reader.result;
-    campoFoto.src = result;
+  btnFile.addEventListener("change", function() {//evento change -cambio para que sea automatico cuando exista un cambio de eleccion
+    const file = this.files[0];//se declara una variable que aloja el archivo 
+    const reader=new FileReader(); //fileReader un objeto q permite leer el contenido de archivos
+    reader.onload =function(){ //onload evento que se ejecuta cuando la carga esta terminada
+    const result= reader.result;//se guarda el resultado del evento
+    campoFoto.src = result;//el resultado de la lectura se muestra en el campoFoto
   }
   if (file){ 
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(file);//si lee el archivo se dara el metodo readAsDataURL que se usa para leer el contenido del archivo
   }
   });
 }
-// function init() {
-//   var inputFile = document.getElementById('inputUserImage');
-//   inputFile.addEventListener('change', mostrarImagen, false);
-// }
-
-// export function mostrarImagen(event) {
-//   var file = event.target.files[0];
-//   var reader = new FileReader();
-//   reader.onload = function(event) {
-//     var img = document.getElementById('userImage');
-//     img.src= event.target.result;
-//   }
-//   reader.readAsDataURL(file);
-// }
-
-// window.addEventListener('load', init, false);
-
-
-
-// export function seleccionarFoto() {
-//   const divPhoto = document.getElementById(' imagenPerfil');
-//   const inputUser = document.getElementById('inputUserImage').value;
-//   inputUser.addEventListener("click", ()=> {
-//     let img = document.createElement("img")
-//     img = `${doc.userPhoto}`;
-//     divPhoto.appendChild(img)
-//   })
-// }
-
-// export function fotoUsuario(){
-//   // const userId = document.getElementById('userId');
-//   const userPhoto = document.getElementById('userImage');
-//   const datosCollection = database.collection('Datos');
-//   const btnPhoto = document.getElementById('botonGuardar');
-//   btnPhoto.addEventListener('click', (e) => {
-//     console.log('click');
-//     e.preventDefault();
-//     datosCollection.doc(userId.value).set({
-//       // usuario: userId.value,
-//       fotoPerfil: userPhoto
-//     })     
-//     .then(() => { 
-//     let div = document.createElement("img")
-
-//     })
-//   .catch((error) => { console.error(error); });
-//    });
-// }
-
-export function mostrarInputs() {
-const botonMostrarInputs= document.getElementById('botonInputs');
-botonMostrarInputs.addEventListener("click", ()=> {
-  document.querySelector("#contenedorImagen").style.display="none"
-  document.querySelector("#contenedorInputs").style.display="block"
- })
-}
-
-export function ocultarCambioImagen() {
-  const botonMostrarInputs= document.getElementById('botonImagen');
+export function mostrarInputs() {//alrtena los contenedores de info personal y la configuracion de foto
+  const botonMostrarInputs= document.getElementById('botonInputs');
   botonMostrarInputs.addEventListener("click", ()=> {
-   document.querySelector("#contenedorImagen").style.display="block"
-   document.querySelector("#contenedorInputs").style.display="none"
-   
-  })
+    document.querySelector("#contenedorImagen").style.display="none"
+    document.querySelector("#contenedorInputs").style.display="block"
+   })
+  }
+  
+  export function ocultarCambioImagen() {//alrtena los contenedores de info personal y la configuracion de foto
+    const botonMostrarInputs= document.getElementById('botonImagen');
+    botonMostrarInputs.addEventListener("click", ()=> {
+     document.querySelector("#contenedorImagen").style.display="block"
+     document.querySelector("#contenedorInputs").style.display="none"
+     
+    })
 }
-
