@@ -62,7 +62,8 @@ export function obtenerLikes(id) {
 
  // obtencion de post para hacerlos visibles en pantalla
  export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
- /*firebase.firestore().collection('postss').orderBy('date', 'desc').onSnapshot((querySnapshot) => {*/
+
+ export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
  //eliminar post
  export const eliminarPost = (id) =>  {

@@ -8,20 +8,67 @@ window.addEventListener('load', () => {
 
 window.addEventListener("haschange", () => {
   router(window.location.hash)
-})
+ })
+  
 
-// let siguientePagina = document.getElementById("irDelante");
-// siguientePagina.addEventListener("click", ()=> {
-//   window.history.forward();
-// })
+//   function adelante() {
+//       let siguientePagina = document.getElementById("irDelante");
+//       siguientePagina.addEventListener("click", ()=> {
+//         console.log("yo tambien")
+//         location.assign(initialPage)
+//       })
+//       }
+//     adelante()
+
+
+
+    // function adelante(initialPage) {
+    //   let siguientePagina = document.getElementById("irDelante");
+    //   siguientePagina.addEventListener("click", ()=> {
+    //     location.assign(initialPage)
+    //   })
+    //   }
+    //   function direccionAdelante() {
+    //     let initialPage =  window.history.forward();
+    //     return initialPage
+    //   }
+      
+    //   let irAdelante = direccionAdelante();
+    //   adelante(irAdelante)      
+
+
+//      function otro() {
+//       function atras(initialPage) {
+//           location.assign(initialPage)
+//           }
+
+//         function direccion() {
+//           let paginaAtras = document.getElementById("irAtras");
+//           paginaAtras.addEventListener("click", ()=> {
+//           let initialPage =  window.history.back();
+//           return initialPage
+//         })
+//       }
+
+//         let ir = direccion();
+//         atras(ir)
+//       }
+// otro()
+   
+
+
+
+
+  
+  
 
 // let paginaAnterior = document.getElementById("irAtras");
 // paginaAnterior.addEventListener("click", ()=> {
-//     window.history.back();
+//  let initialPage = window.history.back();
+//  location.assign(initialPage)
 // })
 
-//   window.history.go(-1)
-// })
+
 
 
 

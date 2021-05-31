@@ -11,8 +11,8 @@ export function inicializarFirebase() {
     // Initialize Firebase
 
   firebase.initializeApp(firebaseConfig);
-  // var db = firebase.firestore();
-  // var auth = firebase.auth();
-  // console.log(firebase.auth);
-  // auth.useDeviceLanguage();
+  var db = firebase.firestore();
+  var auth = firebase.auth();
+  console.log(firebase.auth);
+  auth.useDeviceLanguage();
 }

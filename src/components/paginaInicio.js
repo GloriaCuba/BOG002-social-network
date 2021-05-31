@@ -75,14 +75,8 @@ e.preventDefault(); // Para que no se refresque la página
 export function postMuro() {
    const muro = document.getElementById('muro');
    muro.addEventListener('submit', submitHandler);
-      
-      /*.then(function(doc) { 
-         console.log('El documento se creo con el ID: ', doc.id);
-         verPosts();
-      }).catch((error) => {
-         console.error("Error adding document: ", error);
-     });*/
    }
+   
 export function verPosts() {
   obtenerPosts((querySnapshot) => {
     document.getElementById('divSeccionPosts').innerHTML = '';
