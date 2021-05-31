@@ -14,9 +14,9 @@ body {
     font-family: 'Cherry Cream Soda', cursive;
 }
 
-#irAtras, #irDelante{
+/* #irAtras, #irDelante{
     z-index: 100;
-}
+} */
 
 /************************************Pagina interfaz principal***************************************************/
 
@@ -809,6 +809,36 @@ body {
     width: 100%;
 }
 
+.opcionesPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 5; 
+    justify-self: end;
+}
+
+#configuracionPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    justify-self: end;
+    align-self: start;
+    margin: 1em 1em;
+    width: 2.5em;
+}
+
+#irAPost {
+    grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    justify-self: start;
+    align-self: start;
+    margin: 1em 0em;
+    width: 2.5em;
+}
+
 .datosUsuarioPerfil{
     grid-row-start: 2 ;
     grid-row-end: 4;
@@ -828,7 +858,7 @@ body {
     grid-column-start: 2;
     grid-column-end: 5; 
     align-self: stretch;
-    z-index: 100;
+    z-index: 1;
 } 
 
  .fotoPerfilUsuario img {
@@ -861,17 +891,6 @@ body {
     font-size: 1.5em;
 }
 
-#configuracionPerfil {
-    grid-row-start: 1 ;
-    grid-row-end: 1;
-    grid-column-start: 5;
-    grid-column-end: 6;
-    justify-self: end;
-    align-self: start;
-    margin: 1em 1em;
-    width: 10vw;
-}
-
 .textAreaPerfil {
     grid-column-start:2;
     grid-column-end:5;
@@ -896,25 +915,6 @@ body {
     resize: none;
 }
 
-/* .quePiensas{
-    grid-column-start:2;
-    grid-column-end:4;
-    grid-row-start:2;
-    align-self: center;
-    color:white;
-    font-size:12px;
-} */
-
-/* .photoProfile{
-    border-radius: 100%;
-    height: 2.8em;
-    width: 2.8em;
-    box-shadow: 3px 3px 1px 1px #faf755;
-    margin-right: 2%;
-    margin-left: 2%;
-    grid-column-start:2;
-    grid-row-start:3;
-} */
 .starPerfil{
     justify-self: start;
     align-self: end;
@@ -942,5 +942,101 @@ body {
     align-self: initial;
     height: auto;
 }
+
+.modalOverlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+.modalOverlay.active {
+    visibility: visible;
+}
+
+.modal {
+  
+    background: #F8F8F8;
+    padding: 20px;
+    text-align: center;
+    width: 90%;
+    height: 40%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    align-content: center;
+     /* opacity: 0; */
+}
+
+.muroModal {
+    display: relative;
+}
+
+.muroModal a{
+    display: absolute;
+    left: 0;
+    right: 50px;
+}
+
+.cerrarPopup{
+    width: 3em;
+
+    /* transition: .3s ease all;
+    color: #BBBBBB; */
+}
+/* .campoMensajeModal{
+    width: 90%;
+    height: 30%;
+} */
+
+.cerrarPopup:hover{
+    color: rgba(0, 0, 0, 0.2);
+}
+
+
+.modal form .campoPosteoPerfil{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 52px;
+    text-align: center;
+    border: 1px solid #BBBBBB;
+}
+/* .popUp form .contenedorInputs input{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 52px;
+    text-align: center;
+    border: 1px solid #928933a4;
+} */
+
+.modal form .botonActualizar{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5E7DE3;
+    border-radius: 3px;
+    font-family: arial;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.modal form .botonActualizar{
+    background: rgba(94,125,227, .8);
+}
+
+
 
 }

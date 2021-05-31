@@ -3,6 +3,12 @@ import { datosCollection, guardarFotoPerfil } from '../firebase/firestore.js';
 export function configPerfil() {
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
+        <header>
+        <div class="history">
+          <img src="Img/atrasIcono.png" type='button' id='irAtras'>
+          <img src="Img/adelanteIcono.png" type='button' id='irDelante'>
+        </div>
+      </header>
           <h1>Configuración de Perfil</h1>
           <div class="contenedorOpciones">
           <h3> Opciones a configurar </h3> <br>
@@ -42,6 +48,15 @@ export function configPerfil() {
   const divPerfil = document.createElement('div');
   divPerfil.innerHTML = formularioPerfil;
   return divPerfil;
+}
+
+export function atras() { 
+let siguientePagina = document.getElementById("irAtras");
+siguientePagina.addEventListener("click", ()=> {
+  console.log("si funciono")
+  window.history.go(-1)
+  // location.reload()
+})
 }
 
 export function irAlPerfil() {

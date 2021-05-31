@@ -10,9 +10,9 @@ import {
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
 import {
-  configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage ,
+  configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage, atras 
 } from '../components/configPerfil.js';
-import { perfil, configurarPerfil, ImagenPerfil, verPostsPerfil, postPerfil } from '../components/perfil.js';
+import { perfil, configurarPerfil, ImagenPerfil, verPostsPerfil, postPerfil, irAHome} from '../components/perfil.js';
 
 // menuEspecies
 // eslint-disable-next-line import/named
@@ -61,6 +61,7 @@ export const router = (routes) => {
           mostrarInputs();
           ocultarCambioImagen();
           readImage();
+          atras();
           break;
         case '#/perfil':
           rootDiv.appendChild(perfil());
@@ -68,6 +69,7 @@ export const router = (routes) => {
           ImagenPerfil();
           postPerfil();
           verPostsPerfil();
+          irAHome();
           break;
         case '':
           rootDiv.appendChild(interfazPrincipal());

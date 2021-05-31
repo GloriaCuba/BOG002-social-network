@@ -4,7 +4,10 @@ import { guardarPosts, obtenerDatosUsuario, eliminarPost} from '../firebase/fire
 export function perfil() {
     let perfil = `
     <div class="contenedorInterfazPerfil">
-       <img type="button" src="Img/cog.png" id="configuracionPerfil"> 
+       <div class="opcionesPerfil">
+          <img type="button" src="Img/home.png" id="irAPost"> 
+         <img type="button" src="Img/cog.png" id="configuracionPerfil">   
+       </div>
        <div id="datosUsuarioPerfil" class="datosUsuarioPerfil">
           <div id="divPerfilUsuario" class="divPerfilUsuario">
             <div id="fotoPerfilUsuario" class="fotoPerfilUsuario">
@@ -21,6 +24,16 @@ export function perfil() {
             <img src="Img/Star_Likes.png" class="starPerfil">
             <button class="botonEnviarPerfil" id="postearPerfil">Publicar</button>
          </form>
+         <div id="modalOverlay" class="modalOverlay">
+           <div id="modal" class="modal">
+            <form id="muroModal" class="muroModal">
+              <a href="#" id="cerrarPopup" class="cerrarPopup"><i class="fas fa-times"></i></a> <br>
+              <textarea type="text" id="mensajeModal" class="campoMensajeModal" placeholder="¿Qué estas pensando?"></textarea> <br>
+              <button class="botonActualizar" id="actualizar">Actualizar</button>
+            </form>
+         </div>
+         </div>
+
       </div>
        <div id="publicacionesUsuario" class="publicacionesUsuario"></div> 
     </div>
@@ -38,6 +51,16 @@ export function configurarPerfil(){
       location.reload()                          
       })
 }
+
+export function irAHome() {
+      const perfil=document.getElementById("irAPost");
+      perfil.addEventListener("click",()=>{
+      window.location = '#/inicio';
+      location.reload()                          
+      })
+
+}
+
  
 export function ImagenPerfil() {
       const campoFoto= document.getElementById("userImage")
@@ -124,7 +147,9 @@ export function verPostsPerfil() {
       console.log(doc.id);
       });
       botonEditar.addEventListener('click', () => {
-      botonEditarPost(doc.id, doc.data().mensaje);
+                overlayEditar()
+                cerrarModal()
+                botonEditarPost(doc.id, doc.data().mensaje)
       });
      };
    });
@@ -135,27 +160,40 @@ function botonEliminar(id) {
 }
 }
 
+function overlayEditar() {
+      let overlay = document.getElementById ("modalOverlay");
+      let popUp = document.getElementById ("modal");
+      overlay.classList.add('active');
+      popUp.classList.add('active');
+      };
+
+      function cerrarModal() {
+      let overlay = document.getElementById ("modalOverlay");
+      let popUp = document.getElementById ("modal");
+      let btnCerrar = document.getElementById ("cerrarPopup");
+      btnCerrar.addEventListener('click', function(e){  
+       e.preventDefault();
+       overlay.classList.remove('active');
+       popUp.classList.remove('active');
+      })
+    }
+
 function botonEditarPost(id, campo) {
-      document.getElementById('mensajePerfil').value = campo;
+      document.getElementById('mensajeModal').value = campo;
       console.log (id, campo);
       actualizandoPost(id, campo);
       }
       
 function actualizandoPost(id) {
-const muro = document.getElementById('muroPerfil');
-const postear = document.getElementById('postearPerfil');
-postear.innerHTML = 'Actualizar';
-muro.removeEventListener('submit', submitHandler);
+const postear = document.getElementById('actualizar');
 postear.addEventListener('click', function x(){
 const nuevoPost = firebase.firestore().collection('posts').doc(id);
-const posteditado = document.getElementById('mensajePerfil').value;
+const posteditado = document.getElementById('mensajeModal').value;
 console.log(nuevoPost);
       return nuevoPost.update({
       mensaje: posteditado,
       }).then(() => {
             console.log('editado');
-            postear.innerHTML = 'Publicar';
-            muro.addEventListener('submit', submitHandler);
             window.location = '#/perfil';
             location.reload();
       })
@@ -164,3 +202,101 @@ console.log(nuevoPost);
             });
       });
       } 
+
+
+
+
+
+
+      // export function verPostsPerfil() {
+      //       obtenerDatosUsuario((querySnapshot) => {
+      //       document.getElementById('publicacionesUsuario').innerHTML = '';
+      //       querySnapshot.forEach((doc) => {    
+      //       let userActual = firebase.auth().currentUser;
+      //       const email = userActual.email
+      //       const usuarioNombre = userActual.displayName
+      //       if (doc.data().user == email) { 
+      //       const divOriginal = document.getElementById('publicacionesUsuario');
+      //       const divMuro = document.createElement('div');
+      //       divMuro.setAttribute('class', 'divMuro');
+      //       divOriginal.appendChild(divMuro);
+      //       const autorPost = document.createElement('h3');
+      //       autorPost.setAttribute('class', 'autorPost');
+      //       divMuro.appendChild(autorPost);
+      //       autorPost.innerHTML = usuarioNombre + " ha publicado:";
+      //       const textPost = document.createElement('p');
+      //       textPost.setAttribute('class', 'divText');
+      //       textPost.innerHTML = (doc.data().mensaje);
+      //       divMuro.appendChild(textPost);
+      //       const star = document.createElement('img');
+      //       star.setAttribute('class', 'starPerfil');
+      //       star.src = 'Img/Star_Likes.png';
+      //       divMuro.appendChild(star);
+      //       // let user = firebase.auth().currentUser;
+      //       // console.log(user.email);
+      //       // const email = user.email;
+      //       // document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
+      //       const photoProfile= document.createElement('img');
+      //       photoProfile.setAttribute('class', 'photoProfile');
+      //       photoProfile.src = (doc.data().imagen);
+      //       divMuro.appendChild(photoProfile);
+      //       const campoBotones = document.createElement('div');
+      //       const botonBorrar = document.createElement('button');
+      //       const botonEditar = document.createElement('button');
+      //       campoBotones.appendChild(botonBorrar);
+      //       campoBotones.appendChild(botonEditar);
+      //       botonBorrar.className="botonBorrar"
+      //       botonBorrar.type = 'button'; 
+      //       botonBorrar.textContent = 'Borrar post';
+      //       botonBorrar.setAttribute('id', 'botonBorrar');
+      //       botonEditar.className="botonEditar"
+      //       botonEditar.type = 'button';
+      //       botonEditar.textContent = 'Editar';
+      //       botonEditar.setAttribute('id', 'botonEditar');
+      //       divMuro.appendChild(botonEditar);
+      //       divMuro.appendChild(botonBorrar);
+      //       botonBorrar.addEventListener('click', () => {
+      //       botonEliminar(doc.id);
+      //       console.log(doc.id);
+      //       });
+      //       botonEditar.addEventListener('click', () => {
+      //       botonEditarPost(doc.id, doc.data().mensaje);
+      //       });
+      //      };
+      //    });
+      // });
+      
+      // function botonEliminar(id) {
+      //       eliminarPost(id);
+      // }
+      // }
+
+      // function botonEditarPost(id, campo) {
+      //       document.getElementById('mensajePerfil').value = campo;
+      //       console.log (id, campo);
+      //       actualizandoPost(id, campo);
+      //       }
+
+      // function actualizandoPost(id) {
+      //       const muro = document.getElementById('muroPerfil');
+      //       const postear = document.getElementById('postearPerfil');
+      //       postear.innerHTML = 'Actualizar';
+      //       muro.removeEventListener('submit', submitHandler);
+      //       postear.addEventListener('click', function x(){
+      //       const nuevoPost = firebase.firestore().collection('posts').doc(id);
+      //       const posteditado = document.getElementById('mensajePerfil').value;
+      //       console.log(nuevoPost);
+      //             return nuevoPost.update({
+      //             mensaje: posteditado,
+      //             }).then(() => {
+      //                   console.log('editado');
+      //                   postear.innerHTML = 'Publicar';
+      //                   muro.addEventListener('submit', submitHandler);
+      //                   window.location = '#/perfil';
+      //                   location.reload();
+      //             })
+      //                   .catch((error) => {
+      //                   console.error('error al editar', error);
+      //                   });
+      //             });
+      //             } 

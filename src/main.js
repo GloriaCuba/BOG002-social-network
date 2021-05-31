@@ -9,18 +9,6 @@ window.addEventListener('load', () => {
 window.addEventListener("haschange", () => {
   router(window.location.hash)
  })
-
-
-
-
-
-
-    // let siguientePagina = document.getElementById("irAtras");
-    //   siguientePagina.addEventListener("click", ()=> {
-    //     console.log("si funciono")
-    //     location.assign(window.history.back())
-     
-    //   })
   
 
 //   function adelante() {
@@ -49,23 +37,23 @@ window.addEventListener("haschange", () => {
     //   adelante(irAdelante)      
 
 
-    //  function otro() {
-    //   function atras(initialPage) {
-    //       location.assign(initialPage)
-    //       }
+//      function otro() {
+//       function atras(initialPage) {
+//           location.assign(initialPage)
+//           }
 
-    //     function direccion() {
-    //       let paginaAtras = document.getElementById("irAtras");
-    //       paginaAtras.addEventListener("click", ()=> {
-    //       let initialPage =  window.history.back();
-    //       return initialPage
-    //     })
-    //   }
+//         function direccion() {
+//           let paginaAtras = document.getElementById("irAtras");
+//           paginaAtras.addEventListener("click", ()=> {
+//           let initialPage =  window.history.back();
+//           return initialPage
+//         })
+//       }
 
-    //     let ir = direccion();
-    //     atras(ir)
-    //   }
-
+//         let ir = direccion();
+//         atras(ir)
+//       }
+// otro()
    
 
 
