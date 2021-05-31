@@ -33,8 +33,8 @@ export function ImagenPerfil() {
       var user = firebase.auth().currentUser;
 /*    var name, email, photoUrl, uid, emailVerified;
  */   campoFoto.src = user.photoURL;
-      console.log(user.providerData);
-   document.getElementById("nameUser").innerHTML= user.displayName;
+      console.log(user.displayName);
+      document.getElementById("nameUser").innerHTML= user.displayName;
   
       /* var user = firebase.auth().currentUser;
 

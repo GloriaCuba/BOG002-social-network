@@ -467,6 +467,7 @@
     grid-template-rows: 15% 10% 18% 62% ;
     height: 100vh;
     width: 100%;
+    overflow: scroll;
     /* align-items: center; */
 }
 
@@ -707,6 +708,8 @@
     align-self: end;
     text-align: center;
     resize: none;
+    color:rgb(31, 31, 31);
+    font-size: 12px;
 }
 .botonBorrar{
     justify-self: end;
