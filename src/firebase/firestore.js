@@ -55,9 +55,14 @@ function userProfile(url) {
  return promis;
 }
 
-export function obtenerLikes(id) {
-  firebase.firestore().collection('posts').doc(id).onSnapshot(doc)
+export const restarLikes = (id) => {
+  const promis = firebase.firestore().collection('posts').doc(id).update({
+   likes:firebase.firestore.FieldValue.increment(-1)
+ })
+ return promis;
 }
+
+export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
 
  // obtencion de post para hacerlos visibles en pantalla

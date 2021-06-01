@@ -549,6 +549,21 @@ body {
         grid-row-start:5;
         align-self: center;
     }
+    .starYellow{
+        justify-self: start;
+        align-self: start;
+        grid-column-start:2;
+        grid-row-start:5;
+        align-self: center;
+    }
+    .ocultar{
+        display:none;
+    }
+    .mostrar{
+        display:block;
+    }
+
+
     .botonEnviar {
         justify-self: end;
         align-self: start;
