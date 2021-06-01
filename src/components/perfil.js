@@ -77,7 +77,9 @@ function guardarPublicacion(e){
          let user = firebase.auth().currentUser;
          let email = user.email;
          let imagen = user.photoURL;
-         guardarPosts(mensaje, date, email, imagen);
+         let likes ='';
+         let userId = user.uid;
+         guardarPosts(mensaje, date, email, imagen, likes, userId);
          muroPerfil.reset()
        }
  export function postPerfil() {
