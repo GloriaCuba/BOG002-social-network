@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { ingresar, ingresarGmail, ingresarFaceBook } from '../firebase/firebase.js';
 
 export function iniciarSesion() {
@@ -91,6 +90,6 @@ export function olvidarContrasena() {
   nuevaContrasena.addEventListener('click', () => {
     window.location = '#/restablecerContrasena';
     // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    location.reload();//recarga la nueva ubicacion
   });
 }

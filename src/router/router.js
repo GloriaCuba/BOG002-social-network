@@ -5,27 +5,21 @@ import {
   inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,
 } from '../components/paginaInicio.js';
 import {
-  registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
+  registrarse, funcionAutenticar, registroConGoogle, registroConFacebook, irConfigPerfil,
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
-import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
+import { resetContraseña, restableceContrasena,irPrincipal} from '../components/resetContrasena.js';
 import {
-  configPerfil,irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage ,
+  configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage, atras 
 } from '../components/configPerfil.js';
-import { perfil, configurarPerfil, ImagenPerfil } from '../components/perfil.js';
+import { perfil, configurarPerfil, ImagenPerfil, verPostsPerfil, postPerfil, irAHome} from '../components/perfil.js';
 
-// menuEspecies
-// eslint-disable-next-line import/named
-
-// import { auth } from '../firebase/firebase.js';
-
-const rootDiv = document.getElementById('root');
-export const router = (routes) => {
-  rootDiv.innerHTML = '';
-  firebase.auth().onAuthStateChanged((user) => {
+const rootDiv = document.getElementById('root');//'root' id div principal para mostrar paginado
+export const router = (routes) => {//routes argumento? parametro?
+  rootDiv.innerHTML = '';//div root queda vacio
+  firebase.auth().onAuthStateChanged((user) => { // si un usuario esta activo tendra las siguientes rutas
     if (user) {
-      // eslint-disable-next-line default-case
-      switch (routes) {
+       switch (routes) {
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
           funcionIngresar();
@@ -46,7 +40,7 @@ export const router = (routes) => {
           salir();
           irAPerfil();
           postMuro();
-          console.log("pagina inicio");
+         console.log("pagina inicio");
           verPosts();
           // ocultarMostrarPost();
           break;
@@ -56,18 +50,22 @@ export const router = (routes) => {
           break;
         case '#/configuracionPerfil':
           rootDiv.appendChild(configPerfil());
-          recolectandoImagen();
-          // menuEspecies();
           irAlPerfil();
           recoletandoDatos();
+          recolectandoImagen();
           mostrarInputs();
           ocultarCambioImagen();
           readImage();
+          atras();
+          irConfigPerfil();
           break;
         case '#/perfil':
           rootDiv.appendChild(perfil());
           configurarPerfil();
           ImagenPerfil();
+          postPerfil();
+          verPostsPerfil();
+          irAHome();
           break;
         case '':
           rootDiv.appendChild(interfazPrincipal());
@@ -76,7 +74,7 @@ export const router = (routes) => {
           break;
       }
     } else {
-      // eslint-disable-next-line default-case
+      // si no esta activo muestra estas rutas
       switch (routes) {
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
@@ -84,6 +82,7 @@ export const router = (routes) => {
           iniciarConGoogle();
           iniciarConFacebook();
           olvidarContrasena();
+          irPrincipal();
           break;
         case '#/registro':
           rootDiv.appendChild(registrarse());

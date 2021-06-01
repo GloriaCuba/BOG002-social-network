@@ -20,16 +20,18 @@ export function restableceContrasena() {
   const email = document.getElementById('emailRestablecer');
   const botonRestablecer = document.getElementById('botonRestablecer');
   botonRestablecer.addEventListener('click', () => {
-  // eslint-disable-next-line no-alert
     alert('Revisa tu correo');
-    // eslint-disable-next-line no-console
     console.log('hola');
-    restablecimientoContrasena(email).then(() => {
-      // window.location = "http://localhost:5000/"
-      //    location.reload()
+    restablecimientoContrasena(email).then(() => {// ejecuta restablecimientoContraseña de firebase, quien envia correo predeterminado para restablecer contraseña
+      irPrincipal();
     }).catch((error) => {
       // eslint-disable-next-line no-console
       console.log(error);
     });
   });
+}
+export function irPrincipal() { // cambia pantalla a iniciar sesion
+  window.location = '#iniciarSesion';
+  location.reload();
+  // });
 }

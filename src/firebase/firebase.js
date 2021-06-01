@@ -46,36 +46,8 @@ export function cerrarSesión() {
   });
 }
 
-/* export function estadoUsuario
- let estado = auth.onAuthStateChanged(function(user){
-   console.log(estado)
- return estado
-})
-export function usuarioActual(){
-let user = firebase.auth().currentUser;
-let email = user.email;
-console.log(user);
-return user
-} */
-
 export function restablecimientoContrasena(email) {
   const emailAddress = email.value;
   const restablecer = firebase.auth().sendPasswordResetEmail(emailAddress);
   return restablecer;
 }
-
-// fireStore
-// export function post(publicacion) {
-// auth.onAuthStateChanged(user => {
-//   if (user) {
-//     db.collection("publicaciones")
-//     .get()
-//     .then((snapshot)=> {
-//      publicacion(snapshot.docs)
-//      console.log(snapshot.docs)
-//     })
-//   } else {
-//     console.log("signout")
-//    }
-//  })
-// }

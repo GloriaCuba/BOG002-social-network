@@ -4,12 +4,17 @@
     padding:0;
     box-sizing: border-box;
 }
-.container{
+
+
+body {
     height: 100vh;
     width: 100%;
+    background: #045C73;
+}
+.container{
     font-family: 'Cherry Cream Soda', cursive;
+}
 
- }
 /************************************Interfaz principal***************************************************/
 
  #home {
@@ -367,10 +372,11 @@
         background-size: cover;
         background-repeat:repeat;
         display: grid;
-        grid-template-columns:5% 30% 30% 30% 5%;
-        grid-template-rows: 15% 10% 18% 62% ;
+        grid-template-columns:5% 20% 50% 20% 5%;
+        grid-template-rows: 15% 15% 18% 62% ;
         height: 100vh;
         width: 100%;
+        overflow: scroll;
         /* align-items: center; */
     }
     
@@ -484,11 +490,10 @@
        
     #containerFiltro{
         grid-column-start:3;
-        grid-column-end:5;
         grid-row-start:2;
-        grid-row-end:3;
         justify-content: center;
         align-self: center;
+        text-align: center;
      }
     
      #containerFiltro h3{
@@ -499,8 +504,8 @@
     
     #containerFiltro img{
         border-radius: 100%;
-        height:3em;
-        width: 3em;
+        height:4em;
+        width: 4em;
         box-shadow: 3px 3px 1px 1px #F043A0;
         margin-right: 2%;
         margin-left: 2%;
@@ -540,8 +545,9 @@
     .star{
         justify-self: start;
         align-self: start;
-        grid-column-start:3;
+        grid-column-start:2;
         grid-row-start:5;
+        align-self: center;
     }
     .botonEnviar {
         justify-self: end;
@@ -558,8 +564,8 @@
         font-size: 10px;
     }
     .divSeccionPosts{
-        grid-column-start:2;
-        grid-column-end:5;
+        grid-column-start:3;
+        grid-column-end:4;
         grid-row-start:4;
         grid-row-end:5;
         align-self: initial;
@@ -570,6 +576,7 @@
         justify-self: start;
         align-self:center ;
         margin-left: 7%;
+        align-self: center;
     }
     .holaUsuario{
         font-size: 12px;
@@ -577,36 +584,38 @@
         grid-column-start:3;
         grid-column-end:5;
         grid-row-start:2;
+        align-self: center;
     }
     .autorPost{
         font-size: 12px;
         color:white;
-        grid-column-start:3;
-        grid-column-end:5;
+        grid-column-start:2;
         grid-row-start:2;
+        align-self: center;
     }
     .divMuro{
         display: grid;
-        grid-template-columns: 5% 20% 25% 25% 20% 5%;
-        grid-template-rows: 11.52px 23.03px 23.03px 28.80px 23.03px 5.75px; 
+        grid-template-columns: 5% 12% 33% 33% 12% 5%;
+        grid-template-rows: 13.23px 26.48px 26.48px 33.11px 26.48px 6.61px; 
         width:100%;
         height: auto;
     }
     .divText{
-        grid-column-start:3;
-        grid-column-end:5;
+        grid-column-start:2;
+        grid-column-end:6;
+        grid-row-start:3;
         grid-row-end:5;
         background: rgba(255, 255, 255, 0.84);
         border-radius: 15px;
-        height: 50px;
+        height: 100%;
         align-self: end;
         text-align: center;
         resize: none;
+        font-size: 12px;
     }
     .botonBorrar{
-        justify-self:center;
+        justify-self:end;
         align-self: end;
-        grid-column-start:4;
         grid-column-end: 5;
         grid-row-start:5;
         width: 55px;
@@ -620,7 +629,7 @@
     .botonEditar{
         justify-self: end;
         align-self: end;
-        grid-column-end:5;
+        grid-column-end:6;
         grid-row-start:5;
         width: 55px;
         height: 22px;
@@ -630,7 +639,26 @@
         margin: 0;
         font-size: 10px;
     }
-    
+    .photoProfile{
+        border-radius: 100%;
+        height: 2.8em;
+        width: 2.8em;
+        box-shadow: 3px 3px 1px 1px #faf755;
+        margin-right: 2%;
+        margin-left: 2%;
+        grid-column-start:2;
+        grid-row-start:3;
+        grid-row-end:5;
+        align-self: center;
+    }
+    .divLike{
+        grid-column-start:2;
+        grid-row-start:5;
+        justify-self: center;
+        align-self: center;
+        font-size: 12px;
+        color: #faf755;
+    }
  /************************************ restablecimiento de la contraseña***************************************************/
 
     .formularioRestablecerContrasena {
@@ -817,5 +845,258 @@ footer{
 #cerrar{
     background-color: #F043A0;
 }
+
+/************************************ Perfil***************************************************/
+
+.contenedorInterfazPerfil{
+    background: #045C73;
+    background-size: cover;
+    background-repeat:repeat;
+    display: grid;
+    grid-template-columns: 10% 20% 20% 20% 20% 10% ;
+    grid-template-rows: 10% 15% 15% 20% 40% ;
+    height: 100vh;
+    width: 100%;
+}
+
+.opcionesPerfil{
+    grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 7;
+    border-bottom: 1px white solid;
+    background: rgb(137, 197, 231);
+    justify-self: end;
+    padding: 0.5em 1em;
+
+}
+
+#configuracionPerfil {
+    /* grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 5;
+    grid-column-end: 6; */
+    /* justify-self: end;
+    align-self: center; */
+    width: 3em;
+}
+
+#irAPost {
+    /* grid-row-start: 1 ;
+    grid-row-end: 1;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    justify-self: end;
+    align-self: center; */
+    width: 3em;
+}
+
+.datosUsuarioPerfil{
+    grid-row-start: 2 ;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 6; 
+}
+
+.divPerfilUsuario{
+    display: grid;
+    grid-template-columns: 5% 15% 15% 30% 30% 5% ;
+    grid-template-rows: 33% 33% 33% ;
+}
+
+ .fotoPerfilUsuario {
+    grid-row-start: 1 ;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 6; 
+    z-index: 1;
+} 
+
+ .fotoPerfilUsuario img {
+    width: 8em;
+    height: 100%;  
+    border-radius: 100%;
+    border: 3px white solid;
+
+}  
+
+ .datosPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 6; 
+    justify-self: center;
+    align-self: center;
+    /* border: 2px white solid; */
+    width: 100%;
+    height: 90%;
+    background: none;
+    z-index: 0;
+    ;
+}
+.datosPerfil h2 {
+    text-align: center;
+    justify-self: center;
+    margin-top: 0.5em;
+    color: white;
+    font-size: 1.5em;
+}
+
+.textAreaPerfil {
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-start:4;
+    grid-row-end:5;
+    margin-bottom: 5em;
+}
+.muroPerfil{
+    display: grid;
+    grid-template-columns: 5% 20% 25% 25% 20% 5%;
+    grid-template-rows: 10% 20% 20% 25% 20% 5%;
+    width:100%;
+    height: 100%;
+}
+.campoPosteoPerfil{
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-start:3;
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 50px;
+    text-align: center;
+    resize: none;
+}
+
+.starPerfil{
+    justify-self: start;
+    align-self: end;
+    grid-column-start:2;
+    grid-row-start:5;
+}
+.botonEnviarPerfil {
+    justify-self: end;
+    align-self: end;
+    grid-column-end:6;
+    grid-row-start:5;
+    width: 55px;
+    height: 22px;
+    background: #8FC1DF;
+    border-color: #b3d9f0;
+    border-radius: 6px;
+    margin: 0;
+    font-size: 10px;
+}
+.publicacionesUsuario{
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-start:5;
+    grid-row-end:6;
+    align-self: initial;
+    height: auto;
+}
+
+/* .photoProfile {
+    width: 6em;
+    border-radius: 100%;
+} */
+
+
+.modalOverlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+.modalOverlay.active {
+    visibility: visible;
+}
+
+.modal {
+  
+    background: #F8F8F8;
+    padding: 20px;
+    text-align: center;
+    width: 90%;
+    height: 40%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    align-content: center;
+     /* opacity: 0; */
+}
+
+.muroModal {
+    display: relative;
+}
+
+.muroModal a{
+    display: absolute;
+    left: 0;
+    right: 50px;
+}
+
+.cerrarPopup{
+    width: 3em;
+
+    /* transition: .3s ease all;
+    color: #BBBBBB; */
+}
+/* .campoMensajeModal{
+    width: 90%;
+    height: 30%;
+} */
+
+.cerrarPopup:hover{
+    color: rgba(0, 0, 0, 0.2);
+}
+
+
+.modal form .campoPosteoPerfil{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 52px;
+    text-align: center;
+    border: 1px solid #BBBBBB;
+}
+/* .popUp form .contenedorInputs input{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 52px;
+    font-size: 18px;
+    line-height: 52px;
+    text-align: center;
+    border: 1px solid #928933a4;
+} */
+
+.modal form .botonActualizar{
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background: #5E7DE3;
+    border-radius: 3px;
+    font-family: arial;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.modal form .botonActualizar{
+    background: rgba(94,125,227, .8);
+}
+
+
+
+
 }
 

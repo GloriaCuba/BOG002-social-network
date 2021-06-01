@@ -1,4 +1,4 @@
-export function interfazPrincipal() {//Bienvenida a la interfaz, redirecciona segun si te logeas o registras
+export function interfazPrincipal() {//Bienvenida a la interfaz, redirecciona segun si te quieres logear o registrarte
   const seleccionarIngreso = `
       <div id="home" class="home">
         <h1 id="titulo">PET<br>BOOK</h1>
@@ -14,7 +14,7 @@ export function interfazPrincipal() {//Bienvenida a la interfaz, redirecciona se
 
 export function ingresoApp() {
   const botonRegistrarse = document.getElementById('botonIngreso');
-  botonRegistrarse.addEventListener('click', () => {
+  botonRegistrarse.addEventListener('click' , () => {
     window.location = '#/iniciarSesion';
     // eslint-disable-next-line no-restricted-globals
     location.reload();

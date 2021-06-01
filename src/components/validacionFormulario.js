@@ -1,10 +1,10 @@
 const expresiones = {
-	contraseña: /^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/, // 4 a 12 digitos.
-	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-}
+  contraseña: /^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/, // 4 a 12 digitos.
+  email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,// expresiones regulares reglamentan el formato del dato ingresado
+};
 
-export function validarFormulario(e){
-switch(e.target.name) {
+export function validarFormulario(e) {
+ switch(e.target.name) {
     case "email" :
         if (expresiones.email.test(e.target.value)){
          document.getElementById("emailAuth").style.borderColor = '#25FA00'
@@ -38,6 +38,3 @@ switch(e.target.name) {
     break;
    }
 }
-
-
- 

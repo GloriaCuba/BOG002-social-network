@@ -1,7 +1,10 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable max-len */
 import {
   autenticar, verificarEmail, ingresarGmail, ingresarFaceBook,
+  // traemos las funciones de autenticacion de firebase
 } from '../firebase/firebase.js';
-import { validarFormulario } from './validacionFormulario.js';
+import { validarFormulario } from './validacionFormulario.js';// funcion para condicionar el formulario de registro, expresiones regulares contraseña
 
 export function registrarse() {
   const registro = `
@@ -28,9 +31,9 @@ export function registrarse() {
   return divRegistro;
 }
 
-export function funcionAutenticar() {
+export function funcionAutenticar() {// funcion con evento keyup y blur, sobre el id de los campos ingresados
   const email = document.querySelector('#emailAuth');
-  email.addEventListener('keyup', validarFormulario);
+  email.addEventListener('keyup', validarFormulario);// validar formulario compara con las expresiones regulares predeterminadas
   email.addEventListener('blur', validarFormulario);
 
   const password = document.querySelector('#passwordAuth');
@@ -41,50 +44,47 @@ export function funcionAutenticar() {
   password2.addEventListener('keyup', validarFormulario);
   password2.addEventListener('blur', validarFormulario);
 
-  const botonIngresar = document.querySelector('#botonUnirse');
+  const botonIngresar = document.querySelector('#botonUnirse');// este evento ejecutara autenticar(promesa?)
   botonIngresar.addEventListener('click', () => {
-    autenticar(email, password).then(() => {
+    autenticar(email, password).then(() => { // si los datos cumplen las condiciones se ejecuta autenticar
       // eslint-disable-next-line no-alert
-      alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
-      verificarEmail();
+      // alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
+      verificarEmail();// funcion de firebase, envia correo de verificacion
+      irConfigPerfil();
       /* Aquí iría la Configuración para ir a #/configuracionPerfil */
     }).catch((error) => {
       const errorMessage = error.message;
-      // eslint-disable-next-line no-alert
-      alert(errorMessage);
-      // eslint-disable-next-line no-console
       console.log(error);
     });
   });
 }
 
-export function registroConGoogle() {
+export function irConfigPerfil() { // cambia pantalla a configuracion de perfil
+  window.location = '#/configuracionPerfil';
+  location.reload();
+  // });
+}
+export function registroConGoogle() {// este evento ejecuta ingresarGmail, de firebase
   const registroGoogle = document.getElementById('registroGmail');
   registroGoogle.addEventListener('click', () => {
     ingresarGmail().then(() => {
-      window.location = '#/inicio';
-      // eslint-disable-next-line no-restricted-globals
+      window.location = '#/inicio';// si se ejecuta correctamente cambia pantalla a inicio(muro)
       location.reload();
-      // eslint-disable-next-line no-console
       console.log('ingreso gmail');
     }).catch((error) => {
-      // eslint-disable-next-line no-console
       console.log(error);
     });
   });
 }
 
-export function registroConFacebook() {
+export function registroConFacebook() {// este evento ejecuta ingresarFacebook, de firebase
   const registroFacebook = document.getElementById('registroFacebook');
   registroFacebook.addEventListener('click', () => {
     ingresarFaceBook().then(() => {
-      window.location = '#/inicio';
-      // eslint-disable-next-line no-restricted-globals
+      window.location = '#/inicio';// si se ejecuta correctamente cambia pantalla a inicio(muro)
       location.reload();
-      // eslint-disable-next-line no-console
       console.log('ingreso facebook');
     }).catch((error) => {
-      // eslint-disable-next-line no-console
       console.log(error);
     });
   });
