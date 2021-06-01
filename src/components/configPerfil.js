@@ -5,8 +5,7 @@ export function configPerfil() {
       <div class="contenedorPerfil" method ="post">
         <header>
         <div class="history">
-          <img src="Img/atrasIcono.png" type='button' id='irAtras'>
-          <img src="Img/adelanteIcono.png" type='button' id='irDelante'>
+         
         </div>
       </header>
           <h1>Configuración de Perfil</h1>
