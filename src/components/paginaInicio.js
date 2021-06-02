@@ -101,7 +101,7 @@ export function verPosts() {
       star.setAttribute('id','star');
       star.setAttribute('class','star');
       divMuro.appendChild(star);
-      console.log(doc.data());
+      /* console.log(doc.data()); */
       star.src="Img/Star_Likes_Blanca.png"; 
       if(doc.data().likes!=''){
         star.src="Img/Star_Likes.png"; 
@@ -149,24 +149,28 @@ export function verPosts() {
         botonEditarPost(doc.id, doc.data().mensaje);
         });
       }else{
-        console.log('no estan los botones');
+        /* console.log('no estan los botones'); */
       } 
       /* }else{
         console.log('no estan los botones');
       } */
       star.addEventListener('click', () => {
-        sumarLikes(doc.id).then((id) => {
-        document.getElementById('star').setAttribute('id', 'starYellow');
-        
+        sumarLikes(doc.id).then(() => {
+        document.getElementById('star').removeAttribute('id', 'star');
+        document.querySelector('.star').setAttribute('id', 'starYellow');
+        remover();        
         });
       })
-      /* const starYellow = document.getElementById('starYellow'); 
+     function remover(){
+      const starYellow = document.getElementById('starYellow'); 
       starYellow.addEventListener('click', () => {
-        restarLikes(doc.id).then((id) => {
-        document.getElementById('starYellow').setAttribute('id', 'star');
-      });
-    })
-       */
+      restarLikes(doc.id).then((id) => {
+      console.log('wiii')
+    });
+  })
+     }
+      
+    
       
       /* function verStars(){
         obtenerLikes((querySnapshot) => {

@@ -368,7 +368,8 @@ body {
  
     /************************************Muro***************************************************/
     #contenedorMuro{
-        background-color: #045C73;
+      /*   background-color: #5159c4; */
+        background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%);
         background-size: cover;
         background-repeat:repeat;
         display: grid;

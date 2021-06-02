@@ -379,9 +379,12 @@ body {
     grid-row-end: 1;
     justify-self:center;
     align-self: center; 
-    text-align: center;
-
+    color: white;
+    font-size: 26px;
+    text-align:center;
+    margin-top: 0.5em;
 }
+
 .contenedorInputs{
     grid-column-start:1;
     grid-column-end: 4;
@@ -391,22 +394,37 @@ body {
     align-self: center; 
     width: 100%;
     height: 100%;
-    text-align: center;
-    justify-self:stretch;
-    align-self: stretch;
+    text-align: center;    
 }
 
-.contenedorInputs input, select, button{
+.contenedorInputs input, select{
     margin: 1em;
-    width: 50vw;
-    height: 3em;
     text-align: center;
+    height: 40px;
+    width: 50vw;
+    background-color:#FEEF6A;
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.contenedorInputs button{
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
 }
 
 .contenedorInputs h3{
     margin-top: 0.5em;
     font-size: 1em;
+    color:white;
+    font-size: 12px;
+    font-weight: normal;
+    align-self: flex-end;
+    justify-self: center;
 }
+
 
 .contenedorImagen {
     grid-column-start:1;
@@ -420,10 +438,19 @@ body {
     align-self: stretch;
     display: none; 
 }
-
+.contenedorImagen button{
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+}
 .contenedorImagen p {
-        margin-top: 1em;
+    margin-top: 1em;
     font-weight: bolder;
+    color:white;
+    font-size: 12px;
+    justify-self: center;
 }
 
 
@@ -444,8 +471,12 @@ body {
 }
 
 .contenedorOpciones button {
-    width: 30%;
-    background: none;
+    height: 40px;
+    width: 30vw;
+    background-color: #bbcafa;
+    border: 2px solid white;
+    border-radius: 3px;
+ 
 }
 
 .contenedorOpciones button:hover {
@@ -456,10 +487,26 @@ body {
 
 .contenedorOpciones h3 {
     margin-top: 0.5em;
+    color:white;
+    font-size: 12px;
+    justify-self: center;
 }
 
 .mensajeCargarFoto {
     display: none;
+ }
+ .contenedorPerfil header{
+    grid-column-start:1;
+    grid-row-start:1;
+    margin-top: 0.5em;
+ }
+ #irAtras{
+    width: 30px;
+    height: 30px;
+ }
+ #irDelante{
+    width: 30px;
+    height: 30px;
  }
 
 /************************************Muro***************************************************/

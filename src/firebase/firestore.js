@@ -52,6 +52,7 @@ function userProfile(url) {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(1)
  })
+ console.log('suma');
  return promis;
 }
 
@@ -59,6 +60,7 @@ export const restarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(-1)
  })
+ console.log('resta');
  return promis;
 }
 
