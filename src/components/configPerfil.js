@@ -1,6 +1,6 @@
 import { datosCollection, guardarFotoPerfil } from '../firebase/firestore.js';// traemos las funciones de firestore que guardan las colecciones
 
-export function configPerfil() {// template de # configperfil
+export function configPerfil() { // template de # configperfil
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
         <header>

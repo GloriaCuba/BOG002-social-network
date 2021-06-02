@@ -6,11 +6,13 @@ window.addEventListener('load', () => {
   router (window.location.hash);
 });
 
+
 window.addEventListener("haschange", () => {
   router(window.location.hash)
  })
+  
 
- //   function adelante() {
+//   function adelante() {
 //       let siguientePagina = document.getElementById("irDelante");
 //       siguientePagina.addEventListener("click", ()=> {
 //         console.log("yo tambien")
@@ -21,18 +23,17 @@ window.addEventListener("haschange", () => {
 
 // function adelante(initialPage) {
 //   let siguientePagina = document.getElementById("irDelante");
-    //   siguientePagina.addEventListener("click", ()=> {
-    //     location.assign(initialPage)
-    //   })
-    //   }
-    //   function direccionAdelante() {
-    //     let initialPage =  window.history.forward();
-    //     return initialPage
-    //   }
-      
-    //   let irAdelante = direccionAdelante();
-    //   adelante(irAdelante)      
+//   siguientePagina.addEventListener("click", ()=> {
+//     location.assign(initialPage)
+//   })
+//   }
+//   function direccionAdelante() {
+//     let initialPage =  window.history.forward();
+//     return initialPage
+//   }
 
+//   let irAdelante = direccionAdelante();
+//   adelante(irAdelante)
 
 //      function otro() {
 //       function atras(initialPage) {
@@ -51,6 +52,13 @@ window.addEventListener("haschange", () => {
 //         atras(ir)
 //       }
 // otro()
+   
+
+
+
+
+  
+  
 
 // let paginaAnterior = document.getElementById("irAtras");
 // paginaAnterior.addEventListener("click", ()=> {
@@ -58,10 +66,40 @@ window.addEventListener("haschange", () => {
 //  location.assign(initialPage)
 // })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { iniciarSesion } from '../components/iniciarSesion.js';
 // import { registrarse } from '../components/registro.js';
 // import { ingresar } from '../firebase/firebase.js';
 // import { inicio } from '../components/paginaInicio.js';
+
 
 // window.addEventListener("hashchange", procesarHash);
 // function procesarHash() {

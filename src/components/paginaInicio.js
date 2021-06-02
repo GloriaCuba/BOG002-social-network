@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { cerrarSesión } from '../firebase/firebase.js';
-import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, restarLikes, obtenerLikes } from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, guardarFotoPost, restarLikes, obtenerLikes } from '../firebase/firestore.js';
 
 // import { mostrarPosts } from '../firebase/post.js';
 
@@ -29,6 +29,10 @@ export function inicio() {
          <form id="muro" class="muro">
          <p id="holaUsuario" class="holaUsuario" ></p>
             <textarea type="text" id="mensaje" class="campoPosteo" placeholder="¿Qué estas pensando?"></textarea>
+            <input type='file' id='inputImagenPost' multiple="true" accept="image/*">
+            <figure id="imagenPerfil">
+                <img id='imagenPosteada'>
+             </figure>
             <button class="botonEnviar" id="postear">Publicar</button>
          </form>
       </div>
@@ -65,11 +69,13 @@ e.preventDefault(); // Para que no se refresque la página
    const mensaje = muro['mensaje'].value;
    const date = firebase.firestore.Timestamp.now();
    let user = firebase.auth().currentUser;
-   let email = user.email;
+   let displayName = user.displayName;
    let imagen = user.photoURL;
    let likes ='';
    let userId = user.uid;
-   guardarPosts(mensaje, date, email, imagen, likes, userId);
+   
+  guardarPosts(mensaje, date, displayName, imagen, likes, userId);
+  guardarFotoPost(name,imagenPosteada)
    muro.reset()
  }
 export function postMuro() {
@@ -82,7 +88,7 @@ export function verPosts() {
     document.getElementById('divSeccionPosts').innerHTML = '';
     querySnapshot.forEach((doc) => {
       let user = firebase.auth().currentUser;
-      const email = user.email;
+      const nombreUsuario = user.displayName;
       const emailOtros = doc.data().user;
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
@@ -112,7 +118,7 @@ export function verPosts() {
       starYellow.setAttribute('class','ocultar');
       starYellow.src = 'Img/Star_Likes.png';
       divMuro.appendChild(starYellow); */
-      document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
+      document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
       const photoProfile= document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);
@@ -122,7 +128,7 @@ export function verPosts() {
       divLike.setAttribute('id','divLike');
       divLike.innerHTML= (doc.data().likes);
       divMuro.appendChild(divLike);
-     if(email ==emailOtros){ 
+    //  if( nombreUsuario == emailOtros){ 
       const campoBotones = document.createElement('div');
       const botonBorrar = document.createElement('button');
       const botonEditar = document.createElement('button');
@@ -145,12 +151,13 @@ export function verPosts() {
         console.log(email)
         console.log(emailOtros)
         });
+        recolectandoImagenPost(doc)
         botonEditar.addEventListener('click', () => {
         botonEditarPost(doc.id, doc.data().mensaje);
         });
-      }else{
+      // }else{
         console.log('no estan los botones');
-      } 
+      // }
       /* }else{
         console.log('no estan los botones');
       } */
@@ -234,3 +241,17 @@ function actualizandoPost(id) {
       location.reload();
    });
    }
+   export function recolectandoImagenPost(doc) {
+    const campoFoto = document.getElementById("imagenPosteada")//es donde se mostrara la imagen elegida
+    // var user = firebase.auth().currentUser;//se le asigna una variable al usuario actual
+    campoFoto.src = (doc.data().photoURL);//se llama el campo y se le asigna la URL de la foto cargada al usuario 
+    const ref = firebase.storage().ref()// se declara una varible para la ref. de storage donde almacenara las imagenes
+    const btnGuardarPhoto = document.getElementById('postear');
+      btnGuardarPhoto.addEventListener('click', (e) => {// q es e?
+      console.log("diste click")
+      let userImagen = document.querySelector('#inputImagenPost').files[0];//id de input tipo file para la imagen
+      const name = userImagen.name//
+      // readImage();
+      guardarFotoPost(name, userImagen)//importada de firestore, guarda la foto cargada en URL unico
+     })
+  }

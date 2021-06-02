@@ -6,7 +6,7 @@ export const datosCollection = (userId, nomMascota, especie) => { // creacion de
       especie: especie.value,
     }).then(() => {
       user.updateProfile({// updateProfile, metodo predeterminado para actualizar la informacion
-        displayName: userId.value,
+        displayName: userId.value, //Nombre ingresado en input en config.perfil
       });
             console.log(user);
     });
@@ -14,10 +14,10 @@ export const datosCollection = (userId, nomMascota, especie) => { // creacion de
 //  guardar imagen de perfil en la base de datos
  export const guardarFotoPerfil = (name, userImagen) => {
    const ref = firebase.storage().ref()//ingresamos al almacenaminto de storage para img
-   const task = ref.child(name).put(userImagen)//entra a la base de datos, crea la url ...?
-   task.then(snapshot => snapshot.ref.getDownloadURL())//actualiza y da a la base de datos la url
+   const task = ref.child(name).put(userImagen)//entra a la base de datos, crea la url y carga el archivo en la ubicacion userImagen
+   task.then(snapshot => snapshot.ref.getDownloadURL())// actualiza y da a la base de datos la url atravez del metodo getDownloadURL de firebase
    .then(url=> {
-    userProfile(url)
+    userProfile(url)//metodo para actualizar perfil, asignamos URL
   })
   .catch(function(error) {
     // An error happened.
@@ -25,10 +25,10 @@ export const datosCollection = (userId, nomMascota, especie) => { // creacion de
  }
 
 function userProfile(url) {//la imagen almacenada se le asigna al usuario actual
-  const campoFoto= document.getElementById("userImage")
+  const campoFoto = document.getElementById("userImage")
   var user = firebase.auth().currentUser;
   console.log(user);
-  user.updateProfile({//?
+  user.updateProfile({
     photoURL: url
     }).then(() =>{
       campoFoto.src= url
@@ -37,16 +37,43 @@ function userProfile(url) {//la imagen almacenada se le asigna al usuario actual
 
 
  // creacion de una base de datos posts usuarios
- export const guardarPosts = (mensaje, date, email, imagen, likes, userId) => {
+ export const guardarPosts = (mensaje, date,displayName, imagen,likes, userId) => {
    firebase.firestore().collection('posts').doc().set({
     mensaje: mensaje,
-    date: firebase.firestore.Timestamp.now(),//metodo de fire que marca el tiempo de entrada
-    user:email,
-    userId,//id unico del usuario logeado
+    date: firebase.firestore.Timestamp.now(),// metodo de fire que marca el tiempo de entrada
+    user:displayName,
+    userId,// id unico del usuario logeado
     imagen: imagen,
     likes,
   })
  }
+
+ export const guardarFotoPost = (name,imagenPosteada) => {
+  const ref = firebase.storage().ref()//ingresamos al almacenaminto de storage para img
+  const task = ref.child(name).put(imagenPosteada)//entra a la base de datos, crea la url y carga el archivo en la ubicacion userImagen
+  task.then(snapshot => snapshot.ref.getDownloadURL())// actualiza y da a la base de datos la url atravez del metodo getDownloadURL de firebase
+  .then(url=> {
+   fotosPost(url)//metodo para actualizar perfil, asignamos URL
+ })
+ .catch(function(error) {
+   // An error happened.
+ });
+}
+
+function fotosPost(url) {//la imagen almacenada se le asigna al usuario actual
+  const campoFoto = document.getElementById("imagenPosteada");
+    firebase.firestore().collection('posts').doc().set({
+     fotoPost: url,
+    //  campoFoto.src= url
+  // var foto = firebase.auth().currentUser;
+  // console.log(user);
+  // user.updateProfile({
+    // photoURL: url
+    // }).then(() =>{
+   
+    });
+  }
+
  export const sumarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(1) 
@@ -62,7 +89,6 @@ export const restarLikes = (id) => {
 }
 
 export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
-
 
  // obtencion de post para hacerlos visibles en pantalla
  export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
