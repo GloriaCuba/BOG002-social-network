@@ -38,11 +38,11 @@ function userProfile(url) {
 
 
  // creacion de una base de datos posts usuarios
- export const guardarPosts = (mensaje, date, email, imagen, likes, userId) => {
+ export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
    firebase.firestore().collection('posts').doc().set({
     mensaje: mensaje,
     date: firebase.firestore.Timestamp.now(),
-    user:email,
+    user:displayName,
     userId,
     imagen: imagen,
     likes,

@@ -65,11 +65,11 @@ e.preventDefault(); // Para que no se refresque la página
    const mensaje = muro['mensaje'].value;
    const date = firebase.firestore.Timestamp.now();
    let user = firebase.auth().currentUser;
-   let email = user.email;
+   let displayName = displayName;
    let imagen = user.photoURL;
    let likes ='';
    let userId = user.uid;
-   guardarPosts(mensaje, date, email, imagen, likes, userId);
+   guardarPosts(mensaje, date, displayName, imagen, likes, userId);
    muro.reset()
  }
 export function postMuro() {
@@ -82,7 +82,7 @@ export function verPosts() {
     document.getElementById('divSeccionPosts').innerHTML = '';
     querySnapshot.forEach((doc) => {
       let user = firebase.auth().currentUser;
-      const email = user.email;
+      const email = user.displayName;
       const emailOtros = doc.data().user;
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
@@ -91,7 +91,7 @@ export function verPosts() {
       const autorPost = document.createElement('p');
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
-      autorPost.innerHTML = (doc.data().user);
+      autorPost.innerHTML = (doc.data().displayName);
       const textPost = document.createElement('p');
       textPost.setAttribute('class', 'divText');
       textPost.innerHTML = (doc.data().mensaje);
