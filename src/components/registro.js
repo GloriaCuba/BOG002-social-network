@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import {
   autenticar, verificarEmail, ingresarGmail, ingresarFaceBook,
 } from '../firebase/firebase.js';
@@ -47,6 +48,7 @@ export function funcionAutenticar() {
       // eslint-disable-next-line no-alert
       alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
       verificarEmail();
+      irConfigPerfil();
       /* Aquí iría la Configuración para ir a #/configuracionPerfil */
     }).catch((error) => {
       const errorMessage = error.message;
@@ -56,6 +58,11 @@ export function funcionAutenticar() {
       console.log(error);
     });
   });
+}
+
+export function irConfigPerfil() {
+  window.location = '#/configuracionPerfil';
+  location.reload();
 }
 
 export function registroConGoogle() {

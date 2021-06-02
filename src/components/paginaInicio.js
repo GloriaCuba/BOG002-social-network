@@ -65,11 +65,11 @@ e.preventDefault(); // Para que no se refresque la página
    const mensaje = muro['mensaje'].value;
    const date = firebase.firestore.Timestamp.now();
    let user = firebase.auth().currentUser;
-   let email = user.email;
+   let displayName = user.displayName;
    let imagen = user.photoURL;
    let likes ='';
    let userId = user.uid;
-   guardarPosts(mensaje, date, email, imagen, likes, userId);
+   guardarPosts(mensaje, date, displayName, imagen, likes, userId);
    muro.reset()
  }
 export function postMuro() {
@@ -82,7 +82,7 @@ export function verPosts() {
     document.getElementById('divSeccionPosts').innerHTML = '';
     querySnapshot.forEach((doc) => {
       let user = firebase.auth().currentUser;
-      const email = user.email;
+      const nombreUsuario = user.displayName;
       const emailOtros = doc.data().user;
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
@@ -112,7 +112,7 @@ export function verPosts() {
       starYellow.setAttribute('class','ocultar');
       starYellow.src = 'Img/Star_Likes.png';
       divMuro.appendChild(starYellow); */
-      document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
+      document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
       const photoProfile= document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);
@@ -122,7 +122,7 @@ export function verPosts() {
       divLike.setAttribute('id','divLike');
       divLike.innerHTML= (doc.data().likes);
       divMuro.appendChild(divLike);
-     if(email ==emailOtros){ 
+     if(nombreUsuario ==emailOtros){ 
       const campoBotones = document.createElement('div');
       const botonBorrar = document.createElement('button');
       const botonEditar = document.createElement('button');

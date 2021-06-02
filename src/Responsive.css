@@ -132,20 +132,49 @@ body {
     margin-left: 1em;
     margin-bottom: 1em;
 }
-
+/* 
 .emailandpassword button {
     height: 40px;
     width: 50vw;
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
-}
+} */
 
+#botonIniciar{
+    grid-column-start:1;
+    grid-column-end: 5;
+    grid-row-start:3;
+    grid-row-end:4;  
+    align-self: center;
+    
+    height: 100%; 
+
+}
+#botonGato{
+    /* background-color: #F043A0; */
+    display: grid;
+    grid-template-columns: 20% 40% 40% 20%;
+    grid-template-rows:33% 33% 33%;
+}
+#botonIngresar{
+    grid-column-start:1;
+    grid-column-end:3;
+    grid-row-start: 2;
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-top: 10%;
+
+}
 .emailandpassword img {
-    /* justify-content: center;
-    justify-self: center; */
-    margin-left: 18vw;
-  
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;  
+    
 }
 
 .emailandpassword h4 {
@@ -153,8 +182,10 @@ body {
     font-size: 1em;
     text-decoration: underline;
     /* margin-left: 10vw; */
-
-}
+    /* justify-self: center; */
+    grid-column-start:4;
+    grid-column-end:5;
+ }
 
 .formulario .inicioConProveedores{
     grid-column-start:1;

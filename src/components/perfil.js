@@ -21,7 +21,6 @@ export function perfil() {
          <div class="textAreaPerfil">
          <form id="muroPerfil" class="muroPerfil">
             <textarea type="text" id="mensajePerfil" class="campoPosteoPerfil" placeholder="¿Qué estas pensando?"></textarea>
-            <img src="Img/Star_Likes.png" class="starPerfil">
             <button class="botonEnviarPerfil" id="postearPerfil">Publicar</button>
          </form>
          <div id="modalOverlay" class="modalOverlay">
@@ -62,7 +61,7 @@ export function irAHome() {
 
  
 export function ImagenPerfil() {
-      const campoFoto= document.getElementById("userImage")
+      const campoFoto = document.getElementById("userImage")
       var user = firebase.auth().currentUser;
 /*    var name, email, photoUrl, uid, emailVerified;
  */   campoFoto.src = user.photoURL;
@@ -120,6 +119,11 @@ export function verPostsPerfil() {
       star.setAttribute('class', 'starPerfil');
       star.src = 'Img/Star_Likes.png';
       divMuro.appendChild(star);
+      const divLike = document.createElement('div');
+      divLike.setAttribute('class','divLike');
+      divLike.setAttribute('id','divLike');
+      divLike.innerHTML= (doc.data().likes);
+      divMuro.appendChild(divLike);
       // let user = firebase.auth().currentUser;
       // console.log(user.email);
       // const email = user.email;
