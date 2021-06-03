@@ -41,7 +41,7 @@ function userProfile(url) {
  export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
    firebase.firestore().collection('posts').doc().set({
     mensaje: mensaje,
-    date: firebase.firestore.Timestamp.now(),
+    date,
     user:displayName,
     userId,
     imagen: imagen,
