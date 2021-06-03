@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { cerrarSesión } from '../firebase/firebase.js';
-import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, obtenerLikes } from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, restarLikes, obtenerLikes } from '../firebase/firestore.js';
 
 // import { mostrarPosts } from '../firebase/post.js';
 
@@ -65,11 +65,11 @@ e.preventDefault(); // Para que no se refresque la página
    const mensaje = muro['mensaje'].value;
    const date = firebase.firestore.Timestamp.now();
    let user = firebase.auth().currentUser;
-   let email = user.email;
+   let displayName = user.displayName;
    let imagen = user.photoURL;
    let likes ='';
    let userId = user.uid;
-   guardarPosts(mensaje, date, email, imagen, likes, userId);
+   guardarPosts(mensaje, date, displayName, imagen, likes, userId);
    muro.reset()
  }
 export function postMuro() {
@@ -82,7 +82,7 @@ export function verPosts() {
     document.getElementById('divSeccionPosts').innerHTML = '';
     querySnapshot.forEach((doc) => {
       let user = firebase.auth().currentUser;
-      const email = user.email;
+      const nombreUsuario = user.displayName;
       const emailOtros = doc.data().user;
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
@@ -100,9 +100,19 @@ export function verPosts() {
       star.setAttribute('type','image');
       star.setAttribute('id','star');
       star.setAttribute('class','star');
-      star.src = 'Img/Star_Likes.png';
       divMuro.appendChild(star);
-      document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
+      /* console.log(doc.data()); */
+      star.src="Img/Star_Likes_Blanca.png"; 
+      if(doc.data().likes!=''){
+        star.src="Img/Star_Likes.png"; 
+        }
+      /* const starYellow = document.createElement('input');
+      starYellow.setAttribute('type','image');
+      starYellow.setAttribute('id','starYellow');
+      starYellow.setAttribute('class','ocultar');
+      starYellow.src = 'Img/Star_Likes.png';
+      divMuro.appendChild(starYellow); */
+      document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
       const photoProfile= document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);
@@ -112,7 +122,7 @@ export function verPosts() {
       divLike.setAttribute('id','divLike');
       divLike.innerHTML= (doc.data().likes);
       divMuro.appendChild(divLike);
-     /*  if(email ==emailOtros){ */
+     if(nombreUsuario ==emailOtros){ 
       const campoBotones = document.createElement('div');
       const botonBorrar = document.createElement('button');
       const botonEditar = document.createElement('button');
@@ -138,18 +148,45 @@ export function verPosts() {
         botonEditar.addEventListener('click', () => {
         botonEditarPost(doc.id, doc.data().mensaje);
         });
+      }else{
+        /* console.log('no estan los botones'); */
+      } 
       /* }else{
         console.log('no estan los botones');
       } */
-
       star.addEventListener('click', () => {
         sumarLikes(doc.id).then(() => {
-        console.log(doc.id , doc.data().mensaje, doc.data().likes);
-        
+        document.getElementById('star').removeAttribute('id', 'star');
+        document.querySelector('.star').setAttribute('id', 'starYellow');
+        remover();        
         });
-        })
-      });
+      })
+     function remover(){
+      const starYellow = document.getElementById('starYellow'); 
+      starYellow.addEventListener('click', () => {
+      restarLikes(doc.id).then((id) => {
+      console.log('wiii')
     });
+  })
+     }
+      
+    
+      
+      /* function verStars(){
+        obtenerLikes((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            if(doc.data().likes>0){
+            document.getElementById('star').src='Img/Star_Likes.png';
+            }
+          });      
+        });
+      } */
+
+    });
+      
+      
+    });
+    
    /*  like.addEventListener('click',likes(likes));
     function likes (likes) {
       likes++;

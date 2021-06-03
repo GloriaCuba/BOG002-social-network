@@ -132,20 +132,49 @@ body {
     margin-left: 1em;
     margin-bottom: 1em;
 }
-
+/* 
 .emailandpassword button {
     height: 40px;
     width: 50vw;
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
-}
+} */
 
+#botonIniciar{
+    grid-column-start:1;
+    grid-column-end: 5;
+    grid-row-start:3;
+    grid-row-end:4;  
+    align-self: center;
+    
+    height: 100%; 
+
+}
+#botonGato{
+    /* background-color: #F043A0; */
+    display: grid;
+    grid-template-columns: 20% 40% 40% 20%;
+    grid-template-rows:33% 33% 33%;
+}
+#botonIngresar{
+    grid-column-start:1;
+    grid-column-end:3;
+    grid-row-start: 2;
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin-top: 10%;
+
+}
 .emailandpassword img {
-    /* justify-content: center;
-    justify-self: center; */
-    margin-left: 18vw;
-  
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;  
+    
 }
 
 .emailandpassword h4 {
@@ -153,8 +182,10 @@ body {
     font-size: 1em;
     text-decoration: underline;
     /* margin-left: 10vw; */
-
-}
+    /* justify-self: center; */
+    grid-column-start:4;
+    grid-column-end:5;
+ }
 
 .formulario .inicioConProveedores{
     grid-column-start:1;
@@ -379,9 +410,12 @@ body {
     grid-row-end: 1;
     justify-self:center;
     align-self: center; 
-    text-align: center;
-
+    color: white;
+    font-size: 26px;
+    text-align:center;
+    margin-top: 0.5em;
 }
+
 .contenedorInputs{
     grid-column-start:1;
     grid-column-end: 4;
@@ -391,22 +425,37 @@ body {
     align-self: center; 
     width: 100%;
     height: 100%;
-    text-align: center;
-    justify-self:stretch;
-    align-self: stretch;
+    text-align: center;    
 }
 
-.contenedorInputs input, select, button{
+.contenedorInputs input, select{
     margin: 1em;
-    width: 50vw;
-    height: 3em;
     text-align: center;
+    height: 40px;
+    width: 50vw;
+    background-color:#FEEF6A;
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.contenedorInputs button{
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
 }
 
 .contenedorInputs h3{
     margin-top: 0.5em;
     font-size: 1em;
+    color:white;
+    font-size: 12px;
+    font-weight: normal;
+    align-self: flex-end;
+    justify-self: center;
 }
+
 
 .contenedorImagen {
     grid-column-start:1;
@@ -420,10 +469,19 @@ body {
     align-self: stretch;
     display: none; 
 }
-
+.contenedorImagen button{
+    height: 40px;
+    width: 50vw;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+}
 .contenedorImagen p {
-        margin-top: 1em;
+    margin-top: 1em;
     font-weight: bolder;
+    color:white;
+    font-size: 12px;
+    justify-self: center;
 }
 
 
@@ -444,8 +502,12 @@ body {
 }
 
 .contenedorOpciones button {
-    width: 30%;
-    background: none;
+    height: 40px;
+    width: 30vw;
+    background-color: #bbcafa;
+    border: 2px solid white;
+    border-radius: 3px;
+ 
 }
 
 .contenedorOpciones button:hover {
@@ -456,10 +518,26 @@ body {
 
 .contenedorOpciones h3 {
     margin-top: 0.5em;
+    color:white;
+    font-size: 12px;
+    justify-self: center;
 }
 
 .mensajeCargarFoto {
     display: none;
+ }
+ .contenedorPerfil header{
+    grid-column-start:1;
+    grid-row-start:1;
+    margin-top: 0.5em;
+ }
+ #irAtras{
+    width: 30px;
+    height: 30px;
+ }
+ #irDelante{
+    width: 30px;
+    height: 30px;
  }
 
 /************************************Muro***************************************************/
@@ -742,6 +820,34 @@ body {
     border-radius: 6px;
     margin: 0;
     font-size: 10px;
+}
+.star{
+    justify-self: start;
+    align-self: start;
+    grid-column-start:2;
+    grid-row-start:5;
+    align-self: center;
+}
+.starYellow{
+    justify-self: start;
+    align-self: start;
+    grid-column-start:2;
+    grid-row-start:5;
+    align-self: center;
+}
+.ocultar{
+    display:none;
+}
+.mostrar{
+    display:block;
+}
+.divLike{
+    grid-column-start:2;
+    grid-row-start:5;
+    justify-self: center;
+    align-self: center;
+    font-size: 12px;
+    color: #faf755;
 }
 
 /************************************ restablecimiento de la contraseña***************************************************/

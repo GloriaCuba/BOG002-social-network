@@ -38,11 +38,11 @@ function userProfile(url) {
 
 
  // creacion de una base de datos posts usuarios
- export const guardarPosts = (mensaje, date, email, imagen, likes, userId) => {
+ export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
    firebase.firestore().collection('posts').doc().set({
     mensaje: mensaje,
     date: firebase.firestore.Timestamp.now(),
-    user:email,
+    user:displayName,
     userId,
     imagen: imagen,
     likes,
@@ -52,12 +52,19 @@ function userProfile(url) {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(1)
  })
+ console.log('suma');
  return promis;
 }
 
-export function obtenerLikes(id) {
-  firebase.firestore().collection('posts').doc(id).onSnapshot(doc)
+export const restarLikes = (id) => {
+  const promis = firebase.firestore().collection('posts').doc(id).update({
+   likes:firebase.firestore.FieldValue.increment(-1)
+ })
+ console.log('resta');
+ return promis;
 }
+
+export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
 
  // obtencion de post para hacerlos visibles en pantalla

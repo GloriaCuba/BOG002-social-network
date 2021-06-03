@@ -10,8 +10,12 @@ export function iniciarSesion() {
             <label for="email"></label><input type="email" id="email" placeholder="Email" required>
             <label for="password"></label><br>
             <input type="password" id="password" placeholder="Password" name="password" required ><br>
+           <div id="botonIniciar">
+            <div id="botonGato">
             <img src="Img/gato_negro_.png" alt=""> 
             <button type="button" id="botonIngresar">ingresar</button> <br>
+            </div>
+            </div>
             <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4>
          </div>
           <h6>O</h6>  

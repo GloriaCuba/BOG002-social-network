@@ -5,7 +5,7 @@ import {
   inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,
 } from '../components/paginaInicio.js';
 import {
-  registrarse, funcionAutenticar, registroConGoogle, registroConFacebook,
+  registrarse, funcionAutenticar, registroConGoogle, registroConFacebook, irConfigPerfil,
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
@@ -38,6 +38,7 @@ export const router = (routes) => {
           funcionAutenticar();
           registroConGoogle();
           registroConFacebook();
+          irConfigPerfil();
           break;
         case '#/inicio':
           rootDiv.appendChild(inicio());
