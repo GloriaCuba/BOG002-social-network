@@ -36,6 +36,8 @@ function userProfile(url) {
     });
 }
 
+ // obtencion de post para hacerlos visibles en pantalla
+ export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
  // creacion de una base de datos posts usuarios
  export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
@@ -67,8 +69,7 @@ export const restarLikes = (id) => {
 export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
 
- // obtencion de post para hacerlos visibles en pantalla
- export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
+
 
  export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
