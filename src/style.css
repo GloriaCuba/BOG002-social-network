@@ -172,6 +172,53 @@ body {
     text-decoration: underline;
 }
 
+#botonIniciar{
+    grid-column-start:5;
+    grid-column-end: 5;
+    grid-row-start:1;
+    grid-row-end:4;  
+    align-self: center;
+    
+    /* height: 100%; */
+
+}
+#botonGato{
+    /* background-color: #F043A0; */
+    display: grid;
+    grid-template-columns: 20% 40% 40% 20%;
+    grid-template-rows:33% 33% 33%;
+}
+#botonIngresar{
+    grid-column-start:2;
+    grid-column-end:3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    /* height: 40px;
+    width: 50vw; */
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    justify-self:center;
+    /* margin-top: 10%; */
+
+}
+.emailandpassword img {
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:1;
+    grid-row-end:2;  
+    justify-self: center;
+}
+
+.emailandpassword h4 {
+    color: white;
+    font-size: 1em;
+    text-decoration: underline;
+    /* margin-left: 10vw; */
+    /* justify-self: center; */
+    grid-column-start:4;
+    grid-column-end:5;
+ }
 .formulario h6{
     grid-column-start:3;
     grid-column-end: 2;
@@ -368,7 +415,8 @@ body {
  
     /************************************Muro***************************************************/
     #contenedorMuro{
-        background-color: #045C73;
+      /*   background-color: #5159c4; */
+        background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%);
         background-size: cover;
         background-repeat:repeat;
         display: grid;

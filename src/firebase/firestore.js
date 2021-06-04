@@ -38,15 +38,18 @@ function userProfile(url) {//la imagen almacenada se le asigna al usuario actual
 
  // creacion de una base de datos posts usuarios
  export const guardarPosts = (mensaje, date,displayName, imagen,likes, userId) => {
-   firebase.firestore().collection('posts').doc().set({
+  const collectionPost= firebase.firestore().collection('posts')
+  return collectionPost.doc().set({
+
     mensaje: mensaje,
-    date: firebase.firestore.Timestamp.now(),// metodo de fire que marca el tiempo de entrada
-    user:displayName,
-    userId,// id unico del usuario logeado
+    date,
+    // firebase.firestore.Timestamp.now(),// metodo de fire que marca el tiempo de entrada
+    user: displayName,
+    userId, // id unico del usuario logeado
     imagen: imagen,
     likes,
-  })
- }
+  });
+};
 
  export const guardarFotoPost = (name,imagenPosteada) => {
   const ref = firebase.storage().ref()//ingresamos al almacenaminto de storage para img
@@ -85,6 +88,7 @@ export const restarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(-1)
  })
+ console.log('resta');
  return promis;
 }
 

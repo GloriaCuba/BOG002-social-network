@@ -13,6 +13,6 @@ export function inicializarFirebase() {
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
   var auth = firebase.auth();
-  console.log(firebase.auth);
+  // console.log(firebase.auth);
   auth.useDeviceLanguage();
 }

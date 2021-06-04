@@ -1,10 +1,9 @@
-/* eslint-disable no-undef */
 import { cerrarSesión } from '../firebase/firebase.js';
-import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, guardarFotoPost, restarLikes, obtenerLikes } from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, restarLikes, obtenerLikes} from '../firebase/firestore.js';
 
 // import { mostrarPosts } from '../firebase/post.js';
 
-export function inicio() {
+export function inicio() { // template de #inicio
   const muro = `
    <div id="contenedorMuro">
       <div class='logo' id='Logo'>
@@ -46,7 +45,7 @@ export function inicio() {
   return divMuro;
 }
 
-export function menuToggle() {
+export function menuToggle() {// menu con acceso a perfil o salir de la plataforma
   const icono = document.querySelector('#menuToggle');
   icono.addEventListener('click', () => {
     const menu = document.querySelector('#menu');
@@ -56,7 +55,7 @@ export function menuToggle() {
   });
 }
 
-export function irAPerfil() {
+export function irAPerfil() {// redireccion a perfil
   const perfil = document.getElementById('perfil');
   perfil.addEventListener('click', () => {
     window.location = '#/perfil';
@@ -64,116 +63,116 @@ export function irAPerfil() {
   });
 }
 
-function submitHandler(e){
-e.preventDefault(); // Para que no se refresque la página
-   const mensaje = muro['mensaje'].value;
-   const date = firebase.firestore.Timestamp.now();
-   let user = firebase.auth().currentUser;
-   let displayName = user.displayName;
-   let imagen = user.photoURL;
-   let likes ='';
-   let userId = user.uid;
-   
-  guardarPosts(mensaje, date, displayName, imagen, likes, userId);
-  guardarFotoPost(name,imagenPosteada)
-   muro.reset()
- }
-export function postMuro() {
-   const muro = document.getElementById('muro');
-   muro.addEventListener('submit', submitHandler);
-   }
-   
-export function verPosts() {
-  obtenerPosts((querySnapshot) => {
-    document.getElementById('divSeccionPosts').innerHTML = '';
-    querySnapshot.forEach((doc) => {
-      let user = firebase.auth().currentUser;
-      const nombreUsuario = user.displayName;
-      const emailOtros = doc.data().user;
-      const divOriginal = document.getElementById('divSeccionPosts');
-      const divMuro = document.createElement('div');
+function submitHandler(e){ // asignando valores a los campos de nuestra bd posts
+  e.preventDefault(); // Para que no se refresque la página
+  const mensaje = muro['mensaje'].value;
+  const date = firebase.firestore.Timestamp.now();
+  let user = firebase.auth().currentUser;
+  let displayName = user.displayName;
+  let imagen = user.photoURL;
+  let likes ='';
+  let userId = user.uid;
+  guardarPosts(mensaje, date, displayName, imagen, likes, userId);// funcion de firestore que almacena los valores de los parametros en la bd
+  muro.reset()// limpia el campo de recoleccion 
+}
+export function postMuro() { 
+  const muro = document.getElementById('muro');
+  muro.addEventListener('submit', submitHandler);// envia los datos del formulario muro a la bd
+}
+
+export function verPosts() {// creamos el posts
+  obtenerPosts((querySnapshot) => { // traemos obtener post de firestore callback q trae los datos, querySnapshot propiedad que da accesos a la bd
+    document.getElementById('divSeccionPosts').innerHTML = ''; // vaciamos nuestro muro
+    querySnapshot.forEach((doc) => { // accede a la bd uno por uno
+      let user = firebase.auth().currentUser; // declaramos el usuario actual
+      const nombreUsuario = user.displayName; // guardamos el user.display,asignado en bd de datos de configuracio perfil
+      const emailUsuarios = doc.data().user;// accedemos a la data de los usuarios logeados
+      // console.log(emailUsuarios);
+      const divOriginal = document.getElementById('divSeccionPosts'); // div que contiene el muro
+      const divMuro = document.createElement('div');// div muro, contiene el form para enviar
       divMuro.setAttribute('class', 'divMuro');
-      divOriginal.appendChild(divMuro);
-      const autorPost = document.createElement('p');
+      divOriginal.appendChild(divMuro);// pintando form en contenedor
+      const autorPost = document.createElement('p');//creando elemento p, contiene el nombre del autor 
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
-      autorPost.innerHTML = (doc.data().user);
-      const textPost = document.createElement('p');
+      autorPost.innerHTML = (doc.data().user);// pintando display name del usuario logeado
+      const textPost = document.createElement('p');// creando elemento p, contiene el mensaje posteado
       textPost.setAttribute('class', 'divText');
-      textPost.innerHTML = (doc.data().mensaje);
+      textPost.innerHTML = (doc.data().mensaje);// pintando mensaje
       divMuro.appendChild(textPost);
-      const star = document.createElement('input');
-      star.setAttribute('type','image');
-      star.setAttribute('id','star');
-      star.setAttribute('class','star');
-      divMuro.appendChild(star);
-      console.log(doc.data());
-      star.src="Img/Star_Likes_Blanca.png"; 
-      if(doc.data().likes!=''){
-        star.src="Img/Star_Likes.png"; 
-        }
+      const star = document.createElement('input');// creando elemento input
+      star.setAttribute('type', 'image');
+      star.setAttribute('id', 'star');
+      star.setAttribute('class', 'star');
+      divMuro.appendChild(star);// pintando star en cada post
+      // console.log(doc.data()); 
+      star.src="Img/Star_Likes_Blanca.png";// asignando ruta de img
+      if(doc.data().likes!=''){ // si doc data likes esta vacio
+        star.src="Img/Star_Likes.png"; // pinta star con esta nueva ruta de img
+      }
       /* const starYellow = document.createElement('input');
       starYellow.setAttribute('type','image');
       starYellow.setAttribute('id','starYellow');
       starYellow.setAttribute('class','ocultar');
       starYellow.src = 'Img/Star_Likes.png';
       divMuro.appendChild(starYellow); */
-      document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
-      const photoProfile= document.createElement('img');
+      document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);// Pintando saludo concatenado con nombre del usuario
+      const photoProfile= document.createElement('img');// creando elemento img
       photoProfile.setAttribute('class', 'photoProfile');
-      photoProfile.src = (doc.data().imagen);
-      divMuro.appendChild(photoProfile);
-      const divLike = document.createElement('div');
-      divLike.setAttribute('class','divLike');
-      divLike.setAttribute('id','divLike');
-      divLike.innerHTML= (doc.data().likes);
+      photoProfile.src = (doc.data().imagen);// asignando ruta de imagen dentro de la data
+      divMuro.appendChild(photoProfile);// pintando foto
+      const divLike = document.createElement('div'); // creando div para pintar star contabilizador de likes
+      divLike.setAttribute('class', 'divLike');
+      divLike.setAttribute('id', 'divLike');
+      divLike.innerHTML= (doc.data().likes);// pintando likes alojados en bd 
       divMuro.appendChild(divLike);
-    //  if( nombreUsuario == emailOtros){ 
-      const campoBotones = document.createElement('div');
-      const botonBorrar = document.createElement('button');
-      const botonEditar = document.createElement('button');
-      campoBotones.appendChild(botonBorrar);
-      campoBotones.appendChild(botonEditar);
-      botonBorrar.className="botonBorrar"
-      botonBorrar.type = 'button'; 
-      botonBorrar.textContent = 'Borrar post';
-      botonBorrar.setAttribute('id', 'botonBorrar');
-      botonEditar.className="botonEditar"
-      botonEditar.type = 'button';
-      botonEditar.textContent = 'Editar';
-      botonEditar.setAttribute('id', 'botonEditar');
-      divMuro.appendChild(botonEditar);
-      divMuro.appendChild(botonBorrar);
-      botonBorrar.addEventListener('click', () => {
-        botonEliminar(doc.id);
-        console.log(doc.id);
-        console.log(user.uid)
-        console.log(email)
-        console.log(emailOtros)
+      if(nombreUsuario ==emailUsuarios){ // si el 
+        const campoBotones = document.createElement('div');
+        const botonBorrar = document.createElement('button');
+        const botonEditar = document.createElement('button');
+        campoBotones.appendChild(botonBorrar);
+        campoBotones.appendChild(botonEditar);
+        botonBorrar.className="botonBorrar"
+        botonBorrar.type = 'button'; 
+        botonBorrar.textContent = 'Borrar post';
+        botonBorrar.setAttribute('id', 'botonBorrar');
+        botonEditar.className="botonEditar"
+        botonEditar.type = 'button';
+        botonEditar.textContent = 'Editar';
+        botonEditar.setAttribute('id', 'botonEditar');
+        divMuro.appendChild(botonEditar);
+        divMuro.appendChild(botonBorrar);
+        botonBorrar.addEventListener('click', () => {
+          botonEliminar(doc.id);
+          console.log(doc.id);
+          console.log(user.uid)
+          console.log(nombreUsuario)
+          console.log(emailUsuarios)
         });
-        recolectandoImagenPost(doc)
+        // recolectandoImagenPost(doc)
         botonEditar.addEventListener('click', () => {
-        botonEditarPost(doc.id, doc.data().mensaje);
+          botonEditarPost(doc.id, doc.data().mensaje);
         });
-      // }else{
-        console.log('no estan los botones');
-      // }
-      /* }else{
-        console.log('no estan los botones');
-      } */
+      }else{
+        /* console.log('no estan los botones'); */
+      } 
       star.addEventListener('click', () => {
-        sumarLikes(doc.id).then((id) => {
-        document.getElementById('star').setAttribute('id', 'starYellow');
-        
+        sumarLikes(doc.id).then(() => {
+          document.getElementById('star').removeAttribute('id', 'star');
+          document.querySelector('.star').setAttribute('id', 'starYellow');
+          remover();        
         });
       })
-      /* const starYellow = document.getElementById('starYellow'); 
-      starYellow.addEventListener('click', () => {
-        restarLikes(doc.id).then((id) => {
-        document.getElementById('starYellow').setAttribute('id', 'star');
-      });
-    })
-       */
+      function remover(){
+        const starYellow = document.getElementById('starYellow'); 
+        starYellow.addEventListener('click', () => {
+          restarLikes(doc.id).then((id) => {
+            console.log('wiii')
+          });
+        })
+      }
+      
+    
       
       /* function verStars(){
         obtenerLikes((querySnapshot) => {
@@ -188,9 +187,9 @@ export function verPosts() {
     });
       
       
-    });
+  });
     
-   /*  like.addEventListener('click',likes(likes));
+  /*  like.addEventListener('click',likes(likes));
     function likes (likes) {
       likes++;
       console.log(likes)
@@ -205,10 +204,10 @@ export function verPosts() {
 
 
 function botonEditarPost(id, campo) {
-     document.getElementById('mensaje').value = campo;
-      console.log (id, campo);
-      actualizandoPost(id, campo);
-    }
+  document.getElementById('mensaje').value = campo;
+  console.log (id, campo);
+  actualizandoPost(id, campo);
+}
    
 function actualizandoPost(id) {
   const muro = document.getElementById('muro');
@@ -216,42 +215,42 @@ function actualizandoPost(id) {
   postear.innerHTML = 'Actualizar';
   muro.removeEventListener('submit', submitHandler);
   postear.addEventListener('click', function x(){
-  const nuevoPost = firebase.firestore().collection('posts').doc(id);
-  const posteditado = document.getElementById('mensaje').value;
-  console.log(nuevoPost);
+    const nuevoPost = firebase.firestore().collection('posts').doc(id);
+    const posteditado = document.getElementById('mensaje').value;
+    console.log(nuevoPost);
     return nuevoPost.update({
-     mensaje: posteditado,
-        }).then(() => {
-          console.log('editado');
-          postear.innerHTML = 'Publicar';
-          muro.addEventListener('submit', submitHandler);
-          window.location = '#/inicio';
-          location.reload();
-        })
-          .catch((error) => {
-            console.error('error al editar', error);
-          });
-      });
-    } 
-   export function salir() {
-   const salir = document.querySelector('#salir');
-   salir.addEventListener('click', () => {
-      cerrarSesión();
-      window.location = '';
+      mensaje: posteditado,
+    }).then(() => {
+      console.log('editado');
+      postear.innerHTML = 'Publicar';
+      muro.addEventListener('submit', submitHandler);
+      window.location = '#/inicio';
       location.reload();
-   });
-   }
-   export function recolectandoImagenPost(doc) {
-    const campoFoto = document.getElementById("imagenPosteada")//es donde se mostrara la imagen elegida
-    // var user = firebase.auth().currentUser;//se le asigna una variable al usuario actual
-    campoFoto.src = (doc.data().photoURL);//se llama el campo y se le asigna la URL de la foto cargada al usuario 
-    const ref = firebase.storage().ref()// se declara una varible para la ref. de storage donde almacenara las imagenes
-    const btnGuardarPhoto = document.getElementById('postear');
-      btnGuardarPhoto.addEventListener('click', (e) => {// q es e?
-      console.log("diste click")
-      let userImagen = document.querySelector('#inputImagenPost').files[0];//id de input tipo file para la imagen
-      const name = userImagen.name//
-      // readImage();
-      guardarFotoPost(name, userImagen)//importada de firestore, guarda la foto cargada en URL unico
-     })
-  }
+    })
+      .catch((error) => {
+        console.error('error al editar', error);
+      });
+  });
+} 
+export function salir() {
+  const salir = document.querySelector('#salir');
+  salir.addEventListener('click', () => {
+    cerrarSesión();
+    window.location = '';
+    location.reload();
+  });
+}
+// export function recolectandoImagenPost(doc) {
+//   const campoFoto = document.getElementById("imagenPosteada")//es donde se mostrara la imagen elegida
+//   var user = firebase.auth().currentUser;//se le asigna una variable al usuario actual
+//   campoFoto.src = (doc.data().photoURL);//se llama el campo y se le asigna la URL de la foto cargada al usuario 
+//   const ref = firebase.storage().ref()// se declara una varible para la ref. de storage donde almacenara las imagenes
+//   const btnGuardarPhoto = document.getElementById('postear');
+//   btnGuardarPhoto.addEventListener('click', (e) => {// q es e?
+//     console.log("diste click")
+//     let userImagen = document.querySelector('#inputImagenPost').files[0];//id de input tipo file para la imagen
+//     const name = userImagen.name//
+//     // readImage();
+//     guardarFotoPost(name, userImagen)//importada de firestore, guarda la foto cargada en URL unico
+//   })
+// }

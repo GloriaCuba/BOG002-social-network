@@ -2,7 +2,7 @@ import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
 import {
-  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,recolectandoImagenPost,
+  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,
 } from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook, irConfigPerfil,
@@ -32,6 +32,7 @@ export const router = (routes) => {//routes argumento? parametro?
           funcionAutenticar();
           registroConGoogle();
           registroConFacebook();
+          irConfigPerfil();
           break;
         case '#/inicio':
           rootDiv.appendChild(inicio());
@@ -42,8 +43,6 @@ export const router = (routes) => {//routes argumento? parametro?
           postMuro();
           console.log("pagina inicio");
           verPosts();
-          recolectandoImagenPost();
-          // ocultarMostrarPost();
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());

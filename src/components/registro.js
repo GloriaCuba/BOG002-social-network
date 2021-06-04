@@ -1,5 +1,4 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable max-len */
+/* eslint-disable no-restricted-globals */
 import {
   autenticar, verificarEmail, ingresarGmail, ingresarFaceBook,
   // traemos las funciones de autenticacion de firebase
@@ -48,11 +47,10 @@ export function funcionAutenticar() {// funcion con evento keyup y blur, sobre e
   botonIngresar.addEventListener('click', () => {
     autenticar(email, password).then(() => { // si los datos cumplen las condiciones se ejecuta autenticar
       // eslint-disable-next-line no-alert
-      // alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
+      alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
       verificarEmail();// funcion de firebase, envia correo de verificacion
       irConfigPerfil();
-      /* Aquí iría la Configuración para ir a #/configuracionPerfil */
-    }).catch((error) => {
+      }).catch((error) => {
       const errorMessage = error.message;
       console.log(error);
     });

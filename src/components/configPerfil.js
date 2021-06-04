@@ -51,82 +51,78 @@ export function configPerfil() { // template de # configperfil
 }
 
 export function atras() {
-let siguientePagina = document.getElementById("irAtras");
-siguientePagina.addEventListener("click", ()=> {
-  console.log("si funciono")
-  window.history.go(-1)//
-  // location.reload()
-})
+  const siguientePagina = document.getElementById('irAtras');
+  siguientePagina.addEventListener('click', () => {
+    console.log('si funciono');
+    window.history.go(-1)//
+    location.reload()
+  });
 }
 
-export function irAlPerfil() {
+export function irAlPerfil() { // redireccionando a perfil
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
-    console.log('hola1')
     window.location = '#/perfil';
     location.reload();
   });
 }
 
-
-export function recoletandoDatos() {//traemos la informacion del formulario, ejecutamos datosCollection que guarda la info en la base de datos
+export function recoletandoDatos() {// traemos la informacion del formulario, ejecutamos datosCollection que guarda la info en la base de datos
   const userId = document.getElementById('userId');
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', () => {
-    console.log('hola'),
     window.location = '#/perfil';
     location.reload();
-    datosCollection(userId, nomMascota, especie)
+    datosCollection(userId, nomMascota, especie);
   });
-};
-
+}
 
 export function recolectandoImagen() {
-  const campoFoto = document.getElementById("userImage")//es donde se mostrara la imagen elegida
-  var user = firebase.auth().currentUser;//se le asigna una variable al usuario actual
-  campoFoto.src = user.photoURL;//se llama el campo y se le asigna la URL de la foto cargada al usuario 
-  const ref = firebase.storage().ref()// se declara una varible para la ref. de storage donde almacenara las imagenes
+  const campoFoto = document.getElementById('userImage'); // es donde se mostrara la imagen elegida
+  const user = firebase.auth().currentUser; // se le asigna una variable al usuario actual
+  campoFoto.src = user.photoURL; // se llama el campo y se le asigna la URL de la foto cargada al usuario 
+  const ref = firebase.storage().ref() // se declara una varible para la ref. de storage donde almacenara las imagenes
   const btnGuardarPhoto = document.getElementById('botonGuardar');
-    btnGuardarPhoto.addEventListener('click', (e) => {// q es e?
-    document.getElementById("mensajeCargarFoto").style.display = "block" //el evento 
-    console.log("diste click")
-    let userImagen = document.querySelector('#inputUserImage').files[0];//id de input tipo file para la imagen
-    const name = userImagen.name//
+  btnGuardarPhoto.addEventListener('click', (e) => { // q es e?
+    document.getElementById('mensajeCargarFoto').style.display = 'block';
+    // console.log('diste click')
+    const userImagen = document.querySelector('#inputUserImage').files[0];// id de input tipo file para la imagen
+    const name = userImagen.name// nombre del documento cargado
+    // console.log(name)
     readImage();
     guardarFotoPerfil(name, userImagen)//importada de firestore, guarda la foto cargada en URL unico
-   })
-}
-export function readImage() {
-  const campoFoto= document.getElementById("userImage")//donde se mostrara la foto
-  const btnFile= document.getElementById("inputUserImage")//id de input tipo file para la imagen
-  btnFile.addEventListener("change", function() {//evento change -cambio para que sea automatico cuando exista un cambio de eleccion
-    const file = this.files[0];//se declara una variable que aloja el archivo 
-    const reader=new FileReader(); //fileReader un objeto q permite leer el contenido de archivos
-    reader.onload =function(){ //onload evento que se ejecuta cuando la carga esta terminada
-    const result= reader.result;//se guarda el resultado del evento
-    campoFoto.src = result;//el resultado de la lectura se muestra en el campoFoto
-  }
-  if (file){ 
-  reader.readAsDataURL(file);//si file carga se dara el metodo readAsDataURL que se usa para leer el contenido del archivo
-  }
   });
 }
-
-export function mostrarInputs() {// cambio de formulario
-const botonMostrarInputs= document.getElementById('botonInputs');
-botonMostrarInputs.addEventListener("click", ()=> {
-  document.querySelector("#contenedorImagen").style.display="none"
-  document.querySelector("#contenedorInputs").style.display="block"
- })
+export function readImage() {
+  const campoFoto = document.getElementById('userImage');// donde se mostrara la foto
+  const btnFile = document.getElementById('inputUserImage');// id de input tipo file para la imagen
+  btnFile.addEventListener('change', function() { // evento change -cambio para que sea automatico cuando exista un cambio de eleccion
+    const file = this.files[0];// se declara una variable que aloja el archivo
+    const reader = new FileReader(); // fileReader un objeto q permite leer el contenido de archivos
+    reader.onload = function() { // onload evento que se ejecuta cuando la carga esta terminada
+      const result = reader.result;// se guarda el resultado del evento
+      campoFoto.src = result;// el resultado de la lectura se muestra en el campoFoto
+    };
+    if (file) {
+      reader.readAsDataURL(file);// si file carga se dara el metodo readAsDataURL que se usa para leer el contenido del archivo
+    }
+  });
+}
+// cambio de formulario
+export function mostrarInputs() {
+  const botonMostrarInputs = document.getElementById('botonInputs');
+  botonMostrarInputs.addEventListener('click', () => {
+    document.querySelector('#contenedorImagen').style.display = 'none';
+    document.querySelector('#contenedorInputs').style.display = 'block';
+  });
 }
 
 export function ocultarCambioImagen() {
-  const botonMostrarInputs= document.getElementById('botonImagen');
-  botonMostrarInputs.addEventListener("click", ()=> {
-   document.querySelector("#contenedorImagen").style.display="block"
-   document.querySelector("#contenedorInputs").style.display="none"
-   
-  })
+  const botonMostrarInputs = document.getElementById('botonImagen');
+  botonMostrarInputs.addEventListener('click', () => {
+    document.querySelector('#contenedorImagen').style.display = 'block';
+    document.querySelector('#contenedorInputs').style.display = 'none';
+  });
 }
