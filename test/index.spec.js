@@ -12,8 +12,6 @@ const fixtureData = {
           userId:'5DhOSxxCGNSBGxoerylUMX9kJxg2',
           imagen: 'imagen.png',
           likes:'5',
-          
-         
         }
       }
     }

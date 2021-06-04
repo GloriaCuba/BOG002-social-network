@@ -103,15 +103,9 @@ export function verPosts() {
       divMuro.appendChild(star);
       /* console.log(doc.data()); */
       star.src="Img/Star_Likes_Blanca.png"; 
-      if(doc.data().likes!=''){
-        star.src="Img/Star_Likes.png"; 
-        }
-      /* const starYellow = document.createElement('input');
-      starYellow.setAttribute('type','image');
-      starYellow.setAttribute('id','starYellow');
-      starYellow.setAttribute('class','ocultar');
-      starYellow.src = 'Img/Star_Likes.png';
-      divMuro.appendChild(starYellow); */
+      if(doc.data().likes!='') {
+        star.src="Img/Star_Likes.png";
+      }
       document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
       const photoProfile= document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
@@ -150,17 +144,14 @@ export function verPosts() {
         });
       }else{
         /* console.log('no estan los botones'); */
-      } 
-      /* }else{
-        console.log('no estan los botones');
-      } */
+      }
       star.addEventListener('click', () => {
         sumarLikes(doc.id).then(() => {
         document.getElementById('star').removeAttribute('id', 'star');
         document.querySelector('.star').setAttribute('id', 'starYellow');
-        remover();        
+        remover();
         });
-      })
+      });
      function remover(){
       const starYellow = document.getElementById('starYellow'); 
       starYellow.addEventListener('click', () => {
@@ -168,38 +159,16 @@ export function verPosts() {
       console.log('wiii')
     });
   })
-     }
-      
-    
-      
-      /* function verStars(){
-        obtenerLikes((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            if(doc.data().likes>0){
-            document.getElementById('star').src='Img/Star_Likes.png';
-            }
-          });      
-        });
-      } */
-
-    });
+}
+});
       
       
     });
-    
-   /*  like.addEventListener('click',likes(likes));
-    function likes (likes) {
-      likes++;
-      console.log(likes)
-    }; */
-
   function botonEliminar(id) {
     eliminarPost(id);
   }
   
 }
-
-
 
 function botonEditarPost(id, campo) {
      document.getElementById('mensaje').value = campo;
