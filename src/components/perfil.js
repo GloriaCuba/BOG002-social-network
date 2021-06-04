@@ -40,16 +40,16 @@ export function perfil() {
   divPerfil.innerHTML = perfil;
   return divPerfil;
 }
-
-export function configurarPerfil() { // cambio de pagina configuracion perfil
+// cambio de pagina configuracion perfil
+export function configurarPerfil() {
   const perfil = document.getElementById('configuracionPerfil');
   perfil.addEventListener('click', () => {
     window.location = '#/configuracionPerfil';
     location.reload();
   });
 }
-
-export function irAHome() {// cambio de pagina muro
+// cambio de pagina muro
+export function irAHome() {
   const perfil = document.getElementById('irAPost');
   perfil.addEventListener('click', () => {
     window.location = '#/inicio';
@@ -66,7 +66,7 @@ export function ImagenPerfil() {
 } 
 
 function guardarPublicacion(e){
-  e.preventDefault(); // Para que no se refresque la página
+  e.preventDefault(); // evita que se refresque la página
   const mensaje = muroPerfil['mensajePerfil'].value;
   const date = firebase.firestore.Timestamp.now();
   let user = firebase.auth().currentUser;
@@ -94,7 +94,7 @@ export function postPerfil() {
 export function verPostsPerfil() {
   obtenerDatosUsuario((querySnapshot) => {
     document.getElementById('publicacionesUsuario').innerHTML = '';
-    querySnapshot.forEach((doc) => {    
+    querySnapshot.forEach((doc) => {
       let userActual = firebase.auth().currentUser;
       const email = userActual.email
       const usuarioNombre = userActual.displayName

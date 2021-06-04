@@ -30,12 +30,14 @@ export function ingresarGmail() {
   return validarGmail;
 }
 
+// funcion de ingresar con facebook
 export function ingresarFaceBook() {
   const provider = new firebase.auth.FacebookAuthProvider();
   const validarFacebook = firebase.auth().signInWithPopup(provider);
   return validarFacebook;
 }
 
+// funcion cerrar sesion
 export function cerrarSesión() {
   firebase.auth().signOut().then(() => {
     // eslint-disable-next-line no-console
@@ -45,7 +47,7 @@ export function cerrarSesión() {
     console.error('Sign Out Error', error);
   });
 }
-
+// funcion restablecer contraseña
 export function restablecimientoContrasena(email) {
   const emailAddress = email.value;
   const restablecer = firebase.auth().sendPasswordResetEmail(emailAddress);

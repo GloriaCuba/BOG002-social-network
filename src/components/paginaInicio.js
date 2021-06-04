@@ -124,9 +124,9 @@ export function verPosts() {// creamos el posts
       const divLike = document.createElement('div'); // creando div para pintar star contabilizador de likes
       divLike.setAttribute('class', 'divLike');
       divLike.setAttribute('id', 'divLike');
-      divLike.innerHTML= (doc.data().likes);// pintando likes alojados en bd 
+      divLike.innerHTML= (doc.data().likes);// pintando likes alojados en bd
       divMuro.appendChild(divLike);
-      if(nombreUsuario ==emailUsuarios){ // si el 
+      if(nombreUsuario ==emailUsuarios){ // si el usuario es == al email se crearan bton eliminar editar
         const campoBotones = document.createElement('div');
         const botonBorrar = document.createElement('button');
         const botonEditar = document.createElement('button');
@@ -142,7 +142,7 @@ export function verPosts() {// creamos el posts
         botonEditar.setAttribute('id', 'botonEditar');
         divMuro.appendChild(botonEditar);
         divMuro.appendChild(botonBorrar);
-        botonBorrar.addEventListener('click', () => {
+        botonBorrar.addEventListener('click', () => {// este evento ejecutara boton eliminar callback que ejecuta eliminar post de firestore
           botonEliminar(doc.id);
           console.log(doc.id);
           console.log(user.uid)
@@ -150,17 +150,17 @@ export function verPosts() {// creamos el posts
           console.log(emailUsuarios)
         });
         // recolectandoImagenPost(doc)
-        botonEditar.addEventListener('click', () => {
+        botonEditar.addEventListener('click', () => {//este evento ejecutara botonEditar callback que ejecuta actualizandoPost de firestore
           botonEditarPost(doc.id, doc.data().mensaje);
         });
       }else{
-        /* console.log('no estan los botones'); */
+        console.log('no estan los botones');
       } 
-      star.addEventListener('click', () => {
+      star.addEventListener('click', () => {// este evento ejecutara sumar likes de firestore
         sumarLikes(doc.id).then(() => {
           document.getElementById('star').removeAttribute('id', 'star');
           document.querySelector('.star').setAttribute('id', 'starYellow');
-          remover();        
+          remover();
         });
       })
       function remover(){
@@ -195,36 +195,33 @@ export function verPosts() {// creamos el posts
       console.log(likes)
     }; */
 
-  function botonEliminar(id) {
+  function botonEliminar(id) {// ejecutamos la funcion eliminar post de firestore
     eliminarPost(id);
   }
-  
 }
 
-
-
-function botonEditarPost(id, campo) {
+function botonEditarPost(id, campo) {// el post guardado llega al campo de texto para editarlo
   document.getElementById('mensaje').value = campo;
   console.log (id, campo);
   actualizandoPost(id, campo);
 }
-   
+
 function actualizandoPost(id) {
-  const muro = document.getElementById('muro');
+  const muro = document.getElementById('muro');// toma el form
   const postear = document.getElementById('postear');
-  postear.innerHTML = 'Actualizar';
-  muro.removeEventListener('submit', submitHandler);
+  postear.innerHTML = 'Actualizar';//btn enviar se vuelve actualizar
+  muro.removeEventListener('submit', submitHandler);//removemos el primer evento de guardar posts
   postear.addEventListener('click', function x(){
-    const nuevoPost = firebase.firestore().collection('posts').doc(id);
-    const posteditado = document.getElementById('mensaje').value;
+    const nuevoPost = firebase.firestore().collection('posts').doc(id); // ingresamos al id del post a editar
+    const posteditado = document.getElementById('mensaje').value;// toma el nuevo valor del post
     console.log(nuevoPost);
-    return nuevoPost.update({
-      mensaje: posteditado,
+    return nuevoPost.update({// retornamos nuevoPost y lo actualizamos con el metodo update
+      mensaje: posteditado,// igualamos el campo mensaje de la bd con el post editado
     }).then(() => {
       console.log('editado');
-      postear.innerHTML = 'Publicar';
-      muro.addEventListener('submit', submitHandler);
-      window.location = '#/inicio';
+      postear.innerHTML = 'Publicar';//cuando esto pase el btn retornara a publicar
+      muro.addEventListener('submit', submitHandler);//retomara el evento para enviar post
+      window.location = '#/inicio'; 
       location.reload();
     })
       .catch((error) => {
@@ -232,7 +229,7 @@ function actualizandoPost(id) {
       });
   });
 } 
-export function salir() {
+export function salir() {// evento que ejecuta cerrarSesion en firebase y redirecciona la interfaz
   const salir = document.querySelector('#salir');
   salir.addEventListener('click', () => {
     cerrarSesión();

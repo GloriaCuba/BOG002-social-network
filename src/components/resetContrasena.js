@@ -1,6 +1,6 @@
 import { restablecimientoContrasena } from '../firebase/firebase.js';
 
-export function resetContraseña() {
+export function resetContraseña() {// template de #restablecerContraseña
   const inputEmail = `      
             <div class="imagen"> <img src="Img/imagen_restablecer.png" alt=""> </div>
             <div class="descripcion"> <h4> Restablece tu contraseña ingresando tu correo <br> acontinuación</h4></div>

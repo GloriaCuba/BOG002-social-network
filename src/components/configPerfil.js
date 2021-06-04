@@ -54,7 +54,7 @@ export function atras() {
   const siguientePagina = document.getElementById('irAtras');
   siguientePagina.addEventListener('click', () => {
     console.log('si funciono');
-    window.history.go(-1)//
+    window.history.go(-1)
     location.reload()
   });
 }

@@ -30,9 +30,9 @@ function userProfile(url) {//la imagen almacenada se le asigna al usuario actual
   console.log(user);
   user.updateProfile({
     photoURL: url
-    }).then(() =>{
-      campoFoto.src= url
-    });
+  }).then(() =>{
+    campoFoto.src= url
+  });
 }
 
 
@@ -40,7 +40,7 @@ function userProfile(url) {//la imagen almacenada se le asigna al usuario actual
  export const guardarPosts = (mensaje, date,displayName, imagen,likes, userId) => {
   const collectionPost= firebase.firestore().collection('posts')
   return collectionPost.doc().set({
-
+    
     mensaje: mensaje,
     date,
     // firebase.firestore.Timestamp.now(),// metodo de fire que marca el tiempo de entrada
@@ -49,63 +49,59 @@ function userProfile(url) {//la imagen almacenada se le asigna al usuario actual
     imagen: imagen,
     likes,
   });
-};
+ };
 
- export const guardarFotoPost = (name,imagenPosteada) => {
+export const guardarFotoPost = (name,imagenPosteada) => {
   const ref = firebase.storage().ref()//ingresamos al almacenaminto de storage para img
   const task = ref.child(name).put(imagenPosteada)//entra a la base de datos, crea la url y carga el archivo en la ubicacion userImagen
   task.then(snapshot => snapshot.ref.getDownloadURL())// actualiza y da a la base de datos la url atravez del metodo getDownloadURL de firebase
   .then(url=> {
    fotosPost(url)//metodo para actualizar perfil, asignamos URL
- })
+})
  .catch(function(error) {
    // An error happened.
  });
-}
+};
 
 function fotosPost(url) {//la imagen almacenada se le asigna al usuario actual
   const campoFoto = document.getElementById("imagenPosteada");
-    firebase.firestore().collection('posts').doc().set({
-     fotoPost: url,
+  firebase.firestore().collection('posts').doc().set({
+    fotoPost: url,
     //  campoFoto.src= url
   // var foto = firebase.auth().currentUser;
   // console.log(user);
   // user.updateProfile({
     // photoURL: url
     // }).then(() =>{
-   
-    });
-  }
-
- export const sumarLikes = (id) => {
-  const promis = firebase.firestore().collection('posts').doc(id).update({
-   likes:firebase.firestore.FieldValue.increment(1) 
   });
-    return promis;
 }
+
+export const sumarLikes = (id) => {
+  const promis = firebase.firestore().collection('posts').doc(id).update({
+    likes:firebase.firestore.FieldValue.increment(1) 
+  });
+  return promis;
+};
 
 export const restarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
-   likes:firebase.firestore.FieldValue.increment(-1)
- })
- console.log('resta');
- return promis;
-}
-
+    likes:firebase.firestore.FieldValue.increment(-1)
+  });
+  console.log('resta');
+return promis;
+};
 export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
- // obtencion de post para hacerlos visibles en pantalla
- export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
+// obtencion de post para hacerlos visibles en pantalla
+export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
- export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
+export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
- //eliminar post
- export const eliminarPost = (id) =>  {
-   firebase.firestore().collection('posts').doc(id).delete().then(() => {
+// eliminar post
+export const eliminarPost = (id) => {
+  firebase.firestore().collection('posts').doc(id).delete().then(() => {
     console.log('Document successfully deleted!');
-     }).catch((error) => {
+  }).catch((error) => {
     console.error('Error removing document: ', error);
  });
-  }
-
- 
+}

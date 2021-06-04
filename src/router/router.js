@@ -8,18 +8,25 @@ import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook, irConfigPerfil,
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
-import { resetContraseña, restableceContrasena,irPrincipal} from '../components/resetContrasena.js';
+import { resetContraseña, restableceContrasena, irPrincipal} from '../components/resetContrasena.js';
 import {
   configPerfil, irAlPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage, atras 
 } from '../components/configPerfil.js';
 import { perfil, configurarPerfil, ImagenPerfil, verPostsPerfil, postPerfil, irAHome} from '../components/perfil.js';
 
+// menuEspecies
+// eslint-disable-next-line import/named
+
+// import { auth } from '../firebase/firebase.js';
+
 const rootDiv = document.getElementById('root');//'root' id div principal para mostrar paginado
 export const router = (routes) => {//routes argumento? parametro?
   rootDiv.innerHTML = '';//div root queda vacio
   firebase.auth().onAuthStateChanged((user) => { // si un usuario esta activo tendra las siguientes rutas
+
     if (user) {
-       switch (routes) {
+      // eslint-disable-next-line default-case
+      switch (routes) {
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
           funcionIngresar();
@@ -43,6 +50,7 @@ export const router = (routes) => {//routes argumento? parametro?
           postMuro();
           console.log("pagina inicio");
           verPosts();
+          // ocultarMostrarPost();
           break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());
@@ -74,7 +82,7 @@ export const router = (routes) => {//routes argumento? parametro?
           break;
       }
     } else {
-      // si no esta activo muestra estas rutas
+      // eslint-disable-next-line default-case
       switch (routes) {
         case '#/iniciarSesion':
           rootDiv.appendChild(iniciarSesion());
@@ -82,7 +90,6 @@ export const router = (routes) => {//routes argumento? parametro?
           iniciarConGoogle();
           iniciarConFacebook();
           olvidarContrasena();
-          irPrincipal();
           break;
         case '#/registro':
           rootDiv.appendChild(registrarse());
@@ -93,6 +100,7 @@ export const router = (routes) => {//routes argumento? parametro?
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());
           restableceContrasena();
+          irPrincipal();
           break;
         case '#/perfil':
           rootDiv.appendChild(interfazPrincipal());
