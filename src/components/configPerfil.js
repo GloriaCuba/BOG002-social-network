@@ -50,14 +50,14 @@ export function configPerfil() {
   return divPerfil;
 }
 
-export function irAlPerfil() {
-  const botonGuardar = document.getElementById('botonGuardar');
-  botonGuardar.addEventListener('click', () => {
-    window.location = '#/perfil';
-    // eslint-disable-next-line no-restricted-globals
-    location.reload();
-  });
-}
+// export function irAlPerfil() {
+//   // const botonGuardar = document.getElementById('botonGuardar');
+//   // botonGuardar.addEventListener('click', () => {
+//     window.location = '#/perfil';
+//     // eslint-disable-next-line no-restricted-globals
+//     location.reload();
+//   );
+// }
 
 export function recoletandoDatos() {
   const userId = document.getElementById('userId');
@@ -83,6 +83,7 @@ export function recolectandoImagen() {
     guardarFotoPerfil(name, userImagen);
    });
 }
+
 export function readImage() {
   const campoFoto= document.getElementById("userImage")
   const btnFile= document.getElementById("inputUserImage")

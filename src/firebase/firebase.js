@@ -1,6 +1,6 @@
 // funcion ingresar con email y contraseña
 export function ingresar(email, password) {
-  const promise = firebase.auth().signInWithEmailAndPassword(email.value, password.value);
+  const promise = firebase.auth().signInWithEmailAndPassword(email, password);
   return promise;
   // preventDefault ()
 }

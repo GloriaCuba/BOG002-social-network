@@ -12,9 +12,9 @@ global.firebase = mocksdk;
 
 describe('ingresa a iniciar sesion', () => {
   it('ingresar un usuario', () => {
-   ingresar('nala@hotmail.com', 'contraseña');
-   firebase.auth().signInWithEmailAndPassword('nala@hotmail.com').then((user) => {
-    expect(user).toBe('ingreso con exito');
-  });
+  return ingresar('nala@hotmail.com', 'contraseña').then((user) => {
+  expect(user.email).toBe('ala@hotmail.com');
+  
+});
 });
 })

@@ -40,7 +40,7 @@ export function funcionIngresar() {
   const botonIngresar = document.querySelector('#botonIngresar');
 
   botonIngresar.addEventListener('click', () => {
-    redireccionLogin(email, password);
+    redireccionLogin(email.value, password.value);
   });
 }
 
