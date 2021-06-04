@@ -24,11 +24,12 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 describe ('guardarPosts',()=>{
   it ('Deberia poder postear', (done)=>{
     const agregar = guardarPosts ('mensaje', 'date', 'displayName', 'userid','png','likes');
+    console.log(agregar);
     return agregar
-    .then(()=>{
+    .then(() => {
       obtenerPosts((datos)=>{
-        const resultado = datos._data.find( post => post._data.mensaje === 'mensaje')
-        expect(result._data.mensaje).toBe('mensaje')
+        const resultado = datos.__collection__.find( post => post._data.mensaje === 'mensaje')
+        expect(result.__collection__.mensaje).toBe('mensaje')
         done();
       })
     })
