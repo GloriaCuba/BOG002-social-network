@@ -42,6 +42,7 @@ export function configPerfil() {
                 <img id='userImage'>
              </figure>
             <button type='button' id='botonGuardar'>Guardar</button>
+            <button type='button' id='irPerfil'>Ir a perfil</button>
           </div>
       </div>
     `;
@@ -50,14 +51,14 @@ export function configPerfil() {
   return divPerfil;
 }
 
-// export function irAlPerfil() {
-//   // const botonGuardar = document.getElementById('botonGuardar');
-//   // botonGuardar.addEventListener('click', () => {
-//     window.location = '#/perfil';
-//     // eslint-disable-next-line no-restricted-globals
-//     location.reload();
-//   );
-// }
+export function irAlPerfil() {
+  const botonGuardar = document.getElementById('irPerfil');
+  botonGuardar.addEventListener('click', () => {
+    window.location = '#/perfil';
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  });
+}
 
 export function recoletandoDatos() {
   const userId = document.getElementById('userId');
