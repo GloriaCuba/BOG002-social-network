@@ -47,8 +47,8 @@ export function redireccionLogin(email, password) {
     window.location = '#/inicio';// si el proceso fue exitoso lo envia al muro
     location.reload();
   }).catch((error) => {
-  // const errorCode = error.code;
-    const errorMessage = error.message;// si no capta el error y lo muestra en consola
+    const errorMessage = error.message;
+    // eslint-disable-next-line no-alert
     // alert(errorMessage);
   });
 }

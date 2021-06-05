@@ -50,11 +50,12 @@ export function configurarPerfil() {
 }
 // cambio de pagina muro
 export function irAHome() {
-  const perfil = document.getElementById('irAPost');
-  perfil.addEventListener('click', () => {
-    window.location = '#/inicio';
-    location.reload();
-  });
+      const perfil=document.getElementById("irAPost");
+      perfil.addEventListener("click",()=>{
+      window.location = '#/inicio';
+      location.reload()
+      })
+
 }
 
 export function ImagenPerfil() {
@@ -82,15 +83,6 @@ export function postPerfil() {
   muro.addEventListener('submit', guardarPublicacion);
 }
 
-// function mostrar(doc){
-// let userActual = firebase.auth().currentUser;
-// let datos = doc.filter(user => user == userActual)
-// return datos
-// }
-// let userActual = firebase.auth().currentUser;
-// let filtro = doc.filter(user => user == userActual)
-// if (filtro) { 
-
 export function verPostsPerfil() {
   obtenerDatosUsuario((querySnapshot) => {
     document.getElementById('publicacionesUsuario').innerHTML = '';
@@ -99,62 +91,58 @@ export function verPostsPerfil() {
       const email = userActual.email
       const usuarioNombre = userActual.displayName
       if (doc.data().user == email) { 
-        const divOriginal = document.getElementById('publicacionesUsuario');
-        const divMuro = document.createElement('div');
-        divMuro.setAttribute('class', 'divMuro');
-        divOriginal.appendChild(divMuro);
-        const autorPost = document.createElement('h3');
-        autorPost.setAttribute('class', 'autorPost');
-        divMuro.appendChild(autorPost);
-        autorPost.innerHTML = usuarioNombre + " ha publicado:";
-        const textPost = document.createElement('p');
-        textPost.setAttribute('class', 'divText');
-        textPost.innerHTML = (doc.data().mensaje);
-        divMuro.appendChild(textPost);
-        const star = document.createElement('img');
-        star.setAttribute('class', 'starPerfil');
-        star.src = 'Img/Star_Likes.png';
-        divMuro.appendChild(star);
-        const divLike = document.createElement('div');
-        divLike.setAttribute('class','divLike');
-        divLike.setAttribute('id','divLike');
-        divLike.innerHTML= (doc.data().likes);
-        divMuro.appendChild(divLike);
-        // let user = firebase.auth().currentUser;
-        // console.log(user.email);
-        // const email = user.email;
-        // document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
-        const photoProfile= document.createElement('img');
-        photoProfile.setAttribute('class', 'photoProfile');
-        photoProfile.src = (doc.data().imagen);
-        divMuro.appendChild(photoProfile);
-        const campoBotones = document.createElement('div');
-        const botonBorrar = document.createElement('button');
-        const botonEditar = document.createElement('button');
-        campoBotones.appendChild(botonBorrar);
-        campoBotones.appendChild(botonEditar);
-        botonBorrar.className="botonBorrar"
-        botonBorrar.type = 'button'; 
-        botonBorrar.textContent = 'Borrar post';
-        botonBorrar.setAttribute('id', 'botonBorrar');
-        botonEditar.className="botonEditar"
-        botonEditar.type = 'button';
-        botonEditar.textContent = 'Editar';
-        botonEditar.setAttribute('id', 'botonEditar');
-        divMuro.appendChild(botonEditar);
-        divMuro.appendChild(botonBorrar);
-        botonBorrar.addEventListener('click', () => {
-          botonEliminar(doc.id);
-          console.log(doc.id);
-        });
-        botonEditar.addEventListener('click', () => {
-          overlayEditar()
-          cerrarModal()
-          botonEditarPost(doc.id, doc.data().mensaje)
-        });
-      };
-    });
-  });
+      const divOriginal = document.getElementById('publicacionesUsuario');
+      const divMuro = document.createElement('div');
+      divMuro.setAttribute('class', 'divMuro');
+      divOriginal.appendChild(divMuro);
+      const autorPost = document.createElement('h3');
+      autorPost.setAttribute('class', 'autorPost');
+      divMuro.appendChild(autorPost);
+      autorPost.innerHTML = usuarioNombre + " ha publicado:";
+      const textPost = document.createElement('p');
+      textPost.setAttribute('class', 'divText');
+      textPost.innerHTML = (doc.data().mensaje);
+      divMuro.appendChild(textPost);
+      const star = document.createElement('img');
+      star.setAttribute('class', 'starPerfil');
+      star.src = 'Img/Star_Likes.png';
+      divMuro.appendChild(star);
+      const divLike = document.createElement('div');
+      divLike.setAttribute('class','divLike');
+      divLike.setAttribute('id','divLike');
+      divLike.innerHTML= (doc.data().likes);
+      divMuro.appendChild(divLike);
+      const photoProfile= document.createElement('img');
+      photoProfile.setAttribute('class', 'photoProfile');
+      photoProfile.src = (doc.data().imagen);
+      divMuro.appendChild(photoProfile);
+      const campoBotones = document.createElement('div');
+      const botonBorrar = document.createElement('button');
+      const botonEditar = document.createElement('button');
+      campoBotones.appendChild(botonBorrar);
+      campoBotones.appendChild(botonEditar);
+      botonBorrar.className="botonBorrar"
+      botonBorrar.type = 'button'; 
+      botonBorrar.textContent = 'Borrar post';
+      botonBorrar.setAttribute('id', 'botonBorrar');
+      botonEditar.className="botonEditar"
+      botonEditar.type = 'button';
+      botonEditar.textContent = 'Editar';
+      botonEditar.setAttribute('id', 'botonEditar');
+      divMuro.appendChild(botonEditar);
+      divMuro.appendChild(botonBorrar);
+      botonBorrar.addEventListener('click', () => {
+      botonEliminar(doc.id);
+      console.log(doc.id);
+      });
+      botonEditar.addEventListener('click', () => {
+                overlayEditar()
+                cerrarModal()
+                botonEditarPost(doc.id, doc.data().mensaje)
+      });
+     };
+   });
+});
 
   function botonEliminar(id) {
     eliminarPost(id);

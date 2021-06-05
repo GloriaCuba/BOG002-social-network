@@ -14,7 +14,6 @@ export function autenticar(email, password) {
 // funcion registrarse y verificacion del email escrito
 export function verificarEmail() {
   const actionCodeSettings = {
-    /* url: 'http://localhost:5000/#/iniciarSesion/?email=' + auth.currentUser.email, */
     url: 'http://localhost:5000/#/iniciarSesion',
     handleCodeInApp: true,
   };
@@ -25,7 +24,6 @@ export function verificarEmail() {
 // funcion de ingresar con gmail
 export function ingresarGmail() {
   const provider = new firebase.auth.GoogleAuthProvider();
-  // firebase.auth()
   const validarGmail = firebase.auth().signInWithPopup(provider);
   return validarGmail;
 }

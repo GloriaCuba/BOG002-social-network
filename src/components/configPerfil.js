@@ -37,7 +37,7 @@ export function configPerfil() { // template de # configperfil
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
-            <p id="mensajeCargarFoto" class="mensajeCargarFoto"> Espere un momento mientras carga la foto </p>
+            <p id="mensajeCargarFoto" class="mensajeCargarFoto">Continuar</p>
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
@@ -50,17 +50,17 @@ export function configPerfil() { // template de # configperfil
   return divPerfil;
 }
 
-export function atras() {
-  const siguientePagina = document.getElementById('irAtras');
-  siguientePagina.addEventListener('click', () => {
-    console.log('si funciono');
-    window.history.go(-1)
-    location.reload()
-  });
-}
+// export function atras() {
+//   const siguientePagina = document.getElementById('irAtras');
+//   siguientePagina.addEventListener('click', () => {
+//     console.log('si funciono');
+//     window.history.go(-1)
+//     location.reload()
+//   });
+// }
 
 export function irAlPerfil() { // redireccionando a perfil
-  const botonGuardar = document.getElementById('botonGuardar');
+  const botonGuardar = document.getElementById('mensajeCargarFoto');
   botonGuardar.addEventListener('click', () => {
     window.location = '#/perfil';
     location.reload();

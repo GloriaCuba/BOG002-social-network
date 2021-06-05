@@ -104,4 +104,4 @@ export const eliminarPost = (id) => {
   }).catch((error) => {
     console.error('Error removing document: ', error);
  });
-}
+  }
