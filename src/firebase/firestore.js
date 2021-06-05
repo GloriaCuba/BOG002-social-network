@@ -63,19 +63,6 @@ export const guardarFotoPost = (name,imagenPosteada) => {
  });
 };
 
-function fotosPost(url) {//la imagen almacenada se le asigna al usuario actual
-  const campoFoto = document.getElementById("imagenPosteada");
-  firebase.firestore().collection('posts').doc().set({
-    fotoPost: url,
-    //  campoFoto.src= url
-  // var foto = firebase.auth().currentUser;
-  // console.log(user);
-  // user.updateProfile({
-    // photoURL: url
-    // }).then(() =>{
-  });
-}
-
 export const sumarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
     likes:firebase.firestore.FieldValue.increment(1) 

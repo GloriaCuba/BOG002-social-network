@@ -1,5 +1,5 @@
 // import {  obtenerDatosUsuario } from '../firebase/firestore.js';
-import { guardarPosts, obtenerDatosUsuario, eliminarPost} from '../firebase/firestore.js';
+import { guardarPosts, obtenerDatosUsuario, eliminarPost } from '../firebase/firestore.js';
 
 export function perfil() {
   let perfil = `
@@ -50,30 +50,30 @@ export function configurarPerfil() {
 }
 // cambio de pagina muro
 export function irAHome() {
-      const perfil=document.getElementById("irAPost");
-      perfil.addEventListener("click",()=>{
-      window.location = '#/inicio';
-      location.reload()
-      })
+  const perfil = document.getElementById("irAPost");
+  perfil.addEventListener("click", () => {
+    window.location = '#/inicio';
+    location.reload()
+  })
 
 }
 
 export function ImagenPerfil() {
-  const campoFoto= document.getElementById("userImage");// campo donde se ingresa la imagen
+  const campoFoto = document.getElementById("userImage");// campo donde se ingresa la imagen
   var user = firebase.auth().currentUser;// usuario actual
   campoFoto.src = user.photoURL;//asignamos la URL a campoFoto
   console.log(user.providerData);
-  document.getElementById("nameUser").innerHTML= user.displayName;//??
-} 
+  document.getElementById("nameUser").innerHTML = user.displayName;//??
+}
 
-function guardarPublicacion(e){
+function guardarPublicacion(e) {
   e.preventDefault(); // evita que se refresque la página
   const mensaje = muroPerfil['mensajePerfil'].value;
   const date = firebase.firestore.Timestamp.now();
   let user = firebase.auth().currentUser;
   let email = user.email;
   let imagen = user.photoURL;
-  let likes ='';
+  let likes = '';
   let userId = user.uid;
   guardarPosts(mensaje, date, email, imagen, likes, userId);
   muroPerfil.reset()
@@ -90,59 +90,59 @@ export function verPostsPerfil() {
       let userActual = firebase.auth().currentUser;
       const email = userActual.email
       const usuarioNombre = userActual.displayName
-      if (doc.data().user == email) { 
-      const divOriginal = document.getElementById('publicacionesUsuario');
-      const divMuro = document.createElement('div');
-      divMuro.setAttribute('class', 'divMuro');
-      divOriginal.appendChild(divMuro);
-      const autorPost = document.createElement('h3');
-      autorPost.setAttribute('class', 'autorPost');
-      divMuro.appendChild(autorPost);
-      autorPost.innerHTML = usuarioNombre + " ha publicado:";
-      const textPost = document.createElement('p');
-      textPost.setAttribute('class', 'divText');
-      textPost.innerHTML = (doc.data().mensaje);
-      divMuro.appendChild(textPost);
-      const star = document.createElement('img');
-      star.setAttribute('class', 'starPerfil');
-      star.src = 'Img/Star_Likes.png';
-      divMuro.appendChild(star);
-      const divLike = document.createElement('div');
-      divLike.setAttribute('class','divLike');
-      divLike.setAttribute('id','divLike');
-      divLike.innerHTML= (doc.data().likes);
-      divMuro.appendChild(divLike);
-      const photoProfile= document.createElement('img');
-      photoProfile.setAttribute('class', 'photoProfile');
-      photoProfile.src = (doc.data().imagen);
-      divMuro.appendChild(photoProfile);
-      const campoBotones = document.createElement('div');
-      const botonBorrar = document.createElement('button');
-      const botonEditar = document.createElement('button');
-      campoBotones.appendChild(botonBorrar);
-      campoBotones.appendChild(botonEditar);
-      botonBorrar.className="botonBorrar"
-      botonBorrar.type = 'button'; 
-      botonBorrar.textContent = 'Borrar post';
-      botonBorrar.setAttribute('id', 'botonBorrar');
-      botonEditar.className="botonEditar"
-      botonEditar.type = 'button';
-      botonEditar.textContent = 'Editar';
-      botonEditar.setAttribute('id', 'botonEditar');
-      divMuro.appendChild(botonEditar);
-      divMuro.appendChild(botonBorrar);
-      botonBorrar.addEventListener('click', () => {
-      botonEliminar(doc.id);
-      console.log(doc.id);
-      });
-      botonEditar.addEventListener('click', () => {
-                overlayEditar()
-                cerrarModal()
-                botonEditarPost(doc.id, doc.data().mensaje)
-      });
-     };
-   });
-});
+      if (doc.data().user == email) {
+        const divOriginal = document.getElementById('publicacionesUsuario');
+        const divMuro = document.createElement('div');
+        divMuro.setAttribute('class', 'divMuro');
+        divOriginal.appendChild(divMuro);
+        const autorPost = document.createElement('h3');
+        autorPost.setAttribute('class', 'autorPost');
+        divMuro.appendChild(autorPost);
+        autorPost.innerHTML = usuarioNombre + " ha publicado:";
+        const textPost = document.createElement('p');
+        textPost.setAttribute('class', 'divText');
+        textPost.innerHTML = (doc.data().mensaje);
+        divMuro.appendChild(textPost);
+        const star = document.createElement('img');
+        star.setAttribute('class', 'starPerfil');
+        star.src = 'Img/Star_Likes.png';
+        divMuro.appendChild(star);
+        const divLike = document.createElement('div');
+        divLike.setAttribute('class', 'divLike');
+        divLike.setAttribute('id', 'divLike');
+        divLike.innerHTML = (doc.data().likes);
+        divMuro.appendChild(divLike);
+        const photoProfile = document.createElement('img');
+        photoProfile.setAttribute('class', 'photoProfile');
+        photoProfile.src = (doc.data().imagen);
+        divMuro.appendChild(photoProfile);
+        const campoBotones = document.createElement('div');
+        const botonBorrar = document.createElement('button');
+        const botonEditar = document.createElement('button');
+        campoBotones.appendChild(botonBorrar);
+        campoBotones.appendChild(botonEditar);
+        botonBorrar.className = "botonBorrar"
+        botonBorrar.type = 'button';
+        botonBorrar.textContent = 'Borrar post';
+        botonBorrar.setAttribute('id', 'botonBorrar');
+        botonEditar.className = "botonEditar"
+        botonEditar.type = 'button';
+        botonEditar.textContent = 'Editar';
+        botonEditar.setAttribute('id', 'botonEditar');
+        divMuro.appendChild(botonEditar);
+        divMuro.appendChild(botonBorrar);
+        botonBorrar.addEventListener('click', () => {
+          botonEliminar(doc.id);
+          console.log(doc.id);
+        });
+        botonEditar.addEventListener('click', () => {
+          overlayEditar()
+          cerrarModal()
+          botonEditarPost(doc.id, doc.data().mensaje)
+        });
+      };
+    });
+  });
 
   function botonEliminar(id) {
     eliminarPost(id);
@@ -150,17 +150,17 @@ export function verPostsPerfil() {
 }
 
 function overlayEditar() {
-  let overlay = document.getElementById ("modalOverlay");
-  let popUp = document.getElementById ("modal");
+  let overlay = document.getElementById("modalOverlay");
+  let popUp = document.getElementById("modal");
   overlay.classList.add('active');
   popUp.classList.add('active');
 };
 
 function cerrarModal() {
-  let overlay = document.getElementById ("modalOverlay");
-  let popUp = document.getElementById ("modal");
-  let btnCerrar = document.getElementById ("cerrarPopup");
-  btnCerrar.addEventListener('click', function(e){  
+  let overlay = document.getElementById("modalOverlay");
+  let popUp = document.getElementById("modal");
+  let btnCerrar = document.getElementById("cerrarPopup");
+  btnCerrar.addEventListener('click', function (e) {
     e.preventDefault();
     overlay.classList.remove('active');
     popUp.classList.remove('active');
@@ -169,13 +169,13 @@ function cerrarModal() {
 
 function botonEditarPost(id, campo) {
   document.getElementById('mensajeModal').value = campo;
-  console.log (id, campo);
+  console.log(id, campo);
   actualizandoPost(id, campo);
 }
-      
+
 function actualizandoPost(id) {
   const postear = document.getElementById('actualizar');
-  postear.addEventListener('click', function x(){
+  postear.addEventListener('click', function x() {
     const nuevoPost = firebase.firestore().collection('posts').doc(id);
     const posteditado = document.getElementById('mensajeModal').value;
     console.log(nuevoPost);
@@ -190,4 +190,4 @@ function actualizandoPost(id) {
         console.error('error al editar', error);
       });
   });
-} 
+}

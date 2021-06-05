@@ -110,12 +110,6 @@ export function verPosts() {// creamos el posts
       if(doc.data().likes!=''){ // si doc data likes esta vacio
         star.src="Img/Star_Likes.png"; // pinta star con esta nueva ruta de img
       }
-      /* const starYellow = document.createElement('input');
-      starYellow.setAttribute('type','image');
-      starYellow.setAttribute('id','starYellow');
-      starYellow.setAttribute('class','ocultar');
-      starYellow.src = 'Img/Star_Likes.png';
-      divMuro.appendChild(starYellow); */
       document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);// Pintando saludo concatenado con nombre del usuario
       const photoProfile= document.createElement('img');// creando elemento img
       photoProfile.setAttribute('class', 'photoProfile');
@@ -171,29 +165,10 @@ export function verPosts() {// creamos el posts
           });
         })
       }
-      
-    
-      
-      /* function verStars(){
-        obtenerLikes((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            if(doc.data().likes>0){
-            document.getElementById('star').src='Img/Star_Likes.png';
-            }
-          });      
-        });
-      } */
-
     });
       
       
   });
-    
-  /*  like.addEventListener('click',likes(likes));
-    function likes (likes) {
-      likes++;
-      console.log(likes)
-    }; */
 
   function botonEliminar(id) {// ejecutamos la funcion eliminar post de firestore
     eliminarPost(id);
@@ -237,17 +212,3 @@ export function salir() {// evento que ejecuta cerrarSesion en firebase y redire
     location.reload();
   });
 }
-// export function recolectandoImagenPost(doc) {
-//   const campoFoto = document.getElementById("imagenPosteada")//es donde se mostrara la imagen elegida
-//   var user = firebase.auth().currentUser;//se le asigna una variable al usuario actual
-//   campoFoto.src = (doc.data().photoURL);//se llama el campo y se le asigna la URL de la foto cargada al usuario 
-//   const ref = firebase.storage().ref()// se declara una varible para la ref. de storage donde almacenara las imagenes
-//   const btnGuardarPhoto = document.getElementById('postear');
-//   btnGuardarPhoto.addEventListener('click', (e) => {// q es e?
-//     console.log("diste click")
-//     let userImagen = document.querySelector('#inputImagenPost').files[0];//id de input tipo file para la imagen
-//     const name = userImagen.name//
-//     // readImage();
-//     guardarFotoPost(name, userImagen)//importada de firestore, guarda la foto cargada en URL unico
-//   })
-// }

@@ -50,15 +50,6 @@ export function configPerfil() { // template de # configperfil
   return divPerfil;
 }
 
-// export function atras() {
-//   const siguientePagina = document.getElementById('irAtras');
-//   siguientePagina.addEventListener('click', () => {
-//     console.log('si funciono');
-//     window.history.go(-1)
-//     location.reload()
-//   });
-// }
-
 export function irAlPerfil() { // redireccionando a perfil
   const botonGuardar = document.getElementById('mensajeCargarFoto');
   botonGuardar.addEventListener('click', () => {
