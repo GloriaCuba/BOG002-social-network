@@ -37,11 +37,12 @@ export function configPerfil() {
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
-            <p id="mensajeCargarFoto" class="mensajeCargarFoto"> De click en guardar para almacenar su foto correctamente  </p>
+            <p id="mensajeCargarFoto" class="mensajeCargarFoto">Dale click en guardar para cargar tu foto</p>
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
             <button type='button' id='botonGuardar'>Guardar</button>
+            <button type='button' id='irPerfil'>Ir a perfil</button>
           </div>
       </div>
     `;
@@ -50,24 +51,14 @@ export function configPerfil() {
   return divPerfil;
 }
 
-export function atras() { 
-let siguientePagina = document.getElementById("irAtras");
-siguientePagina.addEventListener("click", ()=> {
-  console.log("si funciono")
-  window.history.go(-1)
-  // location.reload()
-})
-}
-
 export function irAlPerfil() {
-  const botonGuardar = document.getElementById('botonGuardar');
+  const botonGuardar = document.getElementById('irPerfil');
   botonGuardar.addEventListener('click', () => {
-   window.location = '#/perfil';
+    window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-  location.reload();
+    location.reload();
   });
 }
-
 
 export function recoletandoDatos() {
   const userId = document.getElementById('userId');
@@ -75,30 +66,30 @@ export function recoletandoDatos() {
   const especie = document.getElementById('menuEspecies');
   const btndatos = document.getElementById('btnDatos');
   btndatos.addEventListener('click', () => {
-    datosCollection(userId, nomMascota, especie)
+    datosCollection(userId, nomMascota, especie);
   });
-};
+}
 
-
- export function recolectandoImagen() {
-  const campoFoto= document.getElementById("userImage")
-  var user = firebase.auth().currentUser;
+export function recolectandoImagen() {
+  const campoFoto = document.getElementById('userImage');
+  const user = firebase.auth().currentUser;
   campoFoto.src = user.photoURL;
-  const ref = firebase.storage().ref()
+  const ref = firebase.storage().ref();
   const btnGuardarPhoto = document.getElementById('botonGuardar');
     btnGuardarPhoto.addEventListener('click', (e) => {
-      let userImagen = document.querySelector('#inputUserImage').files[0];
-          const name = userImagen.name;
-          guardarFotoPerfil(name, userImagen)
-          readImage()
-    })
-  }
+    console.log("diste click")
+    let userImagen = document.querySelector('#inputUserImage').files[0];
+    const name = userImagen.name
+    readImage();
+    guardarFotoPerfil(name, userImagen);
+   });
+}
 
 export function readImage() {
   const campoFoto= document.getElementById("userImage")
   const btnFile= document.getElementById("inputUserImage")
   btnFile.addEventListener("change", function() {
-    document.getElementById("mensajeCargarFoto").style.display="block"
+    document.getElementById('mensajeCargarFoto').style.display = 'block'
     const file = this.files[0];
     const reader=new FileReader();
     reader.onload =function(){ 
@@ -112,18 +103,17 @@ export function readImage() {
 }
 
 export function mostrarInputs() {
-const botonMostrarInputs= document.getElementById('botonInputs');
+const botonMostrarInputs = document.getElementById('botonInputs');
 botonMostrarInputs.addEventListener("click", ()=> {
   document.querySelector("#contenedorImagen").style.display="none"
   document.querySelector("#contenedorInputs").style.display="block"
- })
+ });
 }
 
 export function ocultarCambioImagen() {
-  const botonMostrarInputs= document.getElementById('botonImagen');
+  const botonMostrarInputs = document.getElementById('botonImagen');
   botonMostrarInputs.addEventListener("click", ()=> {
    document.querySelector("#contenedorImagen").style.display="block"
    document.querySelector("#contenedorInputs").style.display="none"
-   
-  })
+  });
 }

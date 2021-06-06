@@ -53,12 +53,11 @@ export function irAHome() {
       const perfil=document.getElementById("irAPost");
       perfil.addEventListener("click",()=>{
       window.location = '#/inicio';
-      location.reload()                          
+      location.reload()
       })
 
 }
 
- 
 export function ImagenPerfil() {
       const campoFoto = document.getElementById("userImage")
       var user = firebase.auth().currentUser;
@@ -84,15 +83,6 @@ function guardarPublicacion(e){
          const muro = document.getElementById('muroPerfil');
          muro.addEventListener('submit', guardarPublicacion);
          }
-
-// function mostrar(doc){
-// let userActual = firebase.auth().currentUser;
-// let datos = doc.filter(user => user == userActual)
-// return datos
-// }
-// let userActual = firebase.auth().currentUser;
-// let filtro = doc.filter(user => user == userActual)
-// if (filtro) { 
 
 export function verPostsPerfil() {
       obtenerPosts((querySnapshot) => {
@@ -123,10 +113,6 @@ export function verPostsPerfil() {
       divLike.setAttribute('id','divLike');
       divLike.innerHTML= (doc.data().likes);
       divMuro.appendChild(divLike);
-      // let user = firebase.auth().currentUser;
-      // console.log(user.email);
-      // const email = user.email;
-      // document.getElementById("holaUsuario").innerHTML = ('Hola ' + email);
       const photoProfile= document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);

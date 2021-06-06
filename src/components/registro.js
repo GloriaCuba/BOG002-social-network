@@ -44,7 +44,7 @@ export function funcionAutenticar() {
 
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
-    autenticar(email, password).then(() => {
+    autenticar(email.value, password.value).then(() => {
       // eslint-disable-next-line no-alert
       alert('Te hemos enviado un correo electrónico, valídalo para iniciar sesión');
       verificarEmail();

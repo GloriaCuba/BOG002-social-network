@@ -52,34 +52,16 @@ function userProfile(url) {
     likes,
   })
  }
-
-  //eliminar post
-export const eliminarPost = (id) =>  {
-  firebase.firestore().collection('posts').doc(id).delete().then(() => {
-    console.log('Document successfully deleted!');
-    }).catch((error) => {
-    console.error('Error removing document: ', error);
-});
-  }
  
 export const nuevoPost = (posteditado, id) => { 
   let editar = firebase.firestore().collection('posts').doc(id);
   return editar.update({
     mensaje: posteditado,
-      }).then(() => {
-        console.log('editado');
-        postear.innerHTML = 'Publicar';
-        muro.addEventListener('submit', submitHandler);
-        window.location = '#/inicio';
-        location.reload();
-      })
-        .catch((error) => {
-          console.error('error al editar', error);
-        });
-        }
+    })
+  }
  
 
- export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
+//  export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
  export const sumarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
@@ -98,3 +80,11 @@ export const restarLikes = (id) => {
 }
 
 
+ //eliminar post
+ export const eliminarPost = (id) =>  {
+   firebase.firestore().collection('posts').doc(id).delete().then(() => {
+    console.log('Document successfully deleted!');
+     }).catch((error) => {
+    console.error('Error removing document: ', error);
+ });
+  }

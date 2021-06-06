@@ -10,20 +10,17 @@ export function iniciarSesion() {
             <label for="email"></label><input type="email" id="email" placeholder="Email" required>
             <label for="password"></label><br>
             <input type="password" id="password" placeholder="Password" name="password" required ><br>
-           <div id="botonIniciar">
-            <div id="botonGato">
+           <div id="botonGato">
             <img src="Img/gato_negro_.png" alt=""> 
             <button type="button" id="botonIngresar">ingresar</button> <br>
-            </div>
-            </div>
-            <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4>
-         </div>
+           </div>
+          </div>
+          <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4> 
           <h6>O</h6>  
          <div class="inicioConProveedores"><h4>Ingresa con tu cuenta de Google o Facebook </h4></div>
-          <figure>
              <img type="button" id="botonGoogle" src="img/Icono_Google.png"> 
              <img type="button" id="botonFacebook" src="img/Icono_Facebook.png">
-           </figure> 
+           
       
      </form>
     
@@ -40,7 +37,7 @@ export function funcionIngresar() {
   const botonIngresar = document.querySelector('#botonIngresar');
 
   botonIngresar.addEventListener('click', () => {
-    redireccionLogin(email, password);
+    redireccionLogin(email.value, password.value);
   });
 }
 
@@ -50,7 +47,6 @@ export function redireccionLogin(email, password) {
     // eslint-disable-next-line no-restricted-globals
     location.reload();
   }).catch((error) => {
-  // const errorCode = error.code;
     const errorMessage = error.message;
     // eslint-disable-next-line no-alert
     // alert(errorMessage);
