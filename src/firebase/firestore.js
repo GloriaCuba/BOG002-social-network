@@ -39,17 +39,48 @@ function userProfile(url) {
  // obtencion de post para hacerlos visibles en pantalla
  export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
+
  // creacion de una base de datos posts usuarios
  export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
-   firebase.firestore().collection('posts').doc().set({
+   const colleccionPost = firebase.firestore().collection('posts')
+   return colleccionPost.doc().set({
     mensaje: mensaje,
-    date: firebase.firestore.Timestamp.now(),
+    date,
     user:displayName,
     userId,
     imagen: imagen,
     likes,
   })
  }
+
+  //eliminar post
+export const eliminarPost = (id) =>  {
+  firebase.firestore().collection('posts').doc(id).delete().then(() => {
+    console.log('Document successfully deleted!');
+    }).catch((error) => {
+    console.error('Error removing document: ', error);
+});
+  }
+ 
+export const nuevoPost = (posteditado, id) => { 
+  let editar = firebase.firestore().collection('posts').doc(id);
+  return editar.update({
+    mensaje: posteditado,
+      }).then(() => {
+        console.log('editado');
+        postear.innerHTML = 'Publicar';
+        muro.addEventListener('submit', submitHandler);
+        window.location = '#/inicio';
+        location.reload();
+      })
+        .catch((error) => {
+          console.error('error al editar', error);
+        });
+        }
+ 
+
+ export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
+
  export const sumarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(1)
@@ -66,20 +97,4 @@ export const restarLikes = (id) => {
  return promis;
 }
 
-export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
-
-
-
- export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
-
- //eliminar post
- export const eliminarPost = (id) =>  {
-   firebase.firestore().collection('posts').doc(id).delete().then(() => {
-    console.log('Document successfully deleted!');
-     }).catch((error) => {
-    console.error('Error removing document: ', error);
- });
-  }
-
- 

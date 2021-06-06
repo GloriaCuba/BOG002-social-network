@@ -502,8 +502,9 @@ body {
 }
 
 .contenedorOpciones button {
-    height: 40px;
-    width: 30vw;
+    width: 35%;
+    margin: 0 0.5em;
+    padding: 0.5em 0.5em;
     background-color: #bbcafa;
     border: 2px solid white;
     border-radius: 3px;
@@ -513,7 +514,6 @@ body {
 .contenedorOpciones button:hover {
     background-color: rgb(132, 186, 202);
     color: #000000;
-    font-weight: bolder;
 }
 
 .contenedorOpciones h3 {
@@ -526,6 +526,7 @@ body {
 .mensajeCargarFoto {
     display: none;
  }
+
  .contenedorPerfil header{
     grid-column-start:1;
     grid-row-start:1;

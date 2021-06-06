@@ -5,7 +5,8 @@ export function configPerfil() {
       <div class="contenedorPerfil" method ="post">
         <header>
         <div class="history">
-         
+          <img src="Img/atrasIcono.png" type='button' id='irAtras'>
+          <img src="Img/adelanteIcono.png" type='button' id='irDelante'>
         </div>
       </header>
           <h1>Configuración de Perfil</h1>
@@ -36,7 +37,7 @@ export function configPerfil() {
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
-            <p id="mensajeCargarFoto" class="mensajeCargarFoto"> Espere un momento mientras carga la foto </p>
+            <p id="mensajeCargarFoto" class="mensajeCargarFoto"> De click en guardar para almacenar su foto correctamente  </p>
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
@@ -61,9 +62,9 @@ siguientePagina.addEventListener("click", ()=> {
 export function irAlPerfil() {
   const botonGuardar = document.getElementById('botonGuardar');
   botonGuardar.addEventListener('click', () => {
-  //  window.location = '#/perfil';
+   window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-  // location.reload();
+  location.reload();
   });
 }
 
@@ -79,25 +80,25 @@ export function recoletandoDatos() {
 };
 
 
-export function recolectandoImagen() {
+ export function recolectandoImagen() {
   const campoFoto= document.getElementById("userImage")
   var user = firebase.auth().currentUser;
   campoFoto.src = user.photoURL;
   const ref = firebase.storage().ref()
   const btnGuardarPhoto = document.getElementById('botonGuardar');
     btnGuardarPhoto.addEventListener('click', (e) => {
-    document.getElementById("mensajeCargarFoto").style.display="block"
-    console.log("diste click")
-    let userImagen = document.querySelector('#inputUserImage').files[0];
-    const name = userImagen.name
-    readImage();
-    guardarFotoPerfil(name, userImagen)
-   })
-}
+      let userImagen = document.querySelector('#inputUserImage').files[0];
+          const name = userImagen.name;
+          guardarFotoPerfil(name, userImagen)
+          readImage()
+    })
+  }
+
 export function readImage() {
   const campoFoto= document.getElementById("userImage")
   const btnFile= document.getElementById("inputUserImage")
   btnFile.addEventListener("change", function() {
+    document.getElementById("mensajeCargarFoto").style.display="block"
     const file = this.files[0];
     const reader=new FileReader();
     reader.onload =function(){ 
@@ -105,26 +106,10 @@ export function readImage() {
     campoFoto.src = result;
   }
   if (file){ 
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
   }
   });
 }
-// function init() {
-//   var inputFile = document.getElementById('inputUserImage');
-//   inputFile.addEventListener('change', mostrarImagen, false);
-// }
-
-// export function mostrarImagen(event) {
-//   var file = event.target.files[0];
-//   var reader = new FileReader();
-//   reader.onload = function(event) {
-//     var img = document.getElementById('userImage');
-//     img.src= event.target.result;
-//   }
-//   reader.readAsDataURL(file);
-// }
-
-
 
 export function mostrarInputs() {
 const botonMostrarInputs= document.getElementById('botonInputs');
