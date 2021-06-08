@@ -136,7 +136,7 @@ export function verPosts() {
         botonEliminar(doc.id);
         console.log(doc.id);
         console.log(user.uid)
-        console.log(email)
+        console.log(nombreUsuario)
         console.log(emailOtros)
         });
         botonEditar.addEventListener('click', () => {
@@ -200,6 +200,7 @@ function actualizandoPost(id) {
       });
     } 
    export function salir() {
+  // let user=  firebase.auth().currentUser
    const salir = document.querySelector('#salir');
    salir.addEventListener('click', () => {
       cerrarSesión();

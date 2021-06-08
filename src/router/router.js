@@ -1,5 +1,5 @@
 import {
-  iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
+  iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,pruebaGato
 } from '../components/iniciarSesion.js';
 import {
   inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,
@@ -32,6 +32,7 @@ export const router = (routes) => {
           iniciarConGoogle();
           iniciarConFacebook();
           olvidarContrasena();
+          pruebaGato();
           break;
         case '#/registro':
           rootDiv.appendChild(registrarse());

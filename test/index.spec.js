@@ -1,5 +1,5 @@
 import MockFirebase from 'mock-cloud-firestore';
-import { guardarPosts, obtenerPosts} from '../src/firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost} from '../src/firebase/firestore.js';
 
 const fixtureData = {
   __collection__: {
@@ -12,6 +12,14 @@ const fixtureData = {
           userId:'5DhOSxxCGNSBGxoerylUMX9kJxg2',
           imagen: 'imagen.png',
           likes:'5',
+        },
+        abc456:{
+          mensaje:'Mensaje 2', 
+          date: '4 de junio de 2021, 079:34:23',
+          user:'Juan',
+          userId:'5BhOSxxCGNSBGxoerylUMX9kJxg2',
+          imagen: 'imagen1.png',
+          likes:'7',
         }
       }
     }
@@ -33,53 +41,31 @@ describe ('guardarPosts',()=>{
   });
 });
 
+it('Debería eliminar un post', (done) => {
+  const deleteP = eliminarPost('abc123');
+  return deleteP
+    .then(() => {
+      obtenerPosts((data) => {
+        const resultado = data.docs.find((post) => post.id === 'abc123');
+        expect(resultado).toBe(undefined);
+        done();
+      });
+    });
+});
 
-// // importamos la funcion que vamos a testear
-// import { funcionRegistrarse,interfazPrincipal } from '../src/components/intefazPrincipal'
-// import { redireccionLogin } from '../src/components/iniciarSesion.js';
-// import { ingresoApp } from '../src/components/intefazPrincipal.js';
-// import { ingresar, autenticar } from '../src/firebase/firebase.js';
-
-// const firebasemock = require('firebase-mock');
-
-// const mockauth = new firebasemock.MockAuthentication();
-// const mocksdk = new firebasemock.MockFirebaseSdk(
-//   () => null,
-//   () => mockauth,
-// );
-// mockauth.autoFlush();
-// global.firebase = mocksdk;
-
-// describe('ingresa a iniciar sesion', () => {
-//   it('debe ser una funcion', () => {
-//     expect(typeof ingresoApp).toBe('function');
-//   });
+// it('Deberia poder editar un post', (done) => {
+//   const edit = editPosts('abc456', 'Luisa');
+//   return edit
+//     .then(() => {
+//       getPosts((data) => {
+//         const resultado = data.docs.find((post) => post.id === 'post456');
+//         expect(resultado._data.Contents).toBe('Hola Mundo'); // eslint-disable-line
+//         done();
+//       });
+//     });
 // });
-
-// describe('ingresar', () => {
-//   it('deberia ser una funcion', () => {
-//     expect(typeof ingresar).toBe('function');
-//   });
-// });
-
-// describe('autenticar', () => {
-//   test('deberia registrarme', () => {
-//     const promesa = redireccionLogin('petBook@hotmail.com', '123456');
-    // console.log('probando');
-    // return promesa
-    // .then(()=>{
-    // console.log(algo);
-    // })
 
     // 1. Ingresar input correo y contraseña
     // 2. Simular click sobre el boton de registro
     // 3. Confirmar que se muestra un alert
     // 4. Confirmar que se envia un correo;
-// });
-// });
-
-// import  MockFirebase  from "../_mocks_/auth_mock.js";
-// import {autenticar} from '../src/firebase/firebase.js';
-
-// global.firebase = MockFirebase;
-// console.log(MockFirebase);
