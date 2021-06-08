@@ -11,15 +11,15 @@ export function iniciarSesion() {
             <label for="password"></label><br>
             <input type="password" id="password" placeholder="Password" name="password" required ><br>
            <div id="botonGato">
-            <img src="Img/gato_negro_.png" alt=""> 
+            <img id='gato'src="Img/gato_negro_.png" alt=""> 
             <button type="button" id="botonIngresar">ingresar</button> <br>
            </div>
           </div>
           <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4> 
           <h6>O</h6>  
          <div class="inicioConProveedores"><h4>Ingresa con tu cuenta de Google o Facebook </h4></div>
-             <img type="button" id="botonGoogle" src="img/Icono_Google.png"> 
-             <img type="button" id="botonFacebook" src="img/Icono_Facebook.png">
+             <img type="button" id="botonGoogle" src='Img/Icono_Google.png'> </img>
+             <img type="button" id="botonFacebook" src='Img/Icono_Facebook.png'></img>
            
       
      </form>
@@ -28,6 +28,14 @@ export function iniciarSesion() {
   divFormulario.className = 'formularioInicioSesion';
   divFormulario.innerHTML = formularioInicioSesion;
   return divFormulario;
+}
+
+export function pruebaGato(){
+ const botonGato= document.getElementById('gato');
+ botonGato.addEventListener('click',()=>{
+   console.log('hola gato')
+ });
+
 }
 
 // iniciar sesion con email y contraseña

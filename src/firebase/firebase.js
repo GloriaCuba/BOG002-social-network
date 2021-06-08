@@ -35,13 +35,15 @@ export function ingresarFaceBook() {
 }
 
 export function cerrarSesión() {
-  firebase.auth().signOut().then(() => {
-    // eslint-disable-next-line no-console
-    console.log('Signed Out');
-  }, (error) => {
-    // eslint-disable-next-line no-console
-    console.error('Sign Out Error', error);
-  });
+const signOutUser = firebase.auth().signOut();
+return signOutUser;
+
+  //   // eslint-disable-next-line no-console
+  //   console.log('Signed Out');
+  // }, (error) => {
+  //   // eslint-disable-next-line no-console
+  //   console.error('Sign Out Error', error);
+  // });
 }
 
 export function restablecimientoContrasena(email) {

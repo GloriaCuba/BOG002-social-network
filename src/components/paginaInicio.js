@@ -140,6 +140,13 @@ export function verPosts() {
 
       botonBorrar.addEventListener('click', () => {
         botonEliminar(doc.id);
+        console.log(doc.id);
+        console.log(user.uid)
+        console.log(nombreUsuario)
+        console.log(emailOtros)
+        });
+        botonEditar.addEventListener('click', () => {
+        botonEditarPost(doc.id, doc.data().mensaje);
         });
       botonEditar.addEventListener('click', () => {
       botonEditarPost(doc.id, doc.data().mensaje);
