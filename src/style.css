@@ -102,13 +102,8 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 15% 45% 10% 10% 20% ;
-    /* grid-template-rows: 120px 60px 240px 50px 60px 45px; */
+    grid-template-rows: 25% 40% 10% 10% 15% ;
     font-family:sans-serif;
-/* 
-    justify-content: center;
-    justify-items: center;
-    align-items: center; */
 }
 
 .formulario h1 {
@@ -127,14 +122,13 @@ body {
     grid-row-start:2;
     grid-row-end:3;
     align-items: center;
-    margin-left: 2em;
-    grid-auto-flow: row;
+    justify-self: center;
+    /* margin-left: 2em; */
+    /* grid-auto-flow: row; */
 }
 
 .emailandpassword input{
-    
     height: 40px;
-    /* width: 16em; */
     width: 25vw;
     background-color:#FEEF6A;
     border: 2px solid white;
@@ -145,80 +139,44 @@ body {
     margin-left: 1em; 
 }
 
-.emailandpassword button {
+#botonGato{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows:33% 33% 33%;
+}
+#botonIngresar{
+    grid-column-start:1;
+    grid-column-end:3;
+    grid-row-start:3;
+    grid-row-end:3;
     height: 40px;
-    /* width: 20em; */
     width: 25vw;
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
-    cursor: pointer;
 }
 
-.emailandpassword img {
-    margin-top: 1em;
-    margin-left: 8.5vw;
-
-}
-
-.emailandpassword h4 {
-    cursor: pointer;
-    text-align: center;
-    color: white;
-    padding-bottom: 2vh;
-    margin-top: 0.8em;
-    font-size: 1em;
-    margin-right: 1.5em;
-    text-decoration: underline;
-}
-
-#botonIniciar{
-    grid-column-start:5;
-    grid-column-end: 5;
-    grid-row-start:1;
-    grid-row-end:4;  
-    align-self: center;
-    
-    /* height: 100%; */
-
-}
-#botonGato{
-    /* background-color: #F043A0; */
-    display: grid;
-    grid-template-columns: 20% 40% 40% 20%;
-    grid-template-rows:33% 33% 33%;
-}
-#botonIngresar{
-    grid-column-start:2;
-    grid-column-end:3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    /* height: 40px;
-    width: 50vw; */
-    background-color: #8FC1DF;
-    border: 2px solid white;
-    border-radius: 3px;
-    justify-self:center;
-    /* margin-top: 10%; */
-
-}
 .emailandpassword img {
     grid-column-start:2;
     grid-column-end: 3;
-    grid-row-start:1;
+    grid-row-start:2;
     grid-row-end:2;  
-    justify-self: center;
+    justify-self:start;
+    align-self:center;
+    margin-top: 6%;
 }
 
-.emailandpassword h4 {
+.olvidarContrasena {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end:4; 
     color: white;
     font-size: 1em;
     text-decoration: underline;
-    /* margin-left: 10vw; */
-    /* justify-self: center; */
-    grid-column-start:4;
-    grid-column-end:5;
- }
+    align-self: center;
+    justify-self: center;
+}
 .formulario h6{
     grid-column-start:3;
     grid-column-end: 2;
@@ -262,23 +220,31 @@ body {
     justify-self: center;
 }
 
-.formulario figure{
-    grid-column-start:1;
-    grid-column-end: 4;
+#botonGoogle{
+    grid-column-start:2;
+    grid-column-end: 3;
     grid-row-start:5;
-    grid-row-end:7;
+    grid-row-end:5;
     color: white;
-    justify-self: center;
-    justify-items: center;
-    margin-left: 10em;
-}
-.formulario figure img{
-    width: 25%;
+    justify-self:center;
+    align-self: center;
+    width: 20%;
     cursor: pointer;
-    padding-left: 0.5em;
-
+    margin-left: -50%;
 }
 
+#botonFacebook{
+    grid-column-start:2;
+    grid-column-end: 3;
+    grid-row-start:5;
+    grid-row-end:5;
+    color: white;
+    justify-self:center;
+    align-self: center;
+    width: 20%;
+    cursor: pointer;
+    margin-left: 50%;
+}
 /************************************Registro***************************************************/
 
 .formularioRegistro{

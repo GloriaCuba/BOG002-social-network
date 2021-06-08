@@ -111,12 +111,12 @@ body {
 }
 
 .emailandpassword {
-    grid-column-start:1;
-    grid-column-end: 4;
+    grid-column-start:2;
+    grid-column-end: 3;
     grid-row-start:2;
     grid-row-end:4;
-    margin-left: 20vw;
     align-self: center;
+    justify-self: center;
 
 }
 
@@ -129,44 +129,25 @@ body {
     font-size: 12px;
     text-align: center;
     margin-top: 1em;
-    margin-left: 1em;
+    /* margin-left: 1em; */
     margin-bottom: 1em;
 }
-/* 
-.emailandpassword button {
-    height: 40px;
-    width: 50vw;
-    background-color: #8FC1DF;
-    border: 2px solid white;
-    border-radius: 3px;
-} */
 
-#botonIniciar{
-    grid-column-start:1;
-    grid-column-end: 5;
-    grid-row-start:3;
-    grid-row-end:4;  
-    align-self: center;
-    
-    height: 100%; 
-
-}
 #botonGato{
-    /* background-color: #F043A0; */
     display: grid;
-    grid-template-columns: 20% 40% 40% 20%;
+    grid-template-columns: 33% 33% 33%;
     grid-template-rows:33% 33% 33%;
 }
 #botonIngresar{
     grid-column-start:1;
     grid-column-end:3;
-    grid-row-start: 2;
+    grid-row-start:3;
     height: 40px;
     width: 50vw;
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
-    margin-top: 10%;
+    margin-top:-1%;
 
 }
 .emailandpassword img {
@@ -174,18 +155,21 @@ body {
     grid-column-end: 3;
     grid-row-start:1;
     grid-row-end:2;  
-    
+    justify-self: center;
+    align-self: start;
 }
 
-.emailandpassword h4 {
+.olvidarContrasena {
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-start:3;
+    grid-row-end:4; 
     color: white;
     font-size: 1em;
     text-decoration: underline;
-    /* margin-left: 10vw; */
-    /* justify-self: center; */
-    grid-column-start:4;
-    grid-column-end:5;
- }
+    align-self: center;
+    justify-self: center;
+}
 
 .formulario .inicioConProveedores{
     grid-column-start:1;
@@ -231,21 +215,31 @@ body {
     right: -95px;
 }
 
-.formulario figure{
+
+#botonGoogle{
     grid-column-start:1;
-    grid-column-end: 4;
+    grid-column-end: 3;
     grid-row-start:5;
-    grid-row-end:7;
+    grid-row-end:5;
     color: white;
-    justify-self: center;
+    justify-self:center;
     align-self: center;
-    /* justify-items: center; */
+    width: 30%;
+    cursor: pointer;
+    /* padding-left: 0.5em; */
 }
 
-.formulario figure img{
-    width: 20%;
+#botonFacebook{
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:5;
+    grid-row-end:5;
+    color: white;
+    justify-self:center;
+    align-self: center;
+    width: 30%;
     cursor: pointer;
-    margin-left: 4.5em;
+    /* padding-left: 0.5em; */
 }
 
 

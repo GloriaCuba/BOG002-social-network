@@ -11,10 +11,10 @@ mockauth.autoFlush();
 global.firebase = mocksdk;
 
 describe('ingresa a iniciar sesion', () => {
-  it('ingresar un usuario', (done) => {
-   ingresar('nala@hotmail.com', 'contraseña').then((user) => {
-    expect(user.email).toBe('nala@hotmail.com');
-    done();
-  });
+  it('ingresar un usuario', () => {
+  return ingresar('nala@hotmail.com', 'contraseña').then((user) => {
+  expect(user.email).toBe('ala@hotmail.com');
+  
+});
 });
 })

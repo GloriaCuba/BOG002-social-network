@@ -42,6 +42,7 @@ export function configPerfil() {
                 <img id='userImage'>
              </figure>
             <button type='button' id='botonGuardar'>Guardar</button>
+            <button type='button' id='irPerfil'>Ir a perfil</button>
           </div>
       </div>
     `;
@@ -51,7 +52,7 @@ export function configPerfil() {
 }
 
 export function irAlPerfil() {
-  const botonGuardar = document.getElementById('botonGuardar');
+  const botonGuardar = document.getElementById('irPerfil');
   botonGuardar.addEventListener('click', () => {
    /*  window.location = '#/perfil'; */
     // eslint-disable-next-line no-restricted-globals
@@ -83,6 +84,7 @@ export function recolectandoImagen() {
     guardarFotoPerfil(name, userImagen);
    });
 }
+
 export function readImage() {
   const campoFoto= document.getElementById("userImage")
   const btnFile= document.getElementById("inputUserImage")
