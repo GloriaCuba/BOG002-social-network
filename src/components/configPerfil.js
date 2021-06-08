@@ -97,7 +97,7 @@ export function readImage() {
     campoFoto.src = result;
   }
   if (file){ 
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
   }
   });
 }

@@ -48,7 +48,7 @@ export const router = (routes) => {
           salir();
           irAPerfil();
           postMuro();
-          console.log("pagina inicio");
+          // console.log("pagina inicio");
           verPosts();
           // ocultarMostrarPost();
           break;
