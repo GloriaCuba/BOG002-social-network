@@ -40,7 +40,7 @@ export function funcionIngresar() {
   const botonIngresar = document.querySelector('#botonIngresar');
 
   botonIngresar.addEventListener('click', () => {
-    redireccionLogin(email, password);
+    redireccionLogin(email.value, password.value);
   });
 }
 
@@ -50,7 +50,6 @@ export function redireccionLogin(email, password) {
     // eslint-disable-next-line no-restricted-globals
     location.reload();
   }).catch((error) => {
-  // const errorCode = error.code;
     const errorMessage = error.message;
     // eslint-disable-next-line no-alert
     // alert(errorMessage);

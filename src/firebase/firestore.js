@@ -7,7 +7,7 @@ export const datosCollection = (userId, nomMascota, especie) => {
       especie: especie.value,
     }).then(() => {
       user.updateProfile({
-        displayName: userId.value,
+        displayName: userId.value
       })
       console.log(user)
     })
@@ -36,10 +36,10 @@ function userProfile(url) {
     });
 }
 
-
- // creacion de una base de datos posts usuarios
- export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
-   firebase.firestore().collection('posts').doc().set({
+// creacion de una base de datos posts usuarios
+export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
+  const colleccionPost = firebase.firestore().collection('posts')
+  return colleccionPost.doc().set({
     mensaje: mensaje,
     date,
     user:displayName,
@@ -64,7 +64,7 @@ export const restarLikes = (id) => {
  return promis;
 }
 
-export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
+export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
 
 
  // obtencion de post para hacerlos visibles en pantalla
@@ -80,5 +80,3 @@ export const obtenerLikes = (callback) => firebase.firestore().collection('posts
     console.error('Error removing document: ', error);
  });
   }
-
- 

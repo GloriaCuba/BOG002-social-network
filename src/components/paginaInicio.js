@@ -82,8 +82,11 @@ export function verPosts() {
     document.getElementById('divSeccionPosts').innerHTML = '';
     querySnapshot.forEach((doc) => {
       let user = firebase.auth().currentUser;
-      const nombreUsuario = user.displayName;
+      let nombreUsuario = user.displayName;
+      console.log(user.uid);
       const emailOtros = doc.data().user;
+      const idOtros = doc.data().userId;
+      console.log(idOtros);
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
       divMuro.setAttribute('class', 'divMuro');
@@ -100,18 +103,20 @@ export function verPosts() {
       star.setAttribute('type','image');
       star.setAttribute('id','star');
       star.setAttribute('class','star');
-      divMuro.appendChild(star);
-      /* console.log(doc.data()); */
       star.src="Img/Star_Likes_Blanca.png"; 
-      if(doc.data().likes!=''){
-        star.src="Img/Star_Likes.png"; 
-        }
-      /* const starYellow = document.createElement('input');
+      divMuro.appendChild(star);
+      const starYellow = document.createElement('input');
       starYellow.setAttribute('type','image');
       starYellow.setAttribute('id','starYellow');
       starYellow.setAttribute('class','ocultar');
-      starYellow.src = 'Img/Star_Likes.png';
-      divMuro.appendChild(starYellow); */
+      starYellow.src="Img/Star_Likes.png"; 
+      
+      /* console.log(doc.data()); */
+      if(doc.data().likes==!'') {
+        starYellow.classList.remove('ocultar');
+        starYellow.classList.add('starYellow');
+      }
+      divMuro.appendChild(starYellow);
       document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
       const photoProfile= document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
@@ -122,6 +127,9 @@ export function verPosts() {
       divLike.setAttribute('id','divLike');
       divLike.innerHTML= (doc.data().likes);
       divMuro.appendChild(divLike);
+      if(doc.data().likes==0) {
+        divLike.innerHTML='';
+      }
      if(nombreUsuario ==emailOtros){ 
       const campoBotones = document.createElement('div');
       const botonBorrar = document.createElement('button');
@@ -150,56 +158,33 @@ export function verPosts() {
         });
       }else{
         /* console.log('no estan los botones'); */
-      } 
-      /* }else{
-        console.log('no estan los botones');
-      } */
+      }
       star.addEventListener('click', () => {
-        sumarLikes(doc.id).then(() => {
-        document.getElementById('star').removeAttribute('id', 'star');
-        document.querySelector('.star').setAttribute('id', 'starYellow');
-        remover();        
+          sumarLikes(doc.id);
+          });
+        
+      starYellow.addEventListener('click', () => {
+          restarLikes(doc.id);
         });
-      })
-     function remover(){
+        
+      });
+     /* function remover(){
       const starYellow = document.getElementById('starYellow'); 
       starYellow.addEventListener('click', () => {
       restarLikes(doc.id).then((id) => {
       console.log('wiii')
     });
   })
-     }
-      
-    
-      
-      /* function verStars(){
-        obtenerLikes((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            if(doc.data().likes>0){
-            document.getElementById('star').src='Img/Star_Likes.png';
-            }
-          });      
-        });
-      } */
-
-    });
+} */
+});
       
       
-    });
-    
-   /*  like.addEventListener('click',likes(likes));
-    function likes (likes) {
-      likes++;
-      console.log(likes)
-    }; */
-
+  
   function botonEliminar(id) {
     eliminarPost(id);
   }
   
 }
-
-
 
 function botonEditarPost(id, campo) {
      document.getElementById('mensaje').value = campo;

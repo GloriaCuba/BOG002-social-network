@@ -729,12 +729,7 @@ body {
     grid-column-start:2;
     grid-row-start:3;
 }
-.star{
-    justify-self: start;
-    align-self: end;
-    grid-column-start:2;
-    grid-row-start:5;
-}
+
 .botonEnviar {
     justify-self: end;
     align-self: end;
@@ -829,6 +824,7 @@ body {
     align-self: center;
 }
 .starYellow{
+    display:block;
     justify-self: start;
     align-self: start;
     grid-column-start:2;
@@ -838,10 +834,8 @@ body {
 .ocultar{
     display:none;
 }
-.mostrar{
-    display:block;
-}
 .divLike{
+    display:block;
     grid-column-start:2;
     grid-row-start:5;
     justify-self: center;
