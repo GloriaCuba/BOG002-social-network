@@ -32,15 +32,15 @@ export function registrarse() {
 export function funcionAutenticar() {
   const email = document.querySelector('#emailAuth');
   email.addEventListener('keyup', validarFormulario);
-  email.addEventListener('blur', validarFormulario);
+  // email.addEventListener('blur', validarFormulario);
 
   const password = document.querySelector('#passwordAuth');
   password.addEventListener('keyup', validarFormulario);
-  password.addEventListener('blur', validarFormulario);
+  // password.addEventListener('blur', validarFormulario);
 
   const password2 = document.querySelector('#passwordAuth2');
   password2.addEventListener('keyup', validarFormulario);
-  password2.addEventListener('blur', validarFormulario);
+  // password2.addEventListener('blur', validarFormulario);
 
   const botonIngresar = document.querySelector('#botonUnirse');
   botonIngresar.addEventListener('click', () => {
