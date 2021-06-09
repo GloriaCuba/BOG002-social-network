@@ -284,10 +284,6 @@ body {
     margin: 0em 1em;
 }
 
-#descripcionError{
-    display: none;
-}
-
 .formularioRegistro .registroProveedores{
     grid-column-start:1;
     grid-column-end: 4;
@@ -304,15 +300,65 @@ body {
     grid-column-end: 4;
     grid-row-start:3;
     grid-row-end:4;
-    justify-self: center;
+    /* justify-self: center;
     margin-right: 2.5vw;
-    align-self: center;
-    /* margin-left: 3vw; */
-    /* justify-items: center;
-    justify-content: center; */
+    align-self: center; */
 }
 
-#formularioInputs input{
+.divFormularioInputs {
+    display: grid;
+    grid-template-columns: 15% 35% 35% 15%;
+    grid-template-rows: 5% 15% 8% 15% 8% 15% 8% 15% 11%;
+    height: 100%;
+    width: 100%;
+}
+
+.divFormularioInputs input {
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    background-color:#FEEF6A;
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#emailAuth {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+}
+#passwordAuth{
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+}
+#passwordAuth2 {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:6;
+    grid-row-end:7; 
+}
+
+.divFormularioInputs button {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:8;
+    grid-row-end:9; 
+    justify-self: center;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    width: 60%;
+    height: 80%;
+    align-self: center;
+}
+/* #formularioInputs input{
     height: 40px;
     width: 50vw;
     background-color:#FEEF6A;
@@ -322,14 +368,16 @@ body {
     text-align: center;
     margin-top: 1em;
     margin-left: 1em;
-}
+} */
 
-#formularioInputs button{
-    height: 40px;
-    width: 50vw;
-    background-color: #8FC1DF;
-    border: 2px solid white;
-    border-radius: 3px;
+.divFormularioInputs p{
+    display: none;
+    grid-column-start:1;
+    grid-column-end: 5;
+    grid-row-start:5;
+    grid-row-end:6;
+    justify-self: center;
+    font-size: 0.5em;
 }
 
 .formularioRegistro h6{
@@ -385,7 +433,12 @@ body {
     width: 15em;
     height: 10em;
 }
+
 /************************************Interfaz-Configuración de Perfil***************************************************/
+.mensajeDatos{
+    display: none;
+    margin-top: 1em;
+}
 
 .contenedorPerfil {
     background-color: #045C73;
@@ -469,6 +522,7 @@ body {
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
+    margin: 0.5em;
 }
 .contenedorImagen p {
     margin-top: 1em;
@@ -539,6 +593,7 @@ body {
 
 #contenedorMuro{
     background-color: #045C73;
+    /* background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%);  */
     background-size: cover;
     background-repeat:repeat;
     display: grid;
@@ -547,7 +602,6 @@ body {
     height: 100vh;
     width: 100%;
     overflow: scroll;
-    /* align-items: center; */
 }
 
 #contenedorMuro h1{
@@ -577,7 +631,7 @@ body {
 .menu {
     top: 100%;
     right: 0;
-    background: rgb(25, 156, 179);
+    /* background: rgb(25, 156, 179); */
     height: 0;
     overflow: hidden;
     justify-self: right;
@@ -586,37 +640,39 @@ body {
     grid-column-end:5;
     grid-row-start:1;
     grid-row-end:3;
-    margin-top: 2.5em;
+    margin-top: 2.5em;    
 }
     
 .menu button {
     color: rgb(255, 255, 255); 
-    background-color: rgb(25, 156, 179);
+    background-color: rgba(94, 255, 228, 0.596);
+    
 }
     
 .menu #perfil{
-    width: 7em;
+    width: 6em;
     height: 2em;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     border: none;
-    font-size: 0.9em;
+    margin-top: 2px;
 }
     
 .menu #salir{
-    width: 7em;
+    width: 6em;
     height: 2em;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     border: none;
 }
     
 .menu button:hover, 
 .menu button:focus {
     background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: #24242442; */
     color: black;
 }
 
 .opcionesMenuOpen {
-    height: auto;
+    height: 58px;
     z-index: 100;
 }
 
@@ -624,7 +680,7 @@ body {
     padding: 1em;
     position: absolute;
     top: .3em;
-    right: .2em;
+    right: .2em;    
 }
 
 .menuToggleOpen .inicio{
@@ -637,6 +693,7 @@ body {
 
 .menuToggleOpen .inicio::after{
     transform: translateY(-3px) rotate(-90deg);
+    
 }   
 
 .inicio, 
@@ -648,6 +705,7 @@ body {
     height: 3px;
     width: 1.7em;
     border-radius: 3px;
+    
 } 
 
 .inicio::before{
@@ -704,6 +762,7 @@ body {
     height: 50px;
     text-align: center;
     resize: none;
+    font-size: 12px;
 }
 
 .quePiensas{
@@ -716,20 +775,15 @@ body {
 }
 .photoProfile{
     border-radius: 100%;
-    height: 2.8em;
-    width: 2.8em;
+    height: 2.9em;
+    width: 2.9em;
     box-shadow: 3px 3px 1px 1px #faf755;
     margin-right: 2%;
     margin-left: 2%;
     grid-column-start:2;
     grid-row-start:3;
 }
-.star{
-    justify-self: start;
-    align-self: end;
-    grid-column-start:2;
-    grid-row-start:5;
-}
+
 .botonEnviar {
     justify-self: end;
     align-self: end;
@@ -780,15 +834,31 @@ body {
 .divText{
     grid-column-start:2;
     grid-column-end:6;
+    grid-row-start:3;
     grid-row-end:5;
+    display: grid;
+    grid-template-columns: 18% 78% 4%;
+    grid-template-rows: 20% 20% 20% 20% 20%; 
     background: rgba(255, 255, 255, 0.84);
     border-radius: 15px;
-    height: 55px;
+    height: 100%;
     align-self: end;
     text-align: center;
     resize: none;
-    color:rgb(31, 31, 31);
     font-size: 12px;
+}
+.pText{
+    grid-column-start:2;
+    grid-row-start:1;
+    grid-row-end:6;
+    overflow: scroll;
+    overflow-x: hidden;
+    line-height : 17px;
+    font-size: 12px;
+}
+
+.pText::-webkit-scrollbar {
+    display: none;
 }
 .botonBorrar{
     justify-self: end;
@@ -824,6 +894,7 @@ body {
     align-self: center;
 }
 .starYellow{
+    display:block;
     justify-self: start;
     align-self: start;
     grid-column-start:2;
@@ -833,10 +904,8 @@ body {
 .ocultar{
     display:none;
 }
-.mostrar{
-    display:block;
-}
 .divLike{
+    display:block;
     grid-column-start:2;
     grid-row-start:5;
     justify-self: center;
@@ -896,9 +965,6 @@ body {
     font-family: inherit;
 }
 
-.descripcionError {
-    display: none;
-}
 
 /************************************ perfil***************************************************/
 
@@ -966,7 +1032,8 @@ body {
 } 
 
  .fotoPerfilUsuario img {
-    width: 8em;
+    max-width: 8em;
+    max-height: 8em;
     height: 100%;  
     border-radius: 100%;
     border: 3px white solid;

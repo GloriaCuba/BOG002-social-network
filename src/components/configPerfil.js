@@ -6,7 +6,6 @@ export function configPerfil() {
         <header>
         <div class="history">
           <img src="Img/atrasIcono.png" type='button' id='irAtras'>
-          <img src="Img/adelanteIcono.png" type='button' id='irDelante'>
         </div>
       </header>
           <h1>Configuración de Perfil</h1>
@@ -18,8 +17,8 @@ export function configPerfil() {
           <div class="contenedorInputs" id="contenedorInputs">
               <h3> Complete los siguientes campos </h3> <br>
              <form id="datosUsuario">
-              <input type='text' id='userId'placeholder="Nombre de Usuario"></input> <br>
-              <input id='nombreMascota' placeholder="Nombre de tu mascota"></input><br>
+              <input type='text' id='userId' placeholder="Nombre de tu Mascota"></input> <br>
+              <input id='nombreMascota' placeholder="Tu Nombre"></input><br>
               <h3> ¿Que mascota tienes? </h3>
               <select id="menuEspecies" class="menuEspecies">
                 <option>Ave</option>
@@ -37,7 +36,7 @@ export function configPerfil() {
           <div class="contenedorImagen" id="contenedorImagen">
             <p>Sube una imagen de perfil</p> <br>
             <input type='file' id='inputUserImage' multiple="false" accept="image/*">
-            <p id="mensajeCargarFoto" class="mensajeCargarFoto">Dale click en guardar para cargar tu foto</p>
+            <p id="mensajeCargarFoto" class="mensajeCargarFoto">Dale click en guardar y espera unos segundos para cargar tu foto correctamente <br> Se te redireccionara automaticamente</p>
              <figure id="imagenPerfil">
                 <img id='userImage'>
              </figure>
@@ -52,11 +51,11 @@ export function configPerfil() {
 }
 
 export function irAlPerfil() {
-  const botonGuardar = document.getElementById('irPerfil');
+  const botonGuardar = document.getElementById('irAtras');
   botonGuardar.addEventListener('click', () => {
-    window.location = '#/perfil';
+   /*  window.location = '#/perfil'; */
     // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    /* location.reload(); */
   });
 }
 
@@ -65,9 +64,13 @@ export function recoletandoDatos() {
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
   const btndatos = document.getElementById('btnDatos');
+  let mensaje=document.getElementById("mensajeDatos")
   btndatos.addEventListener('click', () => {
-    datosCollection(userId, nomMascota, especie);
-  });
+     setTimeout(() => {
+      datosCollection(userId, nomMascota, especie)
+      alert("La informacion se cargo correctamente")
+    }, 4000);
+})
 }
 
 export function recolectandoImagen() {
@@ -82,6 +85,10 @@ export function recolectandoImagen() {
     const name = userImagen.name
     readImage();
     guardarFotoPerfil(name, userImagen);
+    setTimeout(() => {
+      window.location = '#/perfil';
+      location.reload();
+    }, 11000);
    });
 }
 

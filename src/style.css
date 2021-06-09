@@ -27,8 +27,8 @@ body {
     background-position:left;
     background-repeat:no-repeat;
     display: grid;
-    grid-template-columns:repeat (4,1fr);
-    grid-template-rows: repeat (5,1fr);
+   /*  grid-template-columns:repeat (4,1fr);
+    grid-template-rows: repeat (5,1fr); */
     /* justify-content: center; */
  }
 
@@ -381,8 +381,8 @@ body {
  
     /************************************Muro***************************************************/
     #contenedorMuro{
-      /*   background-color: #5159c4; */
-        background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%);
+        background-color: #045C73;
+        /* background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%); */
         background-size: cover;
         background-repeat:repeat;
         display: grid;
@@ -421,7 +421,7 @@ body {
     .menu {
         top: 100%;
         right: 0;
-        background: rgb(25, 156, 179);
+        /* background: rgb(25, 156, 179); */
         height: 0;
         overflow: hidden;
         justify-self: right;
@@ -430,12 +430,12 @@ body {
         grid-column-end:6;
         grid-row-start:1;
         grid-row-end:3;
-        margin-top: 2.5em;
+        margin-top: 3.5em;
     }
         
     .menu button {
         color: rgb(255, 255, 255); 
-        background-color: rgb(25, 156, 179);
+        background-color: rgb(55, 148, 165);
     }
         
     .menu #perfil{
@@ -443,7 +443,7 @@ body {
         height: 2em;
         font-weight: bolder;
         border: none;
-        font-size: 0.9em;
+        margin-top: 3px;
     }
         
     .menu #salir{
@@ -451,6 +451,7 @@ body {
         height: 2em;
         font-weight: bolder;
         border: none;
+        margin: 0;
     }
         
     .menu button:hover, 
@@ -460,7 +461,7 @@ body {
     }
     
     .opcionesMenuOpen {
-        height: auto;
+        height: 100px;
         z-index: 100;
     }
     
@@ -547,6 +548,7 @@ body {
         height: 50px;
         text-align: center;
         resize: none;
+        font-size: 14px;
     }
     .quePiensas{
         grid-column-start:2;
@@ -634,6 +636,9 @@ body {
         grid-column-end:6;
         grid-row-start:3;
         grid-row-end:5;
+        display: grid;
+        grid-template-columns: 13% 84% 3%;
+        grid-template-rows: 20% 20% 20% 20% 20%; 
         background: rgba(255, 255, 255, 0.84);
         border-radius: 15px;
         height: 100%;
@@ -642,6 +647,20 @@ body {
         resize: none;
         font-size: 12px;
     }
+    .pText{
+        grid-column-start:2;
+        grid-row-start:1;
+        grid-row-end:6;
+        overflow: scroll;
+        overflow-x: hidden;
+        line-height : 20px;
+        font-size: 12px;
+    }
+
+    .pText::-webkit-scrollbar {
+        display: none;
+    }
+
     .botonBorrar{
         justify-self:end;
         align-self: end;
@@ -670,11 +689,11 @@ body {
     }
     .photoProfile{
         border-radius: 100%;
-        height: 2.8em;
-        width: 2.8em;
+        height: 3em;
+        width: 3em;
         box-shadow: 3px 3px 1px 1px #faf755;
         margin-right: 2%;
-        margin-left: 2%;
+        margin-left: 3%;
         grid-column-start:2;
         grid-row-start:3;
         grid-row-end:5;

@@ -7,7 +7,7 @@ export const datosCollection = (userId, nomMascota, especie) => {
       especie: especie.value,
     }).then(() => {
       user.updateProfile({
-        displayName: userId.value,
+        displayName: userId.value
       })
       console.log(user)
     })
@@ -63,22 +63,13 @@ export const nuevoPost = (posteditado, id) => {
 
 //  export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
- export const sumarLikes = (id) => {
-  const promis = firebase.firestore().collection('posts').doc(id).update({
-   likes:firebase.firestore.FieldValue.increment(1)
- })
- console.log('suma');
- return promis;
-}
+ export const updateLikes = (id,likes) => firebase.firestore().collection('posts').doc(id).update({
+   likes,
+   });
 
-export const restarLikes = (id) => {
-  const promis = firebase.firestore().collection('posts').doc(id).update({
-   likes:firebase.firestore.FieldValue.increment(-1)
-   })
- console.log('resta');
- return promis;
-}
+export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
 
+export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
  //eliminar post
  export const eliminarPost = (id) =>  {
