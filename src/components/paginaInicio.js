@@ -181,7 +181,7 @@ export function verPosts() {
         let indexUser = likes.indexOf(user.uid);
         console.log(indexUser)
         if(indexUser!=-1){
-          
+          likes.splice(indexUser,1);
           updateLikes(doc.id, likes);
         }
         
