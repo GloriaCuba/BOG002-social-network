@@ -63,21 +63,9 @@ export const nuevoPost = (posteditado, id) => {
 
 //  export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
- export const sumarLikes = (id) => {
-  const promis = firebase.firestore().collection('posts').doc(id).update({
-   likes:firebase.firestore.FieldValue.increment(1)
- })
- console.log('suma');
- return promis;
-}
-
-export const restarLikes = (id) => {
-  const promis = firebase.firestore().collection('posts').doc(id).update({
-   likes:firebase.firestore.FieldValue.increment(-1)
-   })
- console.log('resta');
- return promis;
-}
+ export const updateLikes = (id,likes) => firebase.firestore().collection('posts').doc(id).update({
+   likes,
+   });
 
 export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
 

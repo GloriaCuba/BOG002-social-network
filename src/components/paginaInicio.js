@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { cerrarSesión } from '../firebase/firebase.js';
-import { guardarPosts, obtenerPosts, eliminarPost, sumarLikes, restarLikes, nuevoPost } from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost, updateLikes, nuevoPost } from '../firebase/firestore.js';
 
 // import { mostrarPosts } from '../firebase/post.js';
 
@@ -66,7 +66,7 @@ e.preventDefault(); // Para que no se refresque la página
    let user = firebase.auth().currentUser;
    let displayName = user.displayName;
    let imagen = user.photoURL;
-   let likes ='';
+   let likes =[];
    let userId = user.uid;
    guardarPosts(mensaje, date, displayName, imagen, likes, userId);
    muro.reset()
@@ -90,8 +90,8 @@ export function verPosts() {
       console.log(idOtros);
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
-          divMuro.setAttribute('class', 'divMuro');
-          divOriginal.appendChild(divMuro);
+      divMuro.setAttribute('class', 'divMuro');
+      divOriginal.appendChild(divMuro);
       const autorPost = document.createElement('p');
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
@@ -114,49 +114,53 @@ export function verPosts() {
       starYellow.setAttribute('id','starYellow');
       starYellow.setAttribute('class','ocultar');
       starYellow.src="Img/Star_Likes.png"; 
-      
-      /* console.log(doc.data()); */
-      if(doc.data().likes==!'') {
+      /* if(doc.data().likes==!'') {
         starYellow.classList.remove('ocultar');
         starYellow.classList.add('starYellow');
+      } */
+      const likes = doc.data().likes;
+      const miLike = likes.find(item=>item===user.uid);
+      if(miLike){
+        starYellow.classList.remove('ocultar');
+        starYellow.classList.add('starYellow');
+      }else{
+        starYellow.classList.remove('starYellow');
+        starYellow.classList.add('ocultar');
       }
       divMuro.appendChild(starYellow);
       document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
       const photoProfile= document.createElement('img');
-          photoProfile.setAttribute('class', 'photoProfile');
-          photoProfile.src = (doc.data().imagen);
-          divMuro.appendChild(photoProfile);
+      photoProfile.setAttribute('class', 'photoProfile');
+      photoProfile.src = (doc.data().imagen);
+      divMuro.appendChild(photoProfile);
       const divLike = document.createElement('div');
       divLike.setAttribute('class','divLike');
       divLike.setAttribute('id','divLike');
-      divLike.innerHTML= (doc.data().likes);
+      divLike.innerHTML= doc.data().likes.length===0?'':doc.data().likes.length;/*  operador ternario */
       divMuro.appendChild(divLike);
-      if(doc.data().likes==0) {
-        divLike.innerHTML='';
-      }
-     if(nombreUsuario ==emailOtros){ 
-      const campoBotones = document.createElement('div');
-      const botonBorrar = document.createElement('button');
-          campoBotones.appendChild(botonBorrar);
-          botonBorrar.className="botonBorrar"
-          botonBorrar.type = 'button'; 
-          botonBorrar.textContent = 'Borrar post';
-          botonBorrar.setAttribute('id', 'botonBorrar');
-      const botonEditar = document.createElement('button');
-          botonEditar.className="botonEditar"
-          botonEditar.type = 'button';
-          botonEditar.textContent = 'Editar';
-          botonEditar.setAttribute('id', 'botonEditar');
-          campoBotones.appendChild(botonEditar);
-      divMuro.appendChild(botonEditar);
-      divMuro.appendChild(botonBorrar);
+      if(nombreUsuario ==emailOtros){ 
+        const campoBotones = document.createElement('div');
+        const botonBorrar = document.createElement('button');
+        campoBotones.appendChild(botonBorrar);
+        botonBorrar.className="botonBorrar"
+        botonBorrar.type = 'button'; 
+        botonBorrar.textContent = 'Borrar post';
+        botonBorrar.setAttribute('id', 'botonBorrar');
+        const botonEditar = document.createElement('button');
+        botonEditar.className="botonEditar"
+        botonEditar.type = 'button';
+        botonEditar.textContent = 'Editar';
+        botonEditar.setAttribute('id', 'botonEditar');
+        campoBotones.appendChild(botonEditar);
+        divMuro.appendChild(botonEditar);
+        divMuro.appendChild(botonBorrar);
 
       botonBorrar.addEventListener('click', () => {
         botonEliminar(doc.id);
-        console.log(doc.id);
+        /* console.log(doc.id);
         console.log(user.uid)
         console.log(nombreUsuario)
-        console.log(emailOtros)
+        console.log(emailOtros) */
         });
         botonEditar.addEventListener('click', () => {
         botonEditarPost(doc.id, doc.data().mensaje);
@@ -169,12 +173,19 @@ export function verPosts() {
       }
 
       star.addEventListener('click', () => {
-          sumarLikes(doc.id);
-          });
+        likes.push(user.uid);
+        updateLikes(doc.id, likes);
+      });
         
       starYellow.addEventListener('click', () => {
-          restarLikes(doc.id);
-        });
+        let indexUser = likes.indexOf(user.uid);
+        console.log(indexUser)
+        if(indexUser!=-1){
+          
+          updateLikes(doc.id, likes);
+        }
+        
+      });
         
       });
      /* function remover(){
