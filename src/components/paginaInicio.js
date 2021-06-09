@@ -38,13 +38,12 @@ export function inicio() {
    `;
   const divMuro = document.createElement('div');
   divMuro.innerHTML = muro;
-
   return divMuro;
 }
 
-export function menuToggle() {
-  const icono = document.querySelector('#menuToggle');
-  icono.addEventListener('click', () => {
+  export function menuToggle() {
+    const icono = document.querySelector('#menuToggle');
+    icono.addEventListener('click', () => {
     const menu = document.querySelector('#menu');
     menu.classList.toggle('opcionesMenuOpen');
     const menuOpen = document.getElementById('menuToggle');
@@ -95,10 +94,13 @@ export function verPosts() {
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
       autorPost.innerHTML = (doc.data().user);
+      const divTextPost = document.createElement('div');
+      divTextPost.setAttribute('class', 'divText');
       const textPost = document.createElement('p');
-      textPost.setAttribute('class', 'divText');
+      textPost.setAttribute('class', 'pText');
+      divTextPost.appendChild(textPost);
       textPost.innerHTML = (doc.data().mensaje);
-      divMuro.appendChild(textPost);
+      divMuro.appendChild(divTextPost);
       const star = document.createElement('input');
       star.setAttribute('type','image');
       star.setAttribute('id','star');

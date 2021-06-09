@@ -18,8 +18,8 @@ export function configPerfil() {
           <div class="contenedorInputs" id="contenedorInputs">
               <h3> Complete los siguientes campos </h3> <br>
              <form id="datosUsuario">
-              <input type='text' id='userId' placeholder="Nombre de Usuario"></input> <br>
-              <input id='nombreMascota' placeholder="Nombre de tu mascota"></input><br>
+              <input type='text' id='userId' placeholder="Nombre de tu Mascota"></input> <br>
+              <input id='nombreMascota' placeholder="Tu Nombre"></input><br>
               <h3> ¿Que mascota tienes? </h3>
               <select id="menuEspecies" class="menuEspecies">
                 <option>Ave</option>
