@@ -21,8 +21,8 @@ export function registrarse() {
         <h6>O</h6>  
       <p class="registroProveedores">Regístrate con tu cuenta de Google o Facebook</p>
       <figure>
-        <img type="button" id="registroGmail" src="img/Icono_Google.png"> 
-        <img type="button" id="registroFacebook" src="img/Icono_Facebook.png">
+        <img type="button" id="registroGmail" src="Img/Icono_Google.png"> 
+        <img type="button" id="registroFacebook" src="Img/Icono_Facebook.png">
       </figure>
     </div>
     `;
