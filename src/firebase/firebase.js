@@ -7,7 +7,7 @@ export function ingresar(email, password) {
 
 // funcion registrarse con email y contraseña
 export function autenticar(email, password) {
-  const promise = firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
+  const promise = firebase.auth().createUserWithEmailAndPassword(email, password);
   return promise;
 }
 
@@ -35,13 +35,15 @@ export function ingresarFaceBook() {
 }
 
 export function cerrarSesión() {
-  firebase.auth().signOut().then(() => {
-    // eslint-disable-next-line no-console
-    console.log('Signed Out');
-  }, (error) => {
-    // eslint-disable-next-line no-console
-    console.error('Sign Out Error', error);
-  });
+const signOutUser = firebase.auth().signOut();
+return signOutUser;
+
+  //   // eslint-disable-next-line no-console
+  //   console.log('Signed Out');
+  // }, (error) => {
+  //   // eslint-disable-next-line no-console
+  //   console.error('Sign Out Error', error);
+  // });
 }
 
 export function restablecimientoContrasena(email) {

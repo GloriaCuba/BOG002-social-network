@@ -1,5 +1,4 @@
-// import {  obtenerDatosUsuario } from '../firebase/firestore.js';
-import { guardarPosts, obtenerDatosUsuario, eliminarPost} from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost} from '../firebase/firestore.js';
 
 export function perfil() {
     let perfil = `
@@ -86,7 +85,7 @@ function guardarPublicacion(e){
          }
 
 export function verPostsPerfil() {
-      obtenerDatosUsuario((querySnapshot) => {
+      obtenerPosts((querySnapshot) => {
       document.getElementById('publicacionesUsuario').innerHTML = '';
       querySnapshot.forEach((doc) => {    
       let userActual = firebase.auth().currentUser;

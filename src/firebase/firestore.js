@@ -36,10 +36,14 @@ function userProfile(url) {
     });
 }
 
-// creacion de una base de datos posts usuarios
-export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
-  const colleccionPost = firebase.firestore().collection('posts')
-  return colleccionPost.doc().set({
+ // obtencion de post para hacerlos visibles en pantalla
+ export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
+
+
+ // creacion de una base de datos posts usuarios
+ export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) => {
+   const colleccionPost = firebase.firestore().collection('posts')
+   return colleccionPost.doc().set({
     mensaje: mensaje,
     date,
     user:displayName,
@@ -48,6 +52,17 @@ export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) 
     likes,
   })
  }
+ 
+export const nuevoPost = (posteditado, id) => { 
+  let editar = firebase.firestore().collection('posts').doc(id);
+  return editar.update({
+    mensaje: posteditado,
+    })
+  }
+ 
+
+//  export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
+
  export const sumarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(1)
@@ -59,18 +74,14 @@ export const guardarPosts = (mensaje, date, displayName, imagen, likes, userId) 
 export const restarLikes = (id) => {
   const promis = firebase.firestore().collection('posts').doc(id).update({
    likes:firebase.firestore.FieldValue.increment(-1)
- })
+   })
  console.log('resta');
  return promis;
 }
 
 export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
 
-
- // obtencion de post para hacerlos visibles en pantalla
- export const obtenerPosts = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
-
- export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
+export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
  //eliminar post
  export const eliminarPost = (id) =>  {

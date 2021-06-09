@@ -284,10 +284,6 @@ body {
     margin: 0em 1em;
 }
 
-#descripcionError{
-    display: none;
-}
-
 .formularioRegistro .registroProveedores{
     grid-column-start:1;
     grid-column-end: 4;
@@ -304,15 +300,65 @@ body {
     grid-column-end: 4;
     grid-row-start:3;
     grid-row-end:4;
-    justify-self: center;
+    /* justify-self: center;
     margin-right: 2.5vw;
-    align-self: center;
-    /* margin-left: 3vw; */
-    /* justify-items: center;
-    justify-content: center; */
+    align-self: center; */
 }
 
-#formularioInputs input{
+.divFormularioInputs {
+    display: grid;
+    grid-template-columns: 15% 35% 35% 15%;
+    grid-template-rows: 5% 15% 8% 15% 8% 15% 8% 15% 11%;
+    height: 100%;
+    width: 100%;
+}
+
+.divFormularioInputs input {
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    background-color:#FEEF6A;
+    border: 2px solid white;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#emailAuth {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end:3;
+}
+#passwordAuth{
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:5;
+}
+#passwordAuth2 {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:6;
+    grid-row-end:7; 
+}
+
+.divFormularioInputs button {
+    grid-column-start:2;
+    grid-column-end: 4;
+    grid-row-start:8;
+    grid-row-end:9; 
+    justify-self: center;
+    background-color: #8FC1DF;
+    border: 2px solid white;
+    border-radius: 3px;
+    width: 60%;
+    height: 80%;
+    align-self: center;
+}
+/* #formularioInputs input{
     height: 40px;
     width: 50vw;
     background-color:#FEEF6A;
@@ -322,14 +368,16 @@ body {
     text-align: center;
     margin-top: 1em;
     margin-left: 1em;
-}
+} */
 
-#formularioInputs button{
-    height: 40px;
-    width: 50vw;
-    background-color: #8FC1DF;
-    border: 2px solid white;
-    border-radius: 3px;
+.divFormularioInputs p{
+    display: none;
+    grid-column-start:1;
+    grid-column-end: 5;
+    grid-row-start:5;
+    grid-row-end:6;
+    justify-self: center;
+    font-size: 0.5em;
 }
 
 .formularioRegistro h6{
@@ -385,7 +433,12 @@ body {
     width: 15em;
     height: 10em;
 }
+
 /************************************Interfaz-Configuración de Perfil***************************************************/
+.mensajeDatos{
+    display: none;
+    margin-top: 1em;
+}
 
 .contenedorPerfil {
     background-color: #045C73;
@@ -469,6 +522,7 @@ body {
     background-color: #8FC1DF;
     border: 2px solid white;
     border-radius: 3px;
+    margin: 0.5em;
 }
 .contenedorImagen p {
     margin-top: 1em;
@@ -496,8 +550,9 @@ body {
 }
 
 .contenedorOpciones button {
-    height: 40px;
-    width: 30vw;
+    width: 35%;
+    margin: 0 0.5em;
+    padding: 0.5em 0.5em;
     background-color: #bbcafa;
     border: 2px solid white;
     border-radius: 3px;
@@ -507,7 +562,6 @@ body {
 .contenedorOpciones button:hover {
     background-color: rgb(132, 186, 202);
     color: #000000;
-    font-weight: bolder;
 }
 
 .contenedorOpciones h3 {
@@ -520,6 +574,7 @@ body {
 .mensajeCargarFoto {
     display: none;
  }
+
  .contenedorPerfil header{
     grid-column-start:1;
     grid-row-start:1;
@@ -537,8 +592,8 @@ body {
 /************************************Muro***************************************************/
 
 #contenedorMuro{
-    /* background-color: #045C73; */
-    background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%); 
+    background-color: #045C73;
+    /* background: linear-gradient(180deg, #5159C4 0%, #4699D4 100%);  */
     background-size: cover;
     background-repeat:repeat;
     display: grid;
@@ -910,9 +965,6 @@ body {
     font-family: inherit;
 }
 
-.descripcionError {
-    display: none;
-}
 
 /************************************ perfil***************************************************/
 
@@ -980,7 +1032,8 @@ body {
 } 
 
  .fotoPerfilUsuario img {
-    width: 8em;
+    max-width: 8em;
+    max-height: 8em;
     height: 100%;  
     border-radius: 100%;
     border: 3px white solid;
