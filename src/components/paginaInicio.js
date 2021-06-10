@@ -59,24 +59,24 @@ export function irAPerfil() {
   });
 }
 // Se definen los campos a almacenar en la coleccion post 
-function submitHandler(e){
-e.preventDefault(); // Para que no se refresque la página
-   const mensaje = muro['mensaje'].value;
-   const date = firebase.firestore.Timestamp.now();
-   let user = firebase.auth().currentUser;
-   let displayName = user.displayName;
-   let imagen = user.photoURL;
-   let likes =[];
-   let userId = user.uid;
-   guardarPosts(mensaje, date, displayName, imagen, likes, userId);
-   muro.reset()
- }
+function submitHandler(e) {
+  e.preventDefault(); // Para que no se refresque la página
+  const mensaje = muro['mensaje'].value;
+  const date = firebase.firestore.Timestamp.now();
+  let user = firebase.auth().currentUser;
+  let displayName = user.displayName;
+  let imagen = user.photoURL;
+  let likes = [];
+  let userId = user.uid;
+  guardarPosts(mensaje, date, displayName, imagen, likes, userId);
+  muro.reset()
+}
 // se añade el evento para almacenar los campos en firebase
 export function postMuro() {
-   const muro = document.getElementById('muro');
-   muro.addEventListener('submit', submitHandler);
-   }
-   
+  const muro = document.getElementById('muro');
+  muro.addEventListener('submit', submitHandler);
+}
+
 // se crean los elementos que contendra el muro
 export function verPosts() {
   obtenerPosts((querySnapshot) => {
@@ -104,50 +104,50 @@ export function verPosts() {
       textPost.innerHTML = (doc.data().mensaje);
       divMuro.appendChild(divTextPost);
       const star = document.createElement('input');
-      star.setAttribute('type','image');
-      star.setAttribute('id','star');
-      star.setAttribute('class','star');
-      star.src="Img/Star_Likes_Blanca.png"; 
+      star.setAttribute('type', 'image');
+      star.setAttribute('id', 'star');
+      star.setAttribute('class', 'star');
+      star.src = "Img/Star_Likes_Blanca.png";
       divMuro.appendChild(star);
       const starYellow = document.createElement('input');
-      starYellow.setAttribute('type','image');
-      starYellow.setAttribute('id','starYellow');
-      starYellow.setAttribute('class','ocultar');
-      starYellow.src="Img/Star_Likes.png"; 
+      starYellow.setAttribute('type', 'image');
+      starYellow.setAttribute('id', 'starYellow');
+      starYellow.setAttribute('class', 'ocultar');
+      starYellow.src = "Img/Star_Likes.png";
       /* if(doc.data().likes==!'') {
         starYellow.classList.remove('ocultar');
         starYellow.classList.add('starYellow');
       } */
       const likes = doc.data().likes;
-      const miLike = likes.find(item=>item===user.uid);
-      if(miLike){
+      const miLike = likes.find(item => item === user.uid);
+      if (miLike) {
         starYellow.classList.remove('ocultar');
         starYellow.classList.add('starYellow');
-      }else{
+      } else {
         starYellow.classList.remove('starYellow');
         starYellow.classList.add('ocultar');
       }
       divMuro.appendChild(starYellow);
       document.getElementById("holaUsuario").innerHTML = ('Hola ' + nombreUsuario);
-      const photoProfile= document.createElement('img');
+      const photoProfile = document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);
       divMuro.appendChild(photoProfile);
       const divLike = document.createElement('div');
-      divLike.setAttribute('class','divLike');
-      divLike.setAttribute('id','divLike');
-      divLike.innerHTML= doc.data().likes.length===0?'':doc.data().likes.length;/*  operador ternario */
+      divLike.setAttribute('class', 'divLike');
+      divLike.setAttribute('id', 'divLike');
+      divLike.innerHTML = doc.data().likes.length === 0 ? '' : doc.data().likes.length;/*  operador ternario */
       divMuro.appendChild(divLike);
-      if(nombreUsuario ==emailOtros){ 
+      if (nombreUsuario == emailOtros) {
         const campoBotones = document.createElement('div');
         const botonBorrar = document.createElement('button');
         campoBotones.appendChild(botonBorrar);
-        botonBorrar.className="botonBorrar"
-        botonBorrar.type = 'button'; 
+        botonBorrar.className = "botonBorrar"
+        botonBorrar.type = 'button';
         botonBorrar.textContent = 'Borrar post';
         botonBorrar.setAttribute('id', 'botonBorrar');
         const botonEditar = document.createElement('button');
-        botonEditar.className="botonEditar"
+        botonEditar.className = "botonEditar"
         botonEditar.type = 'button';
         botonEditar.textContent = 'Editar';
         botonEditar.setAttribute('id', 'botonEditar');
@@ -155,20 +155,20 @@ export function verPosts() {
         divMuro.appendChild(botonEditar);
         divMuro.appendChild(botonBorrar);
 
-      botonBorrar.addEventListener('click', () => {
-        botonEliminar(doc.id);
-        /* console.log(doc.id);
-        console.log(user.uid)
-        console.log(nombreUsuario)
-        console.log(emailOtros) */
+        botonBorrar.addEventListener('click', () => {
+          botonEliminar(doc.id);
+          /* console.log(doc.id);
+          console.log(user.uid)
+          console.log(nombreUsuario)
+          console.log(emailOtros) */
         });
         botonEditar.addEventListener('click', () => {
-        botonEditarPost(doc.id, doc.data().mensaje);
+          botonEditarPost(doc.id, doc.data().mensaje);
         });
-      botonEditar.addEventListener('click', () => {
-      botonEditarPost(doc.id, doc.data().mensaje);
-      });
-      }else{
+        botonEditar.addEventListener('click', () => {
+          botonEditarPost(doc.id, doc.data().mensaje);
+        });
+      } else {
         /* console.log('no estan los botones'); */
       }
 
@@ -176,74 +176,74 @@ export function verPosts() {
         likes.push(user.uid);
         updateLikes(doc.id, likes);
       });
-        
+
       starYellow.addEventListener('click', () => {
         let indexUser = likes.indexOf(user.uid);
         console.log(indexUser)
-        if(indexUser!=-1){
-          likes.splice(indexUser,1);
+        if (indexUser != -1) {
+          likes.splice(indexUser, 1);
           updateLikes(doc.id, likes);
         }
-        
+
       });
-        
-      });
-     /* function remover(){
-      const starYellow = document.getElementById('starYellow'); 
-      starYellow.addEventListener('click', () => {
-      restarLikes(doc.id).then(() => {
-      console.log('wiii')
+
     });
-  })
+    /* function remover(){
+     const starYellow = document.getElementById('starYellow'); 
+     starYellow.addEventListener('click', () => {
+     restarLikes(doc.id).then(() => {
+     console.log('wiii')
+   });
+ })
 } */
-});
-      
-      
-  
+  });
+
+
+
   function botonEliminar(id) {
     eliminarPost(id);
-    }
+  }
 
-    }
+}
 
-    function botonEditarPost(id, campo) {
-        document.getElementById('mensaje').value = campo;
-        console.log (id, campo);
-        actualizandoPost(id, campo);
-      }
-      
-
-    function actualizandoPost(id) {
-    const muro = document.getElementById('muro');
-    const postear = document.getElementById('postear');
-    postear.innerHTML = 'Actualizar';
-    muro.removeEventListener('submit', submitHandler);
-    postear.addEventListener('click', function (){
-      const posteditado = document.getElementById('mensaje').value;
-      nuevoPost(posteditado, id).then(() => {
-        console.log('editado');
-        postear.innerHTML = 'Publicar';
-        muro.addEventListener('submit', submitHandler);
-        window.location = '#/inicio';
-        location.reload();
-      })
-        .catch((error) => {
-          console.error('error al editar', error);
-        });
-        });
-      } 
-
-
-
-        
-export function salir() {
-const salir = document.querySelector('#salir');
-salir.addEventListener('click', () => {
-  cerrarSesión();
-  window.location = '';
-  location.reload();
-});
+function botonEditarPost(id, campo) {
+  document.getElementById('mensaje').value = campo;
+  console.log(id, campo);
+  actualizandoPost(id, campo);
 }
 
 
- 
+function actualizandoPost(id) {
+  const muro = document.getElementById('muro');
+  const postear = document.getElementById('postear');
+  postear.innerHTML = 'Actualizar';
+  muro.removeEventListener('submit', submitHandler);
+  postear.addEventListener('click', function () {
+    const posteditado = document.getElementById('mensaje').value;
+    nuevoPost(posteditado, id).then(() => {
+      console.log('editado');
+      postear.innerHTML = 'Publicar';
+      muro.addEventListener('submit', submitHandler);
+      window.location = '#/inicio';
+      location.reload();
+    })
+      .catch((error) => {
+        console.error('error al editar', error);
+      });
+  });
+}
+
+
+
+
+export function salir() {
+  const salir = document.querySelector('#salir');
+  salir.addEventListener('click', () => {
+    cerrarSesión();
+    window.location = '';
+    location.reload();
+  });
+}
+
+
+
