@@ -38,4 +38,4 @@ Somos una red social que busca unir a las mascotas del mundo y a sus dueños.
 
 ### Prototipo de alta
 
-<p><img src=Img/Interfaz_Inicio.png><img src=Img/Interfaz_Registro.png><img src=Img/Interfaz_Config_Perfil.png><img src=Img/Interfaz_Inicio_Sesión.png><img src=Img/Interfaz_Perfil.png><img src=Img/Muro.png></p>
+<p><img src='src/Img/Interfaz_Inicio.png'><img src='src/Img/Interfaz_Registro.png'><img src='src/Img/Interfaz_Config_Perfil.png'><img src='src/Img/Interfaz_Inicio_Sesión.png'><img src='src/Img/Interfaz_Perfil.png><img src=Img/Muro.png'></p>
