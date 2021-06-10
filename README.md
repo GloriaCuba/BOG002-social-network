@@ -153,6 +153,8 @@ que detalles:
 * Quiénes son los principales usuarios de producto.
 * Qué problema resuelve el producto / para qué le servirá a estos usuarios.
 
+
+
 ### 5.3 Historias de usuario
 
 Una vez que entiendas las necesidades de tus usuarixs, escribe las Historias de

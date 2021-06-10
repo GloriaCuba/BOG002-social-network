@@ -4,10 +4,7 @@ export function configPerfil() {
   const formularioPerfil = `
       <div class="contenedorPerfil" method ="post">
         <header>
-        <div class="history">
-          <img src="Img/atrasIcono.png" type='button' id='irAtras'>
-        </div>
-      </header>
+        </header>
           <h1>Configuración de Perfil</h1>
           <div class="contenedorOpciones">
           <h3> Opciones a configurar </h3> <br>

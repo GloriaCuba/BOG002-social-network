@@ -9,6 +9,17 @@ window.addEventListener('load', () => {
 window.addEventListener("haschange", () => {
   router(window.location.hash)
  })
+
+ /* const init = () => {
+    // esto identifica cada on load si lo comentan nos toca darle recargar para que cambie la pantalla
+    window.addEventListener('hashchange', () => {
+      router(window.location.hash);
+    });
+    // si no le pasamos estos parametros no nos carga la pagina incial tan pronto ejecutamos
+    router(window.location.hash);
+    /* Validaciones para los Inputs Inicio de sesión
+  }
+  init();  */
   
 
 //   function adelante() {
