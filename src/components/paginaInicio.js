@@ -22,8 +22,8 @@ export function inicio() {
          <img src="Img/Perro.jpg" id="filtroCaninos">
          <img src="Img/Gato.jpg" id="filtroFelinos">
          <img src="Img/conejo.jpg" id="filtroRoedores">
-         <img src="Img/pez1.jpg" id="filtroRoedores">
-         <img src="Img/Categoria_Aves.jpg" id="filtroRoedores">
+         <img src="Img/pez1.jpg" id="filtroAves">
+         <img src="Img/Categoria_Aves.jpg" id="filtroOtros">
       </div>
       <div class="textArea">
          <form id="muro" class="muro">
@@ -246,4 +246,36 @@ salir.addEventListener('click', () => {
 }
 
 
- 
+export function filtrarAmigos() {
+  const filtros = document.getElementById('filtroCaninos');
+  filtros.addEventListener('click', filtrarSpecie);
+  //   window.location = '#/filtroAmigos';
+  //   location.reload();
+  // });
+
+function filtrarSpecie() {
+  // const filtros = document.getElementById(filtro);
+ window.location = '#/filtroAmigos';
+location.reload();
+}
+}
+
+// export function filtrarAmigos(especie) {
+//   const filtros = document.getElementById(especie);
+//   filtros.addEventListener('click', filtrarSpecie);
+//   //   window.location = '#/filtroAmigos';
+//   //   location.reload();
+//   // });
+
+// function filtrarSpecie(especie) {
+//   // const filtros = document.getElementById(filtro);
+//  window.location = '#/filtroAmigos';
+// location.reload();
+// }
+// }
+
+// filtrarAmigos('filtrarFelinos')
+ // const filtros = document.getElementById('filtroFelinos');
+  // const filtros = document.getElementById('filtroRoedores');
+  // const filtros = document.getElementById('filtroAves');
+  // const filtros = document.getElementById('filtroOtros');

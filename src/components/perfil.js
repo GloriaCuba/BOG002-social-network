@@ -100,10 +100,13 @@ export function verPostsPerfil() {
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
       autorPost.innerHTML = usuarioNombre + " ha publicado:";
+      const divTextPost = document.createElement('div');
+      divTextPost.setAttribute('class', 'divText');
       const textPost = document.createElement('p');
-      textPost.setAttribute('class', 'divText');
+      textPost.setAttribute('class', 'pText');
+      divTextPost.appendChild(textPost);
       textPost.innerHTML = (doc.data().mensaje);
-      divMuro.appendChild(textPost);
+      divMuro.appendChild(divTextPost);
       const star = document.createElement('img');
       star.setAttribute('class', 'starPerfil');
       star.src = 'Img/Star_Likes.png';
