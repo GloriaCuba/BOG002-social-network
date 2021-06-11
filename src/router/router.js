@@ -9,7 +9,7 @@ import {
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
-import { proximamente, irMuro } from '../components/proximamente.js';
+import { proximamente, irMuro } from '../components/Proximamente.js';
 import {
   configPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage,irAlPerfil
 } from '../components/configPerfil.js';
