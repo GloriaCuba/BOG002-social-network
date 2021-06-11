@@ -7,7 +7,6 @@ const fixtureData = {
   __collection__: {
     posts: {
       __doc__: {
-        abc123: {
           mensaje: 'Mensaje 1',
           date: '2 de junio de 2021, 09:24:04',
           user: 'Pepita',
