@@ -1,4 +1,4 @@
-import { guardarPosts, obtenerPosts, eliminarPost} from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost,updateLikes} from '../firebase/firestore.js';
 
 export function perfil() {
     let perfil = `
@@ -92,7 +92,7 @@ export function verPostsPerfil() {
       const nombreUsuario = userActual.displayName;
       const emailOtros = doc.data().user;
       const idOtros = doc.data().userId;
-      // if (doc.data().user == email) { 
+      if (doc.data().user == nombreUsuario) { 
       const divOriginal = document.getElementById('publicacionesUsuario');
       const divMuro = document.createElement('div');
       divMuro.setAttribute('class', 'divMuro');
@@ -108,15 +108,49 @@ export function verPostsPerfil() {
       divTextPost.appendChild(textPost);
       textPost.innerHTML = (doc.data().mensaje);
       divMuro.appendChild(divTextPost);
-      const star = document.createElement('img');
-      star.setAttribute('class', 'starPerfil');
-      star.src = 'Img/Star_Likes.png';
+      const star = document.createElement('input');
+      star.setAttribute('type', 'image');
+      star.setAttribute('id', 'star');
+      star.setAttribute('class', 'star');
+      star.src = "Img/Star_Likes_Blanca.png";
       divMuro.appendChild(star);
+      const starYellow = document.createElement('input');
+      starYellow.setAttribute('type', 'image');
+      starYellow.setAttribute('id', 'starYellow');
+      starYellow.setAttribute('class', 'ocultar');
+      starYellow.src = "Img/Star_Likes.png";
+      
+      const likes = doc.data().likes;
+      const miLike = likes.find(item => item === userActual.uid);
+      if (miLike) {
+        starYellow.classList.remove('ocultar');
+        starYellow.classList.add('starYellow');
+      } else {
+        starYellow.classList.remove('starYellow');
+        starYellow.classList.add('ocultar');
+      }
+      divMuro.appendChild(starYellow);
+      //
       const divLike = document.createElement('div');
       divLike.setAttribute('class','divLike');
       divLike.setAttribute('id','divLike');
-      divLike.innerHTML = (doc.data().likes.length);
+      divLike.innerHTML = doc.data().likes.length === 0 ? '' : doc.data().likes.length ;/*  operador ternario */;
       divMuro.appendChild(divLike);
+      //
+      star.addEventListener('click', () => {
+            likes.push(userActual.uid);
+            updateLikes(doc.id, likes);
+          });
+    
+ starYellow.addEventListener('click', () => {
+  let indexUser = likes.indexOf(userActual.uid);
+  console.log(indexUser)
+  if (indexUser != -1) {
+  likes.splice(indexUser, 1);
+  updateLikes(doc.id, likes);
+}
+});
+    
       const photoProfile = document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);
@@ -145,6 +179,7 @@ export function verPostsPerfil() {
                 cerrarModal()
                 botonEditarPost(doc.id, doc.data().mensaje)
       });
+}
 });
 
    });

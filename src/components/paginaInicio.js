@@ -109,7 +109,8 @@ export function verPosts() {
       star.setAttribute('class', 'star');
       star.src = "Img/Star_Likes_Blanca.png";
       divMuro.appendChild(star);
-      const starYellow = document.createElement('input');
+      //
+    const starYellow = document.createElement('input');
       starYellow.setAttribute('type', 'image');
       starYellow.setAttribute('id', 'starYellow');
       starYellow.setAttribute('class', 'ocultar');
