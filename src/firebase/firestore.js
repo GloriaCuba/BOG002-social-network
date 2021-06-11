@@ -59,23 +59,15 @@ export const nuevoPost = (posteditado, id) => {
     mensaje: posteditado,
     })
   }
- 
 
-//  export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
-
- export const updateLikes = (id,likes) => firebase.firestore().collection('posts').doc(id).update({
+export const updateLikes = (id,likes) => firebase.firestore().collection('posts').doc(id).update({
    likes,
    });
-
 export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
-
 export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
 
- //eliminar post
- export const eliminarPost = (id) =>  {
-   firebase.firestore().collection('posts').doc(id).delete().then(() => {
-    console.log('Document successfully deleted!');
-     }).catch((error) => {
-    console.error('Error removing document: ', error);
- });
-  }
+//eliminar post
+ export const eliminarPost = (id) => {
+   let borrar = firebase.firestore().collection('posts').doc(id);
+   return borrar.delete();
+}
