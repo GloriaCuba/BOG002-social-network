@@ -584,7 +584,7 @@ body {
         justify-self: end;
         align-self: start;
         grid-column-start:4;
-        grid: column end 5px;;
+        grid-column-end: 5;
         grid-row-start:5;
         width: 55px;
         height: 22px;
@@ -1081,11 +1081,11 @@ footer{
 }
 
 .muroModal {
-    display: relative;
+    position: relative;
 }
 
 .muroModal a{
-    display: absolute;
+    position: absolute;
     left: 0;
     right: 50px;
 }
