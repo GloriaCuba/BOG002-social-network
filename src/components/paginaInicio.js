@@ -245,25 +245,15 @@ export function salir() {
   });
 }
 
-
-<<<<<<< HEAD
 export function filtrarAmigos() {
-  const filtrosCanino = document.getElementById('filtroCaninos');
-  const filtrosFelino = document.getElementById('filtroFelinos');
-  const filtrosRoedores = document.getElementById('filtroRoedores');
-  const filtrosAves = document.getElementById('filtroAves');
-  const filtrosOtros = document.getElementById('filtroOtros');
-  filtrosCanino.addEventListener('click', filtrarSpecie);
-  filtrosFelino.addEventListener('click', filtrarSpecie);
-  filtrosRoedores.addEventListener('click', filtrarSpecie);
-  filtrosAves.addEventListener('click', filtrarSpecie);
-  filtrosOtros.addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroCaninos').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroFelinos').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroRoedores').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroAves').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroOtros').addEventListener('click', filtrarSpecie);
 }
 
 function filtrarSpecie() {
  window.location = '#/filtroAmigos';
 location.reload();
 }
-=======
-
->>>>>>> 2846d3dcbfee6bd0d717cfe1e682670a5c54bab9
