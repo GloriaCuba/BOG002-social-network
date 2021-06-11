@@ -247,35 +247,19 @@ salir.addEventListener('click', () => {
 
 
 export function filtrarAmigos() {
-  const filtros = document.getElementById('filtroCaninos');
-  filtros.addEventListener('click', filtrarSpecie);
-  //   window.location = '#/filtroAmigos';
-  //   location.reload();
-  // });
+  const filtrosCanino = document.getElementById('filtroCaninos');
+  const filtrosFelino = document.getElementById('filtroFelinos');
+  const filtrosRoedores = document.getElementById('filtroRoedores');
+  const filtrosAves = document.getElementById('filtroAves');
+  const filtrosOtros = document.getElementById('filtroOtros');
+  filtrosCanino.addEventListener('click', filtrarSpecie);
+  filtrosFelino.addEventListener('click', filtrarSpecie);
+  filtrosRoedores.addEventListener('click', filtrarSpecie);
+  filtrosAves.addEventListener('click', filtrarSpecie);
+  filtrosOtros.addEventListener('click', filtrarSpecie);
+}
 
 function filtrarSpecie() {
-  // const filtros = document.getElementById(filtro);
  window.location = '#/filtroAmigos';
 location.reload();
 }
-}
-
-// export function filtrarAmigos(especie) {
-//   const filtros = document.getElementById(especie);
-//   filtros.addEventListener('click', filtrarSpecie);
-//   //   window.location = '#/filtroAmigos';
-//   //   location.reload();
-//   // });
-
-// function filtrarSpecie(especie) {
-//   // const filtros = document.getElementById(filtro);
-//  window.location = '#/filtroAmigos';
-// location.reload();
-// }
-// }
-
-// filtrarAmigos('filtrarFelinos')
- // const filtros = document.getElementById('filtroFelinos');
-  // const filtros = document.getElementById('filtroRoedores');
-  // const filtros = document.getElementById('filtroAves');
-  // const filtros = document.getElementById('filtroOtros');
