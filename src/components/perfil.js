@@ -1,4 +1,4 @@
-import { guardarPosts, obtenerPosts, eliminarPost} from '../firebase/firestore.js';
+import { guardarPosts, obtenerPosts, eliminarPost,updateLikes} from '../firebase/firestore.js';
 
 export function perfil() {
     let perfil = `
@@ -72,11 +72,11 @@ function guardarPublicacion(e){
          const mensaje = muroPerfil['mensajePerfil'].value;
          const date = firebase.firestore.Timestamp.now();
          let user = firebase.auth().currentUser;
-         let email = user.email;
+         let displayName = user.displayName;
          let imagen = user.photoURL;
-         let likes ='';
+         let likes =[];
          let userId = user.uid;
-         guardarPosts(mensaje, date, email, imagen, likes, userId);
+         guardarPosts(mensaje, date, displayName,imagen, likes, userId);
          muroPerfil.reset()
        }
  export function postPerfil() {
@@ -87,11 +87,12 @@ function guardarPublicacion(e){
 export function verPostsPerfil() {
       obtenerPosts((querySnapshot) => {
       document.getElementById('publicacionesUsuario').innerHTML = '';
-      querySnapshot.forEach((doc) => {    
+      querySnapshot.forEach((doc) => {
       let userActual = firebase.auth().currentUser;
-      const email = userActual.email
-      const usuarioNombre = userActual.displayName
-      if (doc.data().user == email) { 
+      const nombreUsuario = userActual.displayName;
+      const emailOtros = doc.data().user;
+      const idOtros = doc.data().userId;
+      if (doc.data().user == nombreUsuario) { 
       const divOriginal = document.getElementById('publicacionesUsuario');
       const divMuro = document.createElement('div');
       divMuro.setAttribute('class', 'divMuro');
@@ -99,21 +100,58 @@ export function verPostsPerfil() {
       const autorPost = document.createElement('h3');
       autorPost.setAttribute('class', 'autorPost');
       divMuro.appendChild(autorPost);
-      autorPost.innerHTML = usuarioNombre + " ha publicado:";
+      autorPost.innerHTML = nombreUsuario + " ha publicado:";
+      const divTextPost = document.createElement('div');
+      divTextPost.setAttribute('class', 'divText');
       const textPost = document.createElement('p');
-      textPost.setAttribute('class', 'divText');
+      textPost.setAttribute('class', 'pText');
+      divTextPost.appendChild(textPost);
       textPost.innerHTML = (doc.data().mensaje);
-      divMuro.appendChild(textPost);
-      const star = document.createElement('img');
-      star.setAttribute('class', 'starPerfil');
-      star.src = 'Img/Star_Likes.png';
+      divMuro.appendChild(divTextPost);
+      const star = document.createElement('input');
+      star.setAttribute('type', 'image');
+      star.setAttribute('id', 'star');
+      star.setAttribute('class', 'star');
+      star.src = "Img/Star_Likes_Blanca.png";
       divMuro.appendChild(star);
+      const starYellow = document.createElement('input');
+      starYellow.setAttribute('type', 'image');
+      starYellow.setAttribute('id', 'starYellow');
+      starYellow.setAttribute('class', 'ocultar');
+      starYellow.src = "Img/Star_Likes.png";
+      
+      const likes = doc.data().likes;
+      const miLike = likes.find(item => item === userActual.uid);
+      if (miLike) {
+        starYellow.classList.remove('ocultar');
+        starYellow.classList.add('starYellow');
+      } else {
+        starYellow.classList.remove('starYellow');
+        starYellow.classList.add('ocultar');
+      }
+      divMuro.appendChild(starYellow);
+      //
       const divLike = document.createElement('div');
       divLike.setAttribute('class','divLike');
       divLike.setAttribute('id','divLike');
-      divLike.innerHTML= (doc.data().likes);
+      divLike.innerHTML = doc.data().likes.length === 0 ? '' : doc.data().likes.length ;/*  operador ternario */;
       divMuro.appendChild(divLike);
-      const photoProfile= document.createElement('img');
+      //
+      star.addEventListener('click', () => {
+            likes.push(userActual.uid);
+            updateLikes(doc.id, likes);
+          });
+    
+ starYellow.addEventListener('click', () => {
+  let indexUser = likes.indexOf(userActual.uid);
+  console.log(indexUser)
+  if (indexUser != -1) {
+  likes.splice(indexUser, 1);
+  updateLikes(doc.id, likes);
+}
+});
+    
+      const photoProfile = document.createElement('img');
       photoProfile.setAttribute('class', 'photoProfile');
       photoProfile.src = (doc.data().imagen);
       divMuro.appendChild(photoProfile);
@@ -141,14 +179,16 @@ export function verPostsPerfil() {
                 cerrarModal()
                 botonEditarPost(doc.id, doc.data().mensaje)
       });
-     };
-   });
+}
 });
+
+   });
+}
 
 function botonEliminar(id) {
       eliminarPost(id);
 }
-}
+
 
 function overlayEditar() {
       let overlay = document.getElementById ("modalOverlay");

@@ -2,13 +2,14 @@ import {
   iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,pruebaGato
 } from '../components/iniciarSesion.js';
 import {
-  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,
+  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,filtrarAmigos,
 } from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook, irConfigPerfil,
 } from '../components/registro.js';
 import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components/intefazPrincipal.js';
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
+import { proximamente, irMuro } from '../components/proximamente.js';
 import {
   configPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage,irAlPerfil
 } from '../components/configPerfil.js';
@@ -51,7 +52,12 @@ export const router = (routes) => {
           // console.log("pagina inicio");
           verPosts();
           // ocultarMostrarPost();
+          filtrarAmigos();
           break;
+          case '#/filtroAmigos':
+            rootDiv.appendChild(proximamente());
+            irMuro();
+          break;  
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());
           restableceContrasena();

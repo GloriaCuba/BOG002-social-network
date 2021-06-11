@@ -22,8 +22,8 @@ export function inicio() {
          <img src="Img/Perro.jpg" id="filtroCaninos">
          <img src="Img/Gato.jpg" id="filtroFelinos">
          <img src="Img/conejo.jpg" id="filtroRoedores">
-         <img src="Img/pez1.jpg" id="filtroRoedores">
-         <img src="Img/Categoria_Aves.jpg" id="filtroRoedores">
+         <img src="Img/pez1.jpg" id="filtroAves">
+         <img src="Img/Categoria_Aves.jpg" id="filtroOtros">
       </div>
       <div class="textArea">
          <form id="muro" class="muro">
@@ -109,7 +109,8 @@ export function verPosts() {
       star.setAttribute('class', 'star');
       star.src = "Img/Star_Likes_Blanca.png";
       divMuro.appendChild(star);
-      const starYellow = document.createElement('input');
+      //
+    const starYellow = document.createElement('input');
       starYellow.setAttribute('type', 'image');
       starYellow.setAttribute('id', 'starYellow');
       starYellow.setAttribute('class', 'ocultar');
@@ -245,5 +246,15 @@ export function salir() {
   });
 }
 
+export function filtrarAmigos() {
+  document.getElementById('filtroCaninos').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroFelinos').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroRoedores').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroAves').addEventListener('click', filtrarSpecie);
+  document.getElementById('filtroOtros').addEventListener('click', filtrarSpecie);
+}
 
-
+function filtrarSpecie() {
+ window.location = '#/filtroAmigos';
+location.reload();
+}

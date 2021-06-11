@@ -1096,7 +1096,7 @@ body {
     justify-self: end;
     align-self: end;
     grid-column-end:6;
-    grid-row-start:5;
+    grid-row-start:6;
     width: 55px;
     height: 22px;
     background: #8FC1DF;
@@ -1104,6 +1104,23 @@ body {
     border-radius: 6px;
     margin: 0;
     font-size: 10px;
+}
+
+.textPerfil{
+    grid-column-start:2;
+    grid-column-end:6;
+    grid-row-start:3;
+    grid-row-end:5;
+    display: grid;
+    grid-template-columns: 18% 78% 4%;
+    grid-template-rows: 20% 20% 20% 20% 20%; 
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 100%;
+    align-self: end;
+    text-align: center;
+    resize: none;
+    font-size: 12px;
 }
 .publicacionesUsuario{
     grid-column-start:2;
