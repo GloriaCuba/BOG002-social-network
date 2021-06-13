@@ -30,7 +30,7 @@ function userProfile(url) {
   var user = firebase.auth().currentUser;
   console.log(user);
   user.updateProfile({
-    photoURL: url
+    photoURL: url,
   }).then(() => {
     campoFoto.src = url
   });
@@ -57,11 +57,8 @@ export const nuevoPost = (posteditado, id) => {
   let editar = firebase.firestore().collection('posts').doc(id);
   return editar.update({
     mensaje: posteditado,
-  })
-}
-
-
-//  export const obtenerLikes = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
+  });
+};
 
 export const updateLikes = (id, likes) => firebase.firestore().collection('posts').doc(id).update({
   likes,
@@ -69,13 +66,12 @@ export const updateLikes = (id, likes) => firebase.firestore().collection('posts
 
 export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
 
-// export const obtenerDatosUsuario = (callback) => firebase.firestore().collection('posts').orderBy('date', 'desc').onSnapshot(callback);
-
-//eliminar post
+// eliminar post
 export const eliminarPost = (id) => {
-  firebase.firestore().collection('posts').doc(id).delete().then(() => {
-    console.log('Document successfully deleted!');
-  }).catch((error) => {
-    console.error('Error removing document: ', error);
-  });
-}
+  firebase.firestore().collection('posts').doc(id).delete()
+    .then(() => {
+      console.log('Document successfully deleted!');
+    }).catch ((error) => {
+      console.error('Error removing document: ', error);
+    });
+};

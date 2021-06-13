@@ -26,7 +26,7 @@ body {
     background-image: url("Img/otro_fondo_1.png");
     background-size:cover; 
     background-repeat:no-repeat; 
-    background-position: absolute; 
+    position: absolute; 
     display: grid;
     /* grid-template-columns:repeat (4,1fr);
     grid-template-rows: repeat (5,1fr);  */
@@ -789,16 +789,16 @@ body {
 }
 
 .botonEnviar {
-    justify-self: end;
-    align-self: end;
+    justify-self: center;
+    align-self: start;
     grid-column-end:6;
-    grid-row-start:5;
+    grid-row-start:7;
     width: 55px;
     height: 22px;
     background: #8FC1DF;
     border-color: #b3d9f0;
     border-radius: 6px;
-    margin: 0;
+    margin-top: 0;
     font-size: 10px;
 }
 .divSeccionPosts{
@@ -1169,11 +1169,11 @@ body {
 }
 
 .muroModal {
-    display: relative;
+    position: relative;
 }
 
 .muroModal a{
-    display: absolute;
+    position: absolute;
     left: 0;
     right: 50px;
 }
@@ -1224,7 +1224,7 @@ body {
     font-family: arial;
     font-size: 16px;
     cursor: pointer;
-    transition: .3s ease all;
+    transition: .3s ease;
 }
 
 .modal form .botonActualizar{
