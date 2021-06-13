@@ -17,8 +17,9 @@ export function inicio() {
       </div>
       <div id="menuToggle" class="menuToggle">
          <div class="inicio"></div>
-      </div> 
-      <div id="containerFiltro"> 
+      </div>
+      <div id="containerFiltro">
+      <h2 class="encuentra"> ¡ Encuentra tus amigos !</h2>   
          <img src="Img/Perro.jpg" id="filtroCaninos">
          <img src="Img/Gato.jpg" id="filtroFelinos">
          <img src="Img/conejo.jpg" id="filtroRoedores">

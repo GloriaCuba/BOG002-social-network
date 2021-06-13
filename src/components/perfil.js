@@ -100,11 +100,11 @@ export function verPostsPerfil() {
       divMuro.setAttribute('class', 'divMuro');
       divOriginal.appendChild(divMuro);
       const autorPost = document.createElement('h3');
-      autorPost.setAttribute('class', 'autorPost');
+      autorPost.setAttribute('class', 'autorPostPerfil');
       divMuro.appendChild(autorPost);
       autorPost.innerHTML = nombreUsuario + " ha publicado:";
       const divTextPost = document.createElement('div');
-      divTextPost.setAttribute('class', 'divText');
+      divTextPost.setAttribute('class', 'divTextPerfil');
       const textPost = document.createElement('p');
       textPost.setAttribute('class', 'pText');
       divTextPost.appendChild(textPost);
@@ -162,11 +162,11 @@ export function verPostsPerfil() {
       const botonEditar = document.createElement('button');
       campoBotones.appendChild(botonBorrar);
       campoBotones.appendChild(botonEditar);
-      botonBorrar.className="botonBorrar"
+      botonBorrar.className="botonBorrarPerfil"
       botonBorrar.type = 'button'; 
       botonBorrar.textContent = 'Borrar post';
       botonBorrar.setAttribute('id', 'botonBorrar');
-      botonEditar.className="botonEditar"
+      botonEditar.className="botonEditarPerfil"
       botonEditar.type = 'button';
       botonEditar.textContent = 'Editar';
       botonEditar.setAttribute('id', 'botonEditar');

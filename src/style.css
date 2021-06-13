@@ -509,6 +509,7 @@ body {
         justify-content: center;
         align-self: center;
         text-align: center;
+        margin: 2em;
      }
     
      #containerFiltro h3{
@@ -531,6 +532,7 @@ body {
         grid-column-end:5;
         grid-row-start:3;
         grid-row-end:4;
+        margin-top: 2em;
     }
     .muro{
         display: grid;
@@ -538,6 +540,9 @@ body {
         grid-template-rows: 10% 20% 20% 25% 20% 5%;
         width:100%;
         height: 100%;
+    }
+    .encuentra{
+        margin:1em;
     }
     .campoPosteo{
         grid-column-start:3;
@@ -579,13 +584,12 @@ body {
         display:block;
     }
 
-
     .botonEnviar {
         justify-self: end;
         align-self: start;
         grid-column-start:4;
-        grid: column end 5px;;
-        grid-row-start:5;
+        grid-column-end: 5;
+        grid-row-start:6;
         width: 55px;
         height: 22px;
         background: #8FC1DF;
@@ -687,6 +691,7 @@ body {
         margin: 0;
         font-size: 10px;
     }
+    
     .photoProfile{
         border-radius: 100%;
         height: 3em;
@@ -912,8 +917,7 @@ footer{
     grid-row-end: 1;
     grid-column-start: 1;
     grid-column-end: 7;
-    border-bottom: 1px white solid;
-    background: rgb(137, 197, 231);
+    background:none;
     justify-self: end;
     padding: 0.5em 1em;
 
@@ -942,8 +946,8 @@ footer{
 .datosUsuarioPerfil{
     grid-row-start: 2 ;
     grid-row-end: 4;
-    grid-column-start: 2;
-    grid-column-end: 6; 
+    grid-column-start: 3;
+    grid-column-end: 5; 
 }
 
 .divPerfilUsuario{
@@ -955,13 +959,14 @@ footer{
  .fotoPerfilUsuario {
     grid-row-start: 1 ;
     grid-row-end: 5;
-    grid-column-start: 3;
+    grid-column-start:1;
     grid-column-end: 6; 
     z-index: 1;
+    /* margin-left: 7em; */
 } 
 
  .fotoPerfilUsuario img {
-    width: 8em;
+    width: 12em;
     height: 100%;  
     border-radius: 100%;
     border: 3px white solid;
@@ -980,16 +985,33 @@ footer{
     height: 90%;
     background: none;
     z-index: 0;
-    ;
+    border-radius: 2em;
 }
 .datosPerfil h2 {
     text-align: center;
     justify-self: center;
-    margin-top: 0.5em;
+    margin-top: 1.5em;
+    margin-left: 2em;
     color: white;
     font-size: 1.5em;
 }
 
+.divTextPerfil{
+    grid-column-start:1;
+    grid-column-end:7;
+    grid-row-start:3;
+    grid-row-end:5;
+    display: grid;
+    grid-template-columns: 13% 84% 3%;
+    grid-template-rows: 20% 20% 20% 20% 20%; 
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 100%;
+    align-self: end;
+    text-align: center;
+    resize: none;
+    font-size: 12px;
+}
 .textAreaPerfil {
     grid-column-start:2;
     grid-column-end:6;
@@ -1004,16 +1026,6 @@ footer{
     width:100%;
     height: 100%;
 }
-.campoPosteoPerfil{
-    grid-column-start:2;
-    grid-column-end:6;
-    grid-row-start:3;
-    background: rgba(255, 255, 255, 0.84);
-    border-radius: 15px;
-    height: 50px;
-    text-align: center;
-    resize: none;
-}
 
 .starPerfil{
     justify-self: start;
@@ -1022,8 +1034,66 @@ footer{
     grid-row-start:5;
 }
 .botonEnviarPerfil {
+    justify-self:end;
+    align-self: end;
+    grid-column-start:4;
+    grid-column-end:5;
+    grid-row-start:7;
+    /* grid-row-end:6; */
+    width: 55px;
+    height: 22px;
+    background: #8FC1DF;
+    border-color: #b3d9f0;
+    border-radius: 6px;
+    margin-top:2em;
+    font-size: 10px;
+}
+.publicacionesUsuario{
+    grid-column-start:3;
+    grid-column-end:5;
+    grid-row-start:5;
+    /* grid-row-end:6; */
+    height: 50px;
+    text-align: center;
+    resize: none;
+}
+
+.campoPosteoPerfil{
+    grid-column-start:3;
+    grid-column-end:5;
+    grid-row-start:3;
+    background: rgba(255, 255, 255, 0.84);
+    border-radius: 15px;
+    height: 50px;
+    text-align: center;
+    resize: none;
+}
+.autorPostPerfil{
+    font-size: 12px;
+    color:white;
+    grid-column-start:1;
+    grid-column-end:4;
+    grid-row-start:2;
+    /* align-self: center; */
+    justify-self: start;
+}
+.botonBorrarPerfil{
+    justify-self:end;
+    align-self: end;
+    grid-column-end: 5;
+    grid-row-start:5;
+    width: 55px;
+    height: 22px;
+    background: #8FC1DF;
+    border-color: #b3d9f0;
+    border-radius: 6px;
+    margin: 0;
+    font-size: 10px;
+}
+.botonEditarPerfil{
     justify-self: end;
     align-self: end;
+    grid-column-start:6;
     grid-column-end:6;
     grid-row-start:5;
     width: 55px;
@@ -1034,20 +1104,23 @@ footer{
     margin: 0;
     font-size: 10px;
 }
-.publicacionesUsuario{
-    grid-column-start:2;
-    grid-column-end:6;
-    grid-row-start:5;
-    grid-row-end:6;
-    align-self: initial;
-    height: auto;
-}
-
 /* .photoProfile {
     width: 6em;
     border-radius: 100%;
 } */
-
+.datosPerfil {
+    grid-row-start: 1 ;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 6; 
+    justify-self: center;
+    align-self: center;
+    border: 2px white solid;
+    width: 100%;
+    height: 90%;
+    background: none;
+    z-index: 0;
+}
 
 .modalOverlay{
     position: fixed;
