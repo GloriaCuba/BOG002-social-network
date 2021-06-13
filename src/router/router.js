@@ -1,8 +1,8 @@
 import {
-  iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,pruebaGato
+  iniciarSesion, funcionIngresar, iniciarConGoogle, iniciarConFacebook, olvidarContrasena,
 } from '../components/iniciarSesion.js';
 import {
-  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts,filtrarAmigos,
+  inicio, salir, irAPerfil, postMuro, menuToggle, verPosts, filtrarAmigos,
 } from '../components/paginaInicio.js';
 import {
   registrarse, funcionAutenticar, registroConGoogle, registroConFacebook, irConfigPerfil,
@@ -11,7 +11,7 @@ import { interfazPrincipal, ingresoApp, funcionRegistrarse } from '../components
 import { resetContraseña, restableceContrasena } from '../components/resetContrasena.js';
 import { proximamente, irMuro } from '../components/proximamente.js';
 import {
-  configPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen,readImage,irAlPerfil
+  configPerfil, recoletandoDatos, mostrarInputs, ocultarCambioImagen, recolectandoImagen, readImage, irAlPerfil
 } from '../components/configPerfil.js';
 import { perfil, configurarPerfil, ImagenPerfil, verPostsPerfil, postPerfil, irAHome} from '../components/perfil.js';
 
@@ -33,7 +33,6 @@ export const router = (routes) => {
           iniciarConGoogle();
           iniciarConFacebook();
           olvidarContrasena();
-          pruebaGato();
           break;
         case '#/registro':
           rootDiv.appendChild(registrarse());
@@ -54,10 +53,10 @@ export const router = (routes) => {
           // ocultarMostrarPost();
           filtrarAmigos();
           break;
-          case '#/filtroAmigos':
-            rootDiv.appendChild(proximamente());
-            irMuro();
-          break;  
+        case '#/filtroAmigos':
+          rootDiv.appendChild(proximamente());
+          irMuro();
+          break;
         case '#/restablecerContrasena':
           rootDiv.appendChild(resetContraseña());
           restableceContrasena();
@@ -130,23 +129,4 @@ export const router = (routes) => {
   });
 };
 
-// default :
-//         rootDiv.appendChild(iniciarSesion());
-//         funcionIngresar();
-//         funcionRegistrarse();
-//         break;
 
-// rootDiv.innerHTML = routes["#/" + location.hash];
-// console.log(location.hash);
-
-// export const onNavigate = (pathname) => {
-// window.history.pushState(
-//   {},
-//   pathname,
-//   window.location.origin + pathname
-// )
-// rootDiv.innerHTML = routes[pathname]
-// }
-
-// window.onpopstate = () => {
-// rootDiv.innerHTML = routes[window.location.pathname] }

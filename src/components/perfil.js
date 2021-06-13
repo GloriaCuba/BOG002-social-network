@@ -76,7 +76,8 @@ function guardarPublicacion(e){
          let imagen = user.photoURL;
          let likes =[];
          let userId = user.uid;
-         guardarPosts(mensaje, date, displayName,imagen, likes, userId);
+         let email= user.email;
+         guardarPosts(mensaje, date, displayName,imagen, likes, userId,email);
          muroPerfil.reset()
        }
  export function postPerfil() {
@@ -90,9 +91,10 @@ export function verPostsPerfil() {
       querySnapshot.forEach((doc) => {
       let userActual = firebase.auth().currentUser;
       const nombreUsuario = userActual.displayName;
-      const emailOtros = doc.data().user;
+      const correoUsuario = doc.data().correo;
       const idOtros = doc.data().userId;
-      if (doc.data().user == nombreUsuario) { 
+      console.log(correoUsuario)
+      if (userActual.email == correoUsuario) { 
       const divOriginal = document.getElementById('publicacionesUsuario');
       const divMuro = document.createElement('div');
       divMuro.setAttribute('class', 'divMuro');

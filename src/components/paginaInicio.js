@@ -68,7 +68,8 @@ function submitHandler(e) {
   let imagen = user.photoURL;
   let likes = [];
   let userId = user.uid;
-  guardarPosts(mensaje, date, displayName, imagen, likes, userId);
+  let email= user.email;
+  guardarPosts(mensaje, date, displayName, imagen, likes, userId, email);
   muro.reset()
 }
 // se añade el evento para almacenar los campos en firebase
@@ -82,12 +83,11 @@ export function verPosts() {
   obtenerPosts((querySnapshot) => {
     document.getElementById('divSeccionPosts').innerHTML = '';
     querySnapshot.forEach((doc) => {
-      let user = firebase.auth().currentUser;
-      let nombreUsuario = user.displayName;
-      console.log(user.uid);
-      const emailOtros = doc.data().user;
-      const idOtros = doc.data().userId;
-      console.log(idOtros);
+       // const email= user.email
+      const user = firebase.auth().currentUser;
+      const nombreUsuario = user.displayName;
+      const correoUsuario = doc.data().correo;
+      const idUsuario = doc.data().userId;
       const divOriginal = document.getElementById('divSeccionPosts');
       const divMuro = document.createElement('div');
       divMuro.setAttribute('class', 'divMuro');
@@ -107,18 +107,13 @@ export function verPosts() {
       star.setAttribute('type', 'image');
       star.setAttribute('id', 'star');
       star.setAttribute('class', 'star');
-      star.src = "Img/Star_Likes_Blanca.png";
+      star.src = 'Img/Star_Likes_Blanca.png';
       divMuro.appendChild(star);
-      //
-    const starYellow = document.createElement('input');
+      const starYellow = document.createElement('input');
       starYellow.setAttribute('type', 'image');
       starYellow.setAttribute('id', 'starYellow');
       starYellow.setAttribute('class', 'ocultar');
-      starYellow.src = "Img/Star_Likes.png";
-      /* if(doc.data().likes==!'') {
-        starYellow.classList.remove('ocultar');
-        starYellow.classList.add('starYellow');
-      } */
+      starYellow.src = 'Img/Star_Likes.png';
       const likes = doc.data().likes;
       const miLike = likes.find(item => item === user.uid);
       if (miLike) {
@@ -139,7 +134,7 @@ export function verPosts() {
       divLike.setAttribute('id', 'divLike');
       divLike.innerHTML = doc.data().likes.length === 0 ? '' : doc.data().likes.length;/*  operador ternario */
       divMuro.appendChild(divLike);
-      if (nombreUsuario == emailOtros) {
+      if (correoUsuario == user.email) {
         const campoBotones = document.createElement('div');
         const botonBorrar = document.createElement('button');
         campoBotones.appendChild(botonBorrar);
@@ -166,10 +161,7 @@ export function verPosts() {
         botonEditar.addEventListener('click', () => {
           botonEditarPost(doc.id, doc.data().mensaje);
         });
-        botonEditar.addEventListener('click', () => {
-          botonEditarPost(doc.id, doc.data().mensaje);
-        });
-      } else {
+        } else {
         /* console.log('no estan los botones'); */
       }
 
@@ -189,22 +181,12 @@ export function verPosts() {
       });
 
     });
-    /* function remover(){
-     const starYellow = document.getElementById('starYellow'); 
-     starYellow.addEventListener('click', () => {
-     restarLikes(doc.id).then(() => {
-     console.log('wiii')
-   });
- })
-} */
+
   });
-
-
 
   function botonEliminar(id) {
     eliminarPost(id);
   }
-
 }
 
 function botonEditarPost(id, campo) {
@@ -212,7 +194,6 @@ function botonEditarPost(id, campo) {
   console.log(id, campo);
   actualizandoPost(id, campo);
 }
-
 
 function actualizandoPost(id) {
   const muro = document.getElementById('muro');

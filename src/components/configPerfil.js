@@ -48,11 +48,12 @@ export function configPerfil() {
 }
 
 export function irAlPerfil() {
-  const botonGuardar = document.getElementById('irAtras');
-  botonGuardar.addEventListener('click', () => {
-   /*  window.location = '#/perfil'; */
+  const botonIrPerfil= document.getElementById('irPerfil');
+  botonIrPerfil.addEventListener('click', () => {
+    console.log('click')
+    window.location = '#/perfil';
     // eslint-disable-next-line no-restricted-globals
-    /* location.reload(); */
+    location.reload();
   });
 }
 
@@ -61,13 +62,12 @@ export function recoletandoDatos() {
   const nomMascota = document.getElementById('nombreMascota');
   const especie = document.getElementById('menuEspecies');
   const btndatos = document.getElementById('btnDatos');
-  let mensaje=document.getElementById("mensajeDatos")
   btndatos.addEventListener('click', () => {
-     setTimeout(() => {
-      datosCollection(userId, nomMascota, especie)
+    setTimeout(() => {
+      datosCollection(userId, nomMascota, especie);
       alert("La informacion se cargo correctamente")
     }, 4000);
-})
+  });
 }
 
 export function recolectandoImagen() {
@@ -76,48 +76,48 @@ export function recolectandoImagen() {
   campoFoto.src = user.photoURL;
   const ref = firebase.storage().ref();
   const btnGuardarPhoto = document.getElementById('botonGuardar');
-    btnGuardarPhoto.addEventListener('click', (e) => {
-    console.log("diste click")
+  btnGuardarPhoto.addEventListener('click', (e) => {
+    console.log('diste click');
     let userImagen = document.querySelector('#inputUserImage').files[0];
-    const name = userImagen.name
+    const name = userImagen.name;
     readImage();
     guardarFotoPerfil(name, userImagen);
     setTimeout(() => {
       window.location = '#/perfil';
       location.reload();
     }, 11000);
-   });
+  });
 }
 
 export function readImage() {
-  const campoFoto= document.getElementById("userImage")
-  const btnFile= document.getElementById("inputUserImage")
-  btnFile.addEventListener("change", function() {
-    document.getElementById('mensajeCargarFoto').style.display = 'block'
+  const campoFoto = document.getElementById('userImage');
+  const btnFile = document.getElementById('inputUserImage');
+  btnFile.addEventListener('change', function () {
+    document.getElementById('mensajeCargarFoto').style.display = 'block';
     const file = this.files[0];
-    const reader=new FileReader();
-    reader.onload =function(){ 
-    const result= reader.result;
-    campoFoto.src = result;
-  }
-  if (file){ 
-    reader.readAsDataURL(file);
-  }
+    const reader = new FileReader();
+    reader.onload = function () {
+      const result = reader.result;
+      campoFoto.src = result;
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   });
 }
 
 export function mostrarInputs() {
-const botonMostrarInputs = document.getElementById('botonInputs');
-botonMostrarInputs.addEventListener("click", ()=> {
-  document.querySelector("#contenedorImagen").style.display="none"
-  document.querySelector("#contenedorInputs").style.display="block"
- });
+  const botonMostrarInputs = document.getElementById('botonInputs');
+  botonMostrarInputs.addEventListener('click', () => {
+    document.querySelector('#contenedorImagen').style.display = 'none';
+    document.querySelector('#contenedorInputs').style.display = 'block';
+  });
 }
 
 export function ocultarCambioImagen() {
   const botonMostrarInputs = document.getElementById('botonImagen');
-  botonMostrarInputs.addEventListener("click", ()=> {
-   document.querySelector("#contenedorImagen").style.display="block"
-   document.querySelector("#contenedorInputs").style.display="none"
+  botonMostrarInputs.addEventListener('click', () => {
+    document.querySelector('#contenedorImagen').style.display = 'block';
+    document.querySelector('#contenedorInputs').style.display = 'none';
   });
 }

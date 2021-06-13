@@ -12,7 +12,7 @@ export function iniciarSesion() {
             <input type="password" id="password" placeholder="Password" name="password" required ><br>
            <div id="botonGato">
             <img id='gato'src="Img/gato_negro_.png" alt=""> 
-            <button type="button" id="botonIngresar">ingresar</button> <br>
+            <button type="button" id="botonIngresar">Ingresar</button> <br>
            </div>
           </div>
           <h4 id="olvidarContrasena" class="olvidarContrasena">¿Olvidaste tu contraseña?</h4> 
@@ -30,13 +30,6 @@ export function iniciarSesion() {
   return divFormulario;
 }
 
-export function pruebaGato(){
- const botonGato= document.getElementById('gato');
- botonGato.addEventListener('click',()=>{
-   console.log('hola gato')
- });
-
-}
 
 // iniciar sesion con email y contraseña
 export function funcionIngresar() {

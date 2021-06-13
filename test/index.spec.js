@@ -1,9 +1,5 @@
 import MockFirebase from 'mock-cloud-firestore';
-<<<<<<< HEAD
-import { guardarPosts, obtenerPosts, eliminarPost} from '../src/firebase/firestore.js';
-=======
 import { guardarPosts, obtenerPosts, nuevoPost} from '../src/firebase/firestore.js';
->>>>>>> 313c693c2ce0e4b22dad21116f2d441fc846f47a
 
 const fixtureData = {
   __collection__: {
