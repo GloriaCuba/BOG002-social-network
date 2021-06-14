@@ -1,6 +1,6 @@
 import MockFirebase from 'mock-cloud-firestore';
 import {
-  guardarPosts, obtenerPosts, nuevoPost,
+  guardarPosts, obtenerPosts, nuevoPost, eliminarPost,
 } from '../src/firebase/firestore.js';
 
 const fixtureData = {
@@ -55,15 +55,16 @@ describe('guardarPosts', () => {
     });
   });
 
-  // it('Debería eliminar un post', (done) => {
-  //   const eliminar = eliminarPost('abc123');
-  //   return eliminar
-  //     .then(() => {
-  //       obtenerPosts((data) => {
-  //         const resultado = data.docs.find((post) => post.id === 'abc123');
-  //         expect(resultado).toBe(undefined);
-  //         done();
-  //       });
-  //     });
-  // });
+  it('Debería eliminar un post', (done) => {
+    const eliminar = eliminarPost('abc123');
+    return eliminar
+      .then(() => {
+        obtenerPosts((data) => {
+          const resultado = data.docs.find((post) => post.id === 'abc123');
+          expect(resultado).toBe(undefined);
+          done();
+        });
+      });
+  });
+
 });

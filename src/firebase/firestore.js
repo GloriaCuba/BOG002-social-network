@@ -68,10 +68,5 @@ export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc
 
 // eliminar post
 export const eliminarPost = (id) => {
-  firebase.firestore().collection('posts').doc(id).delete()
-    .then(() => {
-      console.log('Document successfully deleted!');
-    }).catch ((error) => {
-      console.error('Error removing document: ', error);
-    });
+  return firebase.firestore().collection('posts').doc(id).delete();
 };
