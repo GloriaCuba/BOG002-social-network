@@ -64,8 +64,6 @@ export const updateLikes = (id, likes) => firebase.firestore().collection('posts
   likes,
 });
 
-export const obtenerLikes = (id) => firebase.firestore().collection('posts').doc(id).get();
-
 // eliminar post
 export const eliminarPost = (id) => {
   return firebase.firestore().collection('posts').doc(id).delete();

@@ -37,13 +37,6 @@ export function ingresarFaceBook() {
 export function cerrarSesión() {
 const signOutUser = firebase.auth().signOut();
 return signOutUser;
-
-  //   // eslint-disable-next-line no-console
-  //   console.log('Signed Out');
-  // }, (error) => {
-  //   // eslint-disable-next-line no-console
-  //   console.error('Sign Out Error', error);
-  // });
 }
 
 export function restablecimientoContrasena(email) {

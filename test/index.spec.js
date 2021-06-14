@@ -1,6 +1,6 @@
 import MockFirebase from 'mock-cloud-firestore';
 import {
-  guardarPosts, obtenerPosts, nuevoPost, eliminarPost,
+  guardarPosts, obtenerPosts, nuevoPost, eliminarPost, updateLikes,
 } from '../src/firebase/firestore.js';
 
 const fixtureData = {
@@ -13,7 +13,7 @@ const fixtureData = {
           user:'Pepita',
           userId: '5DhOSxxCGNSBGxoerylUMX9kJxg2',
           imagen: 'imagen.png',
-          likes: '5',
+          likes: '[idnumero1, idnumero2]',
           correo: 'pepita@hotmail.com',
         },
         abc456: {
@@ -22,7 +22,7 @@ const fixtureData = {
           user: 'Juan',
           userId: '5BhOSxxCGNSBGxoerylUMX9kJxg2',
           imagen: 'imagen1.png',
-          likes: '7',
+          likes: '[idnumero1, idnumero2, idnumero3]',
           correo: 'juan@hotmail.com',
         }
       }
@@ -34,7 +34,7 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 
 describe('guardarPosts', () => {
   it('Deberia poder postear', (done) => {
-    const agregar = guardarPosts('Mensaje 1', '2 de junio de 2021, 09:24:04', 'Pepita', '5DhOSxxCGNSBGxoerylUMX9kJxg2', 'imagen.png', '5', 'pepita@hotmail.com');
+    const agregar = guardarPosts('Mensaje 1', '2 de junio de 2021, 09:24:04', 'Pepita', '5DhOSxxCGNSBGxoerylUMX9kJxg2', 'imagen.png', '[idnumero1, idnumero2]', 'pepita@hotmail.com');
     return agregar.then(() => {
       obtenerPosts((data) => {
         const result = data._data.find(post => post._data.mensaje === 'Mensaje 1');
@@ -66,5 +66,4 @@ describe('guardarPosts', () => {
         });
       });
   });
-
 });

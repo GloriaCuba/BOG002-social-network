@@ -1,4 +1,4 @@
-import { ingresar, autenticar } from '../src/firebase/firebase.js';
+import { ingresar, autenticar, ingresarGmail, ingresarFaceBook, cerrarSesión, restablecimientoContrasena, } from '../src/firebase/firebase.js';
 
 const firebasemock = require('firebase-mock');
 
@@ -25,3 +25,38 @@ describe('crear un usuario', () => {
     });
   });
 });
+
+describe('Ingresar con Gmail', () => {
+  it('Ingresar con Gmail', () => {
+    return ingresarGmail().then((user) => {
+      expect(user.providerData.[0]).toEqual({providerId :"google.com"});
+    });
+  });
+});
+
+describe('Ingresar con Facebook', () => {
+  it('Ingresar con Facebook', () => {
+    return ingresarFaceBook().then((user) => {
+      expect(user.providerData.[0]).toEqual({providerId :"facebook.com"});
+    });
+  });
+});
+
+describe('cerrar sesión', () => {
+  it('cerrar sesión', () => {
+    return cerrarSesión().then((user) => {
+      expect(user).toBe(undefined);
+    });
+  });
+});
+
+
+
+/* describe('Restablecimiento de Contrasena', () => {
+  it('Restablecimiento de Contrasena', () => {
+    let email = 'prueba@gmail.com';
+    return restablecimientoContrasena(email).then((email) => {
+      expect(email).toBe(true);
+    });
+  });
+}); */
